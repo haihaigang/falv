@@ -1,0 +1,99 @@
+/* login start */
+.login a{
+	color: #f19c76;
+	text-decoration: underline;
+}
+.login a:hover{
+	text-decoration: none;
+}
+.login .items .key{
+	width: 3.25em;
+	padding-left: .32rem;
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: auto 50%;
+}
+.login .items .phone{
+	background-image: url(../images/icon_phone.png);
+}
+.login .items .password{
+	background-image: url(../images/icon_password.png);
+}
+.login .remember{
+	display: -webkit-box;
+	height: .45rem;
+	line-height: .45rem;
+}
+.login .remember label{
+	display: block;
+	-webkit-box-flex: 1;
+}
+.login .remember input{
+	width: .19rem;
+	height: .19rem;
+	margin-right: .12rem;
+	border: 1px solid #ddd;
+	vertical-align: middle;
+}
+.login .tips{
+	padding: .12rem 0;
+	font-size: 1.1em;
+}
+/* login end */
+
+/* register start */
+.register .sep{
+	margin: 0 .07rem;
+	color: #808080;
+	text-decoration: underline;
+}
+.register .sep.ready{
+	color: #806d5a;
+}
+.register .sep:hover{
+	text-decoration: none;
+}
+.register .tips{
+	padding: .12rem 0;
+}
+.register .box{
+	margin-bottom: .1rem;
+	padding: .09rem .1rem;
+}
+.register .title{
+	border-bottom: 1px solid #c6c6c6;
+	padding: .08rem 0;
+	font-size: 1.25em;
+}
+#step2 .options{
+	margin-top: .1rem;
+}
+/* register end */
+
+/* forget start */
+.forget .tips{
+	padding: .12rem 0;
+}
+#btn-send{
+	width: .9rem;
+	margin-left: .05rem;
+	margin-top: .05rem;
+}
+#btn-send a{
+	display: block;
+	line-height: .33rem;
+	padding: 0 .1rem;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 0;
+	text-align: center;
+	color: #fff;
+	background-color: #45def8;
+	-webkit-user-select: none;
+	vertical-align: middle;
+}
+#btn-send span{
+	line-height: .33rem;
+}
+/* forget end */

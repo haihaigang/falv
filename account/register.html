@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>法率网</title>
+    <link rel="stylesheet" href="content/css/common.css" />
+    <link rel="stylesheet" href="content/css/login.css" />
+</head>
+<body>
+<noscript>
+    <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+</noscript>
+
+<header class="header">
+    <a href="index" class="icon icon_home"></a>
+    <h1>注册</h1>
+</header>
+
+<section class="container register">
+<form id="register-form" action="#">
+    <div id="step1">
+<!--         <div class="country">0086 zh</div> -->
+        <div class="items">
+            <div class="val"><input type="text" name="phone" maxlength="11" placeholder="请输入爷的手机号码" /></div>
+        </div>
+        <!-- <div class="tips">注册即表示爷同意遵守<a class="sep" href="#">用户协议</a>和<a class="sep" href="#">隐私协议</a></div> -->
+        <div class="options" style="margin-top: .1rem;">
+            <a id="btn-ok-1" class="btn" href="#submit">过…</a>
+        </div>
+    </div>
+
+    <div id="step2" style="display: none;">
+        <div class="tips p_b_0">已向爷的手机<em id="phone" class="sep">---</em>发送了验证码</div>
+        <div class="items">
+            <div class="val"><input type="text" name="code" maxlength="6" placeholder="请输入爷的验证码" /></div>
+        </div>
+        <div class="options">
+            <a id="btn-no-2" class="btn btn_l" href="#"><span>悔…</span></a>
+            <a id="btn-ok-2" class="btn btn_r" href="#"><span>过…</span></a>
+        </div>
+        <div class="tips t_r"><a id="repeat-send" class="sep ready" href="#">重发验证码</a></div>
+    </div>
+
+    <div id="step3" style="display: none;">
+        <div class="items">
+            <div class="val"><input type="password" name="password" maxlength="16" placeholder="请输入密码" /></div>
+        </div>
+        <div class="items">
+            <div class="val"><input type="password" name="repassword" maxlength="16" placeholder="请再次输入密码" /></div>
+        </div>
+        <div class="tips">密码长度8-16位，至少包含数字、字母</div>
+        <div class="options">
+            <a id="btn-no-3" class="btn btn_l" href="#"><span>悔…</span></a>
+            <a id="btn-ok-3" class="btn btn_r" href="#"><span>过…</span></a>
+        </div>
+    </div>
+
+    <div id="step4" style="display: none;">
+        <div class="box">
+	        <div class="items">
+	        	<div class="key">手机号</div>
+	            <div class="val"><span id="phone2" class="txt">---</span></div>
+	        </div>
+	        <div class="items">
+	        	<div class="key">真实姓名</div>
+	            <div class="val"><input type="text" name="realName" placeholder="仅用于收取礼品，不会公布爷的姓名" /></div>
+	        </div>
+        </div>
+        <div class="box">
+            <div class="title">设定爷的角色</div>
+            <ul id="role-list" class="role_list clearfix"></ul>
+            <div class="options">
+            	<input type="hidden" name="roleId" value="1" />
+                <input type="submit" class="btn" value="搞定" />
+            </div>
+        </div>
+    </div>
+</form>
+</section>
+
+<script id="role-list-tmpl" type="text/html">
+	<!--[for(i = 0; i < list.length; i ++) {]-->
+	<li data-id="<!--[= list[i].roleId]-->">
+		<div class="role">
+			<i></i>
+			<img src="<!--[= $absImg(list[i].picUrl)]-->" alt="" />
+		</div>
+		<p><!--[= list[i].roleName]--></p>
+	</li>
+	<!--[}]-->
+</script>
+
+<div id="myPanel">
+    <p></p>
+    <div class="options">
+        <input type="button" class="btn btn_ok" value="好！" />
+        <input type="button" class="btn btn_yes" value="是" />
+        <input type="button" class="btn btn_no" value="否" />
+    </div>
+</div>
+<div id="mySelect">
+    <div id="address"></div>
+    <div class="clearfix"></div>
+    <div class="options">
+        <input type="button" class="btn btn_close" value="完成" />
+    </div>
+</div>
+<div id="panelBg"></div>
+<div id="wu-toast" style="display: none">
+    <span></span>
+</div>
+<script src="content/js/lib/jquery-2.1.1.min.js"></script>
+<script src="content/js/lib/template.js"></script>
+<script src="content/js/lib/jscroll.js"></script>
+<script src="content/js/config.js"></script>
+<script src="content/js/global.js"></script>
+<script src="content/js/worldunion.js"></script>
+<script src="content/js/register.js"></script>
+</body>
+</html>

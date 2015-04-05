@@ -1,0 +1,98 @@
+/* map start */
+body, html,#allmap {
+	height: 100%;
+	overflow: hidden;
+}
+.container{
+    min-height: 0;
+}
+form{
+	margin-bottom: 0;
+}
+.search_line {
+	width: 100%;
+	margin: 0 auto;
+	color: #333;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	overflow-x: hidden;
+	z-index: 99999;
+}
+.search_icon {
+	width: .43rem;
+	background-image: url(../images/icon_search_line.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-size: .36rem auto;
+}
+
+.search, .search_box .where, .line_type_tab {
+	display: -webkit-box
+}
+.search_box, .area {
+	-webkit-box-flex: 1;
+}
+.search_box .where {
+	border-bottom: 1px solid #ccc;
+	padding: 10px 0;
+	margin-bottom: 10px;
+}
+.search_box .where .intxt {
+	border: 1px solid #ccc;
+}
+.city {
+	width: .7rem;
+	margin-right: 5px;
+}
+.search_btn {
+	width: .5rem;
+	background-image: url(../images/btn_search_line.gif);
+	background-repeat: no-repeat;
+	background-position: .1rem center;
+	background-size: .35rem auto;
+}
+.line_type_tab {
+	border-top: 1px solid #d5d4d4;
+	position: relative;
+}
+.line_type_tab .tabs{
+	width: 28%;
+	height: .5rem;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.line_type_tab .bus {
+	background-image: url(../images/icon_line_bus.gif);
+	background-size: .28rem auto;
+}
+.line_type_tab .bus.active {
+	background-image: url(../images/icon_line_bus_on.gif);
+}
+.line_type_tab .taxi {
+	background-image: url(../images/icon_line_taxi.gif);
+	background-size: .28rem auto;
+}
+.line_type_tab .taxi.active {
+	background-image: url(../images/icon_line_taxi_on.gif);
+}
+.line_type_tab .walk {
+	background-image: url(../images/icon_line_walk.gif);
+	background-size: .2rem auto;
+}
+.line_type_tab .walk.active {
+	background-image: url(../images/icon_line_walk_on.gif);
+}
+.toggle_btn {
+	background-image: url(../images/btn_toggle_hide.gif);
+	background-size: 100% 100%;
+	width: .25rem;
+	height: .25rem;
+	position: absolute;
+	right:3%;
+	top: .12rem;
+}
+.show {
+	background-image: url(../images/btn_toggle_show.gif);
+}
+/* map end */

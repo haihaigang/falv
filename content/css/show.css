@@ -1,0 +1,257 @@
+/* house start */
+.house_item{
+	margin-bottom: .1rem;
+}
+.house_item .thumb{
+	display: block;
+	width: 100%;
+}
+.house_item .thumb img{
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	margin: 0 auto;
+}
+.house_item .content{
+	padding: .07rem .1rem .1rem;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.house_item h3{
+	padding-left: .22rem;
+	font-size: 1.25em;
+	background-repeat: no-repeat;
+	background-position: left 0.23em;
+	background-size: auto .19rem;
+}
+.house_item h3.video{
+	background-image: url(../images/icon_video.png);
+}
+.house_item h3.audio{
+	background-image: url(../images/icon_audio.png);
+}
+.house_item h3.text{
+	background-image: url(../images/icon_text.png);
+}
+.house_item .ex{
+	display: -webkit-box;
+	padding-top: .05rem;
+}
+.house_item .time{
+	display: block;
+	font-size: .8em;
+	line-height: .21rem;
+	color: #787878;
+	-webkit-box-flex: 1;
+}
+.house_item .rec{
+	display: block;
+	padding-left: .15rem;
+	background-image: url(../images/icon_comment.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: .15rem auto;
+}
+.house_item .rec em{
+	color: #09c9d4;
+	padding: 0 .05rem;
+}
+/* house end */
+
+/* house detail start */
+.house_detail h3{
+	font-size: 1.25em;
+}
+.house_detail .ex{
+	display: -webkit-box;
+	padding: .05rem 0;
+}
+.house_detail .ex .time{
+	display: block;
+	-webkit-box-flex: 1;
+}
+.house_detail .ex .time em{
+	font-size: .8em;
+	color: #787878;
+}
+.house_detail .ex .time i{
+	margin-left: .1rem;
+	font-style: normal;
+	font-size: .8em;
+}
+.house_detail .ex .rec{
+	display: block;
+	width: .4rem;
+	background-image: url(../images/icon_comment_1.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: .21rem auto;
+}
+.house_detail .rec span{
+	display: block;
+	width: .21rem;
+	background-image: url(../images/icon_comment_1.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: .21rem auto;
+}
+.house_detail .content_video{
+	background-color: #000;
+}
+.house_detail video{
+	width: 100%;
+}
+.house_detail .content_audio{
+	padding: .04rem 0;
+	background: #09c9d4;
+}
+.house_detail .content_audio audio{
+	filter:alpha(opacity=0);  
+    -moz-opacity:0;  
+    -khtml-opacity: 0;  
+    opacity: 0;
+}
+.house_detail .content_text{
+	word-break: break-all;
+}
+.house_detail .content_text img{
+	display: block;
+	max-width: 100%;
+	margin: 0 auto;
+}
+.house_detail .content_text b,
+.house_detail .content_text strong{
+	font-weight: bold;
+}
+/* house detail end */
+
+/* audio start */
+.audiojs audio {
+	position: absolute;
+	left: -1px;
+	width: 1px;
+	height: 1px;
+}
+
+.audiojs {
+	display: -webkit-box;
+	width: 100%;
+	height: 36px;
+	overflow: hidden;
+	font-family: monospace;
+	font-size: 12px;
+}
+
+.audiojs .play-pause {
+	width: 25px;
+	padding: 4px 6px;
+	margin: 0px;
+	overflow: hidden;
+	position: absolute;
+	z-index: 9;
+}
+
+.audiojs p {
+	width: 25px;
+	height: 28px;
+	margin: 0px;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto auto;
+	background-image: url("../images/audio/icon_play.png");
+}
+
+.audiojs .play {
+	display: block;
+}
+
+.audiojs .scrubber {
+	position: relative;
+	background: #5a5a5a;
+	height: 14px;
+	margin: 10px 10px 10px 50px;
+	border-left: 0px;
+	border-bottom: 0px;
+	overflow: hidden;
+	-webkit-box-flex: 1;
+	background: url(../images/scrubber.gif) repeat-x center;
+}
+
+.audiojs .progress {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 14px;
+	width: 0px;
+	z-index: 1;
+	border-right: 2px solid #fff;
+	
+}
+
+.audiojs .loaded {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 14px;
+	width: 0px;
+	
+}
+
+.audiojs .time {
+	height: 36px;
+	line-height: 36px;
+	margin: 0px 0px 0px 6px;
+	padding: 0px 6px 0px 12px;
+	color: #ddd;
+}
+
+.audiojs .time em {
+	padding: 0px 2px 0px 0px;
+	color: #f9f9f9;
+	font-style: normal;
+}
+
+.audiojs .time strong {
+	padding: 0px 0px 0px 2px;
+	font-weight: normal;
+}
+
+.audiojs .error-message {
+	float: left;
+	display: none;
+	margin: 0px 10px;
+	height: 36px;
+	width: 400px;
+	overflow: hidden;
+	line-height: 36px;
+	white-space: nowrap;
+	color: #fff;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-icab-text-overflow: ellipsis;
+	-khtml-text-overflow: ellipsis;
+	-moz-text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+}
+
+.audiojs .error-message a {
+	color: #eee;
+	text-decoration: none;
+	padding-bottom: 1px;
+	border-bottom: 1px solid #999;
+	white-space: wrap;
+}
+.playing .play-pause p{
+	background-image: url("../images/audio/icon_pause.png");
+}
+.loading .play-pause p{
+	background-image: url("../images/audio/icon_loading.png");
+}
+.error .play-pause p{
+	background-image: url("../images/audio/icon_error.png");
+}
+.error .error-message {
+	display: block;
+}
+/* audio end */
