@@ -8,7 +8,7 @@
     <meta name="apple-touch-fullscreen" content="yes" />
     <title>法率网</title>
     <link rel="stylesheet" href="../content/css/common.css" />
-    <link rel="stylesheet" href="../content/css/login.css" />
+    <link rel="stylesheet" href="../content/css/lcard.css" />
 </head>
 <body>
 <noscript>
@@ -16,26 +16,42 @@
 </noscript>
 
 <header class="header">
-    <h1>登录</h1>
-    <a href="index" class="icon">注册</a>
+    <h1>激活L卡成功</h1>
 </header>
 
-<section class="container">
-    <form id="login-form" action="#" method="post" class="login">
-        <div class="items">
-            <div class="val"><input type="text" name="phone" maxlength="11" placeholder="输入手机号" /></div>
+<section class="container lcard">
+    <div class="lcard-sus">
+        <p>恭喜您激活成功，您已获得以下服务及优惠。</p>
+        <p>务有效期：2013.12.12 12:12</p>
+    </div>
+    <section class="lcard-list">
+        <a href="my-info">
+            <span class="i1">法律咨询</span>
+            <em id="rate">2个月</em>
+        </a>
+        <a href="my-activity">
+            <span class="i2">合同审核</span>
+            <em class="num">1份</em>
+        </a>
+        <a href="my-gift">
+            <span class="i3">合同起草</span>
+            <em class="num">2份</em>
+        </a>
+    </section>
+    <div class="lcard-detail clearfix">
+        <div class="lcard-amount">
+            <div class="lcard-amount-c">
+                <p>优惠额度：</p>
+                <p class="price">￥200</p>
+            </div>
         </div>
-        <div class="items">
-            <div class="val"><input type="password" name="password" maxlength="16" placeholder="输入密码" /></div>
+        <div class="lcard-info">
+            <div class="lcard-info-c">
+            <p>优惠券编号：12345</p>
+            <p>有效期：2015/10/25</p>
+            </div>
         </div>
-        <div class="remember">
-            <label><input type="checkbox" name="remember" value="1" />保存帐号密码</label>
-        </div>
-        <div class="options">
-            <input type="submit" class="btn" value="登录" />
-        </div>
-        <div class="tips t_r"><a href="forget.html" class="btn-forget">忘记密码</a></div>
-    </form>
+    </div>
 </section>
 
 <div id="myPanel">

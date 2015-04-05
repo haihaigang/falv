@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -8,7 +8,7 @@
     <meta name="apple-touch-fullscreen" content="yes" />
     <title>法率网</title>
     <link rel="stylesheet" href="../content/css/common.css" />
-    <link rel="stylesheet" href="../content/css/login.css" />
+    <link rel="stylesheet" href="../content/css/lcard.css" />
 </head>
 <body>
 <noscript>
@@ -16,25 +16,28 @@
 </noscript>
 
 <header class="header">
-    <h1>登录</h1>
-    <a href="index" class="icon">注册</a>
+    <h1>激活L卡</h1>
 </header>
 
-<section class="container">
-    <form id="login-form" action="#" method="post" class="login">
+<section class="container lcard">
+	<div class="lcard-body">
+		<div class="lcard-content">
+			<div class="lcard-no">卡号：
+			<p>4546 5656 5566 0973</p></div>
+		</div>
+		<div class="lcard-tip">L卡激活后，将与账号13802998376进行绑定</div>
+	</div>
+
+    <form id="login-form" action="#" method="post" class="lcard-form">
         <div class="items">
-            <div class="val"><input type="text" name="phone" maxlength="11" placeholder="输入手机号" /></div>
+            <div class="val"><input type="text" name="phone" maxlength="11" placeholder="卡号" /></div>
         </div>
         <div class="items">
-            <div class="val"><input type="password" name="password" maxlength="16" placeholder="输入密码" /></div>
-        </div>
-        <div class="remember">
-            <label><input type="checkbox" name="remember" value="1" />保存帐号密码</label>
+            <div class="val"><input type="password" name="password" maxlength="16" placeholder="密码" /></div>
         </div>
         <div class="options">
-            <input type="submit" class="btn" value="登录" />
+            <input type="submit" class="btn" value="确认" />
         </div>
-        <div class="tips t_r"><a href="forget.html" class="btn-forget">忘记密码</a></div>
     </form>
 </section>
 

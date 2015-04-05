@@ -15,55 +15,38 @@
     <div id="noscript">您当前的浏览器不支持JavaScript脚本</div>
 </noscript>
 
-<header class="header home">
-    <div class="home_title"><h3>法率网</h3><span></span></div>
-    <a href="javascript:;" class="icon icon_user"></a>
-</header>
-
-<section class="container">
+<section class="container home">
     <div class="slider">
         <div class="scroller">
 			<div class="item" data-link="<!--[= list[i].url]-->">
-				<img id="img-<!--[= i]-->" src="<%=request.getContextPath()%>/content/images/blank.png" data-src="<!--[= $absImg(list[i].img)]-->" alt="" />
+				<img id="img-<!--[= i]-->" src="content/images/home/slider/1_02.png" alt="" />
 			</div>
-
 			<div class="item" data-link="<!--[= list[i].url]-->">
-				<img id="img-<!--[= i]-->" src="<%=request.getContextPath()%>/content/images/blank.png" data-src="<!--[= $absImg(list[i].img)]-->" alt="" />
+				<img id="img-<!--[= i]-->" src="content/images/home/slider/2_02.png" alt="" />
+			</div>
+			<div class="item" data-link="<!--[= list[i].url]-->">
+				<img id="img-<!--[= i]-->" src="content/images/home/slider/3_02.png" alt="" />
 			</div>
         </div>
-        <div class="subscript"></div>
+        <div class="subscript"><span class="active"></span><span></span><span></span></div>
     </div>
-    <div class="nav" style="display: none;">
-        <div class="db mb">
-            <a class="w2 mr" href="hui/index"><img src="../content/images/nav_1.png" alt="" /></a>
-            <a class="w2" href="show/house-list"><img src="../content/images/nav_8.png" alt="" /></a>
+    <div class="nav clearfix">
+        <div class="w2 nav-left">
+            <a class="link l1" href="hui/index"><span>法率管家</span></a>
+            <a class="link l2" href="show/house-list"><span>快诉</span></a>
         </div>
-        <div class="db mb">
-            <a class="w2 mr" href="shop/conversation" data-type="company" target="_blank" id="wu-online"><img src="../content/images/nav_3.png" alt="" /></a>
-            <div class="w3 mr">
-                <a class="mb" href="shop/loan"><img src="../content/images/nav_4.png" alt="" /></a>
-                <a href="shop/custom"><img src="../content/images/nav_5.png" alt="" /></a>
-            </div>
-            <div class="w2">
-                <a class="w2 mb" href="show/story-list"><img src="../content/images/nav_9.png" alt="" /></a>
-                <a href="show/magazine-list"><img src="../content/images/nav_10_t.png" alt="" /></a>
-            </div>
-        </div>
-        <div class="db">
-            <a class="w3 mr" href="hui/activities"><img src="../content/images/nav_6.png" alt="" /></a>
-            <a class="w2 mr" href="hui/games"><img src="../content/images/nav_7.png" alt="" /></a>
-            <a class="w2 i10" href="show/magazine-list"><img src="../content/images/nav_10_b.png" alt="" /></a>
+        <div class="w2 nav-right">
+            <a class="db link l3" href="hui/index"><span>留声机</span></a>
+            <a class="db link l4" href="show/house-list"><span>企业查询</span></a>
+            <a class="db link l5" href="#"><span>激活L卡</span></a>
         </div>
     </div>
 </section>
 
-<footer class="footer" style="display: none;">
-	<div class="footer_links">
-		<a id="wu-focus" href="#">十爷帮</a><span class="sep"></span><a
-			href="<%=request.getContextPath()%>/wechat/register">爷要入荟</a><span
-			class="sep"></span><a id="wu-back" href="#">返回顶部</a>
-	</div>
-	<div class="footer_company">syb.worldunion.com.cn</div>
+<footer class="footer">
+    <div class="options">
+    	<a href="#" class="btn">下载法率网APP</a>
+    </div>
 </footer>
 
 <div id="myPanel">
