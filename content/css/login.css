@@ -1,28 +1,36 @@
+/* account start */
+form .col{
+    display: -webkit-box;
+}
+form .flex{
+    -webkit-box-flex: 1;
+}
+form .other{
+    width: 80px;
+    margin-left: .09rem;
+    text-align: center;
+}
+form .other a{
+    display: inline-block;
+    width: 80px;
+    color: #818181;
+}
+header .icon{
+	color: #0072bc;
+}
+/* account end */
+
 /* login start */
-.login a{
-	color: #f19c76;
-	text-decoration: underline;
-}
-.login a:hover{
-	text-decoration: none;
-}
-.login .items .key{
-	width: 3.25em;
-	padding-left: .32rem;
-	background-repeat: no-repeat;
-	background-position: left center;
-	background-size: auto 50%;
-}
-.login .items .phone{
-	background-image: url(../images/icon_phone.png);
-}
-.login .items .password{
-	background-image: url(../images/icon_password.png);
+form.login input[type="text"], form.login input[type="password"]{
+	text-align: center;
 }
 .login .remember{
 	display: -webkit-box;
-	height: .45rem;
-	line-height: .45rem;
+	height: .35rem;
+	line-height: .35rem;
+	margin-bottom: .05rem;
+	text-align: center;
+	color: #818181;
 }
 .login .remember label{
 	display: block;
@@ -35,38 +43,46 @@
 	border: 1px solid #ddd;
 	vertical-align: middle;
 }
+.login .options{
+	width: 88%;
+	margin: 0 auto;
+}
 .login .tips{
-	padding: .12rem 0;
-	font-size: 1.1em;
+	width: 88%;
+	margin: .14rem auto;
+	font-size: 0.8em;
+}
+.login .btn-forget{
+	display: inline-block;
+	width: 65px;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	color: #818181;
+	text-align: center;
 }
 /* login end */
 
 /* register start */
-.register .sep{
-	margin: 0 .07rem;
-	color: #808080;
-	text-decoration: underline;
-}
-.register .sep.ready{
-	color: #806d5a;
-}
-.register .sep:hover{
-	text-decoration: none;
-}
-.register .tips{
-	padding: .12rem 0;
-}
-.register .box{
+.register .remember{
+	display: -webkit-box;
+	height: .35rem;
+	line-height: .35rem;
 	margin-bottom: .1rem;
-	padding: .09rem .1rem;
+	text-align: center;
+	color: #818181;
 }
-.register .title{
-	border-bottom: 1px solid #c6c6c6;
-	padding: .08rem 0;
-	font-size: 1.25em;
+.register .remember label{
+	display: block;
+	-webkit-box-flex: 1;
 }
-#step2 .options{
-	margin-top: .1rem;
+.register .remember input{
+	width: .19rem;
+	height: .19rem;
+	margin-right: .12rem;
+	border: 1px solid #ddd;
+	vertical-align: middle;
 }
 /* register end */
 
@@ -97,3 +113,18 @@
 	line-height: .33rem;
 }
 /* forget end */
+
+/* reg-sus start */
+.reg-sus .tips{
+	margin-bottom: .1rem;
+	padding-top: 1.4rem;
+	text-align: center;
+	background-image: url(../images/account/icon_reg_sus.png);
+	background-repeat: no-repeat;
+	background-size: 83px 83px;
+	background-position: center .4rem;
+}
+.reg-sus .tips .phone{
+	color: #0072bc; 
+}
+/* reg-sus end */

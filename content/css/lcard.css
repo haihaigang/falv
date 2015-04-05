@@ -1,0 +1,127 @@
+.lcard{
+	padding: 0;
+}
+.lcard-body{
+	height: 1.24rem;
+	padding-top: .21rem;
+	background-image: url(../images/lcard/lcard_bg.png);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	background-size: auto 100%;
+	color: #dadada;
+}
+.lcard-content{
+	width: 2.05rem;
+	height: .93rem;
+	margin: 0 auto;
+	color: #3d3d3d;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 100% auto;
+}
+.lcard-no{
+	padding: .45rem .1rem 0;
+}
+.lcard-tip{
+	height: .3rem;
+	line-height: .3rem;
+	text-align: center;
+}
+.lcard-form{
+	padding: .15rem .1rem;
+}
+
+
+/* lcard overview start */
+.lcard-sus{
+	padding: .15rem 0;
+	line-height: 2;
+	text-align: center;
+	border-bottom: 1px solid #dadada;
+}
+.lcard-list a{
+    display: -webkit-box;
+    padding: 0 .2rem;
+    line-height: .45rem;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    border-bottom: 1px solid #dadada;
+}
+.lcard-list a:hover{
+    background-color: #f4f4f4;
+}
+.lcard-list a.active{
+    background-color: #44e0e9;
+    color: #fff;
+}
+.lcard-list a.disabled{
+	background-color: #f4f4f4;
+}
+.lcard-list .options a:hover{
+	background-clolr: #fff;
+}
+.lcard-list a span{
+    display: block;
+    -webkit-box-flex: 1;
+}
+.lcard-list a em{
+    display: inline-block;
+    color: #bfbfbf;
+}
+.lcard-list a i{
+    display: inline-block;
+    width: .1rem;
+    margin-right: .1rem;
+    background-image: url(../images/icon_arrow.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: .08rem .13rem;
+}
+.lcard-detail{
+	position: relative;
+	width: 74%;
+	height: 75px;
+	margin: .24rem auto 0;
+	color: #fff;
+	/*background-color: #00aeef;*/
+    background-image: url(../images/lcard/lcard_detail_bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+.lcard-detail .cornor{
+	position: absolute;
+	top: 50%;
+	left: -.18rem;
+	display: block;
+	width: .27rem;
+	height: .27rem;
+	border-radius: 50%;
+	background-color: #fff;
+}
+.lcard-detail .lcard-amount{
+	float: left;
+	width: 45%;
+	padding-top: .15rem;
+	text-align: right;
+}
+.lcard-detail .lcard-amount-c{
+	padding-right: .1rem;
+}
+.lcard-detail .lcard-amount .price{
+	padding-right: .05rem;
+	font-size: 2em;
+	line-height: 1;
+}
+.lcard-detail .lcard-info{
+	float: left;
+	width: 55%;
+	padding: .18rem 0;
+	line-height: .2rem;
+	font-size: .8em;
+}
+.lcard-detail .lcard-info-c{
+	padding-left: .1rem;
+	border-left: 1px solid #fff;
+}
+/* lcard overview end */

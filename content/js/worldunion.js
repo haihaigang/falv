@@ -27,28 +27,28 @@
 	var fixedHeight = 0;
 	var headerHeight = $('header').height() || 0;
 	var footerHeight = $('footer').outerHeight() || 0;
-	if($('.fixed').length){
-		//若页面有fixed
-		fixedHeight = 44;
-		if($('body').hasClass('has_fixed2')){
-			fixedHeight = 95;
-			footerHeight = 0;
-		}
-	}
-	var cPadding = 20;
-	if($('.container').hasClass('nopadding2')){
-		cPadding = 0;
-	}else if($('.container').hasClass('nopadding')){
-		cPadding = 10;
-	}
-	//document.title = document.documentElement.clientHeight;
-	setTimeout(function(){
-		//延迟以便获取准确的高度，微信中默认打开webview获取的页面高度很高
-		var mHeight = document.documentElement.clientHeight - fixedHeight - headerHeight - footerHeight - cPadding;
-		$('.container').css('min-height',mHeight);
-		//初始化高度之后再显示footer
-		$('.footer').show();
-	}, 100);
+	// if($('.fixed').length){
+	// 	//若页面有fixed
+	// 	fixedHeight = 44;
+	// 	if($('body').hasClass('has_fixed2')){
+	// 		fixedHeight = 95;
+	// 		footerHeight = 0;
+	// 	}
+	// }
+	// var cPadding = 20;
+	// if($('.container').hasClass('nopadding2')){
+	// 	cPadding = 0;
+	// }else if($('.container').hasClass('nopadding')){
+	// 	cPadding = 10;
+	// }
+	// //document.title = document.documentElement.clientHeight;
+	// setTimeout(function(){
+	// 	//延迟以便获取准确的高度，微信中默认打开webview获取的页面高度很高
+	// 	var mHeight = document.documentElement.clientHeight - fixedHeight - headerHeight - footerHeight - cPadding;
+	// 	$('.container').css('min-height',mHeight);
+	// 	//初始化高度之后再显示footer
+	// 	$('.footer').show();
+	// }, 100);
 	
 	//定位底部按钮
 	var fixedContainer = $('.fixed_wrapper');

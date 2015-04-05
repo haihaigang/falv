@@ -63,14 +63,17 @@ body {
     min-width: 320px;
     max-width: 480px;
     margin: 0 auto;
-    color: #333;
+    color: #4b4b4b;
     background-color: #fff;
     position: relative;
     overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 0 -65px;
 }
 
 a{
-    color: #333;
+    color: inherit;
 }
 
 @media only all and (max-width: 640px) {
@@ -151,11 +154,11 @@ header{
     position: relative;
     z-index: 9;
     overflow: hidden;
-    height: .39rem;
-    line-height: .39rem;
+    height: .44rem;
+    line-height: .44rem;
     padding: 0 .5rem;
     background: #fff;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #c8c7cc;
 }
 header .icon{
     position: absolute;
@@ -212,7 +215,7 @@ header .header_title span{
 /*container start*/
 .container{
     min-height: 320px;
-    padding: .1rem .1rem;
+    padding: .15rem .1rem;
 }
 .has_fixed .container{
 	margin-bottom: .44rem;
@@ -299,9 +302,9 @@ footer .footer_company{
 /* form common start */
 form .items{
     display: -webkit-box;
-    margin-bottom: .21rem;
-    border: 1px solid #dedede;
-    border-radius: 5px;
+    margin-bottom: .12rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 7px;
 }
 form a.items:hover{
 	background-color: #f4f4f4;
@@ -316,8 +319,7 @@ form .items .val{
 }
 form .items .txt{
 	display: inline-block;
-	line-height: .33rem;
-	padding: .05rem;
+	line-height: .37rem;
 }
 form .items .cornor{
 	display: block;
@@ -336,7 +338,8 @@ form input[type="text"],
 form input[type="password"]{
     width: 100%;
     border: 0;
-    padding: .13rem;
+    padding: .08rem;
+    line-height: 1.5;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color: #fff;
@@ -368,14 +371,14 @@ form .single .val{
     display: block;
     color: #fff;
     border: 0;
-    height: .41rem;
-    line-height: .41rem;
+    height: .45rem;
+    line-height: .45rem;
     font-size: 1.25em;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     background: url(../images/btn_blue.gif) repeat-x;
-    background-color: #00f;
+    background-color: #1777cf;
     background-size: 100% 100%;
     text-align: center;
     -webkit-box-flex: 1;
