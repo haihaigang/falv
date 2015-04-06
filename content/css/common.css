@@ -312,7 +312,7 @@ form a.items:hover{
 form .items .key{
     display: inline-block;
     width: 4.25em;
-    line-height: .43rem;
+    line-height: .37rem;
 }
 form .items .val{
     -webkit-box-flex: 1;
