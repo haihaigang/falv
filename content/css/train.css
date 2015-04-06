@@ -1,0 +1,79 @@
+/*法率培训*/
+
+.train{
+	padding: 0;
+}
+
+/* letter list start */
+.train-stat{
+	color: #b4b4b4;
+	background-image: url(../images/letter/letter_bg.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: auto 100%;
+}
+.train-stat .txt{
+	color: #dadada;
+}
+.train-stat .txt em{
+	color: #00bff3;
+}
+.train-stat-content{
+	height: .4rem;
+	padding: .14rem 0;
+	line-height: .2rem;
+	background-image: url(../images/letter/icon_sep.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto .2rem;
+}
+.train-stat-used{
+	float: left;
+	width: 45%;
+	text-align: right;
+}
+.train-stat-oth{
+	float: right;
+	width: 45%;
+	text-align: left;
+}
+.train-day{
+	height: .3rem;
+	line-height: .3rem;
+	text-align: center;
+}
+.train-day i{
+	display: inline-block;
+	padding-left: .25rem;
+	font-style: normal;
+	background-image: url(../images/common/icon_clock.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: auto 60%;
+}
+.train-day span{
+	display: inline-block;
+	color: #dadada;
+}
+.train-list{
+}
+.train-list a{
+	display: block;
+	line-height: .45rem;
+	text-align: center;
+	border-bottom: 1px solid #e6e6e6;
+}
+/* letter list end*/
+
+/* letter detail start */
+.train-detail h3{
+	margin-bottom: .14rem;
+	font-size: 1.25em;
+	text-align: center;
+}
+.train-detail img{
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+}
+/* letter detail end */

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<title>法率网</title>
+	<link rel="stylesheet" href="/falv/content/css/common.css">
+    <link rel="stylesheet" href="/falv/content/css/user.css">
+</head>
+<body>
+<noscript>
+    <div id="noscript">您当前的浏览器不支持JavaScript脚本</div>
+</noscript>
+
+<header class="header">
+    <h1>添加新地址</h1>
+</header>
+
+<section class="container myaddress">
+    <form id="address-form" action="#" method="get">
+        <div class="items">
+            <span class="key">收货人：</span>
+            <div class="val"><input type="text" name="name" /></div>
+        </div>
+        <div class="items">
+            <span class="key">手机号码：</span>
+            <div class="val"><input type="text" name="phone" maxlength="11" /></div>
+        </div>
+        <div class="items">
+            <span class="key">地区：</span>
+            <div class="val"><input type="text" name="address1" disabled>
+            	<input type="hidden" name="province" />
+            	<input type="hidden" name="city" />
+            	<input type="hidden" name="area" />
+            </div>
+            <span class="select-tab">地区选择</span>
+        </div>
+        <div class="items">
+            <span class="key">具体地址：</span>
+            <div class="val"><input type="text" name="address" maxlength="100" /></div>
+        </div>
+        <div class="items">
+            <span class="key">邮政编码：</span>
+            <div class="val"><input type="text" name="postcode" maxlength="6" /></div>
+        </div>
+        <div class="options">
+            <button class="btn">确认添加</button>
+        </div>
+    </form>
+
+</section>
+<script src="/falv/content/js/lib/jquery-2.1.1.min.js"></script>
+<script src="/falv/content/js/lib/template.js"></script>
+<script src="/falv/content/js/lib/jscroll.js"></script>
+<script src="/falv/content/js/config.js"></script>
+<script src="/falv/content/js/global.js"></script>
+<script src="/falv/content/js/worldunion.js"></script>
+<script src="/falv/content/js/lib/jquery.doubletap.js"></script>
+<script>
+(function(){
+})();
+</script>
+</body>
+</html>

@@ -1,16 +1,18 @@
-/* user common start */
+ /*user common start */
 .ulist .box{
     margin-bottom: .1rem;
-    border: 1px solid #bfbfbf;
     -webkit-border-radius: 1px;
     border-radius: 1px;
+    box-shadow: none;
+    border: 0 none;
 }
 .ulist .box a{
     display: -webkit-box;
     -webkit-box-align: center;
     -webkit-box-pack: center;
-    border-bottom: 1px solid #bfbfbf;
+    border-bottom: 1px solid #d2d2d2;
 }
+
 .ulist .box a:hover{
     background-color: #f4f4f4;
 }
@@ -22,7 +24,7 @@
 	background-color: #f4f4f4;
 }
 .ulist .options a:hover{
-	background-clolr: #fff;
+	background-color: #fff;
 }
 .ulist a:last-child{
     border-bottom: none;
@@ -31,7 +33,6 @@
     display: block;
     line-height: .43rem;
     padding-left: .1rem;
-    -webkit-box-flex: 1;
 }
 .ulist a em{
     display: inline-block;
@@ -50,16 +51,17 @@
 
 /* user start */
 .user_top{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     padding: .32rem .17rem .28rem;
-    background: url(../images/usercenter_bg.jpg);
+    background: url(../images/user/usercenter_bg.jpg);
+    background-size: 100% 100%;
 }
 .user_top .thumb{
-    display: inline-block;
-    width: .65rem;
+    display: block;
     height: .65rem;
-    margin-right: .13rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+   /* margin-right: .13rem;
+    width: .65rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);*/
 }
 .user_top .thumb img{
     display: block;
@@ -73,13 +75,22 @@
 .user_top .names p{
     line-height: .32rem;
     font-size: 1.25em;
+    text-align: center;
 }
 .user_top .names p span{
     display: inline-block;
-    width: 5.2em;
+    width: 6.2em;
+    padding-left: .4rem;
+    padding-right: .4rem;
+    background-repeat: no-repeat;
+    background-position: .2rem center;
+    background-size: .2rem .2rem;
+    background-image: url(../images/user/user_type1.png);
+    color: #e6e6e6;
 }
 .user a span{
     padding-left: .4rem;
+    padding-right: .4rem;
     background-repeat: no-repeat;
     background-position: .12rem center;
     background-size: .17rem .17rem;
@@ -96,7 +107,7 @@
 .user a span.i4{
     background-image: url(../images/user/icon_4.png);
 }
-.user a span.i5{
+/*.user a span.i5{
     background-image: url(../images/user/icon_5.png);
 }
 .user a span.i6{
@@ -104,7 +115,7 @@
 }
 .user a span.i7{
     background-image: url(../images/user/icon_7.png);
-}
+}*/
 .user a span.i8{
     background-image: url(../images/user/icon_8.png);
 }
@@ -119,6 +130,59 @@
 }
 /* user end */
 
+/* about-falv start */
+.about-falv .title{
+    width: 1rem;
+    margin: .24rem auto .34rem;
+}
+.about-falv .title img{
+    width: 100%;
+}
+.about-falv p{
+    padding: 0 .1rem;
+    color: #737373;
+}
+.versions-box{
+    position: relative;
+    bottom: .4rem;
+     padding: 0 .3rem;
+}
+.versions{
+    text-align: center;
+    color: #737373;
+    line-height: .38rem;
+ }
+/* about-falv end */
+/* my-address start */
+.myaddress .box{
+    margin-bottom: .14rem;
+    border-top:0 none;
+    border-bottom: 1px solid #E6E6E6;
+    box-shadow: none;
+    border-radius: 0;
+}
+.myaddress .box a{
+    display: inline-block;
+    padding: .05rem .1rem;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+}
+.myaddress .lab{padding-left:.04rem; }
+.myaddress .operate{
+    margin-top: .05rem;
+    margin-bottom: .13rem;
+}
+.myaddress a.del{color: #ed1c24}
+.myaddress .options{margin-top: .22rem}
+.myaddress .items .key{
+    width: auto;
+    padding-left: .1rem;
+}
+.myaddress .items .key,
+.myaddress .items .select-tab{
+    color: #737373;
+}
+/* my-address end */
 /* myinfo start */
 .myinfo .male,.myinfo .female{
 	display: inline-block;
@@ -428,4 +492,4 @@
 	line-height: 43px;
 	padding-left: 13px;
 }
-/* myinfo_v end */
+/* myinfo_v end 
