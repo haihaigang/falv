@@ -16,46 +16,63 @@
 </noscript>
 
 <header class="header">
-    <h1>选择合同</h1>
-    <a href="cont-build.html" class="icon icon-build">搜索</a>
+    <h1>回答问题</h1>
 </header>
 
 <section class="container cont">
 	<div class="cont-progress">
         <div class="cont-progress-item active"><p>选择合同</p><i></i></div>
-        <div class="cont-progress-item">回答问题<i></i></div>
+        <div class="cont-progress-item active">回答问题<i></i></div>
         <div class="cont-progress-item">预览合同<i></i></div>
         <div class="cont-progress-line"><span></span></div>
 	</div>
+	<div class="cont-step">
+		<span>第1页/共4页</span>
+	</div>
 
     <form id="cont-form" action="#" method="post" class="cont-form">
+    	<div class="items">
+    		<div class="txt">问题1：请填写出租人的名称？</div>
+    	</div>
         <div class="items">
-            <div class="key">文书类型</div>
-            <div class="val t_r">
-                <input type="hidden" name="phone" />
-                <div class="txt txt-area">常用合同</div>
+            <div class="val">
+                <input type="text" name="phone" placeholder="输入内容" />
             </div>
-            <i class="choose">&nbsp;</i>
-        </div>
-        <div class="tips t_r">可点击右上角搜索关键字确定文书类型</div>
-        <div class="items">
-            <div class="key">目录名称</div>
-            <div class="val t_r">
-                <input type="hidden" name="phone" />
-                <div class="txt txt-area">融资租赁合同</div>
-            </div>
-            <i class="choose">&nbsp;</i>
         </div>
         <div class="items">
-            <div class="key">合同角色</div>
-            <div class="val t_r">
-                <input type="hidden" name="phone" />
-                <div class="txt txt-area">出租人</div>
+    		<div class="txt">问题1：请填写承租人的名称？</div>
+    	</div>
+        <div class="items">
+            <div class="val">
+                <input type="text" name="phone" placeholder="输入内容" />
             </div>
-            <i class="choose">&nbsp;</i>
         </div>
         <div class="options">
-            <input type="submit" class="btn" value="开始起草" />
+            <input type="submit" class="btn" value="下一页" />
+        </div>
+    </form>
+
+
+    <form id="cont-form" action="#" method="post" class="cont-form">
+    	<div class="items">
+    		<div class="txt">问题2：请填写出租人的名称？</div>
+    	</div>
+        <div class="items">
+            <div class="val">
+                <input type="text" name="phone" placeholder="输入内容" />
+            </div>
+        </div>
+        <div class="items">
+    		<div class="txt">问题2：请填写承租人的名称？</div>
+    	</div>
+        <div class="items">
+            <div class="val">
+                <input type="text" name="phone" placeholder="输入内容" />
+            </div>
+        </div>
+        <div class="options">
+            <input type="submit" class="btn mr" value="上一页" />
+            <input type="submit" class="btn" value="下一页" />
         </div>
     </form>
 </section>

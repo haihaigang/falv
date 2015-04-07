@@ -181,6 +181,100 @@ header .icon-build{
 }
 /* cont list end*/
 
+/* cont submit start */
+.cont-progress{
+	position: relative;
+	display: -webkit-box;
+	height: .7rem;
+	color: #9a9a9a;
+	background-color: #2f3841;
+}
+.cont-progress-item{
+	text-align: center;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	-webkit-box-orient: block-axis;
+	-webkit-box-flex: 1;
+}
+.cont-progress-item.active{
+	color: #fff;
+}
+.cont-progress-item i{
+	position: relative;
+	z-index: 2;
+	display: block;
+	width: .11rem;
+	height: .11rem;
+	border-radius: 50%;
+	background-color: #737373;
+}
+.cont-progress-item.active i{
+	background-color: #00aeef;
+}
+.cont-progress-line{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 24px;
+}
+.cont-progress-line span{
+	display: block;
+	width: 66.66%;
+	height: 1px;
+	margin: 0 auto;
+	background-color: #737373;
+}
+.cont-form{
+}
+form.cont-form .items{
+	padding: 0 0 0 .18rem;
+	border-radius: 0;
+	margin-bottom: 0;
+	border: none;
+	border-bottom: 1px solid #e6e6e6;
+}
+form.cont-form .key{
+	width: 4em;
+	color: #737373;
+}
+form.cont-form .val{
+	border-radius: 7px;
+	color: #3d3d3d;
+}
+form.cont-form .tips{
+	padding: 0 .18rem;
+	border-bottom: 1px solid #e6e6e6;
+	line-height: .37rem;
+	text-align: right;
+	color: #0072bc;
+}
+form.cont-form i.choose{
+	display: block;
+	width: .3rem;
+	height: .35rem;
+	background-image: url(../images/letter/icon_right.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto .15rem;
+}
+form.cont-form .options{
+	width: 80%;
+	margin: .3rem auto;
+}
+form.cont-form .options .mr{
+	margin-right: .2rem;
+}
+
+.cont-step{
+	height: .3rem;
+	line-height: .3rem;
+	background-color: #3e4c59;
+	text-align: center;
+	color: #fff;
+}
+/* cont submit end */
+
 /* cont detail start */
 .cont-detail h3{
 	margin-bottom: .14rem;
@@ -188,3 +282,31 @@ header .icon-build{
 	text-align: center;
 }
 /* cont detail end */
+
+/* cont sus start */
+.cont-sus .tips{
+	padding-top: 2rem;
+	background-image: url(../images/common/icon_reg_sus.png);
+	background-repeat: no-repeat;
+	background-position: center .8rem;
+	background-size: auto .83rem;
+	text-align: center;
+}
+.cont-sus .options{
+	display: block;
+	margin-top: .2rem;
+}
+.cont-sus .opt-item{
+	width: 100%;
+	margin-bottom: .14rem;
+}
+.cont-sus .options .btn{
+	width: 100%;
+}
+.cont-sus .options .btn.btn-risk{
+	border: 1px solid #e6e6e6;
+	background: none;
+	background-color: #fff;
+	color: #ed1c24;
+}
+/* cont sus end */
