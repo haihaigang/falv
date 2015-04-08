@@ -7,5 +7,3 @@ gramophone 留声机
 housekeeper 管家相关
 lcard 激活L卡
 user 个人中心
-
-3content/image/下面的图片是app使用的切图，这个可以用就用
