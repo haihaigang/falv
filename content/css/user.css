@@ -183,6 +183,17 @@
     color: #737373;
 }
 /* my-address end */
+/*my-msg*/
+form .items{
+    position: relative;
+}
+label.select-tab{
+    position: absolute;
+    right: .2rem;
+    top: .09rem;
+    z-index:9;
+}
+
 /* myinfo start */
 .myinfo .male,.myinfo .female{
 	display: inline-block;
