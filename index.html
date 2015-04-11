@@ -1,83 +1,91 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="format-detection" content="telephone=no" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-touch-fullscreen" content="yes" />
-	<title>法率网</title>
-	<link rel="stylesheet" href="content/css/common.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>法率网</title>
+    <link rel="stylesheet" href="content/css/common.css" />
     <link rel="stylesheet" href="content/css/index.css" />
 </head>
+
 <body>
-<noscript>
-    <div id="noscript">您当前的浏览器不支持JavaScript脚本</div>
-</noscript>
+    <noscript>
+        <div id="noscript">您当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
 
-<section class="container home">
-    <div class="slider">
-        <div class="scroller">
-			<div class="item" data-link="<!--[= list[i].url]-->">
-				<img id="img-<!--[= i]-->" src="content/images/home/slider/1_02.png" alt="" />
-			</div>
-			<div class="item" data-link="<!--[= list[i].url]-->">
-				<img id="img-<!--[= i]-->" src="content/images/home/slider/2_02.png" alt="" />
-			</div>
-			<div class="item" data-link="<!--[= list[i].url]-->">
-				<img id="img-<!--[= i]-->" src="content/images/home/slider/3_02.png" alt="" />
-			</div>
+    <section class="container home">
+        <div class="slider">
+            <div class="scroller">
+                <div class="item" data-link="<!--[= list[i].url]-->">
+                    <img id="img-<!--[= i]-->" src="content/images/home/slider/1_02.png" alt="" />
+                </div>
+                <div class="item" data-link="<!--[= list[i].url]-->">
+                    <img id="img-<!--[= i]-->" src="content/images/home/slider/2_02.png" alt="" />
+                </div>
+                <div class="item" data-link="<!--[= list[i].url]-->">
+                    <img id="img-<!--[= i]-->" src="content/images/home/slider/3_02.png" alt="" />
+                </div>
+            </div>
+            <div class="subscript"><span class="active"></span><span></span><span></span>
+            </div>
         </div>
-        <div class="subscript"><span class="active"></span><span></span><span></span></div>
-    </div>
-    <div class="nav clearfix">
-        <div class="w2 nav-left">
-            <a class="link l1" href="hui/index"><span>法率管家</span></a>
-            <a class="link l2" href="show/house-list"><span>快诉</span></a>
+        <div class="nav clearfix">
+            <div class="w2 nav-left">
+                <a class="link l1" href="hui/index"><span>法率管家</span></a>
+                <a class="link l2" href="show/house-list"><span>快诉</span></a>
+            </div>
+            <div class="w2 nav-right">
+                <a class="db link l3" href="hui/index"><span>留声机</span></a>
+                <a class="db link l4" href="show/house-list"><span>企业查询</span></a>
+                <a class="db link l5" href="lcard/activate.html"><span>激活L卡</span></a>
+            </div>
         </div>
-        <div class="w2 nav-right">
-            <a class="db link l3" href="hui/index"><span>留声机</span></a>
-            <a class="db link l4" href="show/house-list"><span>企业查询</span></a>
-            <a class="db link l5" href="#"><span>激活L卡</span></a>
-        </div>
-    </div>
-</section>
+    </section>
 
-<footer class="footer">
-    <div class="options">
-    	<a href="#" class="btn">下载法率网APP</a>
-    </div>
-</footer>
+    <footer class="footer">
+        <div class="options">
+            <a href="#" class="btn">下载法率网APP</a>
+        </div>
+    </footer>
 
-<div id="myPanel">
-	<p></p>
-	<div class="options">
-		<input type="button" class="btn btn_ok" value="好！" />
-		<input type="button" class="btn btn_yes" value="是" />
-		<input type="button" class="btn btn_no" value="否" />
-	</div>
-</div>
-<div id="mySelect">
-	<div id="address"></div>
-	<div class="clearfix"></div>
-	<div class="options">
-		<input type="button" class="btn btn_close" value="完成" />
-	</div>
-</div>
-<div id="panelBg"></div>
-<div id="wu-toast" style="display: none">
-	<span></span>
-</div>
-<script src="content/js/lib/jquery-2.1.1.min.js"></script>
-<script src="content/js/lib/template.js"></script>
-<script src="content/js/lib/jscroll.js"></script>
-<script src="content/js/config.js"></script>
-<script src="content/js/global.js"></script>
-<script src="content/js/worldunion.js"></script>
-<script src="content/js/lib/jquery.doubletap.js"></script>
-<script>
-(function(){
-})();
-</script>
+    <div id="ti-panel" class="panel">
+        <div class="panel-content">
+            <div class="panel-cell">
+                <h3 class="panel-title">提示</h3>
+                <p class="panel-text"></p>
+            </div>
+        </div>
+        <div class="panel-buttons">
+            <div class="options">
+                <a href="javascript:;" class="btn btn-ok">确定</a><a href="javascript:;" class="btn btn-cancel">取消</a>
+            </div>
+            <div class="panel-tips">若在<span class="panel-tick">5</span>秒内无反应自动跳转到订单的详情页面</div>
+        </div>
+    </div>
+    <div id="ti-panel-bg" class="panel-bg"></div>
+    <div id="ti-toast" class="toast"><span></span>
+    </div>
+    <div id="ti-loading" class="loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
+    </div>
+
+    <script src="content/js/lib/jquery-2.1.1.min.js"></script>
+    <script src="content/js/lib/template.js"></script>
+    <script src="content/js/lib/jscroll.js"></script>
+    <script src="content/js/config.js"></script>
+    <script src="content/js/global.js"></script>
+    <script src="content/js/worldunion.js"></script>
+    <script src="content/js/lib/jquery.doubletap.js"></script>
+    <script>
+    (function() {})();
+    </script>
 </body>
+
 </html>

@@ -11,10 +11,10 @@
         //extends(options,this.options);
         this.timeout = 15000; //请求超时时间
         this.cache = true; //是否缓存
-        this.defaultListTmpl = 'fly-list-tmpl';
-        this.defaultListEle = '#fly-list';
-        this.defaultDetailTmpl = 'fly-detail-tmpl';
-        this.defaultDetailEle = '#fly-detail';
+        this.defaultListTmpl = 'flv-list-tmpl';
+        this.defaultListEle = '#flv-list';
+        this.defaultDetailTmpl = 'flv-detail-tmpl';
+        this.defaultDetailEle = '#flv-detail';
         this.isLoading = false; //是否正在请求
         this.hasNext = true; //是否有下一页
         this.queue = {}; //请求队列
@@ -246,9 +246,11 @@
             url: options.url,
             data: options.data,
             type: options.type || 'GET',
-            dataType: 'text',
+            //dataType: 'text',
             timeout: that.timeout,
-            cache: that.cache
+            cache: that.cache,
+            contentType: options.contentType,
+            processData: options.processData
         }).then(function(response, textStatus, jqXHR) {
             try {
                 response = eval('(' + response + ')'); //測試模擬接口
@@ -375,6 +377,8 @@
 
     //初始化数字分页
     function initPagination(data, dom) {
+        if(!data) return;//数据错误不初始化
+
         var d = {
             current_page: data.current,
             per_page: data.size,

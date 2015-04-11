@@ -216,7 +216,7 @@
 		e.preventDefault();
 		
 		//特殊跳转
-		var special = location.search.getQueryValue('special');
+		var special = Tools.getQueryValue('special');
 		if(special){
 			location.href = special;
 		}else{
