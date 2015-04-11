@@ -1,0 +1,339 @@
+.gramophone{
+	padding: 0;	
+}
+header a,strong{
+	color: #0072bc;
+}
+/* letter list start */
+.gramo-stat{
+	color: #b4b4b4;
+	background-image: url(../images/letter/letter_bg.png);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	background-size: auto 100%;
+}
+.gramo-stat .txt{
+	color: #dadada;
+}
+.gramo-stat .txt em{
+	color: #00bff3;
+}
+.gramo-stat-content{
+	height: .4rem;
+	padding: .14rem 0;
+	line-height: .2rem;
+	background-image: url(../images/letter/icon_sep.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto .2rem;
+}
+.gramo-stat-used{
+	float: left;
+	width: 45%;
+	text-align: right;
+}
+.gramo-stat-oth{
+	float: right;
+	width: 45%;
+	text-align: left;
+}
+.gramo-day{
+	height: .3rem;
+	line-height: .3rem;
+	text-align: center;
+}
+.gramo-day i{
+	display: inline-block;
+	padding-left: .25rem;
+	font-style: normal;
+	background-image: url(../images/common/icon_clock.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: auto 60%;
+}
+.gramo-day span{
+	display: inline-block;
+	color: #dadada;
+}
+.gramo-items{
+	display: -webkit-box;
+}
+.gramo-items a{
+	-webkit-box-flex:1;
+	margin-top: .1rem;
+	display: block;
+	text-align: center;
+	width:.5rem;
+}
+.gramo-items a.list1,.gramo-items a.list3{
+	margin-right: .05rem;	
+	margin-left: .1rem;
+}
+.gramo-items a.list2,.gramo-items a.list4{
+	margin-left: .05rem;
+	margin-right: .1rem;
+}
+.gramo-items a img{display: block;width: 100%;}
+
+.gramophone .txt-tips{
+	line-height: .35rem;
+	text-align: center;
+	padding: .1rem 0;
+}
+
+/* gramophone index end*/
+/* dial start*/
+.dial-list{
+	background-color: #fff;
+}
+.dial-list strong{
+	font-weight: bold;
+}
+.dlist{
+	-webkit-box-sizing: bodder-box;
+	box-sizing: border-box;
+	padding: .1rem .13rem;
+	line-height: .26rem;
+	border-bottom: 1px solid #e6e6e6;
+	position: relative;
+}
+.dlist .call-num strong{
+	color: #333;
+}
+.dlist em{margin-right: .13rem}
+.dlist span{display:block;}
+
+.keyboard{
+	position: fixed;
+	bottom: 0;
+	background-color: #fff;
+	z-index: 99;
+	width: 100%;
+	max-width: 480px;
+}
+.keyboard li{
+	border-top: 1px solid #d1d1d1;
+	display: -webkit-box;
+	line-height: .5rem;
+	height: .5rem;
+	text-align: center;
+	position: relative;
+}
+.keyboard .empty,.keyboard .del{
+	position: absolute;
+	width: .6rem;
+	top: 0;
+	display: inline-block;
+}
+.keyboard .empty{
+	left: 0;
+	color: #e51c26;
+}
+.keyboard .del{
+	right: 0;
+	background-image:url(../images/gramophone/keyboard-del.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: .2rem;
+	height: .5rem;
+}
+.keyboard .num{
+	display: block;
+	margin: .07rem auto;
+	width: 2rem;
+	background-color: #f3f3f3;
+	color: #0072bc;
+	font-weight: bold;
+	height: .36rem;
+	line-height: .36rem;
+	border-radius: .18rem;
+}
+.keyboard .k-items a{
+	display: block;
+	width: 1%;
+	-webkit-box-flex:1;
+	border-right: 1px solid #d1d1d1;
+	font-size: inherit;
+	color: #333;
+}
+.keyboard .k-items a:last-child{
+	border-right: none;
+}
+.keyboard .k-options span{
+	display: block;
+	margin: .07rem auto;
+	width: 33%;
+	height: .36rem;
+	line-height: .36rem;
+	color: #fff;
+	background-color: #1777cf;
+	border-radius: .2rem;
+}
+/* dial end */
+/* record */
+.record-list{
+	background-color: #fff;
+}
+.record-list strong{
+	font-weight: bold;
+}
+.rlist{
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: .1rem .13rem;
+	line-height: .26rem;
+	border-bottom: 1px solid #e6e6e6;
+	position: relative;
+}
+.rlist a{display:inline-block;}
+
+.rlist a em{margin-right: .13rem}
+.rlist a span{display: block;}
+.rlist a .name em{font-weight: bold;}
+
+.rlist a:last-child{
+	position: absolute;
+	right: .13rem;
+	background-position: center .08rem;
+	background-repeat: no-repeat;
+	background-size:.2rem;
+	width: .36rem;
+	padding-top: .28rem;
+	text-align: center;
+	color: #666;
+}
+.rlist a.play{
+	background-image: url(../images/gramophone/play.png)
+}
+.rlist a.stop{
+	background-image: url(../images/gramophone/stop.png)
+}
+/* record */
+/* recording detail start */
+.remark .key a{
+	color: #0072bc;
+}
+.record-detail strong{
+	font-weight: bold;
+}
+.play-time{
+	height: .34rem;
+	line-height: .34rem;
+	text-align: center;
+}
+.play-time i{font-style: normal;}
+.record-stat-content{
+	height: .8rem;
+	padding: .14rem 0;
+	line-height: .2rem;
+	background-image: url(../images/lcard/lcard_bg1.png);
+	background-repeat: repeat-x;
+	background-position: bottom center;
+	background-size: auto .2rem;
+}
+.record-stat-content img{
+	display: block;
+	margin: .06rem auto 0;
+	width: .48rem;
+}
+.record-stat-content p{
+	text-align: center;
+	line-height: .32rem;
+}
+.record-detail{
+	background-color:#fff;
+	padding:.15rem .2rem .1rem;
+	border-bottom: 1px solid #e6e6e6;
+	line-height: .26rem;
+}
+.remark{
+	background-color:#fff;
+	padding:0 .2rem ;
+
+}
+.remark .key{
+	line-height: .35rem;
+}
+.remark .key span{
+	margin-left: .05rem;
+}
+.remark .single{
+	padding-bottom: 1rem;
+}
+.remark .key a{
+	float: right;
+	margin-right: .05rem;
+}
+.remark .val{
+	width: 100%;
+	height: 1rem;
+	border: 1px solid #e6e6e6;
+	border-radius: 7px;
+	position: relative;
+}
+.remark textarea{
+	width: 100%;
+	height: 1rem;
+	border-radius: 7px;
+	border: none;
+    line-height: 1.5;
+    padding: .08rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.remark .val i{
+	position: absolute;
+	bottom: .03rem;
+	right: .03rem;
+	width: .32rem;
+	height: .32rem;
+	background: url(../images/gramophone/voice.png) no-repeat center center;
+	background-size: 100%;
+	display: block;
+}
+/*link man*/
+.linkman-list{
+	background-color: #fff;
+}
+.linkman-list strong{
+	font-weight: bold;
+	display: block;
+}
+.linklist{
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: .1rem .13rem;
+	line-height: .24rem;
+	position: relative;
+}
+.linklist span{display: inline-block;}
+.linklist span:last-child{
+	position: absolute;
+	right: .52rem;
+	background-image: url(../images/gramophone/01.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: .24rem;
+	width: .24rem;
+	height: .48rem;
+}
+.Rbar{
+	position: fixed;
+	right: 0;
+	top: .44rem;
+	padding:.1rem .13rem;
+	min-height: 320px;
+	z-index: 9;
+}
+.linkman-rbar{
+	background-color:rgba(0,0,0,0.75);
+}
+.linkman-rbar span{
+	display: block;
+	padding:.13rem 0;
+	width: .13rem;
+	text-align: center;
+	color: #dadada;
+	line-height: .2rem;
+}
+
