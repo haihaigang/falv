@@ -8,7 +8,6 @@
 	<meta name="apple-touch-fullscreen" content="yes" />
 	<title>法率网</title>
 	<link rel="stylesheet" href="/falv/content/css/common.css">
-    <link rel="stylesheet" href="../content/css/mobiscroll-2.3.1.full.min.css" />
     <link rel="stylesheet" href="/falv/content/css/user.css">
 </head>
 <body>
@@ -25,14 +24,8 @@
             <div class="val"><input type="text" name="name" maxlength="50" placeholder="请输入您的姓名"></div>
         </div>
         <div class="items">
-            <div class="val">
-                <select name="nickname" id="nickName" data-role="nickname">
-                    <option value=""> 称呼 </option>
-                    <option value="1"> 男士 </option>
-                    <option value="2"> 女士 </option>
-                </select> 
-                <label class="select-tab" btn-role="nickname" for="nickName">请选择</label>
-            </div>
+            <div class="val"><input type="text" name="nickname" placeholder="称呼" disabled></div>
+            <span class="select-tab">请选择</span>
         </div>
         <div class="items">
             <div class="val"><input type="password" name="oldpassword" placeholder="原始密码"></div>
@@ -48,23 +41,18 @@
         </div>
     </form>
 </section>
+<!-- <footer class="footer" style="display: none;">
+</footer> -->
 
 <script src="/falv/content/js/lib/jquery-2.1.1.min.js"></script>
 <script src="/falv/content/js/lib/template.js"></script>
 <script src="/falv/content/js/lib/jscroll.js"></script> 
-<script src="/falv/content/js/mobiscroll-2.3.1.full.min.js"></script>
 <script src="/falv/content/js/config.js"></script>
 <script src="/falv/content/js/global.js"></script>
-<script src="/falv/content/js/worldunion.js"></script>
+<!-- <script src="/falv/content/js/worldunion.js"></script> -->
 <script src="/falv/content/js/lib/jquery.doubletap.js"></script>
 <script>
 (function(){
-    $('#nickName').mobiscroll().select({
-        theme: "default",     // Specify theme like: theme: 'ios' or omit setting to use default 
-        mode: "scroller",       // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
-        display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-        lang: "zh"        // Specify language like: lang: 'pl' or omit setting to use default 
-    });
 })();
 </script>
 </body>
