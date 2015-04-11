@@ -332,20 +332,3 @@
 
 	};
 })();
-
-$(document).ready(function(){
-	$('#panelBg').click(function(){
-		Tools.hidePanel();
-		Tools.hideSelect();
-	});
-
-	$('.btn_yes').click(function(){
-		Tools.hidePanel(true);
-	});
-	$('.btn_no').click(function(){
-		Tools.hidePanel(false);
-	});
-	$('.btn_ok').click(function(){
-		Tools.hidePanel(true);
-	});
-});

@@ -8,113 +8,21 @@
 		inte;//计时器
 
 	//手机号回填
-	$('input[name="phone"]').val(location.search.getQueryValue('phone'));
+	$('input[name="phone"]').val(Tools.getQueryValue('phone'));
 	
-	$('#btn-ok-1').click(function(e){
-		e.preventDefault();
-		
-		var that = $(this);
-		
-		if(that.hasClass('disabled')){
-			return;
-		}
-		
-		var phone = $('input[name="phone"]').val();
-		//验证号码
-		if(phone.isEmpty()){
-			Tools.showTip('爷的手机号码不能为空',5000);
-			return;
-		}
-		if(!phone.isPhone()){
-			Tools.showTip('爷的手机号码格式不正确',5000);
-			return;
-		}
-		
-		//号码已验证则忽略
-		if((phoneNum && phoneNum == phone)){
-			$('#phone').html(phone);
-			$('#phone2').html(phone);
-			
-			step1.hide();
-			step2.show();
-		}else{
-			that.addClass('disabled');
-		
-			checkPhone(phone,function(){
-				
-				sendSms(phone);
-				
-				$('#phone').html(phone);
-				$('#phone2').html(phone);
-				
-				step1.hide();
-				step2.show();	
-			},function(){
-				that.removeClass('disabled');
-			});
-		}
-		
-	});
-	$('#btn-ok-2').click(function(e){
-		e.preventDefault();
 
-		var phone = $('input[name="phone"]').val();
-		var code = $('input[name="code"]').val();
-		//验证
-		if(code.isEmpty()){
-			Tools.showTip('爷的验证码不能为空',5000);
-			return;
-		}
-		//校验短信验证码
-		if(oriCode != code){
-			Tools.showTip('爷的验证码不正确',5000);
-			return;
-		}
-		
-		step2.hide();
-		step3.show();
-	});
-	$('#btn-ok-3').click(function(e){
-		e.preventDefault();
-		
-		var password = $('input[name="password"]').val(),
-			repassword = $('input[name="repassword"]').val();
-		//验证
-		if(password.isEmpty()){
-			Tools.showTip('爷的密码不能为空',5000);
-			return;
-		}
-		if(!password.isValidPwd()){
-			Tools.showTip('爷的密码格式不正确',5000);
-			return;
-		}
-		if(repassword.isEmpty()){
-			Tools.showTip('爷的确认密码不能为空',5000);
-			return;
-		}
-		if(password != repassword){
-			Tools.showTip('爷的确认密码错误',5000);
-			return;
-		}
-		
-		step3.hide();
-		step4.show();
-		getRoleData();
-	});
-	$('#btn-no-2').click(function(e){
-		e.preventDefault();
-		step1.show();
-		step2.hide();
-	});
-	$('#btn-no-3').click(function(e){
-		e.preventDefault();
-		step2.show();
-		step3.hide();
-	});
-	
 	//重发验证码
 	$('#repeat-send').click(function(e){
 		e.preventDefault();
+
+		if(phone.val().isEmpty()){
+			Tools.showAlert('手机号不能为空',5000);
+			return;
+		}
+		if(!phone.val().isPhone()){
+			Tools.showAlert('手机号格式不正确！',5000);
+			return;
+		}
 		
 		if($(this).hasClass('ready')){
 			sendSms();
@@ -122,49 +30,53 @@
 		
 	});
 	
-	//选择角色
-	var hiddenRole = $('input[name="roleId"]');
-	$('#role-list').on('click','li',function(e){
-		e.preventDefault();
-		
-		$('#role-list li').removeClass('active');
-		$(this).addClass('active');
-		hiddenRole.val($(this).attr('data-id'));
-	});
-	
 	//提交表单
 	$('#register-form').submit(function(e){
 		e.preventDefault();
 		
-		var username = $('input[name="realName"]').val(),
-			role = $('input[name="roleId"]').val();
+		var phone = $('input[name="phone"]').val(),
+			code = $('input[name="code"]').val(),
+			password = $('input[name="password"]').val(),
+			password1 = $('input[name="password1"]').val();
 		
-		if(username.isEmpty()){
-			Tools.showTip("爷的姓名不能为空",5000);
+		if(phone.isEmpty()){
+			Tools.showAlert("手机号不能为空",5000);
 			return;
 		}
-		if(role.isEmpty()){
-			Tools.showTip("爷的角色不能为空",5000);
+		if(!phone.val().isPhone()){
+			Tools.showTip('手机号格式不正确',5000);
 			return;
 		}
-		
-		Ajax.submitForm({
-			url: config.register,
+		if(code.isEmpty()){
+			Tools.showAlert("验证码不能为空",5000);
+			return;
+		}
+		if(password.isEmpty()){
+			Tools.showAlert("密码不能为空",5000);
+			return;	
+		}
+		if(password.isValidPwd()){
+			Tools.showAlert("密码格式不正确",5000);
+			return;	
+		}
+		if(password1.val().isEmpty()){
+			Tools.showTip('确认密码不能为空',5000);
+			return;
+		}
+		if(password != passwrod1){
+			Tools.showAlert("确认密码不一致",5000);
+			return;
+		}
+
+		Ajax.submit({
+			url: config.api_reg_verify,
 			data: $(this)
 		}, function(data){
 			if(data.code != 'OK'){
-				if(data.message == '验证码不正确！'){
-					Tools.showTip('爷的验证码不正确！',5000);
-					return;
-				}
-				Tools.showTip('爷，服务器异常，请稍后再试～',5000);
+				Tools.showAlert(data.message || '爷，服务器异常，请稍后再试～',5000);
 				return;
 			}
-			if(!data.result){
-				Tools.showTip('爷，服务器异常，请稍后再试～',5000);
-				return;
-			}
-			
+
 			Cookie.set(Storage.AUTH,data.result.id);
 			Storage.set(Storage.AUTH, data.result.id, true);
 			Storage.set(Storage.ACCOUNT,data.result);
@@ -172,7 +84,7 @@
 			if(from){
 				location.href = decodeURIComponent(from);
 			}else{
-				location.href = "hui/index";
+				location.href = "user/index.html";
 			}
 		});
 	});
@@ -182,7 +94,6 @@
 		var btnSend = $('#repeat-send'),
 			duration = 60;//重发计时
 			
-		
 		btnSend.removeClass('ready').text('发送中···');
 
 		//重复发送，重置数据
@@ -192,14 +103,14 @@
 			clearInterval(inte);
 		}
 		
-		Ajax.queryRecord({
-			url: config.sendSms,
+		Ajax.custom({
+			url: config.api_reg_resendSMS,
 			data: {
 				phone: phone || phoneNum
 			}
 		}, function(data){
 			if(data.code != 'OK'){
-				Tools.showTip('爷，服务器异常，请稍后再试～',5000);
+				Tools.showAlert('服务器异常，请稍后再试～',5000);
 			}
 			
 			//格式：{13641882170:123456}
@@ -222,8 +133,7 @@
 			//测试时直接填入验证码，需删除
 			//$('input[name="code"]').val(oriCode);
 		},function(){
-		},function(){
-			Tools.showTip('爷，验证码发送失败，请再点击发送',5000);
+			Tools.showAlert('爷，验证码发送失败，请再点击发送',5000);
 			btnSend.addClass('ready').text('重发验证码');
 		});
 	}
@@ -250,7 +160,7 @@
 			url: config.roleList
 		}, function(data){
 			if(data.code != 'OK'){
-				Tools.showTip('爷，服务器异常，请稍后再试～',5000);
+				Tools.showAlert('爷，服务器异常，请稍后再试～',5000);
 				return;
 			}
 			var result = template.render('role-list-tmpl', {list: data.result});
@@ -268,12 +178,12 @@
 			}
 		}, function(data){
 			if(data.code != 'OK'){
-				Tools.showTip(config.tips.server,5000);
+				Tools.showAlert(config.tips.server,5000);
 				return;
 			}
 			
 			if(data.result){
-				Tools.showTip('爷的手机号已注册',5000);
+				Tools.showAlert('爷的手机号已注册',5000);
 				return;
 			}
 			

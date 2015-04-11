@@ -1,7 +1,7 @@
 ﻿(function(){
 
 	if(!Storage.isLocalStorage()){
-		Tools.showTip('爷，本地存储不支持',5000);
+		Tools.showAlert('爷，本地存储不支持',5000);
 	}
 	
 	//回填手机号
@@ -21,38 +21,32 @@
 		var phone = $('input[name="phone"]').val(),
 			password = $('input[name="password"]').val();
 		if(phone.isEmpty()){
-			Tools.showTip('爷的手机号码不能为空',5000);
+			Tools.showAlert('手机号不能为空',5000);
 			return;
 		}
 		if(!phone.isPhone()){
-			Tools.showTip('爷的手机号码格式不正确',5000);
+			Tools.showAlert('手机号格式不正确',5000);
 			return;
 		}
 		if(password.isEmpty()){
-			Tools.showTip('爷的密码不能为空',5000);
+			Tools.showAlert('密码不能为空',5000);
 			return;
 		}
 		if(!password.isValidPwd()){
-			Tools.showTip('爷的密码格式不正确',5000);
+			Tools.showAlert('密码格式不正确',5000);
 			return;
 		}
 		
-		btnsubmit.attr('disabled',true);
-		
-		Ajax.submitForm({
-			url: config.login,
+		Ajax.submit({
+			url: config.api_login,
 			data: $(this)
 		}, function(data){
 			if(data.code != 'OK'){
-				if(data.message == '账号不存在！'){
-					Tools.showTip('爷的手机号码还未注册',5000);	
-				}else{
-					Tools.showTip('爷的密码错误',5000);
-				}
+				Tools.showAlert('爷的密码错误',5000);
 				return;
 			}
 			if(!data.result){
-				Tools.showTip('爷，服务器异常，请稍后再试～',5000);
+				Tools.showAlert('爷，服务器异常，请稍后再试～',5000);
 				return;
 			}
 			
@@ -67,11 +61,11 @@
 			Storage.set(Storage.AUTH, data.result.id);
 			Storage.set(Storage.ACCOUNT,data.result);
 			
-			var from = location.search.getQueryValue('from');
+			var from = Tools.getQueryValue('from');
 			if(from){
 				location.href = decodeURIComponent(from);
 			}else{
-				location.href = "hui/index";
+				location.href = "user/index.html";
 			}
 		});
 	});

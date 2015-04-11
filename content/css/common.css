@@ -744,80 +744,292 @@ form .single .val{
 /* house list end */
 
 /* tips start */
-#myPanel,#mySelect{
-  margin-left: -120px;
-  width: 240px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  background: #fff;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  z-index: 99;
-  display: none;
+
+.panel {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    width: 365px;
+    padding: 0 32px;
+    margin-left: -214px;
+    margin-top: -127px;
+    background: #fff;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-box-shadow: 1px 0px 25px rgba(25, 23, 24, 0.55);
+    -moz-box-shadow: 1px 0px 25px rgba(25, 23, 24, 0.55);
+    -ms-box-shadow: 1px 0px 25px rgba(25, 23, 24, 0.55);
+    -o-box-shadow: 1px 0px 25px rgba(25, 23, 24, 0.55);
+    box-shadow: 1px 0px 25px rgba(25, 23, 24, 0.55);
 }
-#myPanel p {
-  padding: 16px 16px 0;
-  text-align: center;
-  font-size:1.1em;
+
+@media screen and (max-width:640px){
+    .panel {
+        width: 80%;
+        width: 265px;
+        padding: 0 12px;
+        margin-left: -144px;
+    }
 }
-#myPanel p img{
-	vertical-align: middle;
-	max-width: 100%;
+
+.panel .panel-show {
+    display: block;
 }
-#myPanel .options, #mySelect .options{
-  margin:20px 15px;
+
+.panel .panel-content {
+    display: table;
+    width: 100%;
+    height: 125px;
+    border-bottom: 1px solid #d3d3d3;
+    color: #000;
+    text-align: center;
 }
-#myPanel .options .btn, #mySelect .options .btn{
-  font-size:1.1em;
-  height: .36rem;
-  line-height: .36rem;
-  -webkit-box-flex: 1;
+
+.panel .panel-cell {
+    display: table-cell;
+    vertical-align: middle;
 }
-#myPanel .options .btn_ok, #mySelect .options .btn_close{
-	margin: 0 30px;
+
+.panel .panel-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    display: block;
+    width: 35px;
+    height: 35px;
+    background: url(../images/icons/icon-close.png) no-repeat center center;
 }
-#myPanel .options .btn_yes{
-	margin-right: 10px;
+
+.panel .panel-title {
+    font-size: 16px;
+    padding-bottom: 10px;
 }
-#panelBg,#panelBg0,.panel_bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: #45def8;
-  display: none;
-  z-index: 98;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
+
+.panel .panel-text {
+    max-height: 4.2em;
+    line-height: 2.1em;
+    font-size: 14px;
+    overflow: auto;
 }
-#wu-toast{
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 50px;
-	text-align: center;
+
+.panel .panel-buttons {
+    padding: 21px 0;
 }
-#wu-toast span{
-	display: inline-block;
-	padding: 5px 7px;
-	color: #fff;
-	background: rgba(0,0,0,0.5);
+
+.panel .options {
+    text-align: center;
 }
-.icon_focus{
-	margin-left: .1rem;
-	color: #3bdbe5;
+
+.panel .options .btn {
+    width: 137px;
+    color: #fff;
+    font-size: 18px;
+    /*background-color: #7cb234;*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    outline: none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
 }
-.wuqrcode{
-	display: block;
-	width: 160px;
-	height: 160px;
-	margin: 0 auto;
-	background-image: url(../images/qr.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 100% 100%;
+
+.panel .options .btn:hover {
+    /*background-color: #77B822;*/
+    text-decoration: none;
+}
+
+.panel .options .btn.disabled {
+    color: #4b4b4b;
+    /*background-color: #eaeaea;*/
+    cursor: not-allowed;
+}
+
+.panel .options .btn-cancel {
+    margin-left: 10px;
+    /*color: #929292;*/
+    /*border: 1px solid #eeeeee;*/
+    /*background-color: #eeeeee;*/
+}
+
+.panel .options .btn-cancel:hover {
+    color: #fff;
+    /*border-color: #d3d3d3;*/
+    /*background-color: #d3d3d3;*/
+}
+
+.panel .options .btn-submit {
+    margin-right: 14px;
+    background-color: #c08dec;
+}
+
+.panel .panel-tips {
+    padding-top: 10px;
+    color: #7a7a7a;
+    text-align: center;
+}
+
+.panel-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    display: none;
+    z-index: 90;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+.toast {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    bottom: 320px;
+    text-align: center;
+}
+
+.toast span {
+    display: inline-block;
+    padding: 5px 7px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.loading .loading-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 325px;
+    height: 150px;
+    margin-top: -75px;
+    margin-left: -162px;
+    background-color: rgba(255,255,255,0.6);
+    border-radius: 10px;
+}
+
+.loading .loading-content > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+.loading .loading-content .s-1 {
+    top: 55px;
+    left: 60px;
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/common/loading.png);
+    -webkit-animation: rotateCW 2s linear 0s infinite;
+    -moz-animation: rotateCW 3s linear 0s infinite;
+    -ms-animation: rotateCW 3s linear 0s infinite;
+    -o-animation: rotateCW 3s linear 0s infinite;
+    animation: rotateCW 3s linear 0s infinite;
+}
+
+@keyframes rotateCW {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes rotateCW
+{
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotateCW
+{
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes rotateCW
+{
+    from {
+        -o-transform: rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(360deg);
+    }
+}
+
+.loading .loading-content .s-2 {
+    top: 65px;
+    left: 120px;
+    color: #000;
+    font-size: 16px;
+    -webkit-animation: rotateCCW 16s linear 0s infinite;
+    -moz-animation: rotateCCW 16s linear 0s infinite;
+    -ms-animation: rotateCCW 16s linear 0s infinite;
+    -o-animation: rotateCCW 16s linear 0s infinite;
+    animation: rotateCCW 16s linear 0s infinite;
+}
+
+.loading .loading-content .s-3 {
+    top: 30px;
+    left: 188px;
+    width: 9px;
+    height: 158px;
+    -webkit-animation: rotateCW 2s linear 0s both infinite;
+    -webkit-transform-origin: 50% 100%;
+    -moz-animation: rotateCW 2s linear 0s both infinite;
+    -moz-transform-origin: 50% 100%;
+    -ms-animation: rotateCW 2s linear 0s both infinite;
+    -ms-transform-origin: 50% 100%;
+    -o-animation: rotateCW 2s linear 0s both infinite;
+    -o-transform-origin: 50% 100%;
+    animation: rotateCW 2s linear 0s both infinite;
+    transform-origin: 50% 100%;
+}
+
+.loading .loading-content .s-4 {
+    top: 30px;
+    left: 30px;
+    width: 325px;
+    height: 325px;
+    background-image: url(../images/common/s1-4.png);
+    -webkit-animation: rotateCW2 2s linear 0s both;
+    -moz-animation: rotateCW2 2s linear 0s both;
+    -ms-animation: rotateCW2 2s linear 0s both;
+    -o-animation: rotateCW2 2s linear 0s both;
+    animation: rotateCW2 2s linear 0s both;
 }
 /* tips end */
