@@ -5,7 +5,7 @@
     pageSize: 10, //默认分页大小
     server: location.protocol + '//' + location.host,
     server: 'http://61.155.169.177:9919/webapi.php', //模拟接口用
-    image: location.protocol + '//' + location.host + '/'
+    image: location.protocol + '//' + location.host + '/',
     image: '../'
 };
 
