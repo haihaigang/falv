@@ -7,7 +7,7 @@
 	//回填手机号
 	var phone = Storage.get(Storage.REMEMBER);
 	if(phone){
-		$('input[name="phone"]').val(phone);
+		$('input[name="name"]').val(phone);
 		$('input[name="remember"]').attr('checked',true);
 	}else{
 		$('input[name="remember"]').attr('checked',false);
@@ -18,7 +18,7 @@
 	$('#login-form').submit(function(e){
 		e.preventDefault();
 		
-		var phone = $('input[name="phone"]').val(),
+		var phone = $('input[name="name"]').val(),
 			password = $('input[name="password"]').val();
 		if(phone.isEmpty()){
 			Tools.showAlert('手机号不能为空',5000);

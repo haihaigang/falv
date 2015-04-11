@@ -240,8 +240,8 @@
 
         //添加默認設置
         options = options || {};
-        //options.url = options.url + '.json'; //测试使用模拟接口
-        //console.log(options.url);
+        options.data = JSON.stringify(options.data);
+
         $.ajax({
             url: options.url,
             data: options.data,

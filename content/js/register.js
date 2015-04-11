@@ -5,24 +5,26 @@
 		step4 = $('#step4'),
 		phoneNum,//记录手机号
 		oriCode,//记录验证码
-		inte;//计时器
+		inte,//计时器
+		phoneDom = $('input[name="id"]');
 
 	//手机号回填
-	$('input[name="phone"]').val(Tools.getQueryValue('phone'));
-	
+	$('input[name="id"]').val(Tools.getQueryValue('phone'));
 
 	//重发验证码
 	$('#repeat-send').click(function(e){
 		e.preventDefault();
 
-		if(phone.val().isEmpty()){
+		if(phoneDom.val().isEmpty()){
 			Tools.showAlert('手机号不能为空',5000);
 			return;
 		}
-		if(!phone.val().isPhone()){
+		if(!phoneDom.val().isPhone()){
 			Tools.showAlert('手机号格式不正确！',5000);
 			return;
 		}
+
+		phoneNum = phoneDom.val();
 		
 		if($(this).hasClass('ready')){
 			sendSms();
@@ -34,7 +36,7 @@
 	$('#register-form').submit(function(e){
 		e.preventDefault();
 		
-		var phone = $('input[name="phone"]').val(),
+		var phone = $('input[name="id"]').val(),
 			code = $('input[name="code"]').val(),
 			password = $('input[name="password"]').val(),
 			password1 = $('input[name="password1"]').val();
@@ -43,7 +45,7 @@
 			Tools.showAlert("手机号不能为空",5000);
 			return;
 		}
-		if(!phone.val().isPhone()){
+		if(!phone.isPhone()){
 			Tools.showTip('手机号格式不正确',5000);
 			return;
 		}
@@ -55,25 +57,26 @@
 			Tools.showAlert("密码不能为空",5000);
 			return;	
 		}
-		if(password.isValidPwd()){
+		if(!password.isValidPwd()){
 			Tools.showAlert("密码格式不正确",5000);
 			return;	
 		}
-		if(password1.val().isEmpty()){
+		if(password1.isEmpty()){
 			Tools.showTip('确认密码不能为空',5000);
 			return;
 		}
-		if(password != passwrod1){
+		if(password != password1){
 			Tools.showAlert("确认密码不一致",5000);
 			return;
 		}
 
 		Ajax.submit({
-			url: config.api_reg_verify,
-			data: $(this)
+			url: config.api_reg_app,
+			data: $(this),
+			type: 'PUT'
 		}, function(data){
 			if(data.code != 'OK'){
-				Tools.showAlert(data.message || '爷，服务器异常，请稍后再试～',5000);
+				Tools.showAlert(data.message || '服务器异常，请稍后再试～',5000);
 				return;
 			}
 
@@ -106,8 +109,9 @@
 		Ajax.custom({
 			url: config.api_reg_resendSMS,
 			data: {
-				phone: phone || phoneNum
-			}
+				reguid: phone || phoneNum
+			},
+			type: 'POST'
 		}, function(data){
 			if(data.code != 'OK'){
 				Tools.showAlert('服务器异常，请稍后再试～',5000);
@@ -172,9 +176,9 @@
 	function checkPhone(phone, callback, callbackdone){
 		
 		Ajax.queryRecord({
-			url: config.checkPhone,
+			url: config.api_reg_resendSMS,
 			data: {
-				phone: phone
+				reguid: phone
 			}
 		}, function(data){
 			if(data.code != 'OK'){
