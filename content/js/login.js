@@ -41,12 +41,8 @@
 			url: config.api_login,
 			data: $(this)
 		}, function(data){
-			if(data.code != 'OK'){
-				Tools.showAlert('爷的密码错误',5000);
-				return;
-			}
-			if(!data.result){
-				Tools.showAlert('爷，服务器异常，请稍后再试～',5000);
+			if(data.error){
+				Tools.showAlert('用户名或密码错误',5000);
 				return;
 			}
 			
@@ -57,15 +53,15 @@
 				Storage.remove(Storage.REMEMBER);
 			}
 
-			Cookie.set(Storage.AUTH,data.result.id);
-			Storage.set(Storage.AUTH, data.result.id);
-			Storage.set(Storage.ACCOUNT,data.result);
+			Cookie.set(Storage.AUTH,data.data.id);
+			Storage.set(Storage.AUTH, data.data.id);
+			Storage.set(Storage.ACCOUNT,data.data);
 			
 			var from = Tools.getQueryValue('from');
 			if(from){
 				location.href = decodeURIComponent(from);
 			}else{
-				location.href = "user/index.html";
+				location.href = "../user/index.html";
 			}
 		});
 	});

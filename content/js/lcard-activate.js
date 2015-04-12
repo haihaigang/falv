@@ -19,9 +19,10 @@
 
         Ajax.submit({
             url: config.api_lcard_activate,
-            data: $(this)
+            data: $(this),
+            type: 'GET'
         }, function(data) {
-            if (data.OK != 'true') {
+            if (data.error) {
             	Tools.showAlert('激活失败！<br/>请输入正确的卡号和密码。<br/>有疑问请联系我们的客服人员。<br/>400-440-8888');
                 return;
             }

@@ -2,6 +2,7 @@
 (function() {
     var nodata = '<div class="nodata">暂无数据。</div>';
     var nomoredata = '<div class="nodata">没有更多数组。</div>';
+    var csrftoken;
 
     /**
      * 接口基类
@@ -238,28 +239,42 @@
             $('#ti-loading').show();
         }
 
-        //添加默認設置
+        //添加url参数csrftoken
         options = options || {};
-        options.data = JSON.stringify(options.data);
+        var csrftoken = Storage.get('CSRFTOKEN');
+        if (!!csrftoken) {
+            options.url += '?csrftoken='+ csrftoken;
+        }
+
+        if(typeof options.contentType == undefined){
+            options.contentType = 'application/json'
+        }
+        if(typeof options.processData == undefined){
+            options.processData = true;
+        }
 
         $.ajax({
             url: options.url,
             data: options.data,
             type: options.type || 'GET',
-            //dataType: 'text',
+            dataType: 'JSON',
             timeout: that.timeout,
             cache: that.cache,
             contentType: options.contentType,
             processData: options.processData
         }).then(function(response, textStatus, jqXHR) {
-            try {
-                response = eval('(' + response + ')'); //測試模擬接口
-            } catch (e) {
-                response = {
-                    code: -999,
-                    message: '(TI)返回数据格式解析错误'
-                };
-            }
+            csrftoken = jqXHR.getResponseHeader('csrftoken');
+            Storage.set('CSRFTOKEN', csrftoken);
+
+            // try {
+            //     response = eval('(' + response + ')'); //測試模擬接口
+            // } catch (e) {
+            //     response = {
+            //         code: -999,
+            //         message: '(TI)返回数据格式解析错误'
+            //     };
+            // }
+
             that.isLoading = false;
             delete(that.queue[options.url]);
 
@@ -377,7 +392,7 @@
 
     //初始化数字分页
     function initPagination(data, dom) {
-        if(!data) return;//数据错误不初始化
+        if (!data) return; //数据错误不初始化
 
         var d = {
             current_page: data.current,
@@ -923,7 +938,7 @@ var log = function(m) {
     };
 
     String.prototype.isValidPwd = function() {
-        return (new RegExp(/^([_]|[a-zA-Z0-9]){6,16}$/).test(this));
+        return (new RegExp(/^([_]|[a-zA-Z0-9@]){6,16}$/).test(this));
     };
 
     String.prototype.isPostCode = function() {

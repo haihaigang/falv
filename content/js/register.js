@@ -71,7 +71,7 @@
 		}
 
 		Ajax.submit({
-			url: config.api_reg_app,
+			url: config.api_reg_verify,
 			data: $(this),
 			type: 'PUT'
 		}, function(data){
