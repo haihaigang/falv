@@ -37,7 +37,7 @@
 
         Ajax.submit({
             url: config.api_audit_add,
-            data: {}
+            data: $(this)
         }, function(data) {
 
         });

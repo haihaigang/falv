@@ -183,10 +183,11 @@
         var formData,
             that = this,
             isForm = !!options.data.length,
-            btnSubmit = options.data.find('[type="submit"]');
+            btnSubmit;
 
         if (isForm) {
             formData = options.data.serializeArray();
+            btnSubmit = options.data.find('[type="submit"]');
             btnSubmit.attr('disabled', true);
         } else {
             formData = options.data;
