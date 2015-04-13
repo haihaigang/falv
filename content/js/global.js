@@ -57,7 +57,7 @@
                 pagingDom: '.pagination',
                 pagingMode: 'number',
                 timeKey: 'createAt',
-                key: 'body',
+                key: 'data',
                 showLoading: true,
                 logtype: 'paging'
             };
@@ -91,6 +91,7 @@
 
         that.ajaxSend(options, function(response, textStatus, jqXHR) {
             var body = response[options.key];
+            body = body.items;
 
             if (options.key == '-1') {
                 //设置key=-1，所有返回值为分页数据
@@ -146,7 +147,7 @@
             opt = { //默认配置
                 renderFor: this.defaultDetailTmpl,
                 renderEle: this.defaultDetailEle,
-                key: 'body',
+                key: 'data',
                 showLoading: true,
                 logtype: 'detail'
             };
@@ -160,8 +161,8 @@
         }
 
         that.ajaxSend(options, function(response, textStatus, jqXHR) {
-            if (response.code != 0 && response.code != 1) {
-                $(options.renderEle).html(response.message);
+            if (response.error) {
+                $(options.renderEle).html(response.error);
                 return;
             }
             var data = response[options.key] || {};

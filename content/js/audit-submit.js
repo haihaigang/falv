@@ -1,5 +1,7 @@
 (function() {
 
+    var tempFiles = [];//存储临时文件数组
+
     //文件上传
     $('#audit-form').on('change', 'input[type="file"]', function() {
         if (this.files.length == 0) {
@@ -17,6 +19,11 @@
             contentType: false,
             processData: false
         }, function(data) {
+            var d = {
+                fileId: 1,
+                fileName: ''
+            };
+            tempFiles.push(d);
 
         	that.parents('.col').addClass('active');
             //上传图片成功后，添加下个文件控件
@@ -35,9 +42,15 @@
     $('#audit-form').submit(function(e) {
         e.preventDefault();
 
+        var comment = $('textarea[name="comment"]');
+        var data = {
+            comment: comment,
+            originalContract: tempFiles
+        };
+
         Ajax.submit({
             url: config.api_audit_add,
-            data: $(this)
+            data: data
         }, function(data) {
 
         });

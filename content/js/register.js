@@ -137,7 +137,7 @@
 			//测试时直接填入验证码，需删除
 			//$('input[name="code"]').val(oriCode);
 		},function(){
-			Tools.showAlert('爷，验证码发送失败，请再点击发送',5000);
+			Tools.showAlert('验证码发送失败，请再点击发送',5000);
 			btnSend.addClass('ready').text('重发验证码');
 		});
 	}
@@ -164,7 +164,7 @@
 			url: config.roleList
 		}, function(data){
 			if(data.code != 'OK'){
-				Tools.showAlert('爷，服务器异常，请稍后再试～',5000);
+				Tools.showAlert('服务器异常，请稍后再试～',5000);
 				return;
 			}
 			var result = template.render('role-list-tmpl', {list: data.result});
