@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../content/css/mobiscroll-2.3.1.full.min.css" />
     <link rel="stylesheet" href="../content/css/enterprise.css" />
 </head>
-<body>
+<body style="background-color:#e6e6e6">
 <noscript>
     <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
 </noscript>
@@ -19,22 +19,37 @@
 <header class="header">
     <h1>企业查询</h1>
 </header>
-
-<section class="container">
-    <form id="search-form" action="#" method="post" class="search">
-        <div class="items">
-            <div class="val">
-                <input type="text" id="selectPro" name="province"placeholder="所在省份" />
-                <label class="select-tab" for="selectPro">选择省份</label>            
+<div class="header-form">
+    <form id="result-form" action="#" method="post" class="search">
+        <div class="clearfix">
+            <div class="val fl">
+                <input type="text" id="province" name="province" value="北京" />
+                <label class="select-tab" for="province"><img src="/falv/content/images/enterprise/down.png"></label>            
+            </div>
+            <div class="val fr">
+                <input type="text" id="keyword" name="keyword" value="去哪儿" />
+                <label class="select-tab" for="keyword"><img src="/falv/content/images/enterprise/search.png"></label> 
             </div>
         </div>
-        <div class="items">
-            <div class="val"><input type="text" name="keyword"placeholder="企业名称或关键字" /></div>
-        </div>
-        <div class="options">
-            <input type="submit" class="btn" value="查询" />
-        </div>
     </form>
+</div>
+<div class="wlist_tips">共找到3条相似企业</div>
+<section class="result-list">
+    <ul>
+        <li class="rlist"><a href="detail.html">
+            <div class="txt">北京去哪儿旅游有限公司</div>        
+            <i class="icon"></i>
+            </a>
+        </li>
+        <li class="rlist">
+            <div class="txt">北京去哪儿咨询办事处</div>        
+            <i class="icon"></i>
+        </li>
+        <li class="rlist">
+            <div class="txt">去哪儿传媒集团</div>        
+            <i class="icon"></i>
+        </li>
+    </ul>
 </section>
 
 <div id="myPanel">
@@ -59,7 +74,7 @@
 <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
 <script src="../content/js/lib/template.js"></script>
 <script src="../content/js/lib/jscroll.js"></script>
-<script src="../content/js/lib/mobiscroll-2.3.1.full.min.js"></script>
+<script src="../content/js/mobiscroll-2.3.1.full.min.js"></script>
 <script src="../content/js/config.js"></script>
 <script src="../content/js/global.js"></script>
 <script src="../content/js/worldunion.js"></script>
