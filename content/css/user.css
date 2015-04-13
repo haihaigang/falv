@@ -1,3 +1,6 @@
+.userbox{
+    padding: 0;
+}
  /*user common start */
 .ulist .box{
     margin-bottom: .1rem;
@@ -107,16 +110,7 @@
 .user a span.i4{
     background-image: url(../images/user/icon_4.png);
 }
-/*.user a span.i5{
-    background-image: url(../images/user/icon_5.png);
-}
-.user a span.i6{
-    background-image: url(../images/user/icon_6.png);
-}
-.user a span.i7{
-    background-image: url(../images/user/icon_7.png);
-}*/
-.user a span.i8{
+.user a span.i5{
     background-image: url(../images/user/icon_8.png);
 }
 .user a em.num{
@@ -129,30 +123,22 @@
     color: #fff;
 }
 /* user end */
-
-/* about-falv start */
-.about-falv .title{
-    width: 1rem;
-    margin: .24rem auto .34rem;
-}
-.about-falv .title img{
-    width: 100%;
-}
-.about-falv p{
-    padding: 0 .1rem;
-    color: #737373;
-}
-.versions-box{
+/* my-msg start*/
+.my-msg .items{
     position: relative;
-    bottom: .4rem;
-     padding: 0 .3rem;
 }
-.versions{
-    text-align: center;
-    color: #737373;
-    line-height: .38rem;
- }
-/* about-falv end */
+label.select-tab {
+    position: absolute;
+    right: .2rem;
+    top: .09rem;
+    z-index: 9;
+}
+/*my-msg end*/
+
+/* 添加地址*/
+.myaddress .items{
+    position: relative;
+}
 /* my-address start */
 .myaddress .box{
     margin-bottom: .14rem;
@@ -183,313 +169,26 @@
     color: #737373;
 }
 /* my-address end */
-/* myinfo start */
-.myinfo .male,.myinfo .female{
-	display: inline-block;
-	padding-left: .25rem;
-	background-image: url(../images/icon_male.png);
-	background-repeat: no-repeat;
-	background-size: .17rem auto;
-	background-position: left center;
+/* about-falv start */
+.about-falv .title{
+    width: 1rem;
+    margin: .24rem auto .34rem;
 }
-.myinfo .female{
-	background-image: url(../images/icon_female.png);
+.about-falv .title img{
+    width: 100%;
 }
-.myinfo .address ul{
-    padding: .1rem;
-    line-height: .25rem;
+.about-falv p{
+    padding: 0 .1rem;
+    color: #737373;
 }
-.myinfo .address li{
-    display: -webkit-box;
-}
-.myinfo .address li span{
-    display: block;
-    width: 4em;
-    color: #bfbfbf;
-}
-.myinfo .address li div{
-    -webkit-box-flex: 1;
-}
-.myinfo_v .items .key{
-	width: 5.25em;
-}
-.myinfo a b{
-	font-weight: normal;
-}
-/* myinfo end */
-
-/* myactivity start */
-.myactivity .state{
-	position: absolute;
-	top: .08rem;
-	right: .1rem;
-}
-.myactivity .wlist .content h3{
-	padding-right: 5em;
-}
-.myactivity .content .icon_date{
-	color: #999;
-	background-image: url(../images/icon_date.png);
-}
-.myactivity .content .icon_address{
-	margin-right: .2rem;
-	color: #806d5a;
-	background-image: url(../images/icon_address.png);
-}
-.myactivity .icon_time{
-	color: #09c9d4;
-	background-image: url(../images/icon_time.png);
-}
-.icon_time1{
-	color: #09c9d4;
-	background-image: url(../images/icon_time.png);
-	background-repeat:no-repeat;
-	background-position:left center;
-	background-size:.13rem auto;
-	padding-left:.2rem;
-}
-.myactivity .ending{
-	color: #09c9d4;
-	background-image: url(../images/icon_ending.png);
-	background-repeat:no-repeat;
-	background-position:left center;
-	background-size: 100%;
-	padding-left: 0;
-	width: .4rem;
-	height: .4rem;
-	line-height: .4rem;
-	top: 0;
-	right: 0;
-	text-indent: 100px;
-	overflow: hidden;
-}
-/* myactivity end */
-
-/* myconversation start */
-.myconversation{
-    padding: 0;
-}
-.myconversation .con_item{
-    display: -webkit-box;
-    padding: .03rem .1rem .15rem;
-    -webkit-box-align: center;
-    border-bottom: 1px solid #c8c8c8;
-}
-.myconversation .con_item:last-child{
-    border-bottom: none;
-}
-.myconversation .con_item:hover{
-    background-color: #f4f4f4;
-}
-.myconversation .content{
-    -webkit-box-flex: 1;
-    margin-right: .15rem;
-}
-.myconversation .message,
-.myconversation .type{
-    display: -webkit-box;
-    -webkit-box-align: center;
-}
-.myconversation .message span,
-.myconversation .type span{
-    display: block;
-    -webkit-box-flex: 1;
-}
-.myconversation .message span{
-    font-size: 1.25em;
-    padding: .13rem 0;
-    word-break: break-all;
-}
-.myconversation .message .ics_face{
-	width: 34px;
-	height: 34px;
-}
-.myconversation .message em{
-    color: #876758;
-}
-.myconversation .type em{
-    color: #bfbfbf;
-}
-.myconversation a i{
-    display: inline-block;
-    width: .1rem;
-    background-image: url(../images/icon_arrow.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: .08rem .13rem;
-}
-/* myconversation end */
-
-/* myloan start */
-.myloan .notice{
-    margin-bottom: .1rem;
-    padding: .1rem .1rem .1rem .4rem;
-    font-size: 1.25em;
-    background-image: url(../images/icon_notice.png);
-    background-repeat: no-repeat;
-    background-position: .12rem .18rem;
-    background-size: .25rem auto;
-}
-.myloan li{
-    margin-bottom: .1rem;
+.versions-box{
     position: relative;
-    display: -webkit-box;
-    padding: .05rem;
+    bottom: .4rem;
+     padding: 0 .3rem;
 }
-.myloan .thumb{
-    width: .87rem;
-    height: .93rem;
-    margin-right: .1rem;
-}
-.myloan .thumb img{
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-}
-.myloan .content{
-    -webkit-box-flex: 1;
-    overflow: hidden;
-}
-.myloan .content h3{
-    line-height: .28rem;
-    font-size: 1.25em;
-    color: #45dfe8;
-}
-.myloan .content p{
-    color: #787878;
-}
-.myloan .content p span{
-    color: #f38120;
-}
-/* myloan end */
-
-/* mygift start */
-.mygift .address{
-    padding: .1rem;
-}
-.mygift .address .tips{
-    padding: .11rem .1rem .11rem .4rem;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    color: #808080;
-    text-align: left;
-    background-color: #f2f2f2;
-    background-image: url(../images/icon_notice_1.png);
-    background-position: .08rem center;
-    background-size: .25rem auto;
-    background-repeat: no-repeat;
-}
-.mygift ul{
-    padding: .1rem 0;
-    line-height: .25rem;
-}
-.mygift li{
-    display: -webkit-box;
-}
-.mygift li span{
-    display: block;
-    width: 5em;
-    color: #bfbfbf;
-}
-.mygift li div{
-    -webkit-box-flex: 1;
-}
-/* mygift end */
-
-/* myhouse start */
-.myhouse{
-	padding: 0;
-	overflow: hidden;
-}
-.myhouse .wlist_house .wlist_item{
-	padding-left: .1rem;
-}
-.myhouse .myhouse_container{
-	display: -webkit-box;
-}
-.myhouse .myhouse_list{
-	padding: .1rem;
-	-webkit-box-flex: 1;
-}
-.myhouse .quicknav{
-	width: .74rem;
-	padding-right: .05rem;
-	background-color: #3bb3c3;
-}
-.quicknav a{
-	position: relative;
-	display: block;
-	width: 100%;
-	height: .63rem;
-	line-height: .63rem;
-	color: #fff;
-	text-align: center;
-	border-top: 1px solid #53c6d8;
-	border-bottom: 1px solid #1a8d9f;
-}
-.quicknav .last{
-	display: block;
-	padding-bottom: 10px;
-	border-top: 1px solid #53c6d8;
-}
-.quicknav a:first{
-	border-top: 0;
-}
-.quicknav a.active:after{
-	position: absolute;
-	top: 50%;
-	right: -0.12rem;	
-	content: '';
-	display: block;
-	margin-top: -0.07rem;
-	border-top: .07rem solid #fff;
-	border-bottom: .07rem solid #fff;
-	border-left: .07rem solid #3bb3c3;
-}
-
-/* myhouse end */
-
-/* mypassword start */
-.mypassword  form .items .key{
-	width: 5.25em;
-}
-/* mypassword end */
-
-/* myinfo_v start */
-.myinfo_v .modify{
-	display: none;
-}
-#email{
-	display: -webkit-box;
-	-webkit-box-align: center;
-}
-.box a {
-	position:relative;
-}
-.box a select{
-	width:100%;
-	height:100%;
-	position:absolute;
-	top:0;
-	left:0;
-	filter:alpha(opacity=0);
-	-moz-opacity:0; 
-	opacity:0;
-}
-.mailbefore {
-	-webkit-box-flex: 2;
-}
-.mailmiddle {
-	width:2em;
-	text-align: center;
-}
-.mailafter {
-	-webkit-box-flex: 1;
-}
-
-#address1 {
-	height: 43px;
-	line-height: 43px;
-	padding-left: 13px;
-}
-/* myinfo_v end 
+.versions{
+    text-align: center;
+    color: #737373;
+    line-height: .38rem;
+ }
+/* about-falv end */
