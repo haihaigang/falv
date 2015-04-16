@@ -42,3 +42,8 @@ config.api_file_remove = config.server + '/file/remove.json';//删除
 config.api_file_download = config.server + '/file/download.json';//下载
 config.api_file_img = config.server + '/img/:id';//获取图片
 
+//user
+config.api_user_msg = config.server + '/app/user/update';//更新用户信息
+config.api_add_address = config.server + '/address/add';//新增地址
+
+

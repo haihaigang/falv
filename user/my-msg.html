@@ -20,7 +20,7 @@
     <div class="header_title"><h1>个人信息修改</h1></div>
 </header>
 <section class="container my-msg">
-    <form id="msg-form" action="#" method="get">
+    <form id="userMsg-form" action="#" method="get">
         <div class="items">
             <div class="val"><input type="text" name="name" maxlength="50" placeholder="请输入您的姓名"></div>
         </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="items">
-            <div class="val"><input type="password" name="oldpassword" placeholder="原始密码"></div>
+            <div class="val"><input type="password" name="orignal" placeholder="原始密码"></div>
         </div>
         <div class="items">
             <div class="val"><input type="password" name="password" placeholder="输入新密码"></div>
@@ -44,7 +44,7 @@
             <div class="val"><input type="password" name="repassword" placeholder="确认新密码"></div>
         </div>
         <div class="options">
-            <button class="btn">确认修改</button>
+            <input type="submit" class="btn" value="确认修改">
         </div>
     </form>
 </section>
@@ -76,10 +76,11 @@
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
     <script src="../content/js/lib/jscroll.js"></script>
+    <script src="../content/js/mobiscroll-2.3.1.full.min.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/login.js"></script>
+    <script src="../content/js/my-msg.js"></script>
 
     <script>
     (function(){

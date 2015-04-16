@@ -62,9 +62,6 @@
 .user_top .thumb{
     display: block;
     height: .65rem;
-   /* margin-right: .13rem;
-    width: .65rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.25);*/
 }
 .user_top .thumb img{
     display: block;
@@ -123,6 +120,78 @@
     color: #fff;
 }
 /* user end */
+/* my lcard*/
+.my-lcard{
+    padding: 0;
+}
+.my-lcard .lcard-box{
+    padding: .15rem 0;
+    width: 100%;
+    border-bottom: 2px solid #e6e6e6;
+}
+.my-lcard .lcard-box:last-child{
+    border-bottom: none;
+}
+.my-lcard .expired{
+    /*background-color: #00aeef;*/
+    background-image: url(../images/lcard/expired.png);
+}
+.my-lcard .not-used{
+    /*background-color: #00aeef;*/
+    background-image: url(../images/lcard/lcard_detail_bg.png);
+}
+.lcard-detail{
+    position: relative;
+    width: 74%;
+    height: 78px;
+    margin: 0 auto;
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+.lcard-detail .status{
+    position: absolute;
+    left:50%;
+    margin-left: .66rem;
+    top: .05rem;
+}
+.lcard-detail .cornor{
+    position: absolute;
+    top: 50%;
+    left: -.18rem;
+    display: block;
+    width: .27rem;
+    height: .27rem;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.lcard-detail .lcard-amount{
+    float: left;
+    width: 45%;
+    padding-top: .2rem;
+    text-align: right;
+}
+.lcard-detail .lcard-amount-c{
+    padding-right: .1rem;
+}
+.lcard-detail .lcard-amount .price{
+    padding-right: .05rem;
+    font-size: 2em;
+    line-height: 1;
+}
+.lcard-detail .lcard-info{
+    float: left;
+    width: 55%;
+    padding: .26rem 0;
+    line-height: .2rem;
+    font-size: .8em;
+}
+.lcard-detail .lcard-info-c{
+    padding-left: .1rem;
+    border-left: 1px solid #fff;
+}
+/*my lcard end*/
 /* my-msg start*/
 .my-msg .items{
     position: relative;
