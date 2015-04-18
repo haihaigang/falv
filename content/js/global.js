@@ -1,7 +1,7 @@
 ﻿//封装异步请求
 (function() {
     var nodata = '<div class="nodata">暂无数据。</div>';
-    var nomoredata = '<div class="nodata">没有更多数组。</div>';
+    var nomoredata = '<div class="nodata">没有更多数据。</div>';
     var csrftoken;
 
     /**
@@ -50,12 +50,12 @@
      */
     Api.prototype.paging = function(options, callback, callbackError) {
         var that = this,
-            isFirst = options.data.page == 1, //是否第一次请求
+            isFirst = true,//options.data.page == 1, //是否第一次请求
             opt = { //默认配置
                 renderFor: this.defaultListTmpl,
                 renderEle: this.defaultListEle,
                 pagingDom: '.pagination',
-                pagingMode: 'number',
+                pagingMode: 'next',
                 timeKey: 'createAt',
                 key: 'data',
                 showLoading: true,
@@ -67,16 +67,13 @@
         }
 
         if (options.pagingMode == 'number') {
-            $(options.renderEle).html('正在加载中...');
+            $(options.renderEle).html('<div class="nodata">正在加载中...</div>');
             $(options.pagingDom).hide();
         } else if (options.pagingMode == 'next') {
             var np = findByKey(that.tempPage, options.url);
             var next = $('#np-' + np),
                 nextStr = '<div id="np-' + np + '" class="nextpage">正在加载中...</div>';
 
-            if (options.pagingDom) {
-                next = $(options.pagingDom);
-            }
             if (next.length == 0) {
                 $(options.renderEle).after(nextStr);
                 next = $('#np-' + np);
@@ -91,7 +88,7 @@
 
         that.ajaxSend(options, function(response, textStatus, jqXHR) {
             var body = response[options.key];
-            body = body.items;
+            body = body.items;//当前项目约定分页返回数据多一层items
 
             if (options.key == '-1') {
                 //设置key=-1，所有返回值为分页数据
@@ -205,6 +202,7 @@
                 callback(response);
             }
         }, function(jqXHR, textStatus, errorThrown) {
+            Tools.showToast(jqXHR.statusText);
             if (isForm) {
                 btnSubmit.removeAttr('disabled');
             }
@@ -245,7 +243,7 @@
         options = options || {};
         var csrftoken = Storage.get('CSRFTOKEN');
         if (!!csrftoken) {
-            options.url += '?csrftoken='+ csrftoken;
+            options.url += '?_csrf='+ encodeURIComponent(csrftoken);
         }
 
         if(typeof options.contentType == undefined){
@@ -268,15 +266,6 @@
             csrftoken = jqXHR.getResponseHeader('csrftoken');
             Storage.set('CSRFTOKEN', csrftoken);
 
-            // try {
-            //     response = eval('(' + response + ')'); //測試模擬接口
-            // } catch (e) {
-            //     response = {
-            //         code: -999,
-            //         message: '(TI)返回数据格式解析错误'
-            //     };
-            // }
-
             that.isLoading = false;
             delete(that.queue[options.url]);
 
@@ -298,15 +287,15 @@
             that.isLoading = false;
             delete(that.queue[options.url]);
 
-            logged(options.logtype, textStatus, options.url);
+            logged(options.logtype, jqXHR.statusText, options.url);
             if (typeof callbackError == 'function') {
-                callbackError(textStatus);
+                callbackError(jqXHR, textStatus, errorThrown);
             }
 
             if (isEmpety(that.queue) && typeof that.onEnd == 'function') {
                 that.onEnd.call(this);
             }
-        }).done(function() {
+        }).always(function() {
             $('#ti-loading').hide();
             $(options.renderEle).fadeIn();
         });

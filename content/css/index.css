@@ -26,7 +26,7 @@
 .nav .link{
     display: block;
     border-bottom: 1px solid #d2d2d2;
-    font-size: 1.5em;
+    font-size: 1.25em;
     color: #4b4b4b;
     text-align: left;
     background-repeat: no-repeat;
@@ -66,7 +66,7 @@
 .nav-left .link{
     height: .43rem;
     padding-top: .92rem;
-    border-right: 1px solid #b2b2b2;
+    border-right: 1px solid #d2d2d2;
     text-align: center;
     background-position: center .4rem;
     background-size: auto .42rem;

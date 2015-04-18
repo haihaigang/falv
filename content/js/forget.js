@@ -1,7 +1,7 @@
 ﻿(function(){
 
 	var btnSend = $('#repeat-send'),
-		phone = $('input[name="phone"]'),
+		phone = $('input[name="id"]'),
 		code = $('input[name="code"]'),
 		password = $('input[name="password"]'),
 		repassword = $('input[name="repassword"]'),
@@ -22,9 +22,7 @@
 		
 		if(btnSend.hasClass('ready')){
 			
-			checkPhone(phone.val(),function(){
 				sendSms();
-			});
 		}
 	});
 		
@@ -44,10 +42,10 @@
 			Tools.showAlert('验证码不能为空',5000);
 			return;
 		}
-		if(oriCode != code.val()){
-			Tools.showAlert('验证码错误',5000);
-			return;
-		}
+		// if(oriCode != code.val()){
+		// 	Tools.showAlert('验证码错误',5000);
+		// 	return;
+		// }
 		if(password.val().isEmpty()){
 			Tools.showAlert('密码不能为空',5000);
 			return;
@@ -69,8 +67,8 @@
 			url: config.api_forget,
 			data: $(this)
 		},function(data){
-			if(data.code != 'OK'){
-				Tools.showAlert(data.message || '服务器异常，请稍后再试～',5000);
+			if(data.error){
+				Tools.showAlert(data.error.message || '服务器异常，请稍后再试～',5000);
 				return;
 			}
 			
@@ -90,17 +88,18 @@
 		Ajax.custom({
 			url: config.api_forget_resendSMS,
 			data: {
-				phone: phone.val()
-			}
+				reguid: phone.val(),
+				actionKbn: 'forget'
+			},
+			type: 'POST'
 		}, function(data){
-			if(data.code != 'OK'){
-				Tools.showAlert('服务器异常，请稍后再试～',5000);
+			if(data.error){
+				Tools.showAlert(data.error.message || '服务器异常，请稍后再试～',5000);
+				btnSend.addClass('ready').html('获取验证码');
 				return;
 			}
-			//格式：{13641882170:123456}
-			for(var i in data.result){
-				oriCode = data.result[i];
-			}
+
+			oriCode = data.data.code;
 			
 			//60秒计时重发
 			inte = setInterval(function(){
@@ -108,18 +107,18 @@
 				if(duration == 0){
 					clearInterval(inte);
 					//oriCode = undefined;
-					btnSend.addClass('ready').html('<a href="#">获取验证码</a>');
+					btnSend.addClass('ready').html('获取验证码');
 					return;
 				}
-				btnSend.html('<span>重新发送(' + duration + ')</span>');
+				btnSend.html('<span>重发(' + duration + ')</span>');
 			},1000);
 
 			//测试时直接填入验证码，需删除
 			//code.val(oriCode);
 			
 		},function(){
-			Tools.showAlert('爷，验证码发送失败，请再点击发送',5000);
-			btnSend.addClass('ready').html('<a href="#">获取验证码</a>');
+			Tools.showAlert('验证码发送失败，请再点击发送',5000);
+			btnSend.addClass('ready').html('获取验证码');
 		});
 	}
 	
@@ -138,7 +137,7 @@
 			}
 			
 			if(!data.result){
-				Tools.showAlert('爷的手机号还未注册',5000);
+				Tools.showAlert('手机号还未注册',5000);
 				return;
 			}
 			

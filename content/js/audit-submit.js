@@ -12,20 +12,26 @@
             formData = new FormData();
         formData.append('file', this.files[0]);
 
-        Ajax.custom({
+        Ajax.submit({
             url: config.api_file_upload,
             data: formData,
             type: 'POST',
             contentType: false,
             processData: false
         }, function(data) {
+            if(data.error){
+                Tools.showAlert(data.error.message);
+                return;
+            }
+
+            data = data.data[0];
             var d = {
-                fileId: 1,
-                fileName: ''
+                fileId: data.fileId,
+                fileName: data.name
             };
             tempFiles.push(d);
 
-        	that.parents('.col').addClass('active');
+        	that.parents('.col').addClass('active').find('input[name="fileName"]').val(data.name);
             //上传图片成功后，添加下个文件控件
             $('#flv-imgs').append($('#flv-imgs-tmpl').html());
         });
@@ -36,23 +42,39 @@
         if ($('#audit-form .col').length <= 1) {
             return;
         }
+        if(!$(this).parents('.col').hasClass('active')){
+            return;
+        }
         $(this).parents('.col').remove();
     });
 
     $('#audit-form').submit(function(e) {
         e.preventDefault();
 
-        var comment = $('textarea[name="comment"]');
-        var data = {
+        if(tempFiles.length <= 0){
+            Tools.showAlert('至少选择一个文件');
+            return;
+        }
+
+        var comment = $('textarea[name="comment"]').val();
+        var d = {
             comment: comment,
             originalContract: tempFiles
         };
 
+        d = JSON.stringify(d);
+        log(d)
+
         Ajax.submit({
             url: config.api_audit_add,
-            data: data
+            data: {
+                data: d
+            }
         }, function(data) {
-
+            if(data.error){
+                Tools.showAlert(data.error.message);
+                return;
+            }
         });
 
     });

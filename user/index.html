@@ -22,7 +22,7 @@
     <section class="user_top">
         <a class="thumb" href="my-role"><img id="role-img" src="../content/images/user/temp.png" alt="" /></a>
         <div class="names">
-            <p><span class="user_type">15335142820</span></p>
+            <p><span class="user_type">--</span></p>
         </div>
     </section>
     <section class="ulist user">
@@ -72,11 +72,18 @@
 
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
-    <script src="../content/js/lib/jscroll.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/login.js"></script>
+    <script>
+    (function(){
+        var id = Storage.get(Storage.AUTH);
+
+        if(id){
+            $('.user_type').text(id);
+        }
+    })();
+    </script>
 </body>
 
 </html>

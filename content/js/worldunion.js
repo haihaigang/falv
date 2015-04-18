@@ -173,43 +173,15 @@
 		}
 	});
 
-	//模板帮助方法，拼接在线咨询url
-	template.helper('$spliceCUrl', function(pid) {
-		if(!pid){
-			return 'javascript:void(0)';
+	//模板帮助方法， 从时间字符串中截取日期，限定字符串yyyy-MM-dd...
+	template.helper('$getDateFromStr', function(content) {
+		if(!content || content.length == 0){
+			return;
 		}
-		return config.onlineUrl
-			.replace('{1}',pid)
-			.replace('{3}',config.getId());
-	});
 
-	//模板帮助方法，度量房源标题长度
-	template.helper('$lengthHouseTitle', function(content) {
-		var screenWidth = screen.width;
-		var size = 10;
-		if(screenWidth < 320){
-			size = 12;
-		}else if(screenWidth < 480){
-			size = 20;
-		}else if(screenWidth < 960){
-			
-		}
-		
-		return content.substring(0, size) + '...';
+		var len = content.length > 10 ? 10 : content.length;
+		return content.substring(0, len);
 	});
-	
-	//在线咨询链接
-	var wuOnline = $('#wu-online');
-	if(wuOnline.length){
-		var id = wuOnline.attr('data-id');
-		var type = wuOnline.attr('data-type');
-		id = id || location.search.getQueryValue('id') || 1;
-		wuOnline.attr('href',
-				config.onlineUrl
-				.replace('{1}',type + '_' + id)
-				.replace('{3}',config.getId() || '')
-		);
-	}
 
 	// 返回按钮
 	$('.icon_return').click(function(e) {

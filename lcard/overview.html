@@ -21,40 +21,7 @@
         <h1>激活L卡成功</h1>
     </header>
 
-    <section class="container lcard">
-        <div class="lcard-sus">
-            <p>恭喜您激活成功，您已获得以下服务及优惠。</p>
-            <p>务有效期：2013.12.12 12:12</p>
-        </div>
-        <section class="lcard-list">
-            <a href="my-info">
-                <span class="i1">法律咨询</span>
-                <em id="rate">2个月</em>
-            </a>
-            <a href="my-activity">
-                <span class="i2">合同审核</span>
-                <em class="num">1份</em>
-            </a>
-            <a href="my-gift">
-                <span class="i3">合同起草</span>
-                <em class="num">2份</em>
-            </a>
-        </section>
-        <div class="lcard-detail clearfix">
-            <div class="lcard-amount">
-                <div class="lcard-amount-c">
-                    <p>优惠额度：</p>
-                    <p class="price">￥200</p>
-                </div>
-            </div>
-            <div class="lcard-info">
-                <div class="lcard-info-c">
-                    <p>优惠券编号：12345</p>
-                    <p>有效期：2015/10/25</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="container lcard" id="flv-detail"></section>
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -78,13 +45,48 @@
             <div class="s-2">正在加载中</div>
         </div>
     </div>
+    <script type="text/html" id="flv-detail-tmpl">
+        <div class="lcard-sus">
+            <p>恭喜您激活成功，您已获得以下服务及优惠。</p>
+            <p>服务有效期：<!--[= $getDateFromStr(activationEndDate)]--></p>
+        </div>
+        <section class="lcard-list">
+        <!--[for(i = 0; i < serviceTypesInfo.length; i++){]-->
+            <div class="item" a="<!--[= serviceTypesInfo[i].serviceType]-->">
+                <span><!--[= serviceOptions[serviceTypesInfo[i].serviceType].name]--></span>
+                <em><!--[= serviceTypesInfo[i].quantity + serviceOptions[serviceTypesInfo[i].serviceType].value]--></em>
+            </div>
+        <!--[}]-->
+        </section>
+        <div class="lcard-detail clearfix">
+            <div class="lcard-amount">
+                <div class="lcard-amount-c">
+                    <p>优惠额度：</p>
+                    <p class="price">￥<!--[= couponInfo]--></p>
+                </div>
+            </div>
+            <div class="lcard-info">
+                <div class="lcard-info-c">
+                    <p>优惠券编号：<!--[= cardId]--></p>
+                    <p>有效期：<!--[= $getDateFromStr(activationEndDate)]--></p>
+                </div>
+            </div>
+        </div>
+    </script>
+
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
-    <script src="../content/js/lib/jscroll.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/login.js"></script>
+    <script>
+    (function(){
+        var data = Storage.get('FLV-LCARD');
+        if(data){
+            Ajax.render('#flv-detail', 'flv-detail-tmpl', data);
+        }
+    })();
+    </script>
 </body>
 
 </html>

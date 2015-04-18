@@ -1,7 +1,7 @@
 ﻿(function(){
 
 	if(!Storage.isLocalStorage()){
-		Tools.showAlert('爷，本地存储不支持',5000);
+		Tools.showAlert('本地存储不支持',5000);
 	}
 	
 	//回填手机号

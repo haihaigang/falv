@@ -1,23 +1,27 @@
 /*法率咨询*/
-.consult{
+.consult {
 	padding: 0;
 }
+header .icon-consult {
+	width: 5em;
+	color: #0072bc;
+}
 
-/* audit list start */
-.consult-stat{
+/* consult list start */
+.consult-stat {
 	color: #b4b4b4;
 	background-image: url(../images/audit/audit_bg.png);
 	background-repeat: no-repeat;
 	background-position: center bottom;
 	background-size: auto 100%;
 }
-.consult-stat .txt{
+.consult-stat .txt {
 	color: #dadada;
 }
-.consult-stat .txt em{
+.consult-stat .txt em {
 	color: #00bff3;
 }
-.consult-stat-content{
+.consult-stat-content {
 	height: .4rem;
 	padding: .14rem 0;
 	line-height: .2rem;
@@ -26,22 +30,22 @@
 	background-position: center center;
 	background-size: auto .2rem;
 }
-.consult-stat-used{
+.consult-stat-used {
 	float: left;
 	width: 45%;
 	text-align: right;
 }
-.consult-stat-oth{
+.consult-stat-oth {
 	float: right;
 	width: 45%;
 	text-align: left;
 }
-.consult-day{
+.consult-day {
 	height: .3rem;
 	line-height: .3rem;
 	text-align: center;
 }
-.consult-day i{
+.consult-day i {
 	display: inline-block;
 	padding-left: .25rem;
 	font-style: normal;
@@ -50,15 +54,15 @@
 	background-position: left center;
 	background-size: auto 60%;
 }
-.consult-day span{
+.consult-day span {
 	display: inline-block;
 	color: #dadada;
 }
-.consult-tabs{
+.consult-tabs {
 	display: -webkit-box;
 	border-bottom: 1px solid #c1c1c1;
 }
-.consult-tabs-item{
+.consult-tabs-item {
 	position: relative;
 	height: .42rem;
 	margin: 0 .2rem;
@@ -68,62 +72,70 @@
 	-webkit-box-pack: center;
 	-webkit-box-flex: 1;
 }
-.consult-tabs-item.active i{
+.consult-tabs-item.active i {
 	position: absolute;
+	left: 0;
 	bottom: -1px;
 	display: block;
 	width: 100%;
 	height: .03rem;
 	background-color: #0072bc;
 }
-.consult-list{
-    padding: .15rem .1rem;
+.consult-list {
+	padding: .15rem .1rem 0;
 }
-.consult-list .box{
+.consult-list .box {
+	display: block;
 	margin-bottom: .14rem;
 	border: 1px solid #e6e6e6;
 	box-shadow: none;
 }
-.consult-list .title{
+.consult-list .box:last-child {
+	margin-bottom: 0;
+}
+.consult-list .title {
 	padding: .12rem .12rem;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
 }
-.consult-list .title .txt{
+.consult-list .title .txt {
 	font-size: 1.25em;
 	color: #3d3d3d;
 }
-.consult-list .date{
+.consult-list .date {
 	padding: 0 .12rem .1rem;
 }
-.consult-list .date .lab{
+.consult-list .date .lab {
 	color: #818181;
 }
-.consult-list .date .txt{
+.consult-list .date .txt {
 	color: #4b4b4b;
 }
 .consult-list .title .lab {
 	color: #818181;
 }
+
 /* audit list end*/
 
 /* consult send start */
-.bg-gray{
+
+.bg-gray {
 	background-color: #e6e6e6;
 }
-.consult-send{
+.consult-send {
 	padding: 0;
 }
-.consult-send .method{
+.consult-send .method {
+	display: block;
 	margin: .1rem;
 }
-.consult-send .method img{
+.consult-send .method img {
 	display: block;
 	max-width: 100%;
 	margin: 0 auto;
 }
-.consult-send .sep{
+.consult-send .sep {
 	width: 100%;
 	height: .14rem;
 	background-image: url(../images/consult/sep.png);
@@ -131,10 +143,171 @@
 	background-position: center center;
 	background-size: auto 100%;
 }
-.consult-time{
+.consult-time {
 	text-align: center;
 }
-.consult-time span{
+.consult-time span {
 	color: #0072bc;
 }
+
 /* consult send end */
+
+/* consult upload start */
+
+.consult-form {
+	padding: .15rem .1rem;
+}
+form.consult-form .items {
+	border: none;
+	border-radius: 0;
+}
+form.consult-form .val {
+	border: 1px solid #e6e6e6;
+	border-radius: 7px;
+}
+form.consult-form textarea {
+	display: block;
+	width: 100%;
+	height: 1rem;
+	padding: .1rem;
+	border: none;
+	box-sizing: border-box;
+}
+form.consult-form .col {
+	display: -webkit-box;
+	margin-bottom: .07rem;
+}
+form.consult-form .col:last-child {
+	margin-bottom: 0;
+}
+form.consult-form .col .val {
+	-webkit-box-flex: 1;
+}
+form.consult-form .col .file {
+	position: relative;
+	display: block;
+	width: .51rem;
+	height: .39rem;
+	margin-left: .07rem;
+	overflow: hidden;
+	background-image: url(../images/audit/icon_pic.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+form.consult-form .col .file input {
+	position: absolute;
+	right: 0;
+	font-size: 50px;
+	opacity: 0
+}
+form.consult-form .col .close {
+	display: block;
+	width: .41rem;
+	height: .39rem;
+	margin-left: .07rem;
+	background-image: url(../images/audit/icon_x.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+form.consult-form .col.active .file {
+	background-image: url(../images/audit/icon_pic_on.png);
+}
+form.consult-form .col.active .close {
+	background-image: url(../images/audit/icon_x_on.png);
+}
+
+/* consult upload end */
+
+/* consult detail start */
+
+.consult-detail0 {
+	padding: .15rem .1rem;
+}
+.consult-detail0 .question{
+	margin-bottom: .1rem;
+	padding-bottom: .1rem;
+	border-bottom: 1px solid #e6e6e6;
+}
+.consult-detail0 h3 {
+	padding-bottom: .1rem;
+	font-size: 1.25em;
+}
+.consult-detail0 p {
+	color: #818181;
+}
+.consult-detail {
+	padding: 0;
+	background-color: #e7e9eb;
+}
+.consult-detail .sbox{
+	margin-bottom: .1rem;
+	padding: 0 .1rem;
+	background-color: #fff;
+}
+.consult-detail .items {
+	display: -webkit-box;
+	padding: .07rem 0;
+	border-bottom: 1px solid #e6e6e6;
+}
+.consult-detail .items:last-child{
+	border-bottom: none;
+}
+.consult-detail .items .key {
+	display: inline-block;
+	width: 5.25em;
+}
+.consult-detail .items .val {
+	-webkit-box-flex: 1;
+}
+.consult-detail .items .time {
+	color: #0072bc;
+}
+.consult-detail .single {
+	display: block;
+	border-radius: 0;
+}
+.consult-detail .single .key {
+	width: 100%;
+	padding-bottom: .05rem;
+	font-size: 1.25em;
+}
+.consult-detail .single .val {
+	-webkit-box-flex: 0;
+	width: 100%;
+}
+.consult-detail .col .val{
+	border: 1px solid #e6e6e6;
+	border-radius: 7px;
+}
+.consult-detail input{
+    width: 100%;
+    border: 0;
+    padding: .08rem;
+    line-height: 1.5;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.consult-detail .col {
+	display: -webkit-box;
+	margin-bottom: .07rem;
+}
+.consult-detail .col:last-child {
+	margin-bottom: 0;
+}
+.consult-detail .col .val {
+	-webkit-box-flex: 1;
+}
+.consult-detail .col .file {
+	position: relative;
+	display: block;
+	width: .51rem;
+	height: .39rem;
+	margin-left: .07rem;
+	overflow: hidden;
+	background-image: url(../images/audit/icon_pic_on.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+
+/* consult detail end */

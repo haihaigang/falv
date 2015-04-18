@@ -60,12 +60,15 @@ header .icon-audit{
 	color: #dadada;
 }
 .audit-list{
-    padding: .15rem .1rem;
+    padding: .15rem .1rem 0;
 }
 .audit-list .box{
 	margin-bottom: .14rem;
 	border: 1px solid #e6e6e6;
 	box-shadow: none;
+}
+.audit-list .box:last-child{
+	margin-bottom: 0;
 }
 .audit-list .title{
 	padding: .12rem .12rem;

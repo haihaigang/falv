@@ -16,27 +16,14 @@
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
-
     <header class="header">
+        <a href="consult-send.html" class="icon icon_return"></a>
         <h1>合同审核</h1>
         <a href="audit-submit.html" class="icon icon-audit">开始审核</a>
     </header>
-
     <section class="container audit">
-        <div class="audit-stat">
-            <div class="audit-stat-content">
-                <div class="audit-stat-used">已用
-                    <p class="txt">4份</p>
-                </div>
-                <div class="audit-stat-oth">
-                    剩余
-                    <p class="txt"><em>26</em>份</p>
-                </div>
-            </div>
-            <div class="audit-day"><i>有效期：</i><span>2015.1.22</span>
-            </div>
+        <div class="audit-stat" id="flv-stat">
         </div>
-
         <section class="audit-list" id="flv-list">
             <div class="box">
                 <div class="title">
@@ -60,8 +47,18 @@
             </div>
         </section>
     </section>
-
     <!--模版位置-->
+    <script type="text/html" id="flv-stat-tmpl">
+        <div class="audit-stat-content">
+            <div class="audit-stat-used">已用<p class="txt"><!--[= usedAmounttotal + serviceTypeUnit]--></p>
+            </div>
+            <div class="audit-stat-oth">
+                剩余<p class="txt"><em><!--[= remainAmounttotal]--></em><!--[= serviceTypeUnit]--></p>
+            </div>
+        </div>
+        <div class="audit-day"><i>有效期：</i><span><!--[= $getDateFromStr(validDate)]--></span>
+        </div>
+    </script>
     <script type="text/html" id="flv-list-tmpl">
         <!--[for(i = 0; i < list.length; i++){]-->
         <!--[if(list[i].status == 'AAS003'){]-->
@@ -89,7 +86,6 @@
         <!--[}]-->
         <!--[}]-->
     </script>
-
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -115,7 +111,6 @@
     </div>
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
-    <script src="../content/js/lib/jscroll.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>

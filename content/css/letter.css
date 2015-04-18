@@ -60,12 +60,15 @@ header .icon-send{
 	color: #dadada;
 }
 .letter-list{
-    padding: .15rem .1rem;
+    padding: .15rem .1rem 0;
 }
 .letter-list .box{
 	margin-bottom: .14rem;
 	border: 1px solid #e6e6e6;
 	box-shadow: none;
+}
+.letter-list .box:last-child{
+	margin-bottom: 0;
 }
 .letter-list .title{
 	padding: .12rem .12rem;

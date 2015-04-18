@@ -71,23 +71,23 @@
 		}
 
 		Ajax.submit({
-			url: config.api_reg_verify,
+			url: config.api_reg_app,
 			data: $(this),
-			type: 'PUT'
+			type: 'POST'
 		}, function(data){
-			if(data.code != 'OK'){
-				Tools.showAlert(data.message || '服务器异常，请稍后再试～',5000);
+			if(data.error){
+				Tools.showAlert(data.error.message || '服务器异常，请稍后再试～',5000);
 				return;
 			}
 
-			Cookie.set(Storage.AUTH,data.result.id);
-			Storage.set(Storage.AUTH, data.result.id, true);
-			Storage.set(Storage.ACCOUNT,data.result);
+			Cookie.set(Storage.AUTH,data.data._id);
+			Storage.set(Storage.AUTH, data.data._id, true);
+			Storage.set(Storage.ACCOUNT,data.data);
 			var from = location.search.getQueryValue('from');
 			if(from){
 				location.href = decodeURIComponent(from);
 			}else{
-				location.href = "user/index.html";
+				location.href = "reg-sus.html";
 			}
 		});
 	});
@@ -109,18 +109,25 @@
 		Ajax.custom({
 			url: config.api_reg_resendSMS,
 			data: {
-				reguid: phone || phoneNum
+				reguid: phone || phoneNum,
+				actionKbn: 'reg'
 			},
 			type: 'POST'
 		}, function(data){
-			if(data.code != 'OK'){
-				Tools.showAlert('服务器异常，请稍后再试～',5000);
+			if(data.error){
+				Tools.showAlert(data.error.message || '服务器异常，请稍后再试～',5000);
+				btnSend.addClass('ready').text('获取验证码');
+				return
 			}
 			
-			//格式：{13641882170:123456}
-			for(var i in data.result){
-				oriCode = data.result[i];
-			}
+			//返回数据
+			// _id: "5531ccacbad489afcc4a41d8"
+			// code: "670652"
+			// createAt: "2015-04-18T03:17:00.095Z"
+			// uid: "13641882176"
+			// updateAt: "2015-04-18T03:17:00.095Z"
+			// valid: 1
+			oriCode = data.data.code;
 			
 			//60秒计时重发
 			inte = setInterval(function(){
@@ -187,7 +194,7 @@
 			}
 			
 			if(data.result){
-				Tools.showAlert('爷的手机号已注册',5000);
+				Tools.showAlert('手机号已注册',5000);
 				return;
 			}
 			

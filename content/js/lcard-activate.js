@@ -1,6 +1,11 @@
 (function() {
 
-	var fromCard = Tools.getQueryValue('card');
+	var fromCard = Tools.getQueryValue('card'),
+        id = Storage.get(Storage.AUTH);
+
+    if(id){
+        $('.phone').text(id);
+    }
 
     $('#lcard-form').submit(function(e) {
         e.preventDefault();
@@ -26,6 +31,8 @@
             	Tools.showAlert('激活失败！<br/>请输入正确的卡号和密码。<br/>有疑问请联系我们的客服人员。<br/>400-440-8888');
                 return;
             }
+
+            Storage.set('FLV-LCARD',data.data)
 
             location.href = 'overview.html';
         });

@@ -4,25 +4,19 @@
     page: 1, //当前第几页，从1开始
     pageSize: 10, //默认分页大小
     server: location.protocol + '//' + location.host,
-    server: 'https://www.ilaw66.com', //模拟接口用
+    server: 'http://42.192.0.11:4001', //测试接口用
     image: location.protocol + '//' + location.host + '/',
-    image: 'https://www.ilaw66.com/'
+    image: 'http://42.192.0.11:4001'
 };
 
 //account
 config.api_login = config.server + '/user/quickLogin';//免验证码登陆
 config.api_logout = config.server + '/user/logout';//登出
-config.api_reg_validate = config.server + '/user/validate';//验证注册信息
-config.api_reg_customer = config.server + '/user/customerVerify';//完成普通客户注册
 config.api_reg_app = config.server + '/app/user/reg';//手机端用户注册
-config.api_reg_resendSMS = config.server + '/user/resendSMS';//获取短信验证码
-config.api_reg_verify = config.server + '/user/verify';//验证短信验证码，完成注册
+config.api_reg_resendSMS = config.server + '/app/user/sms';//获取短信验证码
 
 //forget
-config.api_forget_step1 = config.server + '/user/forget/step1';//验证忘记密码信息
-config.api_forget_step2 = config.server + '/user/forget/step2';//验证短信验证码
-config.api_forget_step3 = config.server + '/user/forget/step3';//完成忘记密码
-config.api_forget_resendSMS = config.server + '/user/forgetResendSMS';//忘记密码功能重新发送手机验证码
+config.api_forget_resendSMS = config.server + '/app/user/sms';//忘记密码功能重新发送手机验证码
 config.api_forget = config.server + '/app/user/forget';//手机端忘记密码
 
 //lcard
@@ -36,11 +30,27 @@ config.api_audit_add = config.server + '/contractAudit/add';//新建合同审核
 config.api_audit_detail = config.server + '/contractAudit/getDetail';//获取合同审核详细
 config.api_audit_list_app = config.server + '/app/contractAudit/list';//移动端获取合同审核一览
 
+//consult
+config.api_consult_list = config.server + '/consult/list';//获取电话咨询一览
+config.api_consult_file_list = config.server + '/consultFile/list';//获取咨询文件一览
+config.api_consult_file_detail = config.server + '/consultFile/getDetail';//获取咨询文件详细
+config.api_consult_file_add = config.server + '/consultFile/add';//上传咨询文件
+
+//train
+config.api_train_list = config.server + '/train/list';//获取法律培训列表
+
+//letter
+config.api_letter_list = config.server + '/letter/list';//获取律师函服务一览
+config.api_letter_detail = config.server + '/letter/getDetail';//获取律师函服务详细
+
 //file api
 config.api_file_upload = config.server + '/file/upload.json';//上传文件到服务器
 config.api_file_remove = config.server + '/file/remove.json';//删除
 config.api_file_download = config.server + '/file/download.json';//下载
 config.api_file_img = config.server + '/img/:id';//获取图片
+
+//service
+config.api_service_stat = config.server + '/service/getServiceUseInfo';//获取统计信息
 
 //user
 config.api_user_msg = config.server + '/app/user/update';//更新用户信息

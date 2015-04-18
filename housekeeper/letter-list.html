@@ -17,23 +17,13 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <header class="header">
+        <a href="#" class="icon icon_return"></a>
         <h1>发律师函</h1>
         <a href="letter-send.html" class="icon icon-send">开始签发</a>
     </header>
     <section class="container letter">
-        <div class="letter-stat">
-            <div class="letter-stat-content">
-                <div class="letter-stat-used">已用
-                    <p class="txt">4份</p>
-                </div>
-                <div class="letter-stat-oth">
-                    剩余
-                    <p class="txt"><em>26</em>份</p>
-                </div>
-            </div>
-            <div class="letter-day"><i>有效期：</i><span>2015.1.22</span></div>
-        </div>
-        <section class="letter-list">
+        <div class="letter-stat" id="flv-stat"></div>
+        <section class="letter-list" id="flv-list">
             <div class="box">
                 <div class="title">
                     <span class="txt">如果公司无条件辞退员工，需要什…</span>
@@ -68,32 +58,68 @@
             </div>
         </section>
     </section>
-    <div id="myPanel">
-        <p></p>
-        <div class="options">
-            <input type="button" class="btn btn_ok" value="好！" />
-            <input type="button" class="btn btn_yes" value="是" />
-            <input type="button" class="btn btn_no" value="否" />
+    <!--模版位置-->
+    <script type="text/html" id="flv-stat-tmpl">
+        <div class="letter-stat-content">
+            <div class="letter-stat-used">已用
+                <p class="txt">
+                    <!--[= usedAmounttotal + serviceTypeUnit]-->
+                </p>
+            </div>
+            <div class="letter-stat-oth">
+                剩余
+                <p class="txt"><em><!--[= remainAmounttotal]--></em>
+                    <!--[= serviceTypeUnit]-->
+                </p>
+            </div>
+        </div>
+        <div class="letter-day"><i>有效期：</i><span><!--[= $getDateFromStr(validDate)]--></span>
+        </div>
+    </script>
+    <script type="text/html" id="flv-list-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="box">
+            <div class="title">
+                <span class="txt"><!--[= list[i].problem]--></span>
+            </div>
+            <div class="date"><span class="lab">提交时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].createAt)]--></span></div>
+            <div class="date"><span class="lab">预计完成时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].updateAt)]--></span></div>
+            <div class="opt">
+                <a href="letter-progress.html?status=<!--[= list[i]._id]-->"><!--[= $getLetterStatus(list[i].status)]--></a>
+                <a href="letter-detail.html?id=<!--[= list[i]._id]-->">查看</a>
+            </div>
+        </div>
+        <!--[}]-->
+    </script>
+    <div id="ti-panel" class="panel">
+        <div class="panel-content">
+            <div class="panel-cell">
+                <h3 class="panel-title">提示</h3>
+                <p class="panel-text"></p>
+            </div>
+        </div>
+        <div class="panel-buttons">
+            <div class="options">
+                <a href="javascript:;" class="btn btn-ok">确定</a><a href="javascript:;" class="btn btn-cancel">取消</a>
+            </div>
+            <div class="panel-tips">若在<span class="panel-tick">5</span>秒内无反应自动跳转到订单的详情页面</div>
         </div>
     </div>
-    <div id="mySelect">
-        <div id="address"></div>
-        <div class="clearfix"></div>
-        <div class="options">
-            <input type="button" class="btn btn_close" value="完成" />
-        </div>
+    <div id="ti-panel-bg" class="panel-bg"></div>
+    <div id="ti-toast" class="toast"><span></span>
     </div>
-    <div id="panelBg"></div>
-    <div id="wu-toast" style="display: none">
-        <span></span>
+    <div id="ti-loading" class="loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
     </div>
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
-    <script src="../content/js/lib/jscroll.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/login.js"></script>
+    <script src="../content/js/letter-list.js"></script>
 </body>
 
 </html>
