@@ -1,7 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -11,32 +12,70 @@
     <link rel="stylesheet" href="../content/css/mobiscroll-2.3.1.full.min.css" />
     <link rel="stylesheet" href="../content/css/enterprise.css" />
 </head>
+
 <body>
-<noscript>
-    <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
-</noscript>
-
-<header class="header">
-    <h1>企业查询</h1>
-</header>
-
-<section class="container">
-    <form id="search-form" action="#" method="post" class="search">
-        <div class="items">
-            <div class="val">
-                <input type="text" id="selectPro" name="province"placeholder="所在省份" />
-                <label class="select-tab" for="selectPro">选择省份</label>            
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <header class="header">
+        <a href="#" class="icon icon_return"></a>
+        <h1>企业查询</h1>
+    </header>
+    <section class="container">
+        <form id="search-form" action="result.html" method="get" class="search">
+            <div class="items">
+                <div class="val" id="show-page">
+                    <input type="hidden" name="province"/>
+                    <input type="text" id="selectPro" name="p" placeholder="所在省份" readonly />
+                    <label class="select-tab" for="selectPro">选择省份</label>
+                </div>
             </div>
+            <div class="items">
+                <div class="val">
+                    <input type="text" name="keyword" placeholder="企业名称或关键字" />
+                </div>
+            </div>
+            <div class="options">
+                <input type="submit" class="btn" value="查询" />
+            </div>
+        </form>
+    </section>
+    <footer class="footer">
+        <a class="footer-item" href="../index.html">
+            <i class="home"></i>
+            <p>首页</p>
+        </a>
+        <a class="footer-item" href="../housekeeper/index.html">
+            <i class="hk"></i>
+            <p>法率管家</p>
+        </a>
+        <a class="footer-item" href="">
+            <i class="send"></i>
+            <p>快诉</p>
+        </a>
+        <a class="footer-item" href="../user/index.html">
+            <i class="user"></i>
+            <p>我的</p>
+        </a>
+    </footer>
+    <div id="province-page" class="sidebar">
+        <header class="header">
+            <a href="#" class="icon icon_return" data-flag="true" id="sidebar-close"></a>
+            <h1>选择省份</h1>
+        </header>
+        <section class="container province-list" id="flv-province"></section>
+    </div>
+    <!--模版位置-->
+    <script type="text/html" id="flv-province-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="province-item">
+            <div class="name"><!--[= list[i].letter]--></div>
+            <!--[for(j = 0; j < list[i].items.length; j++){]-->
+            <div class="value" data-code="<!--[= list[i].items[j].Code]-->"><!--[= list[i].items[j].ProvinceName]--></div>
+            <!--[}]-->
         </div>
-        <div class="items">
-            <div class="val"><input type="text" name="keyword"placeholder="企业名称或关键字" /></div>
-        </div>
-        <div class="options">
-            <input type="submit" class="btn" value="查询" />
-        </div>
-    </form>
-</section>
-
+        <!--[}]-->
+    </script>
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -66,7 +105,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/register.js"></script>
+    <script src="../content/js/enterprise-index.js"></script>
 </body>
 
 </html>

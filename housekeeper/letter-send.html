@@ -31,28 +31,40 @@
             <div class="letter-gress-line"><span></span></div>
         </div>
         <div class="letter-tabs">
-            <div class="letter-tabs-item active"><i></i>发给企业</div>
-            <div class="letter-tabs-item"><i></i>发给个人</div>
+            <div class="letter-tabs-item enterprise active"><i></i>发给企业</div>
+            <div class="letter-tabs-item personal"><i></i>发给个人</div>
         </div>
         <form id="letter-form" action="#" method="post" class="letter-form">
             <div class="form-group">
-                <div class="items single">
+                <div class="items single items-ent">
                     <div class="key big"><em>*</em>企业名称：</div>
                     <div class="val extra">
-                        <input type="text" name="phone" placeholder="输入企业名称" />
+                        <input type="text" name="corporate" placeholder="输入企业名称" />
                         <i class="mic"></i>
                     </div>
                 </div>
-                <div class="items">
+                <div class="items items-name items-ent">
                     <div class="key"><em>*</em>收函人姓名：</div>
                     <div class="val">
-                        <input type="text" name="phone" placeholder="需是法人代表或负责人" />
+                        <input type="text" name="represents" placeholder="需是法人代表或负责人" />
+                    </div>
+                </div>
+                <div class="items items-name items-per" style="display: none;">
+                    <div class="key"><em>*</em>收函人姓名：</div>
+                    <div class="val">
+                        <input type="text" name="name" placeholder="输入收函人姓名" disabled />
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="key"><em>*</em>收函人电话：</div>
+                    <div class="val">
+                        <input type="text" name="phone" placeholder="输入收函人电话" />
                     </div>
                 </div>
                 <div class="items">
                     <div class="key"><em>*</em>收函人地区：</div>
                     <div class="val area">
-                        <input type="hidden" name="phone" />
+                        <input type="hidden" name="town" />
                     	<div class="txt txt-area">地区选择</div>
                     </div>
                     <i class="choose">&nbsp;</i>
@@ -60,37 +72,28 @@
                 <div class="items">
                     <div class="key"><em>*</em>具体收函地址：</div>
                     <div class="val">
-                        <input type="text" name="phone" />
+                        <input type="text" name="streets" />
                     </div>
                 </div>
                 <div class="items">
                     <div class="key"><em>*</em>邮政编码：</div>
                     <div class="val">
-                        <input type="text" name="phone" />
+                        <input type="text" name="postcode" />
                     </div>
                 </div>
                 <div class="items single">
                     <div class="key big"><em>*</em>情况说明：</div>
                     <div class="val">
-                        <textarea cols="6" placeholder="例如：本律师函是以公司义发给企业，我司名称（xxxxx公司），抗议（XXXX公司）网站侵权行为，网址为...本周内发出"></textarea>
+                        <textarea cols="6" name="problem" placeholder="例如：本律师函是以公司义发给企业，我司名称（xxxxx公司），抗议（XXXX公司）网站侵权行为，网址为...本周内发出"></textarea>
                     </div>
                 </div>
             </div>
             <div class="form-group gap">
-                <div class="items single">
+                <div class="items single" id="flv-imgs">
                     <div class="key big"><em>*</em>证据材料上传：</div>
-                    <div class="col active">
-                        <div class="val">
-                            <input type="text" name="phone" placeholder="上传图片" value="pic_2015.jpg" />
-                        </div>
-                        <div class="file">
-                            <input type="file" name="file" />
-                        </div>
-                        <div class="close"></div>
-                    </div>
                     <div class="col">
                         <div class="val">
-                            <input type="text" name="phone" placeholder="上传图片" />
+                            <input type="text" name="fileName" placeholder="上传图片" />
                         </div>
                         <div class="file">
                             <input type="file" name="file" />
@@ -103,15 +106,29 @@
                 <div class="items single">
                     <div class="key big"><em>*</em>您的需求：</div>
                     <div class="val">
-                        <textarea cols="6" placeholder="请写下您的合同审核需求及重点关注问题。例如：员工赔偿金"></textarea>
+                        <textarea cols="6" name="expectation" placeholder="请写下您的合同审核需求及重点关注问题。例如：员工赔偿金"></textarea>
                     </div>
                 </div>
                 <div class="options">
+                    <input type="hidden" name="type" value="1" />
                     <input type="submit" class="btn" value="提交" />
                 </div>
             </div>
         </form>
     </section>
+
+    <!--模版位置-->
+    <script type="text/html" id="flv-imgs-tmpl">
+        <div class="col">
+            <div class="val">
+                <input type="text" name="fileName" placeholder="上传图片" readonly />
+            </div>
+            <div class="file">
+                <input type="file" name="file" />
+            </div>
+            <div class="close"></div>
+        </div>
+    </script>
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -137,11 +154,10 @@
     </div>
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
-    <script src="../content/js/lib/jscroll.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/login.js"></script>
+    <script src="../content/js/letter-send.js"></script>
 </body>
 
 </html>

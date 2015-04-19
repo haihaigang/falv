@@ -261,6 +261,7 @@ header .icon-send{
 }
 .letter-tabs-item.active i{
 	position: absolute;
+	left: 0;
 	bottom: -1px;
 	display: block;
 	width: 100%;
@@ -280,6 +281,9 @@ header .icon-send{
 form.letter-form .items .key{
 	width: 8em;
 	padding-left: .1rem;
+}
+form.letter-form .items.items-name{
+	margin-top: .12rem;
 }
 form.letter-form .items .key.big{
 	font-size: 1.25em;

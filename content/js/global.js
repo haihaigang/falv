@@ -50,7 +50,7 @@
      */
     Api.prototype.paging = function(options, callback, callbackError) {
         var that = this,
-            isFirst = true,//options.data.page == 1, //是否第一次请求
+            isFirst = true, //options.data.page == 1, //是否第一次请求
             opt = { //默认配置
                 renderFor: this.defaultListTmpl,
                 renderEle: this.defaultListEle,
@@ -88,7 +88,7 @@
 
         that.ajaxSend(options, function(response, textStatus, jqXHR) {
             var body = response[options.key];
-            body = body.items;//当前项目约定分页返回数据多一层items
+            body = body.items; //当前项目约定分页返回数据多一层items
 
             if (options.key == '-1') {
                 //设置key=-1，所有返回值为分页数据
@@ -243,13 +243,13 @@
         options = options || {};
         var csrftoken = Storage.get('CSRFTOKEN');
         if (!!csrftoken) {
-            options.url += '?_csrf='+ encodeURIComponent(csrftoken);
+            options.url += '?_csrf=' + encodeURIComponent(csrftoken);
         }
 
-        if(typeof options.contentType == undefined){
+        if (typeof options.contentType == undefined) {
             options.contentType = 'application/json'
         }
-        if(typeof options.processData == undefined){
+        if (typeof options.processData == undefined) {
             options.processData = true;
         }
 
@@ -889,6 +889,22 @@
         isIPad: function() {
             //5.0 (iPad; CPU OS 8_1_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B435
             return (/iPad/gi).test(navigator.appVersion);
+        },
+        // 将form中的值转换为键值对
+        formJson: function(form) {
+            var o = {};
+            var a = $(form).serializeArray();
+            $.each(a, function() {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
         }
     };
 

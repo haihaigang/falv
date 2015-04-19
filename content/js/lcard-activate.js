@@ -1,12 +1,32 @@
 (function() {
 
-	var fromCard = Tools.getQueryValue('card'),
+	var canal = Tools.getQueryValue('canal'),
         id = Storage.get(Storage.AUTH);
 
     if(id){
         $('.phone').text(id);
     }
 
+    //如果扫码过来的，自动激活
+    if(canal){
+        Ajax.submit({
+            url: config.api_lcard_activate_auto,
+            data: {
+                canal: canal
+            }
+        }, function(data){
+            if(data.error){
+                Tools.showAlert(data.error.message);
+                return;
+            }
+
+            Storage.set('FLV-LCARD',data.data)
+
+            location.href = 'overview.html';
+        })
+    }
+
+    //提交激活
     $('#lcard-form').submit(function(e) {
         e.preventDefault();
 

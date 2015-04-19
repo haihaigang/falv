@@ -1,6 +1,6 @@
 (function() {
 
-    var tempFiles = [];//存储临时文件数组
+    var tempFiles = []; //存储临时文件数组
 
     //文件上传
     $('#audit-form').on('change', 'input[type="file"]', function() {
@@ -19,7 +19,7 @@
             contentType: false,
             processData: false
         }, function(data) {
-            if(data.error){
+            if (data.error) {
                 Tools.showAlert(data.error.message);
                 return;
             }
@@ -31,7 +31,7 @@
             };
             tempFiles.push(d);
 
-        	that.parents('.col').addClass('active').find('input[name="fileName"]').val(data.name);
+            that.parents('.col').addClass('active').find('input[name="fileName"]').val(data.name);
             //上传图片成功后，添加下个文件控件
             $('#flv-imgs').append($('#flv-imgs-tmpl').html());
         });
@@ -42,7 +42,7 @@
         if ($('#audit-form .col').length <= 1) {
             return;
         }
-        if(!$(this).parents('.col').hasClass('active')){
+        if (!$(this).parents('.col').hasClass('active')) {
             return;
         }
         $(this).parents('.col').remove();
@@ -51,7 +51,7 @@
     $('#audit-form').submit(function(e) {
         e.preventDefault();
 
-        if(tempFiles.length <= 0){
+        if (tempFiles.length <= 0) {
             Tools.showAlert('至少选择一个文件');
             return;
         }
@@ -71,7 +71,7 @@
                 data: d
             }
         }, function(data) {
-            if(data.error){
+            if (data.error) {
                 Tools.showAlert(data.error.message);
                 return;
             }

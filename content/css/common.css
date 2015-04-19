@@ -682,7 +682,6 @@ form .single .val {
 }
 /* list common end */
 /* animation start */
-
 .wu_page {
     position: absolute;
     z-index: 9;
@@ -1043,3 +1042,42 @@ form .single .val {
     text-align: center;
 }
 /* pagination end */
+
+/* sidebar start */
+#sidebar-bg {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto
+}
+.sidebar {
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in
+}
+.sidebar.open {
+    -webkit-transform: translateX(0);
+    transform: translateX(0)
+}
+.sidebar .sidebar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 1.76rem;
+    padding: 0 .56rem;
+    overflow-y: auto
+}
+/* sidebar end */
