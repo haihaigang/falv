@@ -58,7 +58,11 @@ config.api_service_valid = config.server + '/service/getValidServiceAmount';//�
 
 //user
 config.api_user_msg = config.server + '/app/user/update';//更新用户信息
+config.api_user_info = config.server + '/user/getRegInfo';//获取用户信息
 config.api_add_address = config.server + '/address/add';//新增地址
+config.api_address_list = config.server + '/address/list';//新增地址
+config.api_address_detail = config.server + '/address/getDetail';//获取地址详情
+config.api_address_remove = config.server + '/address/remove';//删除地址
 
 //enterprise
 config.api_enterprise_province =  'http://i.yjapi.com/eci/provinces';//获取支持城市列表

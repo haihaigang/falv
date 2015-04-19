@@ -1,78 +1,100 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="format-detection" content="telephone=no" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-touch-fullscreen" content="yes" />
-	<title>法率网</title>
-	<link rel="stylesheet" href="../content/css/common.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>法率网</title>
+    <link rel="stylesheet" href="../content/css/common.css">
     <link rel="stylesheet" href="../content/css/user.css">
 </head>
+
 <body>
-<noscript>
-    <div id="noscript">您当前的浏览器不支持JavaScript脚本</div>
-</noscript>
-
-<header class="header">
-    <a href="#" class="icon icon_return"></a>
-    <h1>我的L卡</h1>
-</header>
-<section class="container my-lcard">
-    <div class="lcard-box">
-        <div class="lcard-detail not-used clearfix">
-            <div class="status">未使用</div>
-            <div class="lcard-amount">
-                <div class="lcard-amount-c">
-                    <p>优惠额度：</p>
-                    <p class="price">￥200</p>
+    <noscript>
+        <div id="noscript">您当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <header class="header">
+        <a href="#" class="icon icon_return"></a>
+        <h1>我的L卡</h1>
+    </header>
+    <section class="container my-lcard" id="flv-list">
+        <div class="lcard-box">
+            <div class="lcard-detail not-used clearfix">
+                <div class="status">未使用</div>
+                <div class="lcard-amount">
+                    <div class="lcard-amount-c">
+                        <p>优惠额度：</p>
+                        <p class="price">￥200</p>
+                    </div>
                 </div>
-            </div>
-            <div class="lcard-info">
-                <div class="lcard-info-c">
-                    <p>优惠券编号：12345</p>
-                    <p>有效期：2015/10/25</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="lcard-box">
-        <div class="lcard-detail expired clearfix">
-            <div class="status">已过期</div>
-            <div class="lcard-amount">
-                <div class="lcard-amount-c">
-                    <p>优惠额度：</p>
-                    <p class="price">￥200</p>
-                </div>
-            </div>
-            <div class="lcard-info">
-                <div class="lcard-info-c">
-                    <p>优惠券编号：12345</p>
-                    <p>有效期：2015/10/25</p>
+                <div class="lcard-info">
+                    <div class="lcard-info-c">
+                        <p>优惠券编号：12345</p>
+                        <p>有效期：2015/10/25</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="lcard-box">
-        <div class="lcard-detail expired clearfix">
-            <div class="status">已过期</div>
-            <div class="lcard-amount">
-                <div class="lcard-amount-c">
-                    <p>优惠额度：</p>
-                    <p class="price">￥200</p>
+        <div class="lcard-box">
+            <div class="lcard-detail expired clearfix">
+                <div class="status">已过期</div>
+                <div class="lcard-amount">
+                    <div class="lcard-amount-c">
+                        <p>优惠额度：</p>
+                        <p class="price">￥200</p>
+                    </div>
                 </div>
-            </div>
-            <div class="lcard-info">
-                <div class="lcard-info-c">
-                    <p>优惠券编号：12345</p>
-                    <p>有效期：2015/10/25</p>
+                <div class="lcard-info">
+                    <div class="lcard-info-c">
+                        <p>优惠券编号：12345</p>
+                        <p>有效期：2015/10/25</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+        <div class="lcard-box">
+            <div class="lcard-detail expired clearfix">
+                <div class="status">已过期</div>
+                <div class="lcard-amount">
+                    <div class="lcard-amount-c">
+                        <p>优惠额度：</p>
+                        <p class="price">￥200</p>
+                    </div>
+                </div>
+                <div class="lcard-info">
+                    <div class="lcard-info-c">
+                        <p>优惠券编号：12345</p>
+                        <p>有效期：2015/10/25</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--模版位置-->
+    <script type="text/html" id="flv-list-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="lcard-box">
+            <div class="lcard-detail not-used clearfix">
+                <div class="status">未使用</div>
+                <div class="lcard-amount">
+                    <div class="lcard-amount-c">
+                        <p>优惠额度：</p>
+                        <p class="price">￥<!--[= list[i].couponInfo]--></p>
+                    </div>
+                </div>
+                <div class="lcard-info">
+                    <div class="lcard-info-c">
+                        <p>优惠券编号：<!--[= list[i].cardId]--></p>
+                        <p>有效期：<!--[= $getDateFromStr(list[i].activationEndDate)]--></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--[}]-->
+    </script>
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -96,13 +118,13 @@
             <div class="s-2">正在加载中</div>
         </div>
     </div>
-
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
     <script src="../content/js/lib/jscroll.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
+    <script src="../content/js/my-lcard.js"></script>
 </body>
 
 </html>

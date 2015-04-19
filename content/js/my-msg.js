@@ -4,32 +4,36 @@
 
     if(account){
         $('input[name="name"]').val(account.name);
-        
+        $('select[name="sex"]').val(account.extend.sex);
     }
 
     $('#userMsg-form').submit(function(e) {
         e.preventDefault();
 
         var name = $('input[name="name"]').val(),
-            sex = $('input[name="nickname"]').val(),
+            sex = $('select[name="sex"]').val(),
             password = $('input[name="password"]').val(),
             password1 = $('input[name="repassword"]').val(),
-            orignal = $('input[name="orignal"]').val();
+            original = $('input[name="original"]').val();
 
         if (name.isEmpty()) {
             Tools.showAlert('您的姓名不能为空', 5000);
             return;
         }
+        if (original.isEmpty()) {
+            Tools.showAlert("原始密码不能为空", 5000);
+            return;
+        }
         if (password.isEmpty()) {
-            Tools.showAlert("密码不能为空", 5000);
+            Tools.showAlert("新密码不能为空", 5000);
             return;
         }
         if (!password.isValidPwd()) {
-            Tools.showAlert("密码格式不正确", 5000);
+            Tools.showAlert("新密码格式不正确", 5000);
             return;
         }
         if (password1.isEmpty()) {
-            Tools.showTip('确认密码不能为空', 5000);
+            Tools.showAlert('确认密码不能为空', 5000);
             return;
         }
         if (password != password1) {
@@ -39,10 +43,11 @@
 
 
         var data = {
+            uid: account._id,
             name: name,
             sex: sex,
             password: password,
-            orignal: orignal
+            original: original
         };
 
         Ajax.submit({
@@ -50,8 +55,14 @@
             data: data,
             type: 'PUT'
         }, function(data) {
+            if(data.error){
+                Tools.showAlert(data.error.message);
+                return;
+            }
 
-            location.href = 'index.html';
+            Storage.set(Storage.ACCOUNT,data.data);
+            Tools.showAlert('信息修改成功');
+            //location.href = 'index.html';
         });
 
     });

@@ -22,77 +22,35 @@
     </header>
     <section class="container myaddress">
     	<div id="flv-list"></div>
-        <div class="box">
-            <div class="consignee">
-                <span class="lab">收货人：</span>
-                <span class="txt">刘玄德</span>
-            </div>
-            <div class="phone-num">
-                <span class="lab">手机：</span>
-                <span class="txt">18621800645</span>
-            </div>
-            <div class="address">
-                <span class="lab">收货地址：</span>
-                <span class="txt">上海市长寿路652号108</span>
-            </div>
-            <div class="postcode">
-                <span class="lab">邮政编码：</span>
-                <span class="txt">2348765</span>
-            </div>
-            <div class="operate">
-                <a href="#">编辑地址</a>
-                <a href="#" class="del">删除</a>
-            </div>
-        </div>
-        <div class="box">
-            <div class="consignee">
-                <span class="lab">收货人：</span>
-                <span class="txt">张文元</span>
-            </div>
-            <div class="phone-num">
-                <span class="lab">手机：</span>
-                <span class="txt">18621800645</span>
-            </div>
-            <div class="address">
-                <span class="lab">收货地址：</span>
-                <span class="txt">上海市长寿路652号108</span>
-            </div>
-            <div class="postcode">
-                <span class="lab">邮政编码：</span>
-                <span class="txt">2348765</span>
-            </div>
-            <div class="operate">
-                <a href="#">编辑地址</a>
-                <a href="#" class="del">删除</a>
-            </div>
-        </div>
-        <div class="options">
+    </section>
+    <footer class="footer" style="border-top: 0;">
+        <div class="options" style="width: 90%; margin: 0 auto; padding-bottom: .1rem;">
             <a href="add-address.html" class="btn">添加新地址</a>
         </div>
-    </section>
+    </footer>
     <!--模版位置-->
     <script type="text/html" id="flv-list-tmpl">
         <!--[for(i = 0; i < list.length; i++){]-->
         <div class="box">
             <div class="consignee">
                 <span class="lab">收货人：</span>
-                <span class="txt">张文元</span>
+                <span class="txt"><!--[= list[i].postName]--></span>
             </div>
             <div class="phone-num">
                 <span class="lab">手机：</span>
-                <span class="txt">18621800645</span>
+                <span class="txt"><!--[= list[i].mobile]--></span>
             </div>
             <div class="address">
                 <span class="lab">收货地址：</span>
-                <span class="txt">上海市长寿路652号108</span>
+                <span class="txt"><!--[= list[i].area.province.name + list[i].area.city.name + list[i].area.town.name + list[i].area.streets]--></span>
             </div>
             <div class="postcode">
                 <span class="lab">邮政编码：</span>
-                <span class="txt">2348765</span>
+                <span class="txt"><!--[= list[i].area.postcode]--></span>
             </div>
             <div class="operate">
-                <a href="#">编辑地址</a>
-                <a href="#" class="del">删除</a>
+                <a href="add-address.html?id=<!--[= list[i]._id]-->">编辑地址</a>
+                <a href="#" class="del" data-id="<!--[= list[i]._id]-->">删除</a>
             </div>
         </div>
         <!--[}]-->
