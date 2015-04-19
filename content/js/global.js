@@ -180,7 +180,7 @@
     Api.prototype.submit = function(options, callback, callbackError) {
         var formData,
             that = this,
-            isForm = !!options.data.length,
+            isForm = typeof options.data != 'string' && !!options.data.length,
             btnSubmit;
 
         if (isForm) {

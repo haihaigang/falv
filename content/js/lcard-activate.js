@@ -9,7 +9,7 @@
 
     //如果扫码过来的，自动激活
     if(canal){
-        Ajax.submit({
+        Ajax.custom({
             url: config.api_lcard_activate_auto,
             data: {
                 canal: canal

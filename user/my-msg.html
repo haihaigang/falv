@@ -7,9 +7,10 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-touch-fullscreen" content="yes" />
 	<title>法率网</title>
-	<link rel="stylesheet" href="/falv/content/css/common.css">
+	<link rel="stylesheet" href="../content/css/common.css">
     <link rel="stylesheet" href="../content/css/mobiscroll-2.3.1.full.min.css" />
-    <link rel="stylesheet" href="/falv/content/css/user.css">
+    <link rel="stylesheet" href="../content/css/mobiscroll.custom-2.5.0.min.css" />
+    <link rel="stylesheet" href="../content/css/user.css">
 </head>
 <body>
 <noscript>
@@ -17,6 +18,7 @@
 </noscript>
 
 <header class="header">
+    <a href="#" class="icon icon_return"></a>
     <div class="header_title"><h1>个人信息修改</h1></div>
 </header>
 <section class="container my-msg">
@@ -26,7 +28,7 @@
         </div>
         <div class="items">
             <div class="val">
-                <select name="nickname" id="nickName" data-role="nickname">
+                <select name="nickname" id="nickName" data-role="nickname" name="sex">
                     <option value=""> 称呼 </option>
                     <option value="1"> 男士 </option>
                     <option value="2"> 女士 </option>
@@ -85,10 +87,10 @@
     <script>
     (function(){
         $('#nickName').mobiscroll().select({
-            theme: "default",     // Specify theme like: theme: 'ios' or omit setting to use default 
+            theme: "mobiscroll",     // Specify theme like: theme: 'ios' or omit setting to use default 
             mode: "scroller",       // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
             display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-            lang: "zh"        // Specify language like: lang: 'pl' or omit setting to use default 
+            lang: "zh-cn"        // Specify language like: lang: 'pl' or omit setting to use default 
         });
     })();
     </script>

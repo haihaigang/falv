@@ -16,17 +16,16 @@
     <noscript>
         <div id="noscript">您当前的浏览器不支持JavaScript脚本</div>
     </noscript>
-
     <section class="container home">
         <div class="slider">
             <div class="scroller">
-                <div class="item" data-link="<!--[= list[i].url]-->">
+                <div class="item" data-link="housekeeper/index.html">
                     <img id="img-<!--[= i]-->" src="content/images/home/slider/1_02.png" alt="" />
                 </div>
-                <div class="item" data-link="<!--[= list[i].url]-->">
+                <div class="item" data-link="enterprise/index.html">
                     <img id="img-<!--[= i]-->" src="content/images/home/slider/2_02.png" alt="" />
                 </div>
-                <div class="item" data-link="<!--[= list[i].url]-->">
+                <div class="item" data-link="lcard/activate.html">
                     <img id="img-<!--[= i]-->" src="content/images/home/slider/3_02.png" alt="" />
                 </div>
             </div>
@@ -45,13 +44,11 @@
             </div>
         </div>
     </section>
-
     <footer class="footer">
         <div class="options">
             <a href="#" class="btn">下载法率网APP</a>
         </div>
     </footer>
-
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -75,7 +72,6 @@
             <div class="s-2">正在加载中</div>
         </div>
     </div>
-
     <script src="content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="content/js/lib/template.js"></script>
     <script src="content/js/lib/jscroll.js"></script>
@@ -84,7 +80,18 @@
     <script src="content/js/worldunion.js"></script>
     <script src="content/js/lib/jquery.doubletap.js"></script>
     <script>
-    (function() {})();
+    (function() {
+        config.initScroll();
+
+        //滚动图绑定tap事件，跳转链接
+        $('.scroller .item').addSwipeEvents().bind('tap', function(evt, touch) {
+            var link = $(this).attr('data-link');
+            if (link) {
+                location.href = link;
+            }
+        });
+
+    })();
     </script>
 </body>
 

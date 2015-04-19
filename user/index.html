@@ -17,6 +17,7 @@
         <div id="noscript">您当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <header class="header">
+        <a href="#" class="icon icon_return"></a>
         <h1>我的</h1>
     </header>
     <section class="container userbox">
@@ -40,7 +41,7 @@
                 <a href="about-falv.html">
                     <span class="i4">关于法率</span>
                 </a>
-                <a href="my-exit">
+                <a href="#" id="logout">
                     <span class="i5">退出登录</span>
                 </a>
             </div>
@@ -98,7 +99,31 @@
 
         if (id) {
             $('.user_type').text(id);
+        } else {
+            location.href = '../account/login.html?from=../user/index.html'
         }
+
+        //退出
+        $('#logout').click(function(e) {
+            e.preventDefault();
+
+            Ajax.custom({
+                url: config.api_logout
+            }, function(data) {
+                if (data.error) {
+                    Tools.showAlert(data.error.message);
+                    return;
+                }
+
+                Cookie.remove(Storage.AUTH);
+                Storage.remove(Storage.AUTH);
+                Storage.remove(Storage.ACCOUNT);
+
+                location.href = '../account/login.html';
+            },function(jqXHR){
+                log(jqXHR)
+            })
+        })
     })();
     </script>
 </body>

@@ -22,67 +22,7 @@
 		from = encodeURIComponent(from);
 		location.href = '../login?from=' + from;
 	};
-	
-	//自适应页面高度
-	var fixedHeight = 0;
-	var headerHeight = $('header').height() || 0;
-	var footerHeight = $('footer').outerHeight() || 0;
-	// if($('.fixed').length){
-	// 	//若页面有fixed
-	// 	fixedHeight = 44;
-	// 	if($('body').hasClass('has_fixed2')){
-	// 		fixedHeight = 95;
-	// 		footerHeight = 0;
-	// 	}
-	// }
-	// var cPadding = 20;
-	// if($('.container').hasClass('nopadding2')){
-	// 	cPadding = 0;
-	// }else if($('.container').hasClass('nopadding')){
-	// 	cPadding = 10;
-	// }
-	// //document.title = document.documentElement.clientHeight;
-	// setTimeout(function(){
-	// 	//延迟以便获取准确的高度，微信中默认打开webview获取的页面高度很高
-	// 	var mHeight = document.documentElement.clientHeight - fixedHeight - headerHeight - footerHeight - cPadding;
-	// 	$('.container').css('min-height',mHeight);
-	// 	//初始化高度之后再显示footer
-	// 	$('.footer').show();
-	// }, 100);
-	
-	//定位底部按钮
-	var fixedContainer = $('.fixed_wrapper');
-	var fixedHeight = fixedContainer.outerHeight();
-	var windowHeight = $(window).height();
-	var hasTouch = 'ontouchstart' in window;
-	var isAndroid = (/android/gi).test(navigator.appVersion);
-	
-	if(hasTouch && !isAndroid){
-		document.addEventListener('touchstart',function(e){
-			fixedContainer.hide();
-		});
-		document.addEventListener('touchend',function(e){
-			fixedContainer.show();
-		});
-		document.addEventListener('touchcancel',function(e){
-			fixedContainer.show();
-		});
-
-		$(window).scroll(function() {
-			var scrollTop = $(window).scrollTop();
-			windowHeight = hasTouch? screen.height : $(window).height();
-			fixedContainer.css({'top': scrollTop + windowHeight - fixedHeight});
-			fixedContainer.show();
-		});
-		setTimeout(function(){
-			//window.scrollTo(0,1);
-			windowHeight = hasTouch? screen.height : $(window).height();
-			fixedContainer.css({'top': windowHeight - fixedHeight,'bottom':'auto'}).show();
-		},500);
-	}else{
-		fixedContainer.css({'position':'fixed'}).show();
-	}
-
+		
 	template.openTag = "<!--[";
 	template.closeTag = "]-->";
 

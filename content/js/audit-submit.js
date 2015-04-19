@@ -1,6 +1,7 @@
 (function() {
 
-    var tempFiles = []; //存储临时文件数组
+    var tempFiles = [], //存储临时文件数组
+        id = Tools.getQueryValue('id');
 
     //文件上传
     $('#audit-form').on('change', 'input[type="file"]', function() {
@@ -48,6 +49,7 @@
         $(this).parents('.col').remove();
     });
 
+    //提交合同
     $('#audit-form').submit(function(e) {
         e.preventDefault();
 
@@ -57,25 +59,43 @@
         }
 
         var comment = $('textarea[name="comment"]').val();
+
+        if (comment.isEmpty()) {
+            Tools.showAlert('请填写您的需求');
+            return;
+        }
+
         var d = {
-            comment: comment,
-            originalContract: tempFiles
+            data: {
+                comment: comment,
+                originalContract: tempFiles
+            },
+            uid: Storage.get(Storage.AUTH)
         };
 
         d = JSON.stringify(d);
-        log(d)
 
         Ajax.submit({
             url: config.api_audit_add,
-            data: {
-                data: d
-            }
+            data: d,
+            processData: false
         }, function(data) {
             if (data.error) {
                 Tools.showAlert(data.error.message);
                 return;
             }
         });
-
     });
+
+    //若存在id则编辑
+    if (id) {
+        Ajax.detail({
+            url: config.api_audit_detail,
+            data: {
+                id: id
+            }
+        }, function(data) {
+
+        })
+    }
 })();

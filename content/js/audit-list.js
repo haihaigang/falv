@@ -13,7 +13,7 @@
 		}
 
 		Ajax.render('#flv-stat', 'flv-stat-tmpl', data.data);
-	})
+	});
 
 	//分页
     Ajax.paging({
@@ -23,4 +23,25 @@
             limit: ''
         }
     });
+
+    //开始审核前，调用接口确认
+    $('.icon-audit').click(function(e){
+    	e.preventDefault();
+
+    	var that = $(this);
+
+    	Ajax.custom({
+    		url: config.api_service_valid,
+    		data: {
+    			userId:Storage.get(Storage.AUTH),
+    			serviceType: 'ST0004'
+    		}
+    	},function(data){
+    		if(data.error){
+    			Tools.showAlert(dta.error.message);
+    			return;
+    		}
+    		location.href = that.attr('href');
+    	})
+    })
 })();
