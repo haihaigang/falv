@@ -15,7 +15,6 @@
         pcode = $(this).val();
     })
 
-log(id)
     if (id) {
         Ajax.custom({
             url: config.api_address_detail,

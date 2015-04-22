@@ -286,6 +286,7 @@
         }, function(jqXHR, textStatus, errorThrown) {
             that.isLoading = false;
             delete(that.queue[options.url]);
+            log(jqXHR);
 
             logged(options.logtype, jqXHR.statusText, options.url);
             if (typeof callbackError == 'function') {

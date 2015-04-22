@@ -1,5 +1,5 @@
 .gramophone{
-	padding: 0;	
+	padding: 0 0 .52rem;	
 }
 header a,strong{
 	color: #0072bc;
@@ -36,6 +36,13 @@ header a,strong{
 	float: right;
 	width: 45%;
 	text-align: left;
+}
+.gramo-noreg{
+	padding: .2rem 0 .4rem;
+	text-align: center;
+}
+.gramo-noreg em{
+	color: #00bff3
 }
 .gramo-day{
 	height: .3rem;
@@ -296,7 +303,7 @@ header a,strong{
 	background-color: #fff;
 }
 .linkman-list strong{
-	font-weight: bold;
+	font-weight: normal;
 	display: block;
 }
 .linklist{
@@ -305,32 +312,32 @@ header a,strong{
 	padding: .1rem .13rem;
 	line-height: .24rem;
 	position: relative;
+	border-bottom: 1px solid #e6e6e6;
 }
 .linklist span{display: inline-block;}
-.linklist span:last-child{
+.linklist .tel{
 	position: absolute;
 	right: .52rem;
 	background-image: url(../images/gramophone/01.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: .24rem;
-	width: .24rem;
+	width: .48rem;
 	height: .48rem;
 }
 .Rbar{
 	position: fixed;
 	right: 0;
 	top: .44rem;
-	padding:.1rem .13rem;
 	min-height: 320px;
 	z-index: 9;
 }
 .linkman-rbar{
-	background-color:rgba(0,0,0,0.75);
+	background-color:#666;
 }
 .linkman-rbar span{
 	display: block;
-	padding:.13rem 0;
+	padding:.13rem;
 	width: .13rem;
 	text-align: center;
 	color: #dadada;
