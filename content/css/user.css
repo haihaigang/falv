@@ -1,5 +1,5 @@
 .userbox{
-    padding: 0 0 .52rem;
+    padding: 0;
 }
  /*user common start */
 .ulist .box{
@@ -142,7 +142,7 @@
 }
 .lcard-detail{
     position: relative;
-    width: 80%;
+    width: 74%;
     height: 78px;
     margin: 0 auto;
     color: #fff;
@@ -236,6 +236,11 @@ label.select-tab {
 .myaddress .items .key,
 .myaddress .items .select-tab{
     color: #737373;
+}
+.myaddress .items .address-select input[type="text"]{
+    width: 20%;
+    display: inline-block;
+    padding: .08rem 0;
 }
 /* my-address end */
 /* about-falv start */
