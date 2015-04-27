@@ -22,19 +22,9 @@
         <a href="cont-build.html" class="icon icon-build">开始定制</a>
     </header>
     <section class="container cont">
-        <div class="cont-stat">
-            <div class="cont-stat-content">
-                <div class="cont-stat-used">已用
-                    <p class="txt">4份</p>
-                </div>
-                <div class="cont-stat-oth">
-                    剩余
-                    <p class="txt"><em>26</em>份</p>
-                </div>
-            </div>
-            <div class="cont-day"><i>有效期：</i><span>2015.1.22</span></div>
+        <div class="cont-stat" id="flv-stat">
         </div>
-        <section class="cont-list">
+        <section class="cont-list" id="flv-list">
             <div class="box">
                 <div class="title">
                     <em class="status ing">进行中</em><span class="txt">如果公司无条件辞退员工，需要什…</span></div>
@@ -53,6 +43,47 @@
             </div>
         </section>
     </section>
+    <!--模版位置-->
+    <script type="text/html" id="flv-stat-tmpl">
+        <div class="cont-stat-content">
+            <div class="cont-stat-used">
+                已用<p class="txt"><!--[= usedAmounttotal + serviceTypeUnit]--></p>
+            </div>
+            <div class="cont-stat-oth">
+                剩余<p class="txt"><em><!--[= remainAmounttotal]--></em><!--[= serviceTypeUnit]--></p>
+            </div>
+        </div>
+        <div class="cont-day"><i>有效期：</i><span><!--[= $getDateFromStr(validDate)]--></span></div>
+    </script>
+    <script type="text/html" id="flv-list-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <!--[if(list[i].status == 'CS0003'){]-->
+        <div class="box">
+            <div class="title"><em class="status">完成</em><span class="txt"><!--[= list[i].comment || '--']--></span>
+            </div>
+            <div class="date"><span class="lab">完成时间：</span><span class="txt">2015.1.22  22:21</span></div>
+            <div class="opt">
+                <a href="audit-detail.html">合同原文</a>
+                <a href="audit-opinion.html" class="yj">审核意见</a>
+            </div>
+        </div>
+        <!--[}else{]-->
+
+        <div class="box">
+            <div class="title">
+                <em class="status ing">进行中</em><span class="txt"><!--[= list[i].comment || '--']--></span>
+            </div>
+            <div class="date"><span class="lab">预计完成时间：</span><span class="txt"><!--[= $formatDate(list[i].createAt,'yyyy.MM.dd HH:mm')]--></span>
+            </div>
+            <div class="opt">
+                <a href="audit-detail.html?id=<!--[= list[i]._id]-->">合同原文</a>
+            </div>
+        </div>
+        <!--[}]-->
+        <!--[}]-->
+    </script>
+
+
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -81,7 +112,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/login.js"></script>
+    <script src="../content/js/cont-list.js"></script>
 </body>
 
 </html>

@@ -338,6 +338,12 @@ form.cont-form i.choose{
 	background-position: center center;
 	background-size: auto .15rem;
 }
+form.cont-form textarea{
+	width: 100%;
+	border: 0;
+	padding-right: .1rem;
+	box-sizing: border-box;
+}
 form.cont-form .options{
 	width: 80%;
 	margin: .3rem auto;
@@ -390,3 +396,57 @@ form.cont-form .options .mr{
 	color: #ed1c24;
 }
 /* cont sus end */
+/* search doctype*/
+form.search-doctype-form .items {
+	display: block;
+    position: relative;
+    margin:.1rem .1rem 0;
+}
+form.search-doctype-form label.select-tab {
+    position: absolute;
+    right: .1rem;
+    top: .08rem;
+    z-index: 9;
+}
+form.search-doctype-form label.select-tab img{
+	width: .2rem;
+}
+.doctype-list{padding: 0;}
+.doctype-list ul{
+	margin: 0 .15rem;
+}
+.doctype-list ul  li{
+	padding: .15rem;
+	border-bottom: 1px solid #e6e6e6;
+}
+.doctype-list .empty_list{
+	text-align: center;
+	color: #ed1c24;
+	font-size: .12rem;
+	padding-top:.15rem;
+	vertical-align: top;
+}
+.doctype-list .empty_list i{
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: .14rem;
+	background-image: url(../images/housekeeper/icon_empty.png);
+	display: inline-block;
+	width: .14rem;
+	height: .16rem;
+	margin-right: .06rem;
+}
+.doctype-list h3{
+	padding: .15rem;
+	text-align: center;
+	border-bottom: 2px solid #e6e6e6;
+}
+.doctype-list h3 em{
+	color: #00bff3;
+	margin:0 .04rem 
+}
+header a.doctype-search-icon{
+	color: #0072bc;
+	width: .7rem;
+	font-size: 1.2em;
+}

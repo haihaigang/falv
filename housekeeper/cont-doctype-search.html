@@ -17,22 +17,24 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <header class="header">
-        <h1>合同完成</h1>
+        <h1>专项服务</h1>
     </header>
-    <section class="container cont-sus">
-        <div class="tips">
-        	<p>恭喜您已经完成合同起草</p>
+    <form class="search-doctype-form" action="cont-doctype-list.html">
+        <div class="items">
+            <input type="text" name="name" id="name" placeholder="输入关键字">
+            <label class="select-tab" for="name"><img src="../content/images/housekeeper/icon_search.png"></label>
         </div>
-        <div class="options">
-        	<div class="opt-item">
-        		<button class="btn btn-view">查看合同</button>
-        	</div>
-        	<div class="opt-item">
-        		<button class="btn btn-risk">风险提示</button>
-        	</div>
-        </div>
+    </form>
+    <section class="container doctype-list">
+        <ul id="doctypeKeywordList">
+            <li>基建</li>
+            <li>月嫂招募</li>
+            <li>临时工</li>
+        </ul>
+        <div class="empty_list" id="emptyList"><i></i>清空搜索历史</div>
     </section>
- 
+    
+
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -62,7 +64,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/cont-build-end.js"></script>
+    <script src="../content/js/cont-doctype-search.js"></script>
 </body>
 
 </html>

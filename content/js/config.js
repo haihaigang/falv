@@ -31,6 +31,17 @@ config.api_audit_list = config.server + '/contractAudit/list';//获取合同审�
 config.api_audit_add = config.server + '/contractAudit/add';//新建合同审核
 config.api_audit_detail = config.server + '/contractAudit/getDetail';//获取合同审核详细
 config.api_audit_list_app = config.server + '/app/contractAudit/list';//移动端获取合同审核一览
+// housekeeper contract
+config.api_cont_list = config.server + '/contract/list';//获取合同起草服务一览
+config.api_cont_add = config.server + '/contract/add';//开始起草
+config.api_cont_detail = config.server + '/contract/get';//获取合同服务详情
+config.api_cont_preview = config.server + '/contract/preview';//预览合同
+config.api_cont_generate = config.server + '/contract/generate'; //完成合同起草
+config.api_cont_find_legal = config.server + '/contract/findLegalDoc'; //查看合同模版是否存在
+config.api_cont_list_app = config.server + '/app/contract/list';//手机端获取合同起草服务一览
+config.api_cont_category_list = config.server + '/category/list';//获得目录名称列表
+config.api_cont_doctype_list= config.server + '/category/list';//获得文本类型列表
+config.api_cont_doctype_keyword = config.server + '/category/searchContactByTypeName'//根据关键字搜索文本类型
 
 //consult
 config.api_consult_list = config.server + '/consult/list';//获取电话咨询一览

@@ -17,22 +17,23 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <header class="header">
-        <h1>合同完成</h1>
+        <h1>搜索结果</h1>
+        <a class="icon doctype-search-icon" href="cont-doctype-search.html">重新搜索</a>
     </header>
-    <section class="container cont-sus">
-        <div class="tips">
-        	<p>恭喜您已经完成合同起草</p>
-        </div>
-        <div class="options">
-        	<div class="opt-item">
-        		<button class="btn btn-view">查看合同</button>
-        	</div>
-        	<div class="opt-item">
-        		<button class="btn btn-risk">风险提示</button>
-        	</div>
-        </div>
+    
+    <section class="container doctype-list" id="doctype-list">
+        
     </section>
- 
+    
+    <script type="text/html" id="doctype-list-tmpl">
+        <h3>总共<em>list.length</em>条<em>keyword</em>信息</h3>
+        <ul>
+        <!--[for(i = 0; i < list.length; i++){]-->
+            <li>name</li>
+        <!--[}]-->
+        </ul>
+    </script>
+
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -62,7 +63,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/cont-build-end.js"></script>
+    <script src="../content/js/cont-doctype-list.js"></script>
 </body>
 
 </html>

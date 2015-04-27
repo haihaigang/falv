@@ -17,7 +17,7 @@
 
 <header class="header">
     <h1>选择合同</h1>
-    <a href="cont-build.html" class="icon icon-build">搜索</a>
+    <a href="cont-doctype-search.html" class="icon icon-build">搜索</a>
 </header>
 
 <section class="container cont">
@@ -31,25 +31,31 @@
     <form id="cont-form" action="#" method="post" class="cont-form">
         <div class="items">
             <div class="key">文书类型</div>
-            <div class="val t_r">
-                <input type="hidden" name="phone" />
+            <div class="val t_r" id="docType">
+                <input type="hidden" name="doctype" value="常用合同" />
                 <div class="txt txt-area">常用合同</div>
             </div>
             <i class="choose">&nbsp;</i>
         </div>
         <div class="tips t_r">可点击右上角搜索关键字确定文书类型</div>
+        <div class="items single" id="comment-box" style="display:none">
+            <div class="key">您的需求</div>
+            <div class="val">
+                <textarea cols="6" name="comment" placeholder="请写下您的合同审核需求及重点关注问题。例如：员工赔偿金"></textarea>
+            </div>
+        </div>
         <div class="items">
             <div class="key">目录名称</div>
-            <div class="val t_r">
-                <input type="hidden" name="phone" />
+            <div class="val t_r" id="catalog">
+                <input type="hidden" name="catalog" value="融资租赁合同" />
                 <div class="txt txt-area">融资租赁合同</div>
             </div>
             <i class="choose">&nbsp;</i>
         </div>
         <div class="items">
             <div class="key">合同角色</div>
-            <div class="val t_r">
-                <input type="hidden" name="phone" />
+            <div class="val t_r" id="role">
+                <input type="hidden" name="role" value="出租人" />
                 <div class="txt txt-area">出租人</div>
             </div>
             <i class="choose">&nbsp;</i>
@@ -60,31 +66,37 @@
     </form>
 </section>
 
-<div id="myPanel">
-    <p></p>
-    <div class="options">
-        <input type="button" class="btn btn_ok" value="好！" />
-        <input type="button" class="btn btn_yes" value="是" />
-        <input type="button" class="btn btn_no" value="否" />
+    <div id="ti-panel" class="panel">
+        <div class="panel-content">
+            <div class="panel-cell">
+                <h3 class="panel-title">提示</h3>
+                <p class="panel-text"></p>
+            </div>
+        </div>
+        <div class="panel-buttons">
+            <div class="options">
+                <a href="javascript:;" class="btn btn-ok">确定</a><a href="javascript:;" class="btn btn-cancel">取消</a>
+            </div>
+            <div class="panel-tips">若在<span class="panel-tick">5</span>秒内无反应自动跳转到订单的详情页面</div>
+        </div>
     </div>
-</div>
-<div id="mySelect">
-    <div id="address"></div>
-    <div class="clearfix"></div>
-    <div class="options">
-        <input type="button" class="btn btn_close" value="完成" />
+    <div id="ti-panel-bg" class="panel-bg"></div>
+    <div id="ti-toast" class="toast"><span></span>
     </div>
-</div>
-<div id="panelBg"></div>
-<div id="wu-toast" style="display: none">
-    <span></span>
-</div>
-<script src="../content/js/lib/jquery-2.1.1.min.js"></script>
-<script src="../content/js/lib/template.js"></script>
-<script src="../content/js/lib/jscroll.js"></script>
-<script src="../content/js/config.js"></script>
-<script src="../content/js/global.js"></script>
-<script src="../content/js/worldunion.js"></script>
-<script src="../content/js/login.js"></script>
+    <div id="ti-loading" class="loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
+    </div>
+
+    <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
+    <script src="../content/js/lib/template.js"></script>
+    <script src="../content/js/lib/jscroll.js"></script>
+    <script src="../content/js/config.js"></script>
+    <script src="../content/js/global.js"></script>
+    <script src="../content/js/worldunion.js"></script>
+    <script src="../content/js/cont-build.js"></script>
 </body>
+
 </html>

@@ -16,23 +16,42 @@
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
-    <header class="header">
-        <h1>合同完成</h1>
-    </header>
-    <section class="container cont-sus">
-        <div class="tips">
-        	<p>恭喜您已经完成合同起草</p>
-        </div>
-        <div class="options">
-        	<div class="opt-item">
-        		<button class="btn btn-view">查看合同</button>
-        	</div>
-        	<div class="opt-item">
-        		<button class="btn btn-risk">风险提示</button>
-        	</div>
-        </div>
-    </section>
- 
+    <div id="result"> 
+        <header class="header">
+            <h1>角色</h1> 
+        </header>        
+        <section class="container doctype-list">
+            <ul id="result-list">
+                <li>出租人</li>
+                <li>租赁人</li>
+            </ul>
+        <section>
+    </div>
+    <script type="text/html" id="doc-list-tmpl">             
+        <header class="header">
+            <h1>文书类型</h1>
+        </header>        
+        <section class="container doctype-list">
+            <ul id="result-list">
+            <!--[for(i = 0; i < list.length; i++){]-->
+                <li>name</li>
+            <!--[}]-->
+            </ul>
+        <section>
+    </script>
+    <script type="text/html" id="cat-list-tmpl">             
+        <header class="header">
+            <h1>目录名称</h1>
+        </header>        
+        <section class="container doctype-list">
+            <ul id="result-list">
+            <!--[for(i = 0; i < list.length; i++){]-->
+                <li>name</li>
+            <!--[}]-->
+            </ul>
+        <section>
+    </script>
+
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -62,7 +81,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/cont-build-end.js"></script>
+    <script src="../content/js/cont-select-list.js"></script>
 </body>
 
 </html>
