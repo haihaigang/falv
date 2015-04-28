@@ -88,7 +88,9 @@
 
         that.ajaxSend(options, function(response, textStatus, jqXHR) {
             var body = response[options.key];
-            body = body.items; //当前项目约定分页返回数据多一层items
+            if('items' in body){
+                body = body.items; //当前项目约定分页返回数据多一层items
+            }
 
             if (options.key == '-1') {
                 //设置key=-1，所有返回值为分页数据
