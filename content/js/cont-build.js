@@ -3,26 +3,60 @@
     var id = Tools.getQueryValue('id');
 
     // 修改选项返回
-    var type= Tools.getQueryValue('type');
-    var choose= Tools.getQueryValue('choose');
-    
-    if(type){
-        $('#'+type).find("input").val(choose).next().text(choose);
-        if(type=="doctype" && choose=="其他"){
-            $("#comment-box").css("display","block")
+    var type= Tools.getQueryValue('type'),myData; 
+
+    //修改选项
+    funMobiscroll('#doctype');
+    funMobiscroll('#catalog');
+    funMobiscroll('#target');
+    funMobiscroll('#role');
+
+    function funMobiscroll(el){
+        $(el).mobiscroll().select({
+            theme: "android-holo-light",  
+            mode: "scroller",      
+            display: "bottom",
+            lang: "zh" 
+        });
+        if(el=="#doctype"){
+            $("#doctype_dummy").bind("touchstart",function(){
+                $("#doctype").find("option[value='0']").remove();
+                $("#catItems").show();
+                $(this).val($("#doctype").find("option:selected").text());
+            }) 
         }
     }
 
-    //修改选项
-    $('#docType').on('click', function() {
-        window.location.href="cont-select-list.html?type=doctype"
+    Ajax.paging({
+        url: config.api_cont_select_list,
+        data: {
+            type: "知识库文书分类"        
+        }
+    }, function(data) {
+        myData=data.data.items;
+        Ajax.render('#doctype','doctype-options-tmpl', myData);
     });
-    $('#catalog').on('click', function() {
-        window.location.href="cont-select-list.html?type=catalog"
-    });
-    $('#role').on('click', function() {
-        window.location.href="cont-select-list.html?type=role"
-    });
+
+    $("#doctype").on("change",function(){
+        var that=$(this);
+        $('input[name="type1"]').val(that.val());
+        template.helper("docCatagoryId", that.val());
+        Ajax.render('#catalog','catalog-options-tmpl', myData);
+    })
+
+    $("#catalog").on("change",function(){
+        var that=$(this),
+            _this=that.find("option:selected");
+        $('input[name="type"]').val(that.val());        
+        $('input[name="name"]').val(_this.text());
+        $('input[name="type2"]').val(_this.attr('data-type'));
+
+        if(_this.attr('data-role')){
+            $("#role").show();
+            Ajax.render('#role','role-options-tmpl', myData.ancestors);
+        }
+    })
+
 
     //提交合同
     $('#audit-form').submit(function(e) {

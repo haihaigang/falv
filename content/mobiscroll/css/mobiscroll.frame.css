@@ -160,6 +160,8 @@
     display: table-cell;
     position: relative;
     z-index: 5;
+    top: -10px;
+    background-color: #f4f4f4;
 }
 .dwbw .dwb:before {
     padding: .375em;

@@ -26,10 +26,10 @@
     </section>
     
     <script type="text/html" id="doctype-list-tmpl">
-        <h3>总共<em>list.length</em>条<em>keyword</em>信息</h3>
+        <h3>总共<em><!--[= list.length]--></em>条<em><!--[= keyword]--></em>信息</h3>
         <ul>
         <!--[for(i = 0; i < list.length; i++){]-->
-            <li>name</li>
+            <li data-leve=<!--[= list[i].leve]--> data-id=<!--[= list[i].categoryId]-->><!--[= list[i].name]--></li>
         <!--[}]-->
         </ul>
     </script>

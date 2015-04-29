@@ -5,7 +5,7 @@
     pageSize: 10, //默认分页大小
     appkey: '5c330281289e43aea815af3a7bdb902e',//云聚数据appkey
     server: location.protocol + '//' + location.host,
-    server: 'http://42.192.0.11:4001', //测试接口用
+    server: "https://www.ilaw66.com",//'http://42.192.0.11:4001', //测试接口用
     image: location.protocol + '//' + location.host + '/',
     image: 'http://42.192.0.11:4001'
 };
@@ -39,8 +39,7 @@ config.api_cont_preview = config.server + '/contract/preview';//预览合同
 config.api_cont_generate = config.server + '/contract/generate'; //完成合同起草
 config.api_cont_find_legal = config.server + '/contract/findLegalDoc'; //查看合同模版是否存在
 config.api_cont_list_app = config.server + '/app/contract/list';//手机端获取合同起草服务一览
-config.api_cont_category_list = config.server + '/category/list';//获得目录名称列表
-config.api_cont_doctype_list= config.server + '/category/list';//获得文本类型列表
+config.api_cont_select_list= config.server + '/category/list';//获得文本类型，目录名称，角色等列表
 config.api_cont_doctype_keyword = config.server + '/category/searchContactByTypeName'//根据关键字搜索文本类型
 
 //consult

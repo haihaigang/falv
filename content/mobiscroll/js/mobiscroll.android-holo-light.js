@@ -4,7 +4,7 @@
         baseTheme: 'android-holo',
         dateOrder: 'Mddyy',
         //mode: 'mixed',
-        rows: 8,
+        rows: 6,
         minWidth: 76,
         height: 40,
         showLabel: false,

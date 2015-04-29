@@ -499,6 +499,7 @@
             if (!this.isLocalStorage()) {
                 return;
             }
+            
             value = JSON.stringify(value);
             this.getStorage(isSession).setItem(key, value);
         },

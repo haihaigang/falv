@@ -31,40 +31,90 @@
     <form id="cont-form" action="#" method="post" class="cont-form">
         <div class="items">
             <div class="key">文书类型</div>
-            <div class="val t_r" id="docType">
-                <input type="hidden" name="doctype" value="常用合同" />
-                <div class="txt txt-area">常用合同</div>
+            <div class="val t_r">
+                <input type="hidden" name="type1">
+                <select id="doctype" data-role="none">
+                    <option value="0">请选择</option>              
+                </select>   
             </div>
             <i class="choose">&nbsp;</i>
         </div>
-        <div class="tips t_r">可点击右上角搜索关键字确定文书类型</div>
-        <div class="items single" id="comment-box" style="display:none">
-            <div class="key">您的需求</div>
-            <div class="val">
-                <textarea cols="6" name="comment" placeholder="请写下您的合同审核需求及重点关注问题。例如：员工赔偿金"></textarea>
-            </div>
-        </div>
-        <div class="items">
+        <div class="tips t_r">可点击右上角搜索关键字确定文书</div>
+        <div class="items" style="display:none;" id="catItems">
             <div class="key">目录名称</div>
-            <div class="val t_r" id="catalog">
-                <input type="hidden" name="catalog" value="融资租赁合同" />
-                <div class="txt txt-area">融资租赁合同</div>
+            <div class="val t_r">           
+                <input type="hidden" name="name">
+                <input type="hidden" name="type">
+                <input type="hidden" name="type2">
+                <select id="catalog" data-role="none">
+                    <option>请选择</option>
+                </select>   
             </div>
             <i class="choose">&nbsp;</i>
         </div>
-        <div class="items">
+        <div class="items" style="display:none;" id="tarItems">
+            <div class="key">合同细则</div>
+            <div class="val t_r">
+                <input type="hidden" name="target" value="0">
+                <select id="target" data-role="none">
+                    <option value="0">暂无</option>
+                </select>  
+            </div>
+            <i class="choose">&nbsp;</i>
+        </div>
+        <div class="items" style="display:none;" id="rolItems">
             <div class="key">合同角色</div>
-            <div class="val t_r" id="role">
-                <input type="hidden" name="role" value="出租人" />
-                <div class="txt txt-area">出租人</div>
+            <div class="val t_r">
+                <input type="hidden" name="role" value=" ">
+                <select id="role" data-role="none">
+                    <option value=" ">选择角色</option>
+                </select>   
+                <!-- <label for="role" class="txt txt-area">选择角色</label> -->
             </div>
             <i class="choose">&nbsp;</i>
         </div>
         <div class="options">
+            <input type="hidden" name="comment" value=" " />
+            <input type="hidden" name="status" value="1" />
             <input type="submit" class="btn" value="开始起草" />
         </div>
     </form>
 </section>
+    <script type="text/html" id="doctype-options-tmpl">
+    <option value="0">请选择</option>
+    <!--[for(i = 0; i < list.length; i++){]-->
+    <!--[if(list[i].parent == null ){]-->
+        <option value==<!--[= list[i].categoryId]-->> 
+        <!--[= list[i].name]-->
+        </option>
+    <!--[}]-->
+    <!--[}]-->
+    </script>
+
+    <script type="text/html" id="catalog-options-tmpl">
+    <!--[for(i = 0; i < list.length; i++){]-->
+    <!--[if(list[i].parent == docCatagoryId){]-->
+        <option>2</option>
+        <!--[if(list[i].ancestors.length > 0 ){]-->
+                <option data-role=1 data-type=<!--[= list[i].type]--> value=<!--[= list[i].categoryId]-->> 
+                <!--[= list[i].name]-->
+                </option>
+        <!--[}else{]-->
+                <option data-role=0 data-type=<!--[= list[i].type]--> value=<!--[= list[i].categoryId]-->> 
+                <!--[= list[i].name]-->
+                </option>
+        <!--[}]-->
+    <!--[}]-->
+    <!--[}]-->
+    </script>
+
+    <script type="text/html" id="role-options-tmpl">
+    <!--[for(i = 0; i < list.length; i++){]-->
+            <option value=<!--[= list[i]-->> 
+            <!--[= list[i].name]-->
+            </option>
+    <!--[}]-->
+    </script>
 
     <div id="ti-panel" class="panel">
         <div class="panel-content">
@@ -95,8 +145,25 @@
     <script src="../content/js/lib/jscroll.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
-    <script src="../content/js/worldunion.js"></script>
+    <script src="../content/js/worldunion.js"></script> 
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <script src="../content/mobiscroll/js/mobiscroll.zepto.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.core.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.frame.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.scroller.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.android-holo-light.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.select.js"></script>
+
+    <script src="../content/mobiscroll/js/i18n/mobiscroll.i18n.zh.js"></script>
+
+    <link href="../content/mobiscroll/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.frame.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.android-holo-light.css" rel="stylesheet" type="text/css">
+    <!--Mobiscroll includes end-->
     <script src="../content/js/cont-build.js"></script>
+
 </body>
 
 </html>

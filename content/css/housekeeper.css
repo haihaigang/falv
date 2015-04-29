@@ -344,6 +344,9 @@ form.cont-form textarea{
 	padding-right: .1rem;
 	box-sizing: border-box;
 }
+form.cont-form input[type="text"]{
+	text-align: right;
+}
 form.cont-form .options{
 	width: 80%;
 	margin: .3rem auto;
@@ -425,6 +428,7 @@ form.search-doctype-form label.select-tab img{
 	font-size: .12rem;
 	padding-top:.15rem;
 	vertical-align: top;
+	display: none;
 }
 .doctype-list .empty_list i{
 	background-position: center center;
