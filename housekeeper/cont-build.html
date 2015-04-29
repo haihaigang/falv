@@ -84,17 +84,23 @@
     <option value="0">请选择</option>
     <!--[for(i = 0; i < list.length; i++){]-->
     <!--[if(list[i].parent == null ){]-->
-        <option value==<!--[= list[i].categoryId]-->> 
+        <option value="<!--[= list[i].categoryId]-->"> 
         <!--[= list[i].name]-->
         </option>
     <!--[}]-->
     <!--[}]-->
     </script>
 
+    <script type="text/html" id="common-options-tmpl">
+    <option value="0">请选择</option>
+    <!--[for(i = 0; i < list.length; i++){]-->
+        <option value="<!--[= list[i].categoryId]-->" data-len="<!--[= list[i].child.length]-->" data-v="<!--[= list[i].childValue]-->"><!--[= list[i].name]--></option>
+    <!--[}]-->
+    </script>
+
     <script type="text/html" id="catalog-options-tmpl">
     <!--[for(i = 0; i < list.length; i++){]-->
-    <!--[if(list[i].parent == docCatagoryId){]-->
-        <option>2</option>
+    <!--[if(list[i].parent == docCategoryId){]-->
         <!--[if(list[i].ancestors.length > 0 ){]-->
                 <option data-role=1 data-type=<!--[= list[i].type]--> value=<!--[= list[i].categoryId]-->> 
                 <!--[= list[i].name]-->
