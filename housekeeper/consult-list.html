@@ -59,10 +59,10 @@
                 <span class="txt"><!--[= list[i].question]--></span>
             </div>
             <div class="date start">
-                <span class="lab">咨询时间：</span><span class="txt"><!--[= list[i].startTime]--></span>
+                <span class="lab">咨询时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].startTime)]--></span>
             </div>
             <div class="date end">
-                <span class="lab">回复时间：</span><span class="txt"><!--[= list[i].endTime]--></span>
+                <span class="lab">回复时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].endTime)]--></span>
             </div>
             <div class="date duration"><span class="lab">时长：</span>
                 <span class="txt"><!--[= list[i].duration]-->分钟</span></div>

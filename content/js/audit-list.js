@@ -19,8 +19,8 @@
     Ajax.paging({
         url: config.api_audit_list,
         data: {
-            skip: '',
-            limit: ''
+            skip: config.skip,
+            limit: config.pageSize
         }
     });
 

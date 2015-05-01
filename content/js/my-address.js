@@ -1,14 +1,20 @@
 (function() {
 
     //获取收货地址
-    Ajax.paging({
-        url: config.api_address_list,
-        data: {
-            ship: '',
-            limit: ''
-        },
+    config.paging = function() {
+        Ajax.paging({
+            url: config.api_address_list,
+            data: {
+                skip: config.skip,
+                limit: config.pageSize
+            }
+        },function(data){
+            if(data.error) return;
+            Storage.set('FLY-ADDRESS',data.data.items);
+        });
+    }
 
-    }, function() {})
+    config.paging();
 
     //删除地址
     $('#flv-list').on('click', '.del', function(e) {

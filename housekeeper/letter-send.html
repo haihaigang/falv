@@ -63,9 +63,16 @@
                 </div>
                 <div class="items">
                     <div class="key"><em>*</em>收函人地区：</div>
-                    <div class="val area">
-                        <input type="hidden" name="town" />
-                    	<div class="txt txt-area">地区选择</div>
+                    <div class="val area address-select">
+                        <select name="province" id="province" data-role="province">
+                            <option value="">所在省份</option>
+                        </select> 
+                        <select name="city" id="city" data-role="city">
+                            <option value="">所在城市</option>
+                        </select> 
+                        <select name="town" id="area" data-role="area">
+                            <option value="">所在区/县</option>
+                        </select>
                     </div>
                     <i class="choose">&nbsp;</i>
                 </div>
@@ -157,6 +164,21 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
+    <!-- Mobiscroll JS and CSS Includes -->
+    <script src="../content/mobiscroll/js/mobiscroll.zepto.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.core.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.frame.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.scroller.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.android-holo-light.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.select.js"></script>
+
+    <script src="../content/mobiscroll/js/i18n/mobiscroll.i18n.zh.js"></script>
+
+    <link href="../content/mobiscroll/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.frame.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.android-holo-light.css" rel="stylesheet" type="text/css">
+    <!--Mobiscroll includes end-->
     <script src="../content/js/letter-send.js"></script>
 </body>
 

@@ -11,7 +11,7 @@ header .icon-consult {
 .consult-stat {
 	color: #b4b4b4;
 	background-image: url(../images/audit/audit_bg.png);
-	background-repeat: no-repeat;
+	background-repeat: repeat-x;
 	background-position: center bottom;
 	background-size: auto 100%;
 }

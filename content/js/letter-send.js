@@ -89,7 +89,7 @@
             Tools.showAlert('收函人电话必填');
             return;
         }
-        if ($('input[name="town"]').val().isEmpty()) {
+        if ($('select[name="town"]').val().isEmpty()) {
             Tools.showAlert('收函人地区必填');
             return;
         }
@@ -123,13 +123,68 @@
         Ajax.submit({
             url: config.api_letter_add,
             data: {
-            	data: formData
+                data: formData
             }
         }, function(data) {
             if (data.error) {
                 Tools.showAlert(data.error.message);
                 return;
             }
+            history.go(-1);
         })
-    })
+    });
+
+    config.api_place = config.server + '/place/list.json';
+
+
+    getRegionData($('#province')[0]);
+
+    $('#province').change(function() {
+        getRegionData($('#city')[0],$(this).val());
+    });
+    $('#city').change(function() {
+        getRegionData($('#area')[0],$(this).val());
+    });
+
+    $('#province').mobiscroll().select({
+        theme: "android-holo-light", // Specify theme like: theme: 'ios' or omit setting to use default 
+        mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
+        display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
+        lang: "zh" // Specify language like: lang: 'pl' or omit setting to use default 
+    });
+    $('#city').mobiscroll().select({
+        theme: "android-holo-light", // Specify theme like: theme: 'ios' or omit setting to use default 
+        mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
+        display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
+        lang: "zh" // Specify language like: lang: 'pl' or omit setting to use default 
+    });
+
+    $('#area').mobiscroll().select({
+        theme: "android-holo-light", // Specify theme like: theme: 'ios' or omit setting to use default 
+        mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
+        display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
+        lang: "zh" // Specify language like: lang: 'pl' or omit setting to use default 
+    });
+
+    //根据父级获取下级区域数据
+    function getRegionData(sel, parent, def, fn) {
+        Ajax.custom({
+            url: config.api_place,
+            data: {
+                parent: parent
+            }
+        }, function(data) {
+            var d = data.data.items;
+
+            sel.length = 0;
+            for (var i in d) {
+                sel.options.add(new Option(d[i].name, d[i]._id));
+
+                if (def == d[i]._id) {
+                    sel[i].selected = true;
+                }
+            }
+            fn && fn(data);
+        })
+    }
 })()

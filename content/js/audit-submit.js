@@ -84,6 +84,7 @@
                 Tools.showAlert(data.error.message);
                 return;
             }
+            history.go(-1);
         });
     });
 

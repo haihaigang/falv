@@ -23,9 +23,12 @@
 
     //点击tab切换
     $('.consult-tabs-item').click(function(e) {
+        if($(this).hasClass('active')) return;
+
         $('.consult-tabs-item').removeClass('active');
         $('.consult-list').hide();
         $(this).addClass('active');
+        config.skip = 0;
 
         if ($(this).hasClass('question')) {
             config.paging = getFileList;
@@ -41,8 +44,8 @@
         Ajax.paging({
             url: config.api_consult_list,
             data: {
-                ship: '',
-                limit: ''
+                skip: config.skip,
+                limit: config.pageSize
             },
             renderEle: '#flv-list',
             renderFor: 'flv-list-tmpl'
@@ -53,8 +56,8 @@
         Ajax.paging({
             url: config.api_consult_file_list,
             data: {
-                ship: '',
-                limit: ''
+                skip: config.skip,
+                limit: config.pageSize
             },
             renderEle: '#flv-list-file',
             renderFor: 'flv-list-file-tmpl'
@@ -76,4 +79,25 @@
 
         location.href = $(this).attr('href');
     });
+
+    //开始咨询前，调用接口确认
+    $('.icon-consult').click(function(e){
+        e.preventDefault();
+
+        var that = $(this);
+
+        Ajax.custom({
+            url: config.api_service_valid,
+            data: {
+                userId:Storage.get(Storage.AUTH),
+                serviceType: 'ST0001'
+            }
+        },function(data){
+            if(data.error){
+                Tools.showAlert(dta.error.message);
+                return;
+            }
+            location.href = that.attr('href');
+        })
+    })
 })();

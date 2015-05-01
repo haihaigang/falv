@@ -63,7 +63,6 @@
         };
 
         d = JSON.stringify(d);
-        log(d)
 
         Ajax.submit({
             url: config.api_consult_file_add,
@@ -75,6 +74,7 @@
                 Tools.showAlert(data.error.message);
                 return;
             }
+            history.go(-2);
         });
 
     });

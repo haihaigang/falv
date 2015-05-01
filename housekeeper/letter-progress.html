@@ -56,7 +56,7 @@
         <div class="letter-name"><!--[= problem]--></div>
         <div class="letter-progress">
             <!--[for(i = 0; i < statusHistory.length; i++){]-->
-            <div class="letter-progress-item active">
+            <div class="letter-progress-item<!--[= statusHistory[i].active ? ' active' : '']-->">
                 <i></i>
                 <div class="name"><!--[= $getLetterStatus(statusHistory[i].status)]--></div>
                 <div class="time"><!--[= $getLetterLabel(statusHistory[i].status)]-->: <!--[= $getDateFromStr(statusHistory[i].statusUpdateAt)]--></div>
@@ -93,7 +93,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/letter-detail.js"></script>
+    <script src="../content/js/letter-progress.js"></script>
 </body>
 
 </html>

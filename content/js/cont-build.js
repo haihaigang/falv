@@ -3,9 +3,8 @@
     var id = Tools.getQueryValue('id');
 
     // 修改选项返回
-    var type = Tools.getQueryValue('type'),
+    var result = Tools.getQueryValue('result'),
         myData;
-
     //修改选项
     funMobiscroll('#doctype');
     funMobiscroll('#catalog');
@@ -26,6 +25,7 @@
                 $(this).val($("#doctype").find("option:selected").text());
             })
         }
+       
     }
 
     Ajax.paging({
@@ -36,8 +36,86 @@
     }, function(data) {
         myData = data.data.items;
         var result = getOptionData();
-        Ajax.render('#doctype', 'common-options-tmpl', result);
+            Ajax.render('#doctype', 'common-options-tmpl', result);
+        if(result){
+            if(Storage.get('SEARCH_RESULT')){
+
+                var result = Storage.get('SEARCH_RESULT'),
+                    ancestor=result.ancestor;
+                    if(ancestor.length > 0){
+                        $.each(ancestor,function(i){  
+                            levelSelect(ancestor[i])
+                        });
+                    }
+                levelSelect(result)
+            }
+        }else{
+            if(Storage.get('SEARCH_RESULT')){
+                Storage.remove('SEARCH_RESULT')
+            }
+        }
     });
+        
+    function levelSelect(obj){
+        var categoryId = obj.categoryId,
+            value=obj.name;
+            
+        switch(obj.level){
+            case "1":
+                // log(categoryId +" ***"+$("#doctype"))
+                $("#doctype").val(categoryId);
+                $("#doctype_dummy").val(value);
+                var that = $("#doctype"),
+                    _this = that.find("option:selected");
+                $('input[name="type1"]').val(categoryId);
+                var result = getOptionData(categoryId);
+                 Ajax.render('#catalog', 'common-options-tmpl', result);
+                 if ( _this.attr('data-len') != '0') {
+                    $("#catItems").show();
+                }
+            break;
+            case "2":
+                $("#catalog").val(categoryId); 
+                $("#catalog_dummy").val(value);
+                var that = $("#catalog"),
+                    _this = that.find("option:selected");
+                var result = getOptionData(categoryId);
+                $('input[name="type"]').val(categoryId);
+                $('input[name="name"]').val(_this.text());
+                $('input[name="type2"]').val(_this.attr('data-type'));
+
+                if (_this.attr('data-len') != '0') {
+                    //需要确认是显示细分还是角色，根据value＝4确认是角色
+                    if (_this.attr('data-v') == '4') {
+                        $("#rolItems").show();
+                        Ajax.render('#role', 'common-options-tmpl', result);
+                    } else {
+                        $("#tarItems").show();
+                        Ajax.render('#target', 'common-options-tmpl', result);
+                    }
+                }
+
+            break;
+            case "3":
+                $("#target").val(categoryId); 
+                $("#target_dummy").val(value);
+                var that = $("#target"),
+                    _this = that.find("option:selected");
+                var result = getOptionData(categoryId);
+
+                if (_this.attr('data-len') != '0') {
+                    $("#roleItems").show();
+                    Ajax.render('#role','common-options-tmpl', result);
+                }
+            break;
+            case "4":
+                $("#role").val(obj.categoryId); 
+                $("#role_dummy").val(value);
+            break;
+
+        }
+    }
+
 
     $("#doctype").on("change", function() {
         afterChange(1);
@@ -107,15 +185,10 @@
     $('#audit-form').submit(function(e) {
         e.preventDefault();
 
-        var comment = $('textarea[name="comment"]').val() || " ";
-        var role = $('input[name="role"]').val();
+        var comment = $('input[name="comment"]').val() || " ";
+        var role = $('input[name="role"]').val() || " ";
         var doctype = $('input[name="doctype"]').val();
         var catalog = $('input[name="catalog"]').val();
-
-        if (doctype == "其他" && comment.isEmpty()) {
-            Tools.showAlert('请填写您的需求');
-            return;
-        }
 
         var d = {
             comment: comment,

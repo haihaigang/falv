@@ -22,7 +22,7 @@
     </header>
     <section class="container userbox">
         <section class="user_top">
-            <a class="thumb" href="my-role"><img id="role-img" src="../content/images/user/temp.png" alt="" /></a>
+            <a class="thumb" href="javascript:;"><img id="role-img" src="../content/images/user/temp.png" alt="" /></a>
             <div class="names">
                 <p><span class="user_type">--</span></p>
             </div>
@@ -107,6 +107,11 @@
         $('#logout').click(function(e) {
             e.preventDefault();
 
+            //不管接口是否成功，清空前端用户记录
+            Cookie.remove(Storage.AUTH);
+            Storage.remove(Storage.AUTH);
+            Storage.remove(Storage.ACCOUNT);
+
             Ajax.custom({
                 url: config.api_logout
             }, function(data) {
@@ -115,13 +120,9 @@
                     return;
                 }
 
-                Cookie.remove(Storage.AUTH);
-                Storage.remove(Storage.AUTH);
-                Storage.remove(Storage.ACCOUNT);
-
                 location.href = '../account/login.html';
             },function(jqXHR){
-                log(jqXHR)
+                location.href = '../account/login.html';
             })
         })
     })();

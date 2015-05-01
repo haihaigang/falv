@@ -17,7 +17,7 @@
 
 <header class="header">
     <h1>选择合同</h1>
-    <a href="cont-doctype-search.html" class="icon icon-build">搜索</a>
+    <a href="cont-search.html" class="icon icon-build">搜索</a>
 </header>
 
 <section class="container cont">
@@ -47,7 +47,7 @@
                 <input type="hidden" name="type">
                 <input type="hidden" name="type2">
                 <select id="catalog" data-role="none">
-                    <option>请选择</option>
+                    <option value="0">请选择</option>              
                 </select>   
             </div>
             <i class="choose">&nbsp;</i>
@@ -57,7 +57,7 @@
             <div class="val t_r">
                 <input type="hidden" name="target" value="0">
                 <select id="target" data-role="none">
-                    <option value="0">暂无</option>
+                    <option value="0">请选择</option>  
                 </select>  
             </div>
             <i class="choose">&nbsp;</i>
@@ -67,9 +67,8 @@
             <div class="val t_r">
                 <input type="hidden" name="role" value=" ">
                 <select id="role" data-role="none">
-                    <option value=" ">选择角色</option>
+                    <option value="0">请选择</option>                      
                 </select>   
-                <!-- <label for="role" class="txt txt-area">选择角色</label> -->
             </div>
             <i class="choose">&nbsp;</i>
         </div>
@@ -80,45 +79,11 @@
         </div>
     </form>
 </section>
-    <script type="text/html" id="doctype-options-tmpl">
-    <option value="0">请选择</option>
-    <!--[for(i = 0; i < list.length; i++){]-->
-    <!--[if(list[i].parent == null ){]-->
-        <option value="<!--[= list[i].categoryId]-->"> 
-        <!--[= list[i].name]-->
-        </option>
-    <!--[}]-->
-    <!--[}]-->
-    </script>
 
     <script type="text/html" id="common-options-tmpl">
     <option value="0">请选择</option>
     <!--[for(i = 0; i < list.length; i++){]-->
         <option value="<!--[= list[i].categoryId]-->" data-len="<!--[= list[i].child.length]-->" data-v="<!--[= list[i].childValue]-->"><!--[= list[i].name]--></option>
-    <!--[}]-->
-    </script>
-
-    <script type="text/html" id="catalog-options-tmpl">
-    <!--[for(i = 0; i < list.length; i++){]-->
-    <!--[if(list[i].parent == docCategoryId){]-->
-        <!--[if(list[i].ancestors.length > 0 ){]-->
-                <option data-role=1 data-type=<!--[= list[i].type]--> value=<!--[= list[i].categoryId]-->> 
-                <!--[= list[i].name]-->
-                </option>
-        <!--[}else{]-->
-                <option data-role=0 data-type=<!--[= list[i].type]--> value=<!--[= list[i].categoryId]-->> 
-                <!--[= list[i].name]-->
-                </option>
-        <!--[}]-->
-    <!--[}]-->
-    <!--[}]-->
-    </script>
-
-    <script type="text/html" id="role-options-tmpl">
-    <!--[for(i = 0; i < list.length; i++){]-->
-            <option value=<!--[= list[i]-->> 
-            <!--[= list[i].name]-->
-            </option>
     <!--[}]-->
     </script>
 

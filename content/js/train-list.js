@@ -19,8 +19,8 @@
     Ajax.paging({
         url: config.api_train_list,
         data: {
-            ship: '',
-            limit: ''
+            skip: config.skip,
+            limit: config.pageSize
         }
     }, function(data) {
 

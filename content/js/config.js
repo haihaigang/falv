@@ -1,11 +1,13 @@
 ﻿var config = {
     beginTime: undefined, //第一条数据的时间戳
     endTime: undefined, //最后一条数据的时间戳
+    skip: 0,
     page: 1, //当前第几页，从1开始
     pageSize: 10, //默认分页大小
     appkey: '5c330281289e43aea815af3a7bdb902e',//云聚数据appkey
     server: location.protocol + '//' + location.host,
-    server: "https://www.ilaw66.com",//'http://42.192.0.11:4001', //测试接口用
+    server: 'http://42.192.0.11:4001', //测试接口用
+    // server: "https://www.ilaw66.com", //测试接口用
     image: location.protocol + '//' + location.host + '/',
     image: 'http://42.192.0.11:4001'
 };

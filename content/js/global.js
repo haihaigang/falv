@@ -109,7 +109,10 @@
 
                 initPagination(response.pageInfo, options.pagingDom);
             } else if (options.pagingMode == 'next') {
-                that.hasNext = body.length == options.data.pageSize;
+                //这里判断需根据具体接口定义
+                config.skip += body.length;
+                that.hasNext = body.length == options.data.limit;
+                
                 if (body.length == 0) {
                     //数据没有结果显示无数据提示
                     if (isFirst) {
@@ -121,7 +124,7 @@
                     that.render(options.renderEle, options.renderFor, body, !isFirst);
                     if (!that.hasNext) {
                         //没有下一页显示无更多数据提示
-                        next.html(nomoredata);
+                        next.html(nomoredata).addClass('disabled');
                     } else {
                         options.nextButton && next.html(options.nextButton.text);
                     }
@@ -288,7 +291,11 @@
         }, function(jqXHR, textStatus, errorThrown) {
             that.isLoading = false;
             delete(that.queue[options.url]);
-            log(jqXHR);
+
+            //特殊处理未登录的接口返回值
+            if(jqXHR.responseText && jqXHR.responseText.indexOf('<title>用户登录</title>') > 0){
+                location.href = '../account/login.html';
+            }
 
             logged(options.logtype, jqXHR.statusText, options.url);
             if (typeof callbackError == 'function') {

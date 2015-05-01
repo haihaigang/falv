@@ -2,6 +2,9 @@
 
     Ajax.paging({
         url: config.api_lcard_list,
-        data: {}
+        data: {
+        	skip: config.skip,
+        	limit: config.pageSize
+        }
     });
 })();

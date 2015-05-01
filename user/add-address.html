@@ -34,13 +34,13 @@
             <span class="key">地区：</span>
             <div class="val address-select">
                 <select name="province" id="province" data-role="province">
-                    <option value="0">所在省份</option>
+                    <option value="">所在省份</option>
                 </select> 
                 <select name="city" id="city" data-role="city">
-                    <option value="0">所在城市</option>
+                    <option value="">所在城市</option>
                 </select> 
                 <select name="area" id="area" data-role="area">
-                    <option value="0">所在区/县</option>
+                    <option value="">所在区/县</option>
                 </select>
             </div>
             <label class="select-tab" for="province">地区选择</label>
@@ -111,27 +111,7 @@
     <script src="../content/js/add-address.js"></script>
     <script type="text/javascript">
     (function(){
-        var address=new myAddress("province");
-
-        $('#province').mobiscroll().select({
-            theme: "android-holo-light",     // Specify theme like: theme: 'ios' or omit setting to use default 
-            mode: "scroller",       // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
-            display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-            lang: "zh"        // Specify language like: lang: 'pl' or omit setting to use default 
-        });
-        $('#city').mobiscroll().select({
-            theme: "android-holo-light",     // Specify theme like: theme: 'ios' or omit setting to use default 
-            mode: "scroller",       // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
-            display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-            lang: "zh"        // Specify language like: lang: 'pl' or omit setting to use default 
-        });
-
-        $('#area').mobiscroll().select({
-            theme: "android-holo-light",     // Specify theme like: theme: 'ios' or omit setting to use default 
-            mode: "scroller",       // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
-            display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-            lang: "zh"        // Specify language like: lang: 'pl' or omit setting to use default 
-        });
+        
     })()
     </script>
 

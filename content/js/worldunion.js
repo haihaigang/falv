@@ -166,16 +166,16 @@
 	});
 
 	// 下一页按钮
-	$('body').on('click', '.wlist_next', function(e) {
+	$('body').on('click', '.nextpage', function(e) {
 		e.preventDefault();
 
-		if ($(this).hasClass('loading')) {
+		if (Ajax.isLoading || $(this).hasClass('disabled')) {
 			// 正在加载，不可点击
 			return;
 		}
 
-		if (typeof config.getList == 'function') {
-			config.getList();
+		if (typeof config.paging == 'function') {
+			config.paging();
 		}
 	});
 
