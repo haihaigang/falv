@@ -158,10 +158,11 @@
         Ajax.submit({
             url: id ? config.api_address_update : config.api_address_add,
             data: data,
-            showLoading: true
+            showLoading: true,
+            contentType: 'application/json'
         }, function(data) {
             if (data.error) {
-                Tools.showAlert(data.message);
+                Tools.showAlert(data.error.message);
                 return;
             }
 

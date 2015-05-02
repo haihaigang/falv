@@ -18,7 +18,8 @@
             data: formData,
             type: 'POST',
             contentType: false,
-            processData: false
+            processData: false,
+            showLoading: true
         }, function(data) {
             if (data.error) {
                 Tools.showAlert(data.error.message);
@@ -34,7 +35,9 @@
 
             that.parents('.col').addClass('active').find('input[name="fileName"]').val(data.name);
             //上传图片成功后，添加下个文件控件
-            $('#flv-imgs').append($('#flv-imgs-tmpl').html());
+            if(that.parents('.col').next().length == 0){
+                $('#flv-imgs').append($('#flv-imgs-tmpl').html());
+            }
         });
     })
 

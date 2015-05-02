@@ -1,6 +1,6 @@
 (function() {
 
-    var tempFiles = [];//存储临时文件数组
+    var tempFiles = []; //存储临时文件数组
 
     //文件上传
     $('#consult-form').on('change', 'input[type="file"]', function() {
@@ -17,9 +17,10 @@
             data: formData,
             type: 'POST',
             contentType: false,
-            processData: false
+            processData: false,
+            showLoading: true
         }, function(data) {
-            if(data.error){
+            if (data.error) {
                 Tools.showAlert(data.error.message);
                 return;
             }
@@ -31,9 +32,11 @@
             };
             tempFiles.push(d);
 
-        	that.parents('.col').addClass('active').find('input[name="fileName"]').val(data.name);
+            that.parents('.col').addClass('active').find('input[name="fileName"]').val(data.name);
             //上传图片成功后，添加下个文件控件
-            $('#flv-imgs').append($('#flv-imgs-tmpl').html());
+            if (that.parents('.col').next().length == 0) {
+                $('#flv-imgs').append($('#flv-imgs-tmpl').html());
+            }
         });
     })
 
@@ -42,7 +45,7 @@
         if ($('#consult-form .col').length <= 1) {
             return;
         }
-        if(!$(this).parents('.col').hasClass('active')){
+        if (!$(this).parents('.col').hasClass('active')) {
             return;
         }
         $(this).parents('.col').remove();
@@ -51,26 +54,27 @@
     $('#consult-form').submit(function(e) {
         e.preventDefault();
 
-        if(tempFiles.length <= 0){
+        if (tempFiles.length <= 0) {
             Tools.showAlert('至少选择一个文件');
             return;
         }
 
         var comment = $('textarea[name="comment"]').val();
         var d = {
-            question: comment,
-            files: tempFiles
+            data: {
+                question: comment,
+                files: tempFiles
+            }
         };
 
         d = JSON.stringify(d);
 
         Ajax.submit({
             url: config.api_consult_file_add,
-            data: {
-                data: d
-            }
+            data: d,
+            contentType: 'application/json'
         }, function(data) {
-            if(data.error){
+            if (data.error) {
                 Tools.showAlert(data.error.message);
                 return;
             }

@@ -251,9 +251,8 @@
             options.url += '?_csrf=' + encodeURIComponent(csrftoken);
         }
 
-            log(options.contentType);
         if (typeof options.contentType == 'undefined') {
-            options.contentType = 'application/json';
+            options.contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
         }
         if (typeof options.processData == 'undefined') {
             options.processData = true;
