@@ -119,14 +119,17 @@
         formData.evidences = tempFiles;
         formData.address = {
             province: {
+                cityId: $('select[name="province"]').val(),
                 id: $('select[name="province"]').val(),
                 name: $('select[name="province"] option:selected').text()
             },
             city: {
+                cityId: $('select[name="city"]').val(),
                 id: $('select[name="city"]').val(),
                 name: $('select[name="city"] option:selected').text()
             },
             town: {
+                cityId: $('select[name="town"]').val(),
                 id: $('select[name="town"]').val(),
                 name: $('select[name="town"] option:selected').text()
             },

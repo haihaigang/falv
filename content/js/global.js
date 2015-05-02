@@ -251,10 +251,11 @@
             options.url += '?_csrf=' + encodeURIComponent(csrftoken);
         }
 
-        if (typeof options.contentType == undefined) {
-            options.contentType = 'application/json'
+            log(options.contentType);
+        if (typeof options.contentType == 'undefined') {
+            options.contentType = 'application/json';
         }
-        if (typeof options.processData == undefined) {
+        if (typeof options.processData == 'undefined') {
             options.processData = true;
         }
 
