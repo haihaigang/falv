@@ -25,7 +25,7 @@
                 $(this).val($("#doctype").find("option:selected").text());
             })
         }
-       
+
     }
 
     Ajax.paging({
@@ -36,31 +36,31 @@
     }, function(data) {
         myData = data.data.items;
         var result = getOptionData();
-            Ajax.render('#doctype', 'common-options-tmpl', result);
-        if(result){
-            if(Storage.get('SEARCH_RESULT')){
+        Ajax.render('#doctype', 'common-options-tmpl', result);
+        if (result) {
+            if (Storage.get('SEARCH_RESULT')) {
 
                 var result = Storage.get('SEARCH_RESULT'),
-                    ancestor=result.ancestor;
-                    if(ancestor.length > 0){
-                        $.each(ancestor,function(i){  
-                            levelSelect(ancestor[i])
-                        });
-                    }
+                    ancestor = result.ancestor;
+                if (ancestor.length > 0) {
+                    $.each(ancestor, function(i) {
+                        levelSelect(ancestor[i])
+                    });
+                }
                 levelSelect(result)
             }
-        }else{
-            if(Storage.get('SEARCH_RESULT')){
+        } else {
+            if (Storage.get('SEARCH_RESULT')) {
                 Storage.remove('SEARCH_RESULT')
             }
         }
     });
-        
-    function levelSelect(obj){
+
+    function levelSelect(obj) {
         var categoryId = obj.categoryId,
-            value=obj.name;
-            
-        switch(obj.level){
+            value = obj.name;
+
+        switch (obj.level) {
             case "1":
                 // log(categoryId +" ***"+$("#doctype"))
                 $("#doctype").val(categoryId);
@@ -69,13 +69,13 @@
                     _this = that.find("option:selected");
                 $('input[name="type1"]').val(categoryId);
                 var result = getOptionData(categoryId);
-                 Ajax.render('#catalog', 'common-options-tmpl', result);
-                 if ( _this.attr('data-len') != '0') {
+                Ajax.render('#catalog', 'common-options-tmpl', result);
+                if (_this.attr('data-len') != '0') {
                     $("#catItems").show();
                 }
-            break;
+                break;
             case "2":
-                $("#catalog").val(categoryId); 
+                $("#catalog").val(categoryId);
                 $("#catalog_dummy").val(value);
                 var that = $("#catalog"),
                     _this = that.find("option:selected");
@@ -95,9 +95,9 @@
                     }
                 }
 
-            break;
+                break;
             case "3":
-                $("#target").val(categoryId); 
+                $("#target").val(categoryId);
                 $("#target_dummy").val(value);
                 var that = $("#target"),
                     _this = that.find("option:selected");
@@ -105,13 +105,13 @@
 
                 if (_this.attr('data-len') != '0') {
                     $("#roleItems").show();
-                    Ajax.render('#role','common-options-tmpl', result);
+                    Ajax.render('#role', 'common-options-tmpl', result);
                 }
-            break;
+                break;
             case "4":
-                $("#role").val(obj.categoryId); 
+                $("#role").val(obj.categoryId);
                 $("#role_dummy").val(value);
-            break;
+                break;
 
         }
     }
@@ -166,7 +166,7 @@
 
         if (_this.attr('data-len') != '0') {
             $("#roleItems").show();
-            Ajax.render('#role','common-options-tmpl', result);
+            Ajax.render('#role', 'common-options-tmpl', result);
         }
     })
 

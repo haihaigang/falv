@@ -6,11 +6,11 @@
         $(this).addClass('active');
 
         if ($(this).hasClass('personal')) {
-            $('input[name="type"]').val(2);
+            $('input[name="type"]').val('CT0002');
             $('.items-ent').hide().find('input').prop('disabled', true);
             $('.items-per').show().find('input').prop('disabled', false);
         } else {
-            $('input[name="type"]').val(1);
+            $('input[name="type"]').val('CT0001');
             $('.items-ent').show().find('input').prop('disabled', false);
             $('.items-per').hide().find('input').prop('disabled', true);
         }
@@ -47,7 +47,7 @@
             };
             tempFiles.push(d);
 
-            that.parents('.col').addClass('active').find('input[name="fileName"]').val(data.name);
+            that.parents('.col').addClass('active').find('input[type="text"]').val(data.name);
             //上传图片成功后，添加下个文件控件
             $('#flv-imgs').append($('#flv-imgs-tmpl').html());
         });
@@ -69,7 +69,7 @@
         e.preventDefault();
 
         //验证必填
-        if ($('input[name="type"]').val() == '1') {
+        if ($('input[name="type"]').val() == 'CT0001') {
             if ($('input[name="corporate"]').val().isEmpty()) {
                 Tools.showAlert('企业名称必填');
                 return;
@@ -117,14 +117,46 @@
         //转换数据
         var formData = Tools.formJson($(this));
         formData.evidences = tempFiles;
-        formData = JSON.stringify(formData);
-        log(formData);
+        formData.address = {
+            province: {
+                id: $('select[name="province"]').val(),
+                name: $('select[name="province"] option:selected').text()
+            },
+            city: {
+                id: $('select[name="city"]').val(),
+                name: $('select[name="city"] option:selected').text()
+            },
+            town: {
+                id: $('select[name="town"]').val(),
+                name: $('select[name="town"] option:selected').text()
+            },
+            streets: $('input[name="streets"]').val(),
+            postcode: $('input[name="postcode"]').val()
+        };
+        if('postcode' in formData){
+            delete(formData['postcode']);
+        }
+        if('streets' in formData){
+            delete(formData['streets']);
+        }
+        if('province' in formData){
+            delete(formData['province']);
+        }
+        if('city' in formData){
+            delete(formData['city']);
+        }
+        if('town' in formData){
+            delete(formData['town']);
+        }
+        var d = {
+            data: formData
+        }
+
+        d = JSON.stringify(d);
 
         Ajax.submit({
             url: config.api_letter_add,
-            data: {
-                data: formData
-            }
+            data: d
         }, function(data) {
             if (data.error) {
                 Tools.showAlert(data.error.message);
@@ -140,10 +172,10 @@
     getRegionData($('#province')[0]);
 
     $('#province').change(function() {
-        getRegionData($('#city')[0],$(this).val());
+        getRegionData($('#city')[0], $(this).val());
     });
     $('#city').change(function() {
-        getRegionData($('#area')[0],$(this).val());
+        getRegionData($('#area')[0], $(this).val());
     });
 
     $('#province').mobiscroll().select({

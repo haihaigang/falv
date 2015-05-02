@@ -58,7 +58,7 @@
                 <div class="items">
                     <div class="key"><em>*</em>收函人电话：</div>
                     <div class="val">
-                        <input type="text" name="phone" placeholder="输入收函人电话" />
+                        <input type="text" name="phone" placeholder="输入收函人电话" maxlength="11" />
                     </div>
                 </div>
                 <div class="items">
@@ -85,7 +85,7 @@
                 <div class="items">
                     <div class="key"><em>*</em>邮政编码：</div>
                     <div class="val">
-                        <input type="text" name="postcode" />
+                        <input type="text" name="postcode" maxlength="6" />
                     </div>
                 </div>
                 <div class="items single">
@@ -100,7 +100,7 @@
                     <div class="key big"><em>*</em>证据材料上传：</div>
                     <div class="col">
                         <div class="val">
-                            <input type="text" name="fileName" placeholder="上传图片" />
+                            <input type="text" placeholder="上传图片" readonly />
                         </div>
                         <div class="file">
                             <input type="file" name="file" />
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div class="options">
-                    <input type="hidden" name="type" value="1" />
+                    <input type="hidden" name="type" value="CT0001" />
                     <input type="submit" class="btn" value="提交" />
                 </div>
             </div>
@@ -128,7 +128,7 @@
     <script type="text/html" id="flv-imgs-tmpl">
         <div class="col">
             <div class="val">
-                <input type="text" name="fileName" placeholder="上传图片" readonly />
+                <input type="text" placeholder="上传图片" readonly />
             </div>
             <div class="file">
                 <input type="file" name="file" />

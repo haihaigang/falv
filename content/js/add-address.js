@@ -5,8 +5,6 @@
         id = Tools.getQueryValue('id'),
         tempAddress; //临时编辑的地址信息
 
-    config.api_place = config.server + '/place/list.json';
-
     if (id) {
         //若是编辑地址
         var result = Storage.get('FLY-ADDRESS');
@@ -20,8 +18,8 @@
             postname = $('input[name="name"]').val(tempAddress.postName);
             phone = $('input[name="phone"]').val(tempAddress.mobile);
             getRegionData($('#province')[0], '', tempAddress.area.province.id);
-            getRegionData($('#city')[0], tempAddress.area.province.id,tempAddress.area.city.id);
-            getRegionData($('#area')[0], tempAddress.area.city.id,tempAddress.area.town.id);
+            getRegionData($('#city')[0], tempAddress.area.province.id, tempAddress.area.city.id);
+            getRegionData($('#area')[0], tempAddress.area.city.id, tempAddress.area.town.id);
             streets = $('input[name="address"]').val(tempAddress.area.streets);
             pcode = $('input[name="postcode"]').val(tempAddress.area.postcode);
         }
@@ -58,8 +56,8 @@
         mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
         display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
         lang: "zh", // Specify language like: lang: 'pl' or omit setting to use default 
-        onInit: function(){
-            if(tempAddress){
+        onInit: function() {
+            if (tempAddress) {
                 $('#province_dummy').val(tempAddress.area.province.name);
             }
         }
@@ -69,8 +67,8 @@
         mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
         display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
         lang: "zh", // Specify language like: lang: 'pl' or omit setting to use default 
-        onInit: function(){
-            if(tempAddress){
+        onInit: function() {
+            if (tempAddress) {
                 $('#city_dummy').val(tempAddress.area.city.name);
             }
         }
@@ -81,18 +79,18 @@
         mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
         display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
         lang: "zh", // Specify language like: lang: 'pl' or omit setting to use default 
-        onInit: function(){
-            if(tempAddress){
+        onInit: function() {
+            if (tempAddress) {
                 $('#area_dummy').val(tempAddress.area.town.name);
             }
         }
     });
 
     $('#province').change(function() {
-        getRegionData($('#city')[0],$(this).val());
+        getRegionData($('#city')[0], $(this).val());
     });
     $('#city').change(function() {
-        getRegionData($('#area')[0],$(this).val());
+        getRegionData($('#area')[0], $(this).val());
     });
 
     $('#addAddress-form').submit(function(e) {
@@ -131,20 +129,34 @@
             return;
         }
         var data = {
-            postName: postname,
-            area: {
-                province: pro,
-                city: city,
-                town: town,
-                streets: streets,
-                postcode: pcode
-            },
-            mobile: phone
+            data: {
+                postName: postname,
+                area: {
+                    province: {
+                        id: pro,
+                        name: $('select[name="province"] option:selected').text()
+                    },
+                    city: {
+                        id: city,
+                        name: $('select[name="city"] option:selected').text()
+                    },
+                    town: {
+                        id: town,
+                        name: $('select[name="area"] option:selected').text()
+                    },
+                    streets: streets,
+                    postcode: pcode
+                },
+                mobile: phone
+            }
         };
+        if (id) {
+            data.id = id;
+        }
         data = JSON.stringify(data);
 
         Ajax.submit({
-            url: config.api_add_address,
+            url: id ? config.api_address_update : config.api_address_add,
             data: data,
             showLoading: true
         }, function(data) {
