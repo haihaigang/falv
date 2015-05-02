@@ -399,30 +399,30 @@ form.cont-form .options .mr{
 	color: #ed1c24;
 }
 /* cont sus end */
-/* search doctype*/
-form.search-doctype-form .items {
+/* search*/
+form.cont-search-form .items {
 	display: block;
     position: relative;
     margin:.1rem .1rem 0;
 }
-form.search-doctype-form label.select-tab {
+form.cont-search-form label.select-tab {
     position: absolute;
     right: .1rem;
     top: .08rem;
     z-index: 9;
 }
-form.search-doctype-form label.select-tab img{
+form.cont-search-form label.select-tab img{
 	width: .2rem;
 }
-.doctype-list{padding: 0;}
-.doctype-list ul{
+.cont-search-list{padding: 0;}
+.cont-search-list ul{
 	margin: 0 .15rem;
 }
-.doctype-list ul  li{
+.cont-search-list ul  li{
 	padding: .15rem;
 	border-bottom: 1px solid #e6e6e6;
 }
-.doctype-list .empty_list{
+.cont-search-list .empty_list{
 	text-align: center;
 	color: #ed1c24;
 	font-size: .12rem;
@@ -430,7 +430,7 @@ form.search-doctype-form label.select-tab img{
 	vertical-align: top;
 	display: none;
 }
-.doctype-list .empty_list i{
+.cont-search-list .empty_list i{
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: .14rem;
@@ -440,16 +440,16 @@ form.search-doctype-form label.select-tab img{
 	height: .16rem;
 	margin-right: .06rem;
 }
-.doctype-list h3{
+.cont-search-list h3{
 	padding: .15rem;
 	text-align: center;
 	border-bottom: 2px solid #e6e6e6;
 }
-.doctype-list h3 em{
+.cont-search-list h3 em{
 	color: #00bff3;
 	margin:0 .04rem 
 }
-header a.doctype-search-icon{
+header a.search-again-icon{
 	color: #0072bc;
 	width: .7rem;
 	font-size: 1.2em;
