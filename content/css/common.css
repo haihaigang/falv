@@ -1083,3 +1083,85 @@ form .single .val {
     overflow-y: auto
 }
 /* sidebar end */
+
+/* mic start */
+.mics {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.5);
+}
+.mics .mic-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 325px;
+    height: 150px;
+    margin-top: -75px;
+    margin-left: -162px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+}
+.mics .mic-content > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+.mics .mic-content .mic-1 {
+    top: 55px;
+    left: 60px;
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/common/loading.png);
+    -webkit-animation: rotateCW 2s linear 0s infinite;
+    -moz-animation: rotateCW 3s linear 0s infinite;
+    -ms-animation: rotateCW 3s linear 0s infinite;
+    -o-animation: rotateCW 3s linear 0s infinite;
+    animation: rotateCW 3s linear 0s infinite;
+}
+.mics .mic-content .mic-2 {
+    top: 65px;
+    left: 120px;
+    color: #000;
+    font-size: 16px;
+}
+.mics .mic-content .mic-close{
+    right: 0px;
+    top: 0px;    
+    left: auto;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 2em;
+}
+@media screen and (max-width: 640px) {
+    .mics .mic-content {
+        width: 265px;
+        height: 120px;
+        margin-top: -60px;
+        margin-left: -132px;
+    }
+    .mics .mic-content .mic-1 {
+        top: 40px;
+        left: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    .mics .mic-content .mic-2 {
+        top: 50px;
+        left: 110px;
+        color: #000;
+        font-size: 16px;
+    }
+}
+
+/* mic end */
