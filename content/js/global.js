@@ -296,6 +296,9 @@
             if(jqXHR.responseText && jqXHR.responseText.indexOf('<title>用户登录</title>') > 0){
                 location.href = '../account/login.html';
             }
+            if(jqXHR.status == 401){
+                location.href = '../account/login.html';
+            }
 
             logged(options.logtype, jqXHR.statusText, options.url);
             if (typeof callbackError == 'function') {

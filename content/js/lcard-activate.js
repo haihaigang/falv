@@ -5,6 +5,9 @@
 
     if(id){
         $('.phone').text(id);
+    }else{
+        //未登录，跳转
+        location.href = '../account/login.html';
     }
 
     //如果扫码过来的，自动激活
