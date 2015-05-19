@@ -372,6 +372,12 @@ form.letter-form .col:last-child {
 form.letter-form .col .val {
     -webkit-box-flex: 1;
 }
+form.letter-form .col input[type="file"] {
+    position: absolute;
+    right: 0;
+    font-size: 50px;
+    opacity: 0
+}
 
 form.letter-form .col .file {
     position: relative;
@@ -384,14 +390,6 @@ form.letter-form .col .file {
     background-repeat: no-repeat;
     background-size: 100% auto;
 }
-
-form.letter-form .col .file input {
-    position: absolute;
-    right: 0;
-    font-size: 50px;
-    opacity: 0
-}
-
 form.letter-form .col .close {
     display: block;
     width: .41rem;
