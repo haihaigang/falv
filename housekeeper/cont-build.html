@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -10,83 +11,171 @@
     <link rel="stylesheet" href="../content/css/common.css" />
     <link rel="stylesheet" href="../content/css/housekeeper.css" />
 </head>
+
 <body>
-<noscript>
-    <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
-</noscript>
-
-<header class="header">
-    <h1>选择合同</h1>
-    <a href="cont-search.html" class="icon icon-build">搜索</a>
-</header>
-
-<section class="container cont">
-	<div class="cont-progress">
-        <div class="cont-progress-item active"><p>选择合同</p><i></i></div>
-        <div class="cont-progress-item">回答问题<i></i></div>
-        <div class="cont-progress-item">预览合同<i></i></div>
-        <div class="cont-progress-line"><span></span></div>
-	</div>
-
-    <form id="cont-form" action="#" method="post" class="cont-form">
-        <div class="items">
-            <div class="key">文书类型</div>
-            <div class="val t_r">
-                <input type="hidden" name="type1">
-                <select id="doctype" data-role="none">
-                    <option value="0">请选择</option>              
-                </select>   
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <header class="header">
+        <h1>选择合同</h1>
+        <a href="cont-search.html" class="icon icon-build">搜索</a>
+    </header>
+    <section class="container cont">
+        <div class="cont-progress">
+            <div class="cont-progress-item active">
+                <p>选择合同</p><i></i></div>
+            <div class="cont-progress-item">回答问题<i></i></div>
+            <div class="cont-progress-item">预览合同<i></i></div>
+            <div class="cont-progress-line"><span></span></div>
+        </div>
+        <form id="cont-form" action="#" method="post" class="cont-form">
+            <div class="items">
+                <div class="key">文书类型</div>
+                <div class="val t_r">
+                    <input type="hidden" name="type1">
+                    <select id="doctype" data-role="none">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <i class="choose">&nbsp;</i>
             </div>
-            <i class="choose">&nbsp;</i>
-        </div>
-        <div class="tips t_r">可点击右上角搜索关键字确定文书</div>
-        <div class="items" style="display:none;" id="catItems">
-            <div class="key">目录名称</div>
-            <div class="val t_r">           
-                <input type="hidden" name="name">
-                <input type="hidden" name="type">
-                <input type="hidden" name="type2">
-                <select id="catalog" data-role="none">
-                    <option value="0">请选择</option>              
-                </select>   
+            <div class="tips t_r">可点击右上角搜索关键字确定文书</div>
+            <div class="items" style="display:none;" id="catItems">
+                <div class="key">目录名称</div>
+                <div class="val t_r">
+                    <input type="hidden" name="name">
+                    <input type="hidden" name="type">
+                    <input type="hidden" name="type2">
+                    <select id="catalog" data-role="none">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <i class="choose">&nbsp;</i>
             </div>
-            <i class="choose">&nbsp;</i>
-        </div>
-        <div class="items" style="display:none;" id="tarItems">
-            <div class="key">合同细则</div>
-            <div class="val t_r">
-                <input type="hidden" name="target" value="0">
-                <select id="target" data-role="none">
-                    <option value="0">请选择</option>  
-                </select>  
+            <div class="items" style="display:none;" id="tarItems">
+                <div class="key">合同细则</div>
+                <div class="val t_r">
+                    <input type="hidden" name="target" value="">
+                    <select id="target" data-role="none">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <i class="choose">&nbsp;</i>
             </div>
-            <i class="choose">&nbsp;</i>
-        </div>
-        <div class="items" style="display:none;" id="rolItems">
-            <div class="key">合同角色</div>
-            <div class="val t_r">
-                <input type="hidden" name="role" value=" ">
-                <select id="role" data-role="none">
-                    <option value="0">请选择</option>                      
-                </select>   
+            <div class="items" style="display:none;" id="rolItems">
+                <div class="key">合同角色</div>
+                <div class="val t_r">
+                    <input type="hidden" name="role" value="">
+                    <select id="role" data-role="none">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <i class="choose">&nbsp;</i>
             </div>
-            <i class="choose">&nbsp;</i>
-        </div>
-        <div class="options">
-            <input type="hidden" name="comment" value=" " />
-            <input type="hidden" name="status" value="1" />
-            <input type="submit" class="btn" value="开始起草" />
-        </div>
-    </form>
-</section>
+            <div class="options">
+                <input type="hidden" name="comment" value=" " />
+                <input type="hidden" name="status" value="1" />
+                <input type="submit" class="btn" value="开始起草" />
+            </div>
+        </form>
+    </section>
 
+    <div class="sidebar" id="question-page">
+        <header class="header">
+            <a href="#" class="icon icon_return" data-flag="true"></a>
+            <h1>回答问题</h1>
+        </header>
+        <section class="container cont">
+            <div class="cont-progress">
+                <div class="cont-progress-item active">
+                    <p>选择合同</p><i></i></div>
+                <div class="cont-progress-item active">回答问题<i></i></div>
+                <div class="cont-progress-item">预览合同<i></i></div>
+                <div class="cont-progress-line"><span></span></div>
+            </div>
+            <div class="cont-step">
+                <span>第1页/共4页</span>
+            </div>
+            <form id="cont-form" action="#" method="post" class="cont-form">
+                <div id="flv-question-list"></div>
+                <div class="options">
+                    <input type="submit" class="btn mr btn-prev" value="上一页" />
+                    <input type="submit" class="btn btn-next" value="下一页" />
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <div class="sidebar" id="preview-page">
+        <header class="header">
+            <a href="#" class="icon icon_return" data-flag="true"></a>
+            <h1>预览合同</h1>
+        </header>
+        <section class="container cont">
+            <div class="cont-progress">
+                <div class="cont-progress-item active">
+                    <p>选择合同</p><i></i></div>
+                <div class="cont-progress-item active">回答问题<i></i></div>
+                <div class="cont-progress-item active">预览合同<i></i></div>
+                <div class="cont-progress-line"><span></span></div>
+            </div>
+        </section>
+        <section class="container cont-sus">
+            <div class="tips">
+                <p>您的合同起草申请已经提交。</p>
+                <p>法率顾问将立即处理，并与您保持及时沟通！</p>
+            </div>
+            <div class="options">
+                <div class="opt-item">
+                    <button class="btn btn-alter">返回修改</button>
+                </div>
+                <div class="opt-item">
+                    <button class="btn btn-sure">定制完成</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="sidebar" id="end-page">
+        <header class="header">
+            <a href="#" class="icon icon_return"></a>
+            <h1>合同完成</h1>
+        </header>
+        <section class="container cont-sus">
+            <div class="tips">
+                <p>恭喜您已经完成合同起草</p>
+            </div>
+            <div class="options">
+                <div class="opt-item">
+                    <button class="btn btn-view">查看合同</button>
+                </div>
+                <div class="opt-item">
+                    <button class="btn btn-risk">风险提示</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--模版位置-->
     <script type="text/html" id="common-options-tmpl">
-    <option value="0">请选择</option>
-    <!--[for(i = 0; i < list.length; i++){]-->
+        <option value="0">请选择</option>
+        <!--[for(i = 0; i < list.length; i++){]-->
         <option value="<!--[= list[i].categoryId]-->" data-len="<!--[= list[i].child.length]-->" data-v="<!--[= list[i].childValue]-->"><!--[= list[i].name]--></option>
-    <!--[}]-->
+        <!--[}]-->
     </script>
 
+    <script type="text/html" id="flv-question-list-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="items">
+            <div class="txt">问题<!--[= i+1]-->：<!--[= list[i].body]--></div>
+        </div>
+        <div class="items">
+            <div class="val">
+                <input type="text" name="phone" placeholder="输入内容" data-number="<!--[= list[i].number]-->" />
+            </div>
+        </div>
+        <!--[}]-->
+    </script>
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -110,14 +199,12 @@
             <div class="s-2">正在加载中</div>
         </div>
     </div>
-
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
     <script src="../content/js/lib/jscroll.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
-    <script src="../content/js/worldunion.js"></script> 
-
+    <script src="../content/js/worldunion.js"></script>
     <!-- Mobiscroll JS and CSS Includes -->
     <script src="../content/mobiscroll/js/mobiscroll.zepto.js"></script>
     <script src="../content/mobiscroll/js/mobiscroll.core.js"></script>
@@ -125,16 +212,13 @@
     <script src="../content/mobiscroll/js/mobiscroll.scroller.js"></script>
     <script src="../content/mobiscroll/js/mobiscroll.android-holo-light.js"></script>
     <script src="../content/mobiscroll/js/mobiscroll.select.js"></script>
-
     <script src="../content/mobiscroll/js/i18n/mobiscroll.i18n.zh.js"></script>
-
     <link href="../content/mobiscroll/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
     <link href="../content/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
     <link href="../content/mobiscroll/css/mobiscroll.frame.css" rel="stylesheet" type="text/css" />
     <link href="../content/mobiscroll/css/mobiscroll.android-holo-light.css" rel="stylesheet" type="text/css">
     <!--Mobiscroll includes end-->
     <script src="../content/js/cont-build.js"></script>
-
 </body>
 
 </html>

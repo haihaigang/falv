@@ -309,5 +309,10 @@ form.consult-form .col.active .close {
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 }
-
+.consult-info{
+	padding: 0;
+}
+.consult-info img{
+	max-width: 100%;
+}
 /* consult detail end */

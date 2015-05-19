@@ -88,8 +88,16 @@
 
         that.ajaxSend(options, function(response, textStatus, jqXHR) {
             var body = response[options.key];
-            if('items' in body){
+            if ('items' in body) {
                 body = body.items; //当前项目约定分页返回数据多一层items
+            }
+            if ('error' in body) {
+                log('error');
+                //特殊处理某接口，有的接口错误提示放在该字段
+                $(options.renderEle).html('<div class="nodata">' + body.error_code + '</div>');
+                body = [];
+                next.hide();
+                return;
             }
 
             if (options.key == '-1') {
@@ -112,7 +120,7 @@
                 //这里判断需根据具体接口定义
                 config.skip += body.length;
                 that.hasNext = body.length == options.data.limit;
-                
+
                 if (body.length == 0) {
                     //数据没有结果显示无数据提示
                     if (isFirst) {
@@ -167,7 +175,16 @@
                 $(options.renderEle).html(response.error);
                 return;
             }
-            var data = response[options.key] || {};
+
+            var data = {};
+            if(typeof options.key == 'string'){
+                data = response[options.key] || {};
+            }else if(typeof options.key == 'object'){
+                data = response;
+                for(var i in options.key){
+                    data = data[i];
+                }
+            }
             if (data)
                 render(options.renderEle, options.renderFor, data);
             if (typeof callback == 'function') {
@@ -293,10 +310,10 @@
             delete(that.queue[options.url]);
 
             //特殊处理未登录的接口返回值
-            if(jqXHR.responseText && jqXHR.responseText.indexOf('<title>用户登录</title>') > 0){
+            if (jqXHR.responseText && jqXHR.responseText.indexOf('<title>用户登录</title>') > 0) {
                 location.href = '../account/login.html';
             }
-            if(jqXHR.status == 401){
+            if (jqXHR.status == 401) {
                 location.href = '../account/login.html';
             }
 
@@ -509,7 +526,7 @@
             if (!this.isLocalStorage()) {
                 return;
             }
-            
+
             value = JSON.stringify(value);
             this.getStorage(isSession).setItem(key, value);
         },

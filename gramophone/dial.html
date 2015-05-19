@@ -18,51 +18,53 @@
     </noscript>
     <header class="header">
         <a href="#" class="icon icon_return"></a>
-        <h1>录音文件</h1>
+        <h1>拨打电话</h1>
     </header>
-    <section class="dial-list">
-        <div class="dlist">
-            <span class="call-num"><strong>13918889899</strong></span>
-            <span class="call-details"><em>2015.12.12 12:00</em>通话时长：<strong> 8 </strong>分钟</span>
-        </div> 
-        <div class="dlist">
-            <span class="call-num"><strong>13918889899</strong></span>
-            <span class="call-details"><em>2015.12.12 12:00</em>通话时长：<strong> 3 </strong>分钟</span>
-        </div> 
+    <section class="dial-list" id="flv-list">
     </section>
     <section class="keyboard">
-           
         <ul> 
             <li class="k-items">
-                <span class="empty">清空</span>
-                <span class="num">13965544444</span>
-                <span class="del"></span>
+                <span class="empty" id="flv-empty">清空</span>
+                <span class="num" id="flv-num"></span>
+                <span class="del" id="flv-del"></span>
             </li>
             <li class="k-items">
-                <a href="javascript:void(0)">1</a>
-                <a href="javascript:void(0)">2</a>
-                <a href="javascript:void(0)">3</a>
+                <a class="d" href="javascript:void(0)">1</a>
+                <a class="d" href="javascript:void(0)">2</a>
+                <a class="d" href="javascript:void(0)">3</a>
             </li>
             <li class="k-items">
-                <a href="javascript:void(0)">4</a>
-                <a href="javascript:void(0)">5</a>
-                <a href="javascript:void(0)">6</a>
+                <a class="d" href="javascript:void(0)">4</a>
+                <a class="d" href="javascript:void(0)">5</a>
+                <a class="d" href="javascript:void(0)">6</a>
             </li>
             <li class="k-items">
-                <a href="javascript:void(0)">7</a>
-                <a href="javascript:void(0)">8</a>
-                <a href="javascript:void(0)">9</a>
+                <a class="d" href="javascript:void(0)">7</a>
+                <a class="d" href="javascript:void(0)">8</a>
+                <a class="d" href="javascript:void(0)">9</a>
             </li>
             <li class="k-items">
-                <a href="javascript:void(0)">*</a>
-                <a href="javascript:void(0)">0</a>
-                <a href="javascript:void(0)">#</a>
+                <a class="d" href="javascript:void(0)">*</a>
+                <a class="d" href="javascript:void(0)">0</a>
+                <a class="d" href="javascript:void(0)">#</a>
             </li>
             <li class="k-options">
-                <span class="btn">拨打</span>
+                <span class="btn" id="flv-dial">验证</span>
+                <a class="btn disabled" href="javascript:;" id="flv-phone">拨打</a>
             </li>
         </ul>
     </section>
+
+    <!--模版位置-->
+    <script type="text/html" id="flv-list-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="dlist">
+            <span class="call-num"><strong><!--[= list[i].called]--></strong></span>
+            <span class="call-details"><em><!--[= $formatDate(list[i].start_time)]--></em>通话时长：<strong><!--[= $getDuration(list[i].start_time,list[i].end_time)]--></strong>分钟</span>
+        </div>
+        <!--[}]-->
+    </script>
     
     <div id="ti-panel" class="panel">
         <div class="panel-content">
@@ -93,7 +95,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/register.js"></script>
+    <script src="../content/js/gp-dial.js"></script>
 </body>
 
 </html>

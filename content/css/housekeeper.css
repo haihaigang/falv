@@ -6,10 +6,31 @@
 /* hk index start */
 .hk-banner{
 	position: relative;
+	height: 165px;
+	background-color: #1b74c3;
 }
 .hk-banner img{
 	display: block;
 	max-width: 100%;
+}
+.hk-banner h3{
+	padding-top: .2rem;
+	font-size: 1.5em;
+	font-style: italic;
+	color: #fff;
+	text-align: center;
+	color: #fff;
+}
+.hk-banner .hk-btns{
+	padding-top: .15rem;
+	text-align: center;
+}
+.hk-banner .hk-btns .btn{
+	display: inline-block;
+	padding: 7px 14px;
+	border-radius: 7px;
+	color: #fff;
+	background-color: #39b54a;
 }
 .hk-banner .tip{
 	position: absolute;
@@ -18,7 +39,7 @@
 	line-height: .45rem;
 	text-align: center;
 	color: #fff;
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(47,56,65,0.7);
 }
 .hk-list a{
     display: -webkit-box;

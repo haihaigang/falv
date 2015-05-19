@@ -56,8 +56,8 @@
                 serviceType: 'ST0002'
             }
         },function(data){
-            if(data.error){
-                Tools.showAlert(dta.error.message);
+            if(data.data == 0){
+                Tools.showAlert('没有服务，请购买后使用');
                 return;
             }
             location.href = that.attr('href');

@@ -1,5 +1,13 @@
 (function() {
 
+    //模板帮助方法，反编码
+    template.helper('$decodeURI', function(content) {
+        if (!content) {
+            return '--';
+        }
+        return decodeURIComponent(content);
+    });
+
 	//获取统计信息
 	//ST0001-法律咨询, ST0002-发律师函, ST0003-智能合同, ST0004-合同审核, ST0005-法律培训
 	Ajax.custom({
@@ -37,10 +45,11 @@
     			serviceType: 'ST0003'
     		}
     	},function(data){
-    		if(data.error){
-    			Tools.showAlert(dta.error.message);
-    			return;
-    		}
+            if(data.data == 0){
+                Tools.showAlert('没有服务，请购买后使用');
+                return;
+            }
+
     		location.href = that.attr('href');
     	})
     })

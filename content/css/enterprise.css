@@ -112,7 +112,8 @@ label.select-tab {
 
 .c-name {
     font-size: .16rem;
-    color: #0072bc
+    color: #e6e6e6;
+    text-align: center;
 }
 
 .company-detail .lab {
@@ -125,6 +126,29 @@ label.select-tab {
 
 .company-detail .msg {
     line-height: 1.6;
+}
+
+.company-detail .empty {
+    color: #818181;
+    text-align: center;
+}
+.company-tag{
+    background-color: #2f3841;
+}
+.c-tag{
+    border-color: #6f6f6f;
+}
+.c-tag span{
+    display: inline-block;
+    padding: 0 5px;
+    color: #cdcdcd;
+    font-size: .8em;
+    line-height: .28rem;
+}
+.c-tag span.active{
+    color: #e6e6e6;
+    background-color: #0072bc;
+    border-radius: 5px;
 }
 /*province list start */
 

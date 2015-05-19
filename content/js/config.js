@@ -36,6 +36,7 @@ config.api_audit_list_app = config.server + '/app/contractAudit/list';//移动�
 // housekeeper contract
 config.api_cont_list = config.server + '/contract/list';//获取合同起草服务一览
 config.api_cont_add = config.server + '/contract/add';//开始起草
+config.api_cont_update = config.server + '/contract/update';//开始起草
 config.api_cont_detail = config.server + '/contract/get';//获取合同服务详情
 config.api_cont_preview = config.server + '/contract/preview';//预览合同
 config.api_cont_generate = config.server + '/contract/generate'; //完成合同起草
@@ -83,4 +84,13 @@ config.api_enterprise_province =  'http://i.yjapi.com/eci/provinces';//获取支
 config.api_enterprise_search =  'http://i.yjapi.com/eci/search';//查询匹配公司列表
 config.api_enterprise_detail =  'http://i.yjapi.com/eci/getdetails';//获取公司信用详细信息
 
+config.api_enterprise_province =  config.server + '/eci/provinces';//获取支持城市列表
+config.api_enterprise_search =  config.server + '/eci/search';//查询匹配公司列表
+config.api_enterprise_detail =  config.server + '/eci/getdetails';//获取公司信用详细信息
+
+//gramophone
+config.api_gp_getTokenByPhone = config.server + '/cunnar/getTokenByPhone';//通过手机号获取token
+config.api_gp_getTokenByCode = config.server + '/cunnar/getTokenByCode';//通过code获取token
+config.api_gp_call = config.server + '/cunnar/call';//语音拨号
+config.api_gp_voiceHistory = config.server + '/cunnar/voiceHistory';//查询语音通话记录
 

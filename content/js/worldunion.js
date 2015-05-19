@@ -3,12 +3,12 @@
     //获取登录的id
     config.getId = function() {
         var auth = Cookie.get(Storage.AUTH);
-        //		if(!auth){
-        //			//auth = Storage.get(Storage.AUTH);
-        //			if(auth){
-        //				//Cookie.set(Storage.AUTH, auth);
-        //			}
-        //		}
+        //      if(!auth){
+        //          //auth = Storage.get(Storage.AUTH);
+        //          if(auth){
+        //              //Cookie.set(Storage.AUTH, auth);
+        //          }
+        //      }
         return auth;
     };
 
@@ -123,6 +123,16 @@
         return content.substring(0, len);
     });
 
+    //模板帮助方法， 获取时长
+    template.helper('$getDuration', function(start, end) {
+        if (!start || !end) {
+            return '--';
+        }
+
+        return Math.round((end - start) / 60000);
+
+    });
+
     // 返回按钮
     $('.icon_return').click(function(e) {
         e.preventDefault();
@@ -219,12 +229,12 @@
             if (volume < 0)
                 log("请调整你的音量");
         }, function(err, result) {
-        	$('#ti-mic').hide();
+            $('#ti-mic').hide();
             if (err == null || err == undefined || err == 0) {
                 if (result == '' || result == null)
                     Tools.showToast("错误");
                 else
-                    that.parent().val(result);
+                    that.parent().find('input').val(result);
             } else {
                 Tools.showToast('error code : ' + err + ", error description : " + result);
             }
@@ -239,6 +249,12 @@
 
         flvSession && flvSession.stop(null);
     });
+
+    //若是用于分享，隐藏头部
+    var forshare = Tools.getQueryValue('forshare');
+    if (forshare) {
+        $('header').hide();
+    }
 
     //初始化滚动
     config.initScroll = function(opt, mode) {
@@ -364,7 +380,6 @@
         // Make sure selected type is supported by browser
         if (($.support.cssTransitions && animationType === "transition") ||
             ($.support.cssAnimations && animationType === "animation")) {
-
             // If a fallback time was not passed set one
             if (fallbackTime === undefined) {
 
@@ -404,3 +419,43 @@
     // Allow default callback to be configured on mobileInit
     $.fn.animationComplete.defaultDuration = 1000;
 })(jQuery);
+
+(function(window) {
+    var SecondPage = function(pageName) {
+        var that = this;
+        that.targetPage = $(pageName);
+
+        $(pageName + ' .icon_return').click(function(e){
+            e.preventDefault();
+            that.closeSidebar();
+        })
+    }
+
+    SecondPage.prototype = {
+        targetPage: undefined,
+        openSidebar: function(fn) {
+            var container = $(window);
+            var w = container.width(),
+                h = container.height();
+            this.targetPage.css({
+                'width': w,
+                'height': h
+            });
+
+            this.targetPage.addClass('open');
+            fn && fn();
+        },
+
+        closeSidebar: function(fn) {
+            this.targetPage.removeClass('open');
+            setTimeout(function() {
+                $('#xg-panel-bg').hide();
+                hasOpend = false;
+                fn && fn();
+                //provincePage.hide()
+            }, 220);
+        }
+    }
+
+    window.SecondPage = SecondPage;
+})(window)

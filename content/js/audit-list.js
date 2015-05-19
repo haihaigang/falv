@@ -37,10 +37,10 @@
     			serviceType: 'ST0004'
     		}
     	},function(data){
-    		if(data.error){
-    			Tools.showAlert(dta.error.message);
-    			return;
-    		}
+            if(data.data == 0){
+                Tools.showAlert('没有服务，请购买后使用');
+                return;
+            }
     		location.href = that.attr('href');
     	})
     })

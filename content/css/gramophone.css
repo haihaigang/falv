@@ -114,7 +114,7 @@ header a,strong{
 	position: fixed;
 	bottom: 0;
 	background-color: #fff;
-	z-index: 99;
+	z-index: 9;
 	width: 100%;
 	max-width: 480px;
 }
@@ -166,15 +166,21 @@ header a,strong{
 .keyboard .k-items a:last-child{
 	border-right: none;
 }
-.keyboard .k-options span{
+.keyboard .k-options{
+	text-align: center;
+}
+.keyboard .k-options .btn{
 	display: block;
-	margin: .07rem auto;
-	width: 33%;
+	margin: .07rem .15rem;
 	height: .36rem;
 	line-height: .36rem;
 	color: #fff;
 	background-color: #1777cf;
 	border-radius: .2rem;
+	-webkit-box-flex: 1;
+}
+.keyboard .k-options .btn.disabled{
+	background-color: #e6e6e6;
 }
 /* dial end */
 /* record */

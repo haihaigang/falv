@@ -15,54 +15,30 @@
         $(this)[0].submit();
     });
 
-    var provincePage = $('#province-page');
+    var provincePage = $('#province-page'),
+        hasRender = false, //是否已获取省市数据
+        sp = new SecondPage('#province-page');
 
     //点击打开侧栏页面
     $('#selectPro').click(function() {
-        initPage();
-        $('.sidebar').addClass('open');
-    });
-
-    $('#sidebar-close').click(function(e, touch) {
-        e.preventDefault();
-        e.stopPropagation();
-        closeSidebar();
-    });
-
-    $('.sidebar').animationComplete(function() {
-        getProvince();
+        sp.openSidebar(function(){
+            getProvince();
+        });
     });
 
     //选择了一个省市
     $('#flv-province').on('click', '.value', function(e) {
         e.preventDefault();
 
-        closeSidebar();
+        sp.closeSidebar();
         $('#selectPro').val($(this).text());
         $('input[name="province"]').val($(this).attr('data-code'));
     });
-
-    function initPage() {
-        var container = $(window);
-        var w = container.width(),
-            h = container.height();
-        provincePage.css({
-            'width': w,
-            'height': h
-        });
-    }
-
-    function closeSidebar(fn) {
-        $('.sidebar').removeClass('open');
-        setTimeout(function() {
-            $('#xg-panel-bg').hide();
-            hasOpend = false;
-            fn && fn();
-        }, 220);
-    }
-
+    
     //获取全国省市
     function getProvince() {
+        if (hasRender) return;
+
         Ajax.custom({
             url: config.api_enterprise_province,
             data: {
@@ -70,6 +46,7 @@
                 dtype: 'json'
             }
         }, function(data) {
+            data = data.data;
             if (data.resultcode != '200') {
                 return;
             }

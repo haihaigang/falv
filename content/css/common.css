@@ -123,6 +123,9 @@ em {
 .f_red {
     color: #806d5a;
 }
+.hidden{
+    overflow: hidden;
+}
 /*general end*/
 /* noscript start */
 
@@ -1064,6 +1067,7 @@ form .single .val {
     bottom: 0;
     width: 100%;
     background-color: #fff;
+    overflow-y: auto;
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
     -webkit-transition: all .2s ease-in;

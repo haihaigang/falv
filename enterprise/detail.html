@@ -25,32 +25,83 @@
     </section>
     <!--模版位置-->
     <script type="text/html" id="flv-detail-tmpl">
-        <div class="rlist c-name">
-            <span><!--[= name]--></span>
+        <div class="company-tag">
+            <div class="rlist c-tag">
+                <span class="active" data-to="#cv-info">企业信息</span>
+                <span data-to="#cv-touzi">投资人</span>
+                <span data-to="#cv-renyuan">主要人员</span>
+                <span data-to="#cv-jigou">分支机构</span>
+                <span data-to="#cv-biangeng">变更信息</span>
+            </div>
+            <div class="rlist c-name">
+                <span><!--[= name]--></span>
+            </div>
         </div>
-        <div class="rlist register-assets">
-            <span class="lab">注册资本</span>
-            <span class="txt"><!--[= registcapi || '--']--></span>
+        <div class="company-view" id="cv-info">
+            <div class="rlist register-assets">
+                <span class="lab">注册资本</span>
+                <span class="txt"><!--[= registcapi || '--']--></span>
+            </div>
+            <div class="rlist legal-person">
+                <span class="lab">法定代表人</span>
+                <span class="txt"><!--[= opername]--></span>
+            </div>
+            <div class="rlist c-type">
+                <span class="lab">企业类型</span>
+                <span class="txt"><!--[= econkind]--></span>
+            </div>
+            <div class="rlist c-regtime">
+                <span class="lab">成立日期</span>
+                <span class="txt"><!--[= $getDateFromStr(startdate)]--></span>
+            </div>
+            <div class="rlist c-adress">
+                <span class="lab">地址</span>
+                <span class="txt"><!--[= address]--></span>
+            </div>
+            <div class="rlist c-adress">
+                <span class="lab">简介</span>
+                <p class="msg"><!--[= scope]--></p>
+            </div>
         </div>
-        <div class="rlist legal-person">
-            <span class="lab">法定代表人</span>
-            <span class="txt"><!--[= opername]--></span>
+        <div class="company-view" id="cv-touzi" style="display: none;">
+        <!--[if(partners && partners.length > 0){for(var i = 0; i < partners.length; i++){]-->
+            <div class="rlist">
+                <span class="lab">公司</span>
+                <span class="txt"><!--[= partners[i].stockname]--></span>
+            </div>
+        <!--[}}else{]-->
+            <div class="rlist empty">没有投资人信息</div>
+        <!--[}]-->
         </div>
-        <div class="rlist c-type">
-            <span class="lab">企业类型</span>
-            <span class="txt"><!--[= econkind]--></span>
+        <div class="company-view" id="cv-renyuan" style="display: none;">
+        <!--[if(employees && employees.length > 0){for(var i = 0; i < employees.length; i++){]-->
+            <div class="rlist">
+                <span class="lab"><!--[= employees[i].job]--></span>
+                <span class="txt"><!--[= employees[i].name]--></span>
+            </div>
+        <!--[}}else{]-->
+            <div class="rlist empty">没有主要人员信息</div>
+        <!--[}]-->
         </div>
-        <div class="rlist c-regtime">
-            <span class="lab">成立日期</span>
-            <span class="txt"><!--[= $getDateFromStr(startdate)]--></span>
-        </div>
-        <div class="rlist c-adress">
-            <span class="lab">地址</span>
-            <span class="txt"><!--[= address]--></span>
-        </div>
-        <div class="rlist c-adress">
-            <span class="lab">简介</span>
-            <p class="msg"><!--[= scope]--></p>
+        <div class="company-view" id="cv-jigou" style="display: none;">
+        <!--[if(branches && branches.length > 0){for(var i = 0; i < branches.length; i++){]-->
+            <div class="rlist">
+                <span class="lab">名称</span>
+                <span class="txt"><!--[= branches[i].name]--></span>
+            </div>
+
+        <!--[}}else{]-->
+            <div class="rlist empty">没有分支机构信息</div>
+        <!--[}]-->        </div>
+        <div class="company-view" id="cv-biangeng" style="display: none;">
+        <!--[if(changerecords && changerecords.length > 0){for(var i = 0; i < changerecords.length; i++){]-->
+            <div class="rlist">
+                <span class="lab">记录</span>
+                <span class="txt"><!--[= changerecords[i].projectname]--></span>
+            </div>
+        <!--[}}else{]-->
+            <div class="rlist empty">没有变更记录</div>
+        <!--[}]-->
         </div>
     </script>
     <div id="ti-panel" class="panel">

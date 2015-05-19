@@ -42,10 +42,12 @@
                 keyword: keyword
             }
         }, function(data) {
+            data = data.data;
             if (data.status != '200') {
                 $('#flv-list').html('<div class="nodata">' + data.message + '</div>');
                 return;
             }
+            log(data.companys);
 
             Ajax.render('#flv-list', 'flv-list-tmpl', data.companys);
         }, function() {
@@ -141,5 +143,12 @@
 
         })
     }
+
+
+    //模板帮助方法，获取临时变量province
+    template.helper('$getProvince', function() {
+        return province;
+    });
+
 
 })();

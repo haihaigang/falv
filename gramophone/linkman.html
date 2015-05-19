@@ -21,7 +21,7 @@
         <h1>联系人</h1>
         <a href="#">导入通讯录</a>
     </header>
-    <section class="linkman-list">
+    <section class="linkman-list" id="flv-list">
         <div class="linklist">
             <span class="name"><em>张无忌</em><strong>13918889899</strong></span>
             <a class="tel" href="tel:110"></a>
@@ -49,7 +49,7 @@
         <div class="linklist">
             <span class="name"><em>张无忌</em><strong>13918889899</strong></span>
             <a class="tel" href="tel:110"></a>
-        </div> 
+        </div>
         <div class="linklist">
             <span class="name"><em>张无忌</em><strong>13918889899</strong></span>
             <a class="tel" href="tel:110"></a>
@@ -59,7 +59,7 @@
             <a class="tel" href="tel:110"></a>
         </div> 
     </section>
-    <div class="Rbar linkman-rbar">
+    <div class="Rbar linkman-rbar" style="display: none;">
         <span> A </span>
         <span> B </span>
         <span> C </span>
@@ -87,6 +87,16 @@
         <span> Y </span>
         <span> Z </span>
     </div>
+
+    <!--模版位置-->
+    <script type="text/html" id="flv-list-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="linklist">
+            <span class="name"><strong><!--[= list[i].called]--></strong></span>
+            <a class="tel" href="dial.html?phone=<!--[= list[i].called]-->"></a>
+        </div> 
+        <!--[}]-->
+    </script>
    
     <div id="ti-panel" class="panel">
         <div class="panel-content">
@@ -117,7 +127,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/register.js"></script>
+    <script src="../content/js/ga-linkman.js"></script>
 </body>
 
 </html>

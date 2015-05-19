@@ -20,20 +20,20 @@
         <a href="#" class="icon icon_return"></a>
         <h1>录音文件</h1>
     </header>
-    <section class="record-list">
+    <section class="record-list" id="flv-list">
         <div class="rlist">
             <a href="recording-detail.html">
                 <span class="name"><em>张无忌</em><strong>13918889899</strong></span>
                 <span class="date"><em>2015.12.12 12:00</em>通话时长：<strong>8</strong>分钟</span>
             </a>
-            <a href="#" class="stop">停止</a>
+            <a href="#" class="btn stop">停止</a>
         </div> 
         <div class="rlist">
             <a href="recording-detail.html">
                 <span class="name"><em>张无忌</em><strong>13918889899</strong></span>
                 <span class="date"><em>2015.12.12 12:00</em>通话时长：<strong>8</strong>分钟</span>
             </a>
-            <a href="#" class="play">播放</a>
+            <a href="#" class="btn play">播放</a>
         </div> 
         <div class="rlist">
             <a href="recording-detail.html">
@@ -57,6 +57,20 @@
             <a href="#" class="play">播放</a>
         </div> 
     </section>
+    <audio id="flv-video" style="display: none;"></audio>
+    
+    <!--模版位置-->
+    <script type="text/html" id="flv-list-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="rlist">
+            <a href="javascript:;">
+                <span class="name"><strong><!--[= list[i].called]--></strong></span>
+                <span class="date"><em><!--[= $formatDate(list[i].start_time)]--></em>通话时长：<strong><!--[= $getDuration(list[i].start_time,list[i].end_time)]--></strong>分钟</span>
+            </a>
+            <a href="#" class="btn play">播放</a>
+        </div> 
+        <!--[}]-->
+    </script>
     
     <div id="ti-panel" class="panel">
         <div class="panel-content">
@@ -87,7 +101,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/register.js"></script>
+    <script src="../content/js/gp-recording.js"></script>
 </body>
 
 </html>
