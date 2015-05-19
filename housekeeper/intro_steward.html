@@ -9,30 +9,20 @@
     <meta name="apple-touch-fullscreen" content="yes" />
     <title>法率网</title>
     <link rel="stylesheet" href="../content/css/common.css" />
-    <link rel="stylesheet" href="../content/css/housekeeper.css" />
 </head>
+
 
 <body>
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <header class="header">
-        <h1>搜索结果</h1>
-        <a class="icon doctype-search-icon" href="cont-doctype-search.html">重新搜索</a>
+        <a href="#" class="icon icon_return"></a>
+        <h1>率法管家</h1>
     </header>
-    
-    <section class="container doctype-list" id="doctype-list">
-        
+    <section class="container quick-detail">
+        <img src="../content/images/housekeeper/intro_steward.jpg" alt="" style="width:100%" />
     </section>
-    
-    <script type="text/html" id="doctype-list-tmpl">
-        <h3>总共<em><!--[= list.length]--></em>条<em><!--[= keyword]--></em>信息</h3>
-        <ul>
-        <!--[for(i = 0; i < list.length; i++){]-->
-            <li data-leve=<!--[= list[i].leve]--> data-id=<!--[= list[i].categoryId]-->><!--[= list[i].name]--></li>
-        <!--[}]-->
-        </ul>
-    </script>
 
     <div id="ti-panel" class="panel">
         <div class="panel-content">
@@ -57,13 +47,15 @@
             <div class="s-2">正在加载中</div>
         </div>
     </div>
+
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
     <script src="../content/js/lib/jscroll.js"></script>
+    <script src="../content/js/mobiscroll-2.3.1.full.min.js"></script>
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/cont-doctype-list.js"></script>
+
 </body>
 
 </html>

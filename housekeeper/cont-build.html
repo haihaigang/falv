@@ -17,6 +17,7 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <header class="header">
+        <a href="#" class="icon icon_return"></a>
         <h1>选择合同</h1>
         <a href="cont-search.html" class="icon icon-build">搜索</a>
     </header>
@@ -156,6 +157,37 @@
         </section>
     </div>
 
+    <div class="sidebar" id="search-page">
+        <header class="header">
+            <a href="#" class="icon icon_return" data-flag="true"></a>
+            <h1>专项服务</h1>
+        </header>
+        <form class="cont-search-form" action="cont-search-list.html">
+            <div class="items">
+                <input type="text" name="name" id="search-name" placeholder="输入关键字">
+                <label class="select-tab" id="open-search"><img src="../content/images/housekeeper/icon_search.png"></label>
+            </div>
+        </form>
+        <section class="container cont-search-list">
+            <ul id="keywordHistoryList">
+                
+            </ul>
+            <div class="empty_list" id="emptyList"><i></i>清空搜索历史</div>
+        </section>
+    </div>
+
+    <div class="sidebar" id="search-list-page">
+        <header class="header">
+            <a href="#" class="icon icon_return" data-flag="true"></a>
+            <h1>搜索结果</h1>
+            <a class="icon search-again-icon" href="＃">重新搜索</a>
+        </header>
+        
+        <section class="container cont-search-list" id="falv-list">
+            
+        </section>
+    </div>
+
     <!--模版位置-->
     <script type="text/html" id="common-options-tmpl">
         <option value="0">请选择</option>
@@ -176,6 +208,16 @@
         </div>
         <!--[}]-->
     </script>
+
+    <script type="text/html" id="falv-list-tmpl">
+        <h3>总共<em><!--[= list.length]--></em>条<em><!--[= keyword]--></em>信息</h3>
+        <ul>
+        <!--[for(i = 0; i < list.length; i++){]-->
+            <li data-id="<!--[= list[i].categoryId]-->"><!--[= list[i].name]--></li>
+        <!--[}]-->
+        </ul>
+    </script>
+
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">

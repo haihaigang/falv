@@ -77,7 +77,7 @@
             <div class="title">
                 <em class="status ing">进行中</em><span class="txt"><!--[= list[i].comment || '--']--></span>
             </div>
-            <div class="date"><span class="lab">预计完成时间：</span><span class="txt"><!--[= $formatDate(list[i].createAt,'yyyy.MM.dd HH:mm')]--></span>
+            <div class="date"><span class="lab">预计完成时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].createAt)]--></span>
             </div>
             <div class="opt">
                 <a href="audit-detail.html?id=<!--[= list[i]._id]-->">合同原文</a>

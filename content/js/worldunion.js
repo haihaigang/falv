@@ -256,6 +256,27 @@
         $('header').hide();
     }
 
+    //获取文件
+    config.getFile = function(id){
+        Ajax.custom({
+            url: config.api_file_download,
+            data: {
+                fileId: id
+            }
+        },function(data){
+
+        })
+    }
+
+    config.getImg = function(id){
+        Ajax.custom({
+            url: config.api_file_img.replace(':id',id)
+        },function(data){
+
+        })
+    }
+
+
     //初始化滚动
     config.initScroll = function(opt, mode) {
         var nav = $('.subscript');

@@ -5,10 +5,10 @@
     page: 1, //当前第几页，从1开始
     pageSize: 10, //默认分页大小
     appkey: '5c330281289e43aea815af3a7bdb902e',//云聚数据appkey
-    server: location.protocol + '//' + location.host,
+    // server: location.protocol + '//' + location.host,
     server: 'http://42.192.0.11:4001', //测试接口用
     // server: "https://www.ilaw66.com", //测试接口用
-    image: location.protocol + '//' + location.host + '/',
+    // image: location.protocol + '//' + location.host + '/',
     image: 'http://42.192.0.11:4001'
 };
 
@@ -63,7 +63,7 @@ config.api_letter_add = config.server + '/letter/add';//提交律师函信息
 config.api_file_upload = config.server + '/file/upload.json';//上传文件到服务器
 config.api_file_remove = config.server + '/file/remove.json';//删除
 config.api_file_download = config.server + '/file/download.json';//下载
-config.api_file_img = config.server + '/img/:id';//获取图片
+config.api_file_img = config.server + '/img/';//获取图片:id
 
 //service
 config.api_service_stat = config.server + '/service/getServiceUseInfo';//获取统计信息

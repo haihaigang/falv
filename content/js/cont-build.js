@@ -4,18 +4,20 @@
 
     // 修改选项返回
     var result = Tools.getQueryValue('result'),
-        myData,
+        myData, //所有分类的数据
         hasRole = false, //是否显示角色选项
         hasTarget = false, //是否显示细则选项
         qp = new SecondPage('#question-page'),
         pp = new SecondPage('#preview-page'),
         ep = new SecondPage('#end-page'),
+        sp = new SecondPage('#search-page'),
+        slp = new SecondPage('#search-list-page'),
         curPage = 1, //回答问题当前页码
         pageNum = 1, //回答问题总页数
         tempData = undefined, //问题数据
         tempCont = undefined; //编辑合同数据
 
-    //修改选项
+    //初始化下拉框，编辑时不可修改
     funMobiscroll('#doctype');
     funMobiscroll('#catalog');
     funMobiscroll('#target');
@@ -26,7 +28,8 @@
             theme: "android-holo-light",
             mode: "scroller",
             display: "bottom",
-            lang: "zh"
+            lang: "zh",
+            disabled: id //编辑时不可修改
         });
         if (el == "#doctype") {
             $("#doctype_dummy").bind("touchstart", function() {
@@ -35,7 +38,6 @@
                 $(this).val($("#doctype").find("option:selected").text());
             })
         }
-
     }
 
     //获取分类数据
@@ -48,23 +50,23 @@
         myData = data.data.items;
         var result = getOptionData();
         Ajax.render('#doctype', 'common-options-tmpl', result);
-        if (result) {
-            if (Storage.get('SEARCH_RESULT')) {
+        // if (result) {
+        //     if (Storage.get('SEARCH_RESULT')) {
 
-                var result = Storage.get('SEARCH_RESULT'),
-                    ancestor = result.ancestor;
-                if (ancestor.length > 0) {
-                    $.each(ancestor, function(i) {
-                        levelSelect(ancestor[i])
-                    });
-                }
-                levelSelect(result)
-            }
-        } else {
-            if (Storage.get('SEARCH_RESULT')) {
-                Storage.remove('SEARCH_RESULT')
-            }
-        }
+        //         var result = Storage.get('SEARCH_RESULT'),
+        //             ancestor = result.ancestor;
+        //         if (ancestor.length > 0) {
+        //             $.each(ancestor, function(i) {
+        //                 levelSelect(ancestor[i])
+        //             });
+        //         }
+        //         levelSelect(result)
+        //     }
+        // } else {
+        //     if (Storage.get('SEARCH_RESULT')) {
+        //         Storage.remove('SEARCH_RESULT')
+        //     }
+        // }
 
         hasLoad = true;
         setEditView();
@@ -142,8 +144,6 @@
         template.helper("docCatagoryId", that.val());
 
         //这里要获取当前选择项的子项，模版渲染可以用通用的
-        //你那个没有值的问题是，因为你上一个option的value写错了，多个等号
-        //Ajax.render('#catalog','catalog-options-tmpl', myData);
         Ajax.render('#catalog', 'common-options-tmpl', result);
         if (parseInt(_this.attr('data-len')) > 0) {
             $("#catItems").show();
@@ -292,7 +292,9 @@
 
             tempData = data.data;
             setEditView();
-        })
+        });
+
+        $('.icon-build').hide(); //隐藏搜索按钮
     }
 
     //编辑时赋值
@@ -304,16 +306,35 @@
         hasLoad = true;
 
         $('#doctype').val(tempData.type1).trigger('change');
+        $('#doctype_dummy').val(getNameByType(tempData.type1));
+
         setTimeout(function() {
             $('#catalog').val(tempData.type).trigger('change');
-        }, 100)
-        if (tempData.target && tempData.target != '-') {
-            $('#target').val(tempData.target).trigger('change');
+            $('#catalog_dummy').val(getNameByType(tempData.type));
+        }, 10)
+        setTimeout(function() {
+            if (tempData.target && tempData.target != '-') {
+                $('#target').val(tempData.target).trigger('change');
+                $('#target_dummy').val(getNameByType(tempData.target));
+            }
+        }, 50)
+        setTimeout(function() {
+                if (tempData.role) {
+                    $('#role').val(tempData.role).trigger('change');
+                    $('#role_dummy').val(getNameByType(tempData.role));
+                }
+            }, 100)
+            // $('#doctype').mobiscroll('setVal',tempData.type1);
+    }
+
+    //获取分类数据的名称
+    function getNameByType(type) {
+        for (var i in myData) {
+            if (myData[i].categoryId == type) {
+                return myData[i].name;
+            }
         }
-        if (tempData.role) {
-            $('#role').val(tempData.role).trigger('change');
-        }
-        // $('#doctype').mobiscroll('setVal',tempData.type1);
+        return '';
     }
 
     //测试用
@@ -504,11 +525,11 @@
         });
     }
 
-    ///////////预览
+    /*预览********/
 
-    $('#preview').on('click','.btn-alter',function(e){
+    $('#preview').on('click', '.btn-alter', function(e) {
         pp.closeSidebar();
-    }).on('click','.btn-sure',function(e){
+    }).on('click', '.btn-sure', function(e) {
         gotoFinish();
     })
 
@@ -536,5 +557,120 @@
             ep.openSidebar();
         })
     }
+
+    /*搜索页*******/
+
+    $('.icon-build').click(function(e) {
+        e.preventDefault();
+
+        sp.openSidebar(function() {
+            if (Storage.get('SEARCH_History')) {
+                var d = Storage.get('SEARCH_History'),
+                    str = "";
+                for (var i = 0; i < d.length; i++) {
+                    str += "<li>" + d[i] + "</li>"
+                }
+                $("#keywordHistoryList").html(str);
+                $("#keywordHistoryList > li").click(function() {
+                    $("#search-name").val($(this).text()).focus();
+                });
+                $("#emptyList").css("display", "block");
+            }
+        })
+    })
+
+    //清空搜索历史
+    $("#emptyList").click(function() {
+        $("#keywordHistoryList").empty();
+        $(this).css("display", "none");
+        Storage.remove('SEARCH_History')
+    });
+
+    //打开搜索结果页
+    $('#open-search').click(function(e) {
+        e.preventDefault();
+        keyword = $('#search-name').val();
+
+        slp.openSidebar(function() {
+            getSearchList(keyword);
+        })
+        setTimeout(function() {
+            sp.closeSidebar();
+        }, 220)
+
+        if (!Storage.get('SEARCH_History')) {
+            d[0] = keyword;
+        } else {
+            d = Storage.get('SEARCH_History');
+            // log(d.length)
+            if (!d.length && d[0] != keyword) {
+                d[1] = keyword;
+            } else {
+                var bool = true;
+                for (var i = 0; i < d.length; i++) {
+                    if (keyword == d[i]) {
+                        bool = false;
+                        break;
+                    }
+                }
+                if (bool)
+                    d[d.length] = keyword;
+            }
+        }
+        Storage.set('SEARCH_History', d);
+
+    })
+
+    /*搜索结果页*********/
+    var keyword, //缩缩关键字
+        d = [],
+        searchData = [], //缩缩结果数据
+        selectResult; //搜索结果选择项
+
+    //获取搜索结果
+    function getSearchList(keyword) {
+        Ajax.paging({
+            url: config.api_cont_doctype_keyword,
+            data: {
+                name: keyword
+            },
+            renderEle: '#falv-list',
+            renderFor: 'falv-list-tmpl',
+            showLoading: true
+        }, function(data) {
+            searchData = data.data;
+        });
+    }
+
+    //点击搜索结果项
+    $("#falv-list").on("click", "li", function() {
+        var selectId = $(this).attr("data-id"),
+            result = $(this).text();
+        for (var i = searchData.length - 1; i >= 0; i--) {
+            if (searchData[i].categoryId = selectId) {
+                //Storage.remove('SEARCH_RESULT');
+                //Storage.set('SEARCH_RESULT', searchData[i]);
+                slp.closeSidebar();
+                //window.location.href = "cont-build.html?result=" + result;
+
+                var result = searchData[i],
+                    ancestor = result.ancestor;
+                if (ancestor.length > 0) {
+                    $.each(ancestor, function(i) {
+                        levelSelect(ancestor[i])
+                    });
+                }
+                levelSelect(result)
+            }
+        };
+    })
+
+    //重新搜索按钮
+    $(".search-again-icon").click(function(e) {
+        e.preventDefault();
+        getSearchList(keyword);
+    })
+
+    template.helper("keyword", keyword);
 
 })();

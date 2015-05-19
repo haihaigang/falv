@@ -1,0 +1,28 @@
+.quick-detail{
+	position: relative;
+}
+.register_link{
+	position: absolute;
+	display: block;
+	width: 2.8rem;
+	height: .44rem;
+	bottom: 1.0rem;
+	left: 50%;
+	margin-left: -1.4rem;
+	z-index: 9;
+}
+a.register_link:hover{
+	background-color: rgba(0,0,0,0);
+}
+@media(max-width: 414px){
+.register_link{
+	  height: .34rem;
+	    bottom: .88rem;
+	}
+}
+@media(max-width: 414px and min-height: 736px){
+.register_link{
+	  height: .34rem;
+	    top: 5.56rem;
+	}
+}

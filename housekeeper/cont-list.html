@@ -63,8 +63,8 @@
             </div>
             <div class="date"><span class="lab">完成时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].updateAt)]--></span></div>
             <div class="opt">
-                <a href="cont-detail.html">合同原文</a>
-                <a href="cont-opinion.html" class="yj">风险提示</a>
+                <a href="<!--[= $getFileLink(list[i].attaches,'template')]-->" target="_blank">合同原文</a>
+                <a href="<!--[= $getFileLink(list[i].attaches,'notice')]-->" target="_blank" class="yj">风险提示</a>
             </div>
         </div>
         <!--[}else{]-->

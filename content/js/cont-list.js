@@ -5,7 +5,27 @@
         if (!content) {
             return '--';
         }
-        return decodeURIComponent(content);
+        return decodeURIComponent(content).replace('.docx','');
+    });
+
+    //模板帮助方法，获取文件链接地址
+    template.helper('$getFileLink', function(content,type) {
+        if (!content) {
+            return 'javascript:;';
+        }
+
+        var d = undefined;
+        for(var i in content){
+            if(content[i].type == type){
+                d = content[i];
+                break;
+            }
+        }
+        if(!d){
+            return 'javascript:;';
+        }
+
+        return config.api_file_download +'?fileId='+ d.id;
     });
 
 	//获取统计信息
