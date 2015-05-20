@@ -50,7 +50,7 @@
      */
     Api.prototype.paging = function(options, callback, callbackError) {
         var that = this,
-            isFirst = true, //options.data.page == 1, //是否第一次请求
+            isFirst = options.data.skip == 0, //是否第一次请求
             opt = { //默认配置
                 renderFor: this.defaultListTmpl,
                 renderEle: this.defaultListEle,
@@ -134,7 +134,8 @@
                         //没有下一页显示无更多数据提示
                         next.html(nomoredata).addClass('disabled');
                     } else {
-                        options.nextButton && next.html(options.nextButton.text);
+                        next.html('点击加载更多').removeClass('disabled');
+                        // options.nextButton && next.html(options.nextButton.text);
                     }
                 }
             }
@@ -257,7 +258,9 @@
         that.queue[options.url] = true;
 
         if (options.showLoading) {
-            $(options.renderEle).hide();
+            if(options.logtype != 'paging' || options.data.skip == 0){
+                $(options.renderEle).hide();
+            }
             $('#ti-loading').show();
         }
 
@@ -326,8 +329,12 @@
                 that.onEnd.call(this);
             }
         }).always(function() {
-            $('#ti-loading').hide();
-            $(options.renderEle).fadeIn();
+            if(options.showLoading && !options.cascading){
+                $('#ti-loading').hide();
+            }
+            if(options.logtype != 'paging' || options.data.skip == 0){
+                $(options.renderEle).fadeIn();
+            }
         });
     }
 

@@ -411,7 +411,8 @@ form.cont-form .options .mr{
 	margin-bottom: .14rem;
 }
 .cont-sus .options .btn{
-	width: 100%;
+	width: 80%;
+	margin: 0 auto;
 }
 .cont-sus .options .btn.btn-risk{
 	border: 1px solid #e6e6e6;

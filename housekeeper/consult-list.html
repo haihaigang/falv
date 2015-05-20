@@ -25,7 +25,7 @@
         <div class="consult-stat" id="flv-stat"></div>
         <div class="consult-tabs">
             <div class="consult-tabs-item active"><i></i>电话咨询</div>
-            <div class="consult-tabs-item question"><i></i>问题解答</div>
+            <div class="consult-tabs-item question"><i></i>咨询材料</div>
         </div>
         <section id="tel" class="consult-list">
             <div id="flv-list"></div>
@@ -77,10 +77,10 @@
                 <span class="txt"><!--[= list[i].question]--></span>
             </div>
             <div class="date">
-                <span class="lab">咨询时间：</span><span class="txt"><!--[= list[i].startTime]--></</span>
+                <span class="lab">咨询时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].updateAt)]--></</span>
             </div>
             <div class="date">
-                <span class="lab">回复时间：</span><span class="txt"><!--[= list[i].endTime]--></span>
+                <span class="lab">回复时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].endTime)]--></span>
             </div>
         </a>
         <!--[}]-->

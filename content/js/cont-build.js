@@ -14,7 +14,9 @@
         slp = new SecondPage('#search-list-page'),
         curPage = 1, //回答问题当前页码
         pageNum = 1, //回答问题总页数
-        tempData = undefined, //问题数据
+        tempData = undefined, //合同数据
+        tempQuestions = undefined, //问题数据
+        tempParam = undefined, //请求回答问题接口的参数
         tempCont = undefined; //编辑合同数据
 
     //初始化下拉框，编辑时不可修改
@@ -201,8 +203,7 @@
         // Ajax.render('#role','common-options-tmpl', result);
     })
 
-
-    //提交合同
+    //开始起草，提交合同，若编辑时直接跳到回答问题页，否则调用contract/add接口，之后在跳转
     $('#cont-form').submit(function(e) {
         e.preventDefault();
 
@@ -236,48 +237,51 @@
         }
 
         var d = {
-            name: name + '.docx', //模板文件名
-            role: role,
-            status: '1', //状态
-            target: target, //合同细分
-            type: type,
-            type1: type1, //文书种类
-            type2: type,
-            uid: Storage.get(Storage.AUTH)
-        }
+                name: name + '.docx', //模板文件名
+                role: role,
+                status: '1', //状态
+                target: target, //合同细分
+                type: type,
+                type1: type1, //文书种类
+                type2: type,
+                uid: Storage.get(Storage.AUTH)
+            },
+            hasNoTemp = 'NW2999' == type;
+
         d = JSON.stringify({
             data: d
         });
 
-        var hasNoTemp = 'NW2999' == type;
-
-        Ajax.submit({
-            url: hasNoTemp ? config.api_cont_add : config.api_cont_find_legal,
-            data: d,
-            processData: false,
-            contentType: 'application/json'
-        }, function(data) {
-            if (data.error) {
-                Tools.showAlert(data.error.message);
-                return;
-            }
-
-            if (!data.data || !data.data.questions) {
-                Tools.showAlert('获取合同详情失败，请重试');
-                return;
-            }
-
-            tempData = data.data;
-            pageNum = data.data.questions.length / 3 + (data.data.questions.length % 3 == 0 ? 0 : 1);
-
+        if (id && tempData) {
+            //若是编辑且已获取了数据
             qp.openSidebar(function() {
-                initNav();
+                getQuestions(d);
             });
+            return;
+        }
 
-        });
+        Tools.showConfirm('您确定消费1份智能合同服务？', function() {
+            Ajax.submit({
+                url: config.api_cont_add,
+                data: d,
+                processData: false,
+                contentType: 'application/json',
+                showLoading: true
+            }, function(data) {
+                if (data.error) {
+                    Tools.showAlert(data.error.message);
+                    return;
+                }
+
+                tempData = data.data;
+                qp.openSidebar(function() {
+                    getQuestions(d);
+                });
+            });
+        })
     });
 
-    //若存在id则编辑
+    //若存在id则获取数据
     if (id) {
         Ajax.detail({
             url: config.api_cont_detail,
@@ -297,9 +301,8 @@
         $('.icon-build').hide(); //隐藏搜索按钮
     }
 
-    //编辑时赋值
     var hasLoad = false;
-
+    //编辑时赋值，考虑有依赖数据这里判断两处请求数据都成功之后在赋值
     function setEditView() {
         if (!id) return;
         if (!tempData || !hasLoad) return;
@@ -325,6 +328,29 @@
                 }
             }, 100)
             // $('#doctype').mobiscroll('setVal',tempData.type1);
+    }
+
+    //获取回答的问题列表，每次新添加合同时以及修改的时候获取，点击开始起草触发
+    function getQuestions(param) {
+        Ajax.submit({
+            url: config.api_cont_find_legal,
+            data: param,
+            processData: false,
+            contentType: 'application/json'
+        }, function(data) {
+            if (data.error) {
+                Tools.showAlert(data.error.message);
+                return;
+            }
+
+            if (!data.data || !data.data.questions) {
+                Tools.showAlert('获取合同详情失败，请重试');
+                return;
+            }
+
+            tempQuestions = data.data;
+            initNav();
+        });
     }
 
     //获取分类数据的名称
@@ -385,17 +411,20 @@
 
     //初始化回答问题导航
     function initNav() {
+        var d = [],
+            temp = tempQuestions.questions,
+            start = (curPage - 1) * 3,
+            end = start + 3,
+            pageNum = ~~(temp.length / 3) + (temp.length % 3 == 0 ? 0 : 1);
+
         $('.cont-step span').text('第' + curPage + '页/共' + pageNum + '页');
         $('.btn-prev').val(curPage == 1 ? "选择合同" : "下一页");
         $('.btn-next').val(curPage == pageNum ? "预览" : "下一页");
 
-        var d = [];
-        var start = (curPage - 1) * 3;
-        var end = start + 3;
-        end = end > tempData.questions.length ? tempData.questions.length : end;
+        end = end > temp.length ? temp.length : end;
         for (var i = start; i < end; i++) {
-            tempData.questions[i].answer = getAnswer(tempData.questions[i]);
-            d.push(tempData.questions[i]);
+            temp[i].answer = getAnswer(temp[i]);
+            d.push(temp[i]);
         }
 
         Ajax.render('#flv-question-list', 'flv-question-list-tmpl', d);
@@ -432,6 +461,7 @@
         initNav();
     })
 
+    //验证每一个问题是否都回答
     function check() {
         var doms = $('#flv-question-list input');
         for (var i = 0; i < doms.length; i++) {
@@ -442,48 +472,39 @@
         return true;
     }
 
+    //获取回答问题的答案，先从contract/get返回数据中获取answer，否则初始化空的答案
     function getAnswer(q) {
-        tempData.answers = tempData.answers || [];
+        tempData.answer = tempData.answer || [];
 
-        for (var i in tempData.answers) {
-            if (tempData.answers[i].number == q.number) {
-                return tempData.answers[i];
+        for (var i in tempData.answer) {
+            if (tempData.answer[i].number == q.number) {
+                return tempData.answer[i];
             }
         }
         var a = {
             'number': q.number,
             'type': q.type
         };
-        tempData.answers.push(a);
+        tempData.answer.push(a);
         return a;
     }
 
     function putAnswer() {
         var doms = $('#flv-question-list input');
         for (var i = 0; i < doms.length; i++) {
-            for (var j in tempData.answers) {
-                if ($(doms[i]).attr('data-number') == tempData.answers[j].number) {
-                    tempData.answers[j].value = $(doms[i]).val();
+            for (var j in tempData.answer) {
+                if ($(doms[i]).attr('data-number') == tempData.answer[j].number) {
+                    tempData.answer[j].value = $(doms[i]).val();
                 }
             }
         }
     }
 
+    //当回答完所有问题之后，点击预览提交数据
     function doUpdate() {
-        // StringBuilder sb = new StringBuilder();
-        // sb.append("{\"data\":{\"answer\":").append(JsonUtils.toJson(info.answer)).append("}, \"filter\":{\"id\":\"").append(info._id).append("\"}}");
-        // RequestParams params = new RequestParams();
-        // try {
-        //     params.setBodyEntity(new StringEntity(sb.toString(), "utf-8"));
-        // } catch (UnsupportedEncodingException e) {
-        //     e.printStackTrace();
-        // }
-        // params.addHeader("Content-Type","application/json;charset=UTF-8");
-        // HttpUtils.put(AppConfig.URL_ROOT_HTTPS + "/contract/update", params
-
         var d = {
             data: {
-                answer: tempData.answers
+                answer: tempData.answer
             },
             filter: {
                 id: tempData._id
@@ -496,7 +517,9 @@
             data: d,
             type: 'PUT',
             processData: false,
-            contentType: 'application/json'
+            contentType: 'application/json',
+            showLoading: true,
+            cascading: true
         }, function(data) {
             if (data.error) {
                 Tools.showAlert(data.error.message);
@@ -507,17 +530,27 @@
         });
     }
 
+    //预览，提交数据之后发起，主要获取文件id用于定制完成（generate）
     function doPreview() {
         // HttpUtils.get(AppConfig.URL_ROOT_HTTPS + "/contract/preview?id=" + info._id, new HttpUtils.RequestCallback() {
-        Ajax.submit({
+        Ajax.custom({
             url: config.api_cont_preview,
             data: {
                 id: tempData._id
-            }
+            },
+            showLoading: true
         }, function(data) {
             if (data.error) {
                 Tools.showAlert(data.error.message);
                 return;
+            }
+
+            var files = data.data.files;
+            for (var i = 0; i < files.length; i++) {
+                if ('application/msword' == files[i].contentType) {
+                    tempData.fileId = files[i]._id || '';
+                    break;
+                }
             }
 
             pp.openSidebar();
@@ -527,18 +560,20 @@
 
     /*预览********/
 
-    $('#preview').on('click', '.btn-alter', function(e) {
+    $('#preview-page').on('click', '.btn-alter', function(e) {
         pp.closeSidebar();
     }).on('click', '.btn-sure', function(e) {
-        gotoFinish();
+        Tools.showConfirm('您确定结束本次合同起草服务吗？', function() {
+            gotoFinish();
+        });
     })
 
+    //定制完成，确认结束本次服务
     function gotoFinish() {
-
         var d = {
             data: {
                 id: tempData._id,
-                fid: ''
+                fid: tempData.fileId
             }
         };
         d = JSON.stringify(d);
@@ -554,9 +589,52 @@
                 return;
             }
 
-            ep.openSidebar();
+            ep.openSidebar(function() {
+                getDetailForEnd(tempData._id);
+            });
         })
     }
+
+    /*完成页***********/
+
+    //为完成页获取数据
+    function getDetailForEnd(id) {
+        Ajax.detail({
+            url: config.api_cont_detail,
+            data: {
+                id: id
+            }
+        }, function(data) {
+            if (data.error) {
+                Tools.showAlert(data.error.message);
+                return;
+            }
+
+            $('.btn-view').attr('href', getFileLink(data.data.attaches, 'template'));
+            $('.btn-risk').attr('href', getFileLink(data.data.attaches, 'notice'));
+        });
+
+    }
+
+    //获取风险提示和合同原文的链接
+    function getFileLink(content, type) {
+        if (!content) {
+            return 'javascript:;';
+        }
+
+        var d = undefined;
+        for (var i in content) {
+            if (content[i].type == type) {
+                d = content[i];
+                break;
+            }
+        }
+        if (!d) {
+            return 'javascript:;';
+        }
+
+        return config.api_file_download + '?fileId=' + d.id;
+    };
 
     /*搜索页*******/
 
@@ -577,7 +655,7 @@
                 $("#emptyList").css("display", "block");
             }
         })
-    })
+    });
 
     //清空搜索历史
     $("#emptyList").click(function() {
