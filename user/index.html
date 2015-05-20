@@ -95,10 +95,11 @@
     <script src="../content/js/worldunion.js"></script>
     <script>
     (function() {
-        var id = Storage.get(Storage.AUTH);
+        var id = Storage.get(Storage.AUTH),
+            account = Storage.get(Storage.ACCOUNT);
 
         if (id) {
-            $('.user_type').text(id);
+            $('.user_type').text(account.id);
         } else {
             location.href = '../account/login.html?from=../user/index.html'
         }

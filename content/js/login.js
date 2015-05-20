@@ -53,8 +53,8 @@
 				Storage.remove(Storage.REMEMBER);
 			}
 
-			Cookie.set(Storage.AUTH,data.data.id);
-			Storage.set(Storage.AUTH, data.data.id);
+			Cookie.set(Storage.AUTH,data.data._id);
+			Storage.set(Storage.AUTH, data.data._id);
 			Storage.set(Storage.ACCOUNT,data.data);
 			
 			var from = Tools.getQueryValue('from');
