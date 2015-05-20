@@ -61,7 +61,7 @@
         var par = $(this).parent(),
             id=par.find('input[type="text"]').attr("data-id");
         if(par.hasClass('active')){
-            window.open(config.api_file_img+id);
+            window.open(config.api_file_img.replace(':id',id));
         }
     });
 
