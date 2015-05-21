@@ -201,6 +201,7 @@ form.consult-form .col input[type="file"] {
 	opacity: 0
 }
 form.consult-form .col .close {
+	position: relative;
 	display: block;
 	width: .41rem;
 	height: .39rem;

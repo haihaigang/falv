@@ -62,7 +62,7 @@
             <div class="lcard-amount">
                 <div class="lcard-amount-c">
                     <p>优惠额度：</p>
-                    <p class="price">￥<!--[= couponInfo]--></p>
+                    <p class="price"><!--[= couponInfo]--></p>
                 </div>
             </div>
             <div class="lcard-info">
@@ -83,6 +83,7 @@
     (function(){
         var data = Storage.get('FLV-LCARD');
         if(data){
+            log(data)
             Ajax.render('#flv-detail', 'flv-detail-tmpl', data);
         }
     })();

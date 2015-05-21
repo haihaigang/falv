@@ -215,6 +215,7 @@ form.audit-form .col input[type="file"]{
 	opacity: 0
 }
 form.audit-form .col .close{
+	position: relative;
 	display: block;
 	width: .41rem;
 	height: .39rem;
