@@ -208,13 +208,14 @@ form.audit-form .col .file{
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 }
-form.audit-form .col .file input{
+form.audit-form .col input[type="file"]{
 	position: absolute;
 	right: 0;
 	font-size: 50px;
 	opacity: 0
 }
 form.audit-form .col .close{
+	position: relative;
 	display: block;
 	width: .41rem;
 	height: .39rem;

@@ -71,9 +71,13 @@
 				Tools.showAlert(data.error.message || '服务器异常，请稍后再试～',5000);
 				return;
 			}
-			
+			log(data)
 			Tools.showAlert('密码重置成功！',5000, function(){
-				location.href = 'login.html';
+				Cookie.set(Storage.AUTH,data.data.id);
+				Storage.set(Storage.AUTH, data.data.id);
+				Storage.set(Storage.REMEMBER, data.data.id);
+				Storage.set(Storage.ACCOUNT,data.data);
+				location.href = "../user/index.html";
 			});
 		});
 	});
