@@ -32,13 +32,22 @@
             };
             tempFiles.push(d);
 
-            that.parents('.col').addClass('active').find('input[name="fileName"]').val(data.name);
+            that.parents('.col').addClass('active').find('input[name="fileName"]').attr("data-id",data._id).val(data.name);
             //上传图片成功后，添加下个文件控件
             if (that.parents('.col').next().length == 0) {
                 $('#flv-imgs').append($('#flv-imgs-tmpl').html());
             }
         });
     })
+
+    // 预览
+    $('#consult-form').on('click', '.file', function() {
+        var par = $(this).parent(),
+            id=par.find('input[type="text"]').attr("data-id");
+        if(par.hasClass('active')){
+            window.open(config.api_file_img+id);
+        }
+    });
 
     //移除文件控件
     $('#consult-form').on('click', '.close', function() {

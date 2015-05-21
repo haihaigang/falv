@@ -194,7 +194,7 @@ form.consult-form .col .file {
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 }
-form.consult-form .col .file input {
+form.consult-form .col input[type="file"] {
 	position: absolute;
 	right: 0;
 	font-size: 50px;
