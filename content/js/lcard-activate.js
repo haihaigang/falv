@@ -1,13 +1,14 @@
 (function() {
 
 	var canal = Tools.getQueryValue('canal'),
-        id = Storage.get(Storage.AUTH);
+        id = Storage.get(Storage.AUTH),
+        account = Storage.get(Storage.ACCOUNT);
 
     if(id){
-        $('.phone').text(id);
+        $('.phone').text(account.id);
     }else{
         //未登录，跳转
-        location.href = '../account/login.html';
+        location.href = '../account/login.html?from=../lcard/activate.html';
     }
 
     //如果扫码过来的，自动激活

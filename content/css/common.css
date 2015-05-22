@@ -209,8 +209,8 @@ header .header_title span {
     padding: .15rem .1rem;
     padding-bottom: .46rem;
 }
-.has_fixed .container {
-    margin-bottom: .44rem;
+.has_footer {
+    margin-bottom: .52rem;
 }
 .has_fixed2 .container {
     margin-bottom: .95rem;

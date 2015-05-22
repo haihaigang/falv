@@ -68,6 +68,7 @@ config.api_file_img = config.server + '/img/';//获取图片:id
 //service
 config.api_service_stat = config.server + '/service/getServiceUseInfo';//获取统计信息
 config.api_service_valid = config.server + '/service/getValidServiceAmount';//获取验证
+config.api_service_falv = config.server + '/service/getLastFalvManager';//法律管家有效期等
 
 //user
 config.api_user_msg = config.server + '/app/user/update';//更新用户信息

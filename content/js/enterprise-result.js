@@ -32,7 +32,6 @@
 
     //获取企业查询结果
     function getResult() {
-        Tools.showLoading();
         Ajax.custom({
             url: config.api_enterprise_search,
             data: {
@@ -40,7 +39,8 @@
                 dtype: 'json',
                 province: province,
                 keyword: keyword
-            }
+            },
+            showLoading: true
         }, function(data) {
             data = data.data;
             if (data.status != '200') {

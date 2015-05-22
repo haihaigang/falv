@@ -18,7 +18,7 @@
     </noscript>
     <header class="header">
         <a href="#" class="icon icon_return"></a>
-        <h1>法率咨询</h1>
+        <h1>法律咨询</h1>
         <a href="consult-send.html" class="icon icon-consult">开始咨询</a>
     </header>
     <section class="container consult">
@@ -44,8 +44,7 @@
             </div>
             <div class="consult-stat-oth">
                 剩余
-                <p class="txt"><em><!--[= remainAmounttotal]--></em>
-                    <!--[= serviceTypeUnit]-->
+                <p class="txt"><em><!--[= remainAmounttotal + serviceTypeUnit]--></em>
                 </p>
             </div>
         </div>
@@ -61,9 +60,6 @@
             <div class="date start">
                 <span class="lab">咨询时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].startTime)]--></span>
             </div>
-            <div class="date end">
-                <span class="lab">回复时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].endTime)]--></span>
-            </div>
             <div class="date duration"><span class="lab">时长：</span>
                 <span class="txt"><!--[= list[i].duration]-->分钟</span></div>
         </a>
@@ -78,9 +74,6 @@
             </div>
             <div class="date">
                 <span class="lab">咨询时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].updateAt)]--></</span>
-            </div>
-            <div class="date">
-                <span class="lab">回复时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].endTime)]--></span>
             </div>
         </a>
         <!--[}]-->
