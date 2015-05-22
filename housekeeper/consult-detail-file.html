@@ -20,7 +20,8 @@
         <a href="consult-send.html" class="icon icon_return"></a>
         <h1>问题解答详情</h1>
     </header>
-    <section class="container consult-detail"  id="flv-detail" >
+    <section class="container consult-detail">
+        <form id="flv-detail"></form>
     </section>
     <!--模版位置-->
     <script type="text/html" id="flv-detail-tmpl">
@@ -29,36 +30,48 @@
             <div class="key">提问时间：</div>
             <div class="val time"><!--[= $getDateFromStr(createAt)]--></div>
         </div>
-        <div class="items single">
-            <div class="key">您的问题：</div>
-            <div class="val"><!--[= question]--></div>
-        </div>
-        <div class="items single">
+        <div class="items single" id="flv-imgs">
             <div class="key">材料：</div>
             <!--[for(i = 0; i < files.length; i++){]-->
-            <div class="col">
+            <div class="col active">
                 <div class="val">
-                    <input type="text" name="fileName" placeholder="上传图片" readonly value="<!--[= files[i].fileName]-->" />
+                    <input type="file" name="file" />
+                    <input type="text" name="fileName" placeholder="上传图片" readonly value="<!--[= files[i].fileName]-->" data-id="<!--[= files[i].fileId]-->" />
                 </div>
                 <div class="file"></div>
+                <div class="close"></div>
             </div>
             <!--[}]-->
+            <div class="col">
+                <div class="val">
+                    <input type="file" name="file" />
+                    <input type="text" placeholder="上传图片" readonly />
+                </div>
+                <div class="file">
+                </div>
+                <div class="close"></div>
+            </div>
         </div>
-        <div class="items single">
+        <div class="items single" style="border-bottom: 0;">
             <div class="key">您的需求：</div>
-            <div class="val">－－</div>
+            <div class="val"><textarea><!--[= question]--></textarea></div>
+        </div>
+        <div class="options">
+            <input type="submit" class="btn" value="确认上传" />
         </div>
     </div>
-    <div class="sbox">
-        <div class="items">
-            <div class="key">回复时间：</div>
-            <div class="val time"><!--[= $getDateFromStr(createAt)]--></div>
+    </script>
+
+    <script type="text/html" id="flv-imgs-tmpl">
+        <div class="col">
+            <div class="val">
+                <input type="file" name="file" />
+                <input type="text" placeholder="上传图片" readonly />
+            </div>
+            <div class="file">
+            </div>
+            <div class="close"></div>
         </div>
-        <div class="items single">
-            <div class="key">顾问问题：</div>
-            <div class="val">--</div>
-        </div>
-    </div>
     </script>
     <div id="ti-panel" class="panel">
         <div class="panel-content">

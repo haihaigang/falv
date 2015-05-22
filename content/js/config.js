@@ -50,6 +50,7 @@ config.api_consult_list = config.server + '/consult/list';//获取电话咨询�
 config.api_consult_file_list = config.server + '/consultFile/list';//获取咨询文件一览
 config.api_consult_file_detail = config.server + '/consultFile/getDetail';//获取咨询文件详细
 config.api_consult_file_add = config.server + '/consultFile/add';//上传咨询文件
+config.api_consult_file_update = config.server + '/consultFile/update';//更新咨询文件
 
 //train
 config.api_train_list = config.server + '/train/list';//获取法律培训列表

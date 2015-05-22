@@ -44,7 +44,7 @@
             </div>
             <div class="consult-stat-oth">
                 剩余
-                <p class="txt"><em><!--[= remainAmounttotal + serviceTypeUnit]--></em>
+                <p class="txt"><em><!--[= (remainAmounttotal > 9999 ? '无限时' : (remainAmounttotal + serviceTypeUnit))]--></em>
                 </p>
             </div>
         </div>
