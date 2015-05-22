@@ -571,18 +571,13 @@
     //定制完成，确认结束本次服务
     function gotoFinish() {
         var d = {
-            data: {
-                id: tempData._id,
-                fid: tempData.fileId
-            }
+            id: tempData._id,
+            fid: tempData.fileId
         };
-        d = JSON.stringify(d);
 
         Ajax.submit({
             url: config.api_cont_generate,
-            data: d,
-            processData: false,
-            contentType: 'application/json'
+            data: d
         }, function(data) {
             if (data.error) {
                 Tools.showAlert(data.error.message);
