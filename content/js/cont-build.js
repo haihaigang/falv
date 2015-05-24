@@ -660,6 +660,10 @@
     });
 
     //打开搜索结果页
+    $("form.cont-search-form").submit(function(e){
+        e.preventDefault();
+        $('#open-search').click();
+    })
     $('#open-search').click(function(e) {
         e.preventDefault();
         keyword = $('#search-name').val();
