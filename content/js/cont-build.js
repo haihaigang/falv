@@ -444,10 +444,10 @@
     }).on('click', '.btn-next', function(e) {
         e.preventDefault();
 
-        if (!check()) {
-            Tools.showAlert('问题还未填写完成');
-            return;
-        }
+        // if (!check()) {
+        //     Tools.showAlert('问题还未填写完成');
+        //     return;
+        // }
 
         putAnswer();
 

@@ -20,10 +20,17 @@
         <a href="consult-send.html" class="icon icon_return"></a>
         <h1>审核意见</h1>
     </header>
-    <section class="container audit-detail">
+    <section class="container audit-detail" id="flv-detail" style="padding: 0;">
         <h3>合同名称在这里</h3>
         <p>审核通过！</p>
     </section>
+    <!--模版位置-->
+    <script type="text/html" id="flv-detail-tmpl">
+        <!--[for(i = 0; i < auditedContract.length; i++){]-->
+        <img src="<!--[= $getImg(auditedContract[i].fileId)]-->" alt="" width="100%">
+        <!--[}]-->
+    </script>
+
     <div id="ti-panel" class="panel">
         <div class="panel-content">
             <div class="panel-cell">
@@ -53,7 +60,7 @@
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/login.js"></script>
+    <script src="../content/js/audit-detail.js"></script>
 </body>
 
 </html>

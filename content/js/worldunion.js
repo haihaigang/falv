@@ -133,6 +133,16 @@
 
     });
 
+    //模板帮助方法， 获取预览图片的地址
+    template.helper('$getImg', function(content) {
+        if (!content) {
+            return '--';
+        }
+
+        return config.api_file_img + content;
+
+    });
+
     // 返回按钮
     $('.icon_return').click(function(e) {
         e.preventDefault();
@@ -270,7 +280,7 @@
 
     config.getImg = function(id){
         Ajax.custom({
-            url: config.api_file_img.replace(':id',id)
+            url: config.api_file_img + id
         },function(data){
 
         })

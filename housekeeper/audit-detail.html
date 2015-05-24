@@ -19,15 +19,16 @@
 
     <header class="header">
         <a href="#" class="icon icon_return"></a>
-        <h1>合同原文</h1>
+        <h1>预览合同</h1>
     </header>
 
-    <section class="container audit-detail" id="flv-detail"></section>
+    <section class="container audit-detail" id="flv-detail" style="padding: 0;"></section>
 
     <!--模版位置-->
     <script type="text/html" id="flv-detail-tmpl">
-        <h3>合同名称在这里</h3>
-        <p><!--[= comment]--></p>
+        <!--[for(i = 0; i < originalContract.length; i++){]-->
+        <img src="<!--[= $getImg(originalContract[i].fileId)]-->" alt="" width="100%">
+        <!--[}]-->
     </script>
 
     <div id="ti-panel" class="panel">

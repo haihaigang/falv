@@ -16,65 +16,65 @@
         }
     });
 
-    var tempFiles = []; //存储临时文件数组
+    // var tempFiles = []; //存储临时文件数组
 
-    //文件上传
-    $('#letter-form').on('change', 'input[type="file"]', function() {
-        if (this.files.length == 0) {
-            return;
-        }
+    // //文件上传
+    // $('#letter-form').on('change', 'input[type="file"]', function() {
+    //     if (this.files.length == 0) {
+    //         return;
+    //     }
 
-        var that = $(this),
-            formData = new FormData();
-        formData.append('file', this.files[0]);
+    //     var that = $(this),
+    //         formData = new FormData();
+    //     formData.append('file', this.files[0]);
 
-        Ajax.submit({
-            url: config.api_file_upload,
-            data: formData,
-            type: 'POST',
-            contentType: false,
-            processData: false,
-            showLoading: true
-        }, function(data) {
-            if (data.error) {
-                Tools.showAlert(data.error.message);
-                return;
-            }
+    //     Ajax.submit({
+    //         url: config.api_file_upload,
+    //         data: formData,
+    //         type: 'POST',
+    //         contentType: false,
+    //         processData: false,
+    //         showLoading: true
+    //     }, function(data) {
+    //         if (data.error) {
+    //             Tools.showAlert(data.error.message);
+    //             return;
+    //         }
 
-            data = data.data[0];
-            var d = {
-                fileId: data.fileId,
-                fileName: data.name
-            };
-            tempFiles.push(d);
+    //         data = data.data[0];
+    //         var d = {
+    //             fileId: data.fileId,
+    //             fileName: data.name
+    //         };
+    //         tempFiles.push(d);
 
-            that.parents('.col').addClass('active').find('input[type="text"]').attr("data-id",data._id).val(data.name);
-            //上传图片成功后，添加下个文件控件
-            if (that.parents('.col').next().length == 0) {
-                $('#flv-imgs').append($('#flv-imgs-tmpl').html());
-            }
-        });
-    })
+    //         that.parents('.col').addClass('active').find('input[type="text"]').attr("data-id",data._id).val(data.name);
+    //         //上传图片成功后，添加下个文件控件
+    //         if (that.parents('.col').next().length == 0) {
+    //             $('#flv-imgs').append($('#flv-imgs-tmpl').html());
+    //         }
+    //     });
+    // })
 
-    // 预览
-    $('#letter-form').on('click', '.file', function() {
-        var par = $(this).parent(),
-            id=par.find('input[type="text"]').attr("data-id");
-        if(par.hasClass('active')){
-            window.open(config.api_file_img.replace(':id',id));
-        }
-    });
+    // // 预览
+    // $('#letter-form').on('click', '.file', function() {
+    //     var par = $(this).parent(),
+    //         id=par.find('input[type="text"]').attr("data-id");
+    //     if(par.hasClass('active')){
+    //         window.open(config.api_file_img.replace(':id',id));
+    //     }
+    // });
 
-    //移除文件控件
-    $('#letter-form').on('click', '.close', function() {
-        if ($('#letter-form .col').length <= 1) {
-            return;
-        }
-        if (!$(this).parents('.col').hasClass('active')) {
-            return;
-        }
-        $(this).parents('.col').remove();
-    });
+    // //移除文件控件
+    // $('#letter-form').on('click', '.close', function() {
+    //     if ($('#letter-form .col').length <= 1) {
+    //         return;
+    //     }
+    //     if (!$(this).parents('.col').hasClass('active')) {
+    //         return;
+    //     }
+    //     $(this).parents('.col').remove();
+    // });
 
     //提交表单
     $('#letter-form').submit(function(e) {
@@ -117,12 +117,20 @@
             Tools.showAlert('情况说明必填');
             return;
         }
+        if ($('textarea[name="problem"]').val().length < 5) {
+            Tools.showAlert('情况说明至少5个字符');
+            return;
+        }
         if (tempFiles.length <= 0) {
             Tools.showAlert('至少上传一个证据材料');
             return;
         }
         if ($('textarea[name="expectation"]').val().isEmpty()) {
             Tools.showAlert('您的需求必填');
+            return;
+        }
+        if ($('textarea[name="expectation"]').val().length < 5) {
+            Tools.showAlert('您的需求至少5个字符');
             return;
         }
 

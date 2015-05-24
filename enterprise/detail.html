@@ -62,6 +62,22 @@
                 <span class="lab">简介</span>
                 <p class="msg"><!--[= scope]--></p>
             </div>
+            <div class="rlist c-regtime">
+                <span class="lab">经营期限</span>
+                <span class="txt"><!--[= $getDateFromStr(termstart)+'至'+$getDateFromStr(teamend)]--></span>
+            </div>
+            <div class="rlist c-regtime">
+                <span class="lab">发照日期</span>
+                <span class="txt"><!--[= $getDateFromStr(startdate)]--></span>
+            </div>
+            <div class="rlist c-regtime">
+                <span class="lab">登记机关</span>
+                <span class="txt"><!--[= belongorg]--></span>
+            </div>
+            <div class="rlist c-regtime">
+                <span class="lab">经营状态</span>
+                <span class="txt"><!--[= status]--></span>
+            </div>
         </div>
         <div class="company-view" id="cv-touzi" style="display: none;">
         <!--[if(partners && partners.length > 0){for(var i = 0; i < partners.length; i++){]-->

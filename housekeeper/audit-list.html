@@ -24,28 +24,7 @@
     <section class="container audit">
         <div class="audit-stat" id="flv-stat">
         </div>
-        <section class="audit-list" id="flv-list">
-            <div class="box">
-                <div class="title">
-                    <em class="status ing">进行中</em><span class="txt">如果公司无条件辞退员工，需要什…</span>
-                </div>
-                <div class="date"><span class="lab">预计完成时间：</span><span class="txt">2015.1.22  22:21</span>
-                </div>
-                <div class="opt">
-                    <a href="audit-detail.html">合同原文</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="title"><em class="status">完成</em><span class="txt">如果公司无条件辞退员工，需要什…</span>
-                </div>
-                <div class="date"><span class="lab">完成时间：</span><span class="txt">2015.1.22  22:21</span>
-                </div>
-                <div class="opt">
-                    <a href="audit-detail.html">合同原文</a>
-                    <a href="audit-opinion.html" class="yj">审核意见</a>
-                </div>
-            </div>
-        </section>
+        <section class="audit-list" id="flv-list"></section>
     </section>
     <!--模版位置-->
     <script type="text/html" id="flv-stat-tmpl">
@@ -63,9 +42,16 @@
         <!--[for(i = 0; i < list.length; i++){]-->
         <!--[if(list[i].status == 'AAS003'){]-->
         <div class="box">
-            <div class="title"><em class="status">完成</em><span class="txt"><!--[= list[i].comment || '--']--></span>
+            <div class="title">
+            <!--[if(list[i].comment){]-->
+                <em class="status">完成</em><span class="txt"><!--[= list[i].comment || '--']--></span>
+            <!--[}else if(list[i].originalContract && list[i].originalContract.length > 0){]-->
+                <em class="status">完成</em><span class="txt"><!--[= list[i].originalContract[0].fileName || '--']--></span>
+            <!--[}else{]-->
+                <em class="status">完成</em><span class="txt">--</span>
+            <!--[}]-->
             </div>
-            <div class="date"><span class="lab">完成时间：</span><span class="txt">2015.1.22  22:21</span>
+            <div class="date"><span class="lab">完成时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].auditedTime)]--></span>
             </div>
             <div class="opt">
                 <a href="audit-detail.html?id=<!--[= list[i]._id]-->">合同原文</a>
@@ -75,7 +61,13 @@
         <!--[}else{]-->
         <div class="box">
             <div class="title">
+            <!--[if(list[i].comment){]-->
                 <em class="status ing">进行中</em><span class="txt"><!--[= list[i].comment || '--']--></span>
+            <!--[}else if(list[i].originalContract && list[i].originalContract.length > 0){]-->
+                <em class="status ing">进行中</em><span class="txt"><!--[= list[i].originalContract[0].fileName || '--']--></span>
+            <!--[}else{]-->
+                <em class="status ing">进行中</em><span class="txt">--</span>
+            <!--[}]-->
             </div>
             <div class="date"><span class="lab">预计完成时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].createAt)]--></span>
             </div>

@@ -18,13 +18,24 @@
         // sb.append("{\"id\":\""+qaId+"\",\"data\":{\"question\":\"").append(demand_et.getText().toString())
         // .append("\", \"files\":").append(JsonUtils.toJson(files)).append("},\"uid\":\"")
         // .append(DataHolder.getInstance().getUser()._id).append("\"}");
-        var question = $('input[name="question"]').val();
+        var question = $('textarea[name="question"]').val();
+
+        var result = [];
+        var filesDom = $('#flv-imgs input[type="text"]');
+        for(var i = 0; i < filesDom.length; i++){
+            if($(filesDom[i]).val()){
+                result.push({
+                    fileId: $(filesDom[i]).attr('data-id'),
+                    fileName: $(filesDom[i]).val()
+                });
+            }
+        }
 
         var d = {
             id: id,
             data: {
                 question: question,
-                files: tempFiles
+                files: result
             },
             uid: Storage.get(Storage.AUTH)
         }
