@@ -1,19 +1,19 @@
 (function() {
 
 	var status = {
-		'LS0003': '提交中',
-		'LS0004': '起草中',
-		'LS0005': '确认中',
-		'LS0006': '投递中',
-		'LS0007': '存档中'
+		'LS0001': '提交中',
+		'LS0002': '起草中',
+		'LS0003': '确认中',
+		'LS0004': '投递中',
+		'LS0005': '存档中'
 	};
 
 	var statuslabel = {
-		'LS0003': '提交时间',
-		'LS0004': '预计完成',
-		'LS0005': '客户确认',
-		'LS0006': '投递完成',
-		'LS0007': '存档完成'
+		'LS0001': '提交时间',
+		'LS0002': '预计完成',
+		'LS0003': '客户确认',
+		'LS0004': '投递完成',
+		'LS0005': '存档完成'
 	}
 
 	//模板帮助方法， 确定状态
@@ -48,6 +48,7 @@
     		return;
     	}
 
+    	//处理律师函状态，
     	var d = data.data,st = [];
     	d.statusHistory = d.statusHistory || [];
     	for(var i in status){
@@ -56,7 +57,11 @@
     			if(d.statusHistory[j].status == i){
     				flag.statusUpdateAt = d.statusHistory[j].statusUpdateAt;
     				flag.active = true;
+    				break;
     			}
+    		}
+    		if(!flag.active){
+    			flag.statusUpdateAt = '两个工作日内';
     		}
     		st.push(flag);
     	}

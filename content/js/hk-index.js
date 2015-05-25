@@ -9,12 +9,12 @@
             url: config.api_service_falv,
             showLoading: true
         }, function(data) {
-            expiresDom.text('法率管家服务有效期：' + template.prototype.$getDateFromStr(data.data));
+            expiresDom.text('服务有效期：' + template.prototype.$getDateFromStr(data.data));
         }, function(error) {
-            expiresDom.text('法率管家服务有效期：--')
+            expiresDom.text('服务有效期：--')
         })
     } else {
-        expiresDom.text('法率管家服务有效期：您还未登录')
+        expiresDom.text('服务有效期：您还未登录')
         //未登录，设置链接都跳转到介绍页
         $('#hk-consult').attr('href', 'consult-info.html');
         $('#hk-cont').attr('href', 'cont-info.html');

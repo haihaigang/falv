@@ -241,10 +241,13 @@
         }, function(err, result) {
             $('#ti-mic').hide();
             if (err == null || err == undefined || err == 0) {
-                if (result == '' || result == null)
+                if (result == '' || result == null){
                     Tools.showToast("错误");
-                else
+                }
+                else{
+                    log(result);
                     that.parent().find('input').val(result);
+                }
             } else {
                 Tools.showToast('error code : ' + err + ", error description : " + result);
             }
@@ -264,6 +267,7 @@
     var forshare = Tools.getQueryValue('forshare');
     if (forshare) {
         $('header').hide();
+        $('footer').hide();
     }
 
     //获取文件

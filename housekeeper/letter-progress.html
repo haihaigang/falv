@@ -20,40 +20,10 @@
         <a href="#" class="icon icon_return"></a>
         <h1>律师函进程</h1>
     </header>
-    <section class="container letter" id="flv-detail">
-        <div class="letter-name">吴三贵的劳动合同诉讼</div>
-        <div class="letter-progress">
-            <div class="letter-progress-item active">
-                <i></i>
-                <div class="name">提交</div>
-                <div class="time">提交时间: 2015.12.22 12:22</div>
-            </div>
-            <div class="letter-progress-item active">
-                <i></i>
-                <div class="name">起草</div>
-                <div class="time">预计完成: 2015.12.22 12:22</div>
-            </div>
-            <div class="letter-progress-item active">
-                <i></i>
-                <div class="name">确认</div>
-                <div class="time">客户确认: 2015.12.22 12:22</div>
-            </div>
-            <div class="letter-progress-item">
-                <i></i>
-                <div class="name">投递</div>
-                <div class="time">投递完成: 2015.12.22 12:22</div>
-            </div>
-            <div class="letter-progress-item">
-                <i></i>
-                <div class="name">存档</div>
-                <div class="time">存档完成: 2015.12.22 12:22</div>
-            </div>
-            <div class="letter-progress-line"><span></span></div>
-        </div>
-    </section>
+    <section class="container letter" id="flv-detail"></section>
     <!--模版位置-->
     <script type="text/html" id="flv-detail-tmpl">
-        <div class="letter-name"><!--[= problem]--></div>
+        <div class="letter-name">发给<!--[= type == 'CT0001' ? corporate : name]-->的律师函</div>
         <div class="letter-progress">
             <!--[for(i = 0; i < statusHistory.length; i++){]-->
             <div class="letter-progress-item<!--[= statusHistory[i].active ? ' active' : '']-->">

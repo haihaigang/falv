@@ -1,6 +1,7 @@
 (function() {
 
-    var api_url = config.api_consult_list;
+    var api_url = config.api_consult_list,
+        consultType = Storage.get('FLV-CONSULT-TYPE');
 
     //获取统计信息
     //ST0001-法律咨询, ST0002-发律师函, ST0003-智能合同, ST0004-合同审核, ST0005-法律培训
@@ -17,8 +18,20 @@
         Ajax.render('#flv-stat', 'flv-stat-tmpl', data.data);
     });
 
-    //分页
-    config.paging = getList;
+    //根据状态初始化
+    if(consultType == 'question'){
+        config.paging = getFileList;
+        $('.consult-tabs-item').removeClass('active');
+        $('.consult-list').hide();
+        $('.question').addClass('active');
+        $('#question').show();
+    }else{
+        config.paging = getList;
+        $('.consult-tabs-item').removeClass('active');
+        $('.consult-list').hide();
+        $('.tel').addClass('active');
+        $('#tel').show();
+    }
     config.paging();
 
     //点击tab切换
@@ -33,13 +46,16 @@
         if ($(this).hasClass('question')) {
             config.paging = getFileList;
             $('#question').show();
+            Storage.set('FLV-CONSULT-TYPE', 'question');
         } else {
             config.paging = getList;
             $('#tel').show();
+            Storage.set('FLV-CONSULT-TYPE', 'tel');
         }
         config.paging();
     });
 
+    //获取电话咨询列表
     function getList() {
         Ajax.paging({
             url: config.api_consult_list,
@@ -52,6 +68,7 @@
         });
     }
 
+    //获取咨询材料列表
     function getFileList() {
         Ajax.paging({
             url: config.api_consult_file_list,
