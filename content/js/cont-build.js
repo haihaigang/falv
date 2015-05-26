@@ -99,7 +99,7 @@
                     _this = that.find("option:selected");
                 var result = getOptionData(categoryId);
                 $('input[name="type"]').val(categoryId);
-                $('input[name="name"]').val(_this.text());
+                $('input[name="name"]').val(value);
                 $('input[name="type2"]').val(_this.attr('data-type'));
 
                 if (_this.attr('data-len') != '0') {
@@ -113,6 +113,8 @@
                     }
                 }
 
+                if(value == '其他') $('#otherOther').show()
+                
                 break;
             case "3":
                 $("#target").val(categoryId);
@@ -145,10 +147,20 @@
         $('input[name="type1"]').val(that.val());
         template.helper("docCatagoryId", that.val());
 
+
         //这里要获取当前选择项的子项，模版渲染可以用通用的
         Ajax.render('#catalog', 'common-options-tmpl', result);
         if (parseInt(_this.attr('data-len')) > 0) {
             $("#catItems").show();
+        }
+        // alert(that.val());
+        if($('#doctype_dummy').val() == '其他'){
+            $('#catalog_dummy').val(result[0].name);
+            $('input[name="name"]').val(result[0].name);
+            $('input[name="type"]').val(result[0].categoryId);
+
+            $('#catalog').find('option[value="0"]').remove();
+            $('#otherOther').show();
         }
     })
 
@@ -396,14 +408,29 @@
     //TODO 重置选择的值
     function afterChange(lv) {
         if (lv <= 3) {
-            $('#roleItems').hide();
+            $('#rolItems').hide().find('input[type="hidden"]').val('');
+            $('#role_dummy').val('请选择');
             // $('#role').val('0');
         }
         if (lv <= 2) {
-            $('#tarItems').hide();
+            $('#tarItems').hide().find('input[type="hidden"]').val('');
+            $('#target_dummy').val('请选择');
+
+            $('#rolItems').hide().find('input[type="hidden"]').val('');
+            $('#role_dummy').val('请选择');
         }
         if (lv <= 1) {
-            $('#catItems').hide();
+            // log("408:"+ $('#catItems'))
+            $('#catItems').hide().find('input[type="hidden"]').val('');
+            $('#catalog_dummy').val('请选择');
+            
+            $('#tarItems').hide().find('input[type="hidden"]').val('');
+            $('#target_dummy').val('请选择');
+
+            $('#rolItems').hide().find('input[type="hidden"]').val('');
+            $('#role_dummy').val('请选择');
+
+            $('#otherOther').hide().find('textarea').val('');
         }
     }
 

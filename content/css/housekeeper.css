@@ -368,6 +368,14 @@ form.cont-form textarea{
 form.cont-form input[type="text"]{
 	text-align: right;
 }
+form.cont-form .single{
+	border-bottom: 0 none;
+	padding-right: .15rem;
+}
+form.cont-form .single textarea{
+  	height: 1rem;
+	border: 1px solid #e6e6e6;
+}
 form.cont-form .options{
 	width: 80%;
 	margin: .3rem auto;
