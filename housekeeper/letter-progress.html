@@ -29,7 +29,7 @@
             <div class="letter-progress-item<!--[= statusHistory[i].active ? ' active' : '']-->">
                 <i></i>
                 <div class="name"><!--[= $getLetterStatus(statusHistory[i].status)]--></div>
-                <div class="time"><!--[= $getLetterLabel(statusHistory[i].status)]-->: <!--[= $getDateFromStr(statusHistory[i].statusUpdateAt)]--></div>
+                <div class="time"><!--[= $getLetterLabel(statusHistory[i].status,statusHistory[i].isEnd)]-->: <!--[= $getDateFromStr(statusHistory[i].statusUpdateAt)]--></div>
             </div>
             <!--[}]-->
             <div class="letter-progress-line"><span></span></div>
