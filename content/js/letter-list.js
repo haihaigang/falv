@@ -5,7 +5,7 @@
         'LS0002': '起草中',
         'LS0003': '确认中',
         'LS0004': '投递中',
-        'LS0005': '存档中'
+        'LS0005': '邮寄凭证'
     }
 
     //模板帮助方法， 确定状态
@@ -30,6 +30,18 @@
         }
 
         Ajax.render('#flv-stat', 'flv-stat-tmpl', data.data);
+
+        // 进入编辑页面
+        $('#flv-list').delegate('.letter-edit','click',function(){
+            var id = $(this).attr('data-id');
+            window.location.href = 'letter-send.html?id=' + id;
+     
+        })
+
+        // 邮寄凭证
+        $('#flv-list').delegate('.voucher','click',function(){
+            window.open();
+        })
     })
 
     //分页
@@ -65,4 +77,5 @@
             location.href = that.attr('href');
         })
     })
+
 })();

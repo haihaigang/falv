@@ -1,4 +1,15 @@
 (function() {
+    var id = Tools.getQueryValue('id'), letterData;
+    if (id) {
+        Ajax.detail({
+            url: config.api_letter_detail,
+            data: {
+                id: id
+            }
+        },function(data){
+                log(data)
+        });
+    }
 
     //点击tab切换
     $('.letter-tabs-item').click(function() {
@@ -16,65 +27,7 @@
         }
     });
 
-    // var tempFiles = []; //存储临时文件数组
 
-    // //文件上传
-    // $('#letter-form').on('change', 'input[type="file"]', function() {
-    //     if (this.files.length == 0) {
-    //         return;
-    //     }
-
-    //     var that = $(this),
-    //         formData = new FormData();
-    //     formData.append('file', this.files[0]);
-
-    //     Ajax.submit({
-    //         url: config.api_file_upload,
-    //         data: formData,
-    //         type: 'POST',
-    //         contentType: false,
-    //         processData: false,
-    //         showLoading: true
-    //     }, function(data) {
-    //         if (data.error) {
-    //             Tools.showAlert(data.error.message);
-    //             return;
-    //         }
-
-    //         data = data.data[0];
-    //         var d = {
-    //             fileId: data.fileId,
-    //             fileName: data.name
-    //         };
-    //         tempFiles.push(d);
-
-    //         that.parents('.col').addClass('active').find('input[type="text"]').attr("data-id",data._id).val(data.name);
-    //         //上传图片成功后，添加下个文件控件
-    //         if (that.parents('.col').next().length == 0) {
-    //             $('#flv-imgs').append($('#flv-imgs-tmpl').html());
-    //         }
-    //     });
-    // })
-
-    // // 预览
-    // $('#letter-form').on('click', '.file', function() {
-    //     var par = $(this).parent(),
-    //         id=par.find('input[type="text"]').attr("data-id");
-    //     if(par.hasClass('active')){
-    //         window.open(config.api_file_img.replace(':id',id));
-    //     }
-    // });
-
-    // //移除文件控件
-    // $('#letter-form').on('click', '.close', function() {
-    //     if ($('#letter-form .col').length <= 1) {
-    //         return;
-    //     }
-    //     if (!$(this).parents('.col').hasClass('active')) {
-    //         return;
-    //     }
-    //     $(this).parents('.col').remove();
-    // });
 
     //提交表单
     $('#letter-form').submit(function(e) {
@@ -204,23 +157,23 @@
     });
 
     $('#province').mobiscroll().select({
-        theme: "android-holo-light", // Specify theme like: theme: 'ios' or omit setting to use default 
-        mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
-        display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-        lang: "zh" // Specify language like: lang: 'pl' or omit setting to use default 
+        theme: "android-holo-light",  
+        mode: "scroller",  
+        display: "bottom", 
+        lang: "zh" 
     });
     $('#city').mobiscroll().select({
-        theme: "android-holo-light", // Specify theme like: theme: 'ios' or omit setting to use default 
-        mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
-        display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-        lang: "zh" // Specify language like: lang: 'pl' or omit setting to use default 
+        theme: "android-holo-light",  
+        mode: "scroller",  
+        display: "bottom", 
+        lang: "zh" 
     });
 
     $('#area').mobiscroll().select({
-        theme: "android-holo-light", // Specify theme like: theme: 'ios' or omit setting to use default 
-        mode: "scroller", // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
-        display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-        lang: "zh" // Specify language like: lang: 'pl' or omit setting to use default 
+        theme: "android-holo-light",  
+        mode: "scroller",  
+        display: "bottom", 
+        lang: "zh" 
     });
 
     //根据父级获取下级区域数据
