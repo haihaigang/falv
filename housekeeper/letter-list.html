@@ -45,10 +45,10 @@
     </script>
     <script type="text/html" id="flv-list-tmpl">
         <!--[for(i = 0; i < list.length; i++){]-->
-        <!--[if( list[i].status == "LS0005"){]-->
-            <div class="box">
-        <!--[}else{]-->
+        <!--[if(list[i].status == "LS0001" || list[i].status == "LS0002"){]-->
             <div class="box letter-edit" data-id=<!--[= list[i]._id]-->>
+        <!--[}else{]-->
+            <div class="box">
         <!--[}]-->
             <div class="title">
                 <span class="txt"><!--[= (list[i].type == 'CT0001' ? list[i].corporate : list[i].name) || '--']--></span>
@@ -57,7 +57,7 @@
             <div class="date"><span class="lab">预计完成时间：</span><span class="txt"><!--[= $getDateFromStr(list[i].updateAt)]--></span></div>
             <div class="opt">
                 <!--[if( list[i].status == "LS0005"){]-->
-                    <a href="javascript:void(0)" class="voucher"><!--[= $getLetterStatus(list[i].status)]--></a>
+                    <a href="letter-voucher.html?id=<!--[= list[i]._id]-->"><!--[= $getLetterStatus(list[i].status)]--></a>
                 <!--[}else{]-->
                     <a href="letter-progress.html?id=<!--[= list[i]._id]-->"><!--[= $getLetterStatus(list[i].status)]--></a>
                 <!--[}]-->

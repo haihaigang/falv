@@ -1,15 +1,5 @@
 (function() {
     var id = Tools.getQueryValue('id'), letterData;
-    if (id) {
-        Ajax.detail({
-            url: config.api_letter_detail,
-            data: {
-                id: id
-            }
-        },function(data){
-                log(data)
-        });
-    }
 
     //点击tab切换
     $('.letter-tabs-item').click(function() {
@@ -26,8 +16,6 @@
             $('.items-per').hide().find('input').prop('disabled', true);
         }
     });
-
-
 
     //提交表单
     $('#letter-form').submit(function(e) {
@@ -124,36 +112,52 @@
         if('town' in formData){
             delete(formData['town']);
         }
+       log(formData.address)
         var d = {
             data: formData
         }
 
         d = JSON.stringify(d);
 
-        Ajax.submit({
-            url: config.api_letter_add,
-            data: d,
-            contentType: 'application/json',
-            showLoading: true
-        }, function(data) {
-            if (data.error) {
-                Tools.showAlert(data.error.message);
-                return;
-            }
-            history.go(-1);
-        })
+        if(id){
+            Ajax.submit({
+                url: config.api_letter_update,
+                data: d,
+                type: 'PUT',
+                processData: false,
+                contentType: 'application/json',
+                showLoading: true
+            }, function(data) {
+                if (data.error) {
+                    Tools.showAlert(data.error.message);
+                    return;
+                }
+                history.go(-1);
+            })         
+        }else{
+            Ajax.submit({
+                url: config.api_letter_add,
+                data: d,
+                contentType: 'application/json',
+                showLoading: true
+            }, function(data) {
+                if (data.error) {
+                    Tools.showAlert(data.error.message);
+                    return;
+                }
+                history.go(-1);
+            })            
+        }
     });
 
     config.api_place = config.server + '/place/list.json';
 
-
     getRegionData($('#province')[0]);
-
-    $('#province').change(function() {
-        getRegionData($('#city')[0], $(this).val());
+    $('#province').change(function(){
+        changeSel($('#province'), $('#city'), false)
     });
-    $('#city').change(function() {
-        getRegionData($('#area')[0], $(this).val());
+    $('#city').change(function(){
+        changeSel($('#city'), $('#area'), false)
     });
 
     $('#province').mobiscroll().select({
@@ -175,9 +179,19 @@
         display: "bottom", 
         lang: "zh" 
     });
-
+    // 级联change事件
+    function changeSel(el,nextEl,update,cityVal,nextNextEl,areaVal){
+        if(update){
+            getRegionData(nextEl[0], el.val(), getRegionData(nextNextEl[0], cityVal, function(){
+                nextEl.val(cityVal);
+                nextNextEl.val(areaVal) ; 
+            }));                  
+        }else{
+            getRegionData(nextEl[0], el.val())
+        }
+    }
     //根据父级获取下级区域数据
-    function getRegionData(sel, parent, def, fn) {
+    function getRegionData(sel, parent, callback, def, fn) {
         Ajax.custom({
             url: config.api_place,
             data: {
@@ -195,6 +209,84 @@
                 }
             }
             fn && fn(data);
+            typeof callback == 'function' && callback();
         })
+    }
+
+
+    // 如果存在id编辑
+    if (id) {
+        Ajax.custom({
+            url: config.api_letter_detail,
+            data: {
+                id: id
+            }
+        },function(data){
+            var d=data.data;
+            // d.status
+            var status = {
+                'LS0001': 1,
+                'LS0002': 2,
+                'LS0003': 3,
+                'LS0004': 4// ,
+                // 'LS0005': '邮寄凭证'
+            }
+            $('.letter-gress-item').each(function(i){
+                i < status[d.status] && $(this).addClass('active');
+            });
+            $('.letter-gress-line .active').width((status[d.status]-1)*100/4 + '%');
+
+            // d.type
+            var tabs = {
+                'CT0001': 'enterprise',
+                'CT0002': 'personal',
+            }
+            $('.letter-tabs-item').each(function(){
+                $(this).hasClass(tabs[d.type]) && $(this).addClass('active').siblings().removeClass('active');
+            })
+            $('input[name="type"]').val(d.type);
+            if (d.type == 'CT0001') {
+                // $('.items-ent').hide().find('input').prop('disabled', true);
+                // $('.items-per').show().find('input').prop('disabled', false);
+                $('input[name="corporate"]').val(d.corporate);
+                $('input[name="represents"]').val(d.represents);
+            } 
+            if (d.type == 'CT0002') {
+                $('.items-ent').show().find('input').prop('disabled', false);
+                $('.items-per').hide().find('input').prop('disabled', true);
+                $('input[name="name"]').val(d.name);
+            }
+            // 地址下拉框
+            var address = d.address;
+
+            $('#province').val(address.province.id)
+                .change(changeSel($('#province'), $('#city'), true, address.city.id, $('#area'), address.town.id));
+          
+            // $('#province').val(address.province.id).change();
+            // $('#city').change()
+
+            $('#province_dummy').val(address.province.name);
+            $('#city_dummy').val(address.city.name);
+            $('#area_dummy').val(address.town.name);
+            $('input[name="streets"]').val(address.streets);
+            $('input[name="postcode"]').val(address.postcode);
+
+            // 证据材料文件
+            tempFiles = d.evidences;
+
+            $.each(tempFiles,function(i){
+                $('#flv-imgs').find('.col').eq(i).addClass('active')
+                    .find('input[type="text"]').attr("data-id",tempFiles[i].fileId).val(tempFiles[i].fileName);
+                //上传图片成功后，添加下个文件控件
+                if ($('#flv-imgs').find('.col').next().length == 0) {
+                    $('#flv-imgs').append($('#flv-imgs-tmpl').html());
+                }
+            })
+
+            $('input[name="phone"]').val(d.phone);
+            $('textarea[name="problem"]').val(d.problem);
+            $('textarea[name="expectation"]').val(d.expectation);
+            $('#letter-form').append('<input type="hidden" name="_id" value="'+ d._id +'" />')
+        });
     }
 })()

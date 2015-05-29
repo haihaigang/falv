@@ -284,6 +284,11 @@ header .icon-send {
     margin: 0 auto;
     background-color: #737373;
 }
+.letter-gress-line span.active{
+    background-color: #00aeef;
+    margin-left: 0;
+    width: 0;
+}
 
 .letter-tabs {
     display: -webkit-box;
@@ -442,3 +447,10 @@ form.letter-form .items .address-select input[type="text"] {
     padding: .08rem 0;
 }
 /* letter send end */
+
+/* letter voucher start*/
+.letter-voucher img{
+    display: block; 
+    width: 100%; 
+}
+/* letter voucher end*/

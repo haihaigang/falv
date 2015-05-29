@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>法率网</title>
+    <link rel="stylesheet" href="../content/css/common.css" />
+    <link rel="stylesheet" href="../content/css/letter.css" />
+</head>
+
+<body>
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <header class="header">
+        <a href="#" class="icon icon_return"></a>
+        <h1>邮寄凭证</h1>
+    </header>
+    <section class="letter-voucher" id="flv-voucher"></section>
+
+    <!--模版位置-->
+    <script type="text/html" id="flv-voucher-tmpl">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <img src=<!--[= list[i].fileId]--> />
+        <!--[}]-->
+    </script>
+
+    <div id="ti-panel" class="panel">
+        <div class="panel-content">
+            <div class="panel-cell">
+                <h3 class="panel-title">提示</h3>
+                <p class="panel-text"></p>
+            </div>
+        </div>
+        <div class="panel-buttons">
+            <div class="options">
+                <a href="javascript:;" class="btn btn-ok">确定</a><a href="javascript:;" class="btn btn-cancel">取消</a>
+            </div>
+            <div class="panel-tips">若在<span class="panel-tick">5</span>秒内无反应自动跳转到订单的详情页面</div>
+        </div>
+    </div>
+    <div id="ti-panel-bg" class="panel-bg"></div>
+    <div id="ti-toast" class="toast"><span></span>
+    </div>
+    <div id="ti-loading" class="loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
+    </div>
+    <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
+    <script src="../content/js/lib/template.js"></script>
+    <script src="../content/js/config.js"></script>
+    <script src="../content/js/global.js"></script>
+    <script src="../content/js/worldunion.js"></script>
+    <script src="../content/js/letter-voucher.js"></script>
+</body>
+
+</html>

@@ -37,11 +37,6 @@
             window.location.href = 'letter-send.html?id=' + id;
      
         })
-
-        // 邮寄凭证
-        $('#flv-list').delegate('.voucher','click',function(){
-            window.open();
-        })
     })
 
     //分页
