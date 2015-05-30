@@ -9,9 +9,13 @@
             url: config.api_service_falv,
             showLoading: true
         }, function(data) {
+            if(data.error){
+                expiresDom.text('服务有效期：--');
+                return;
+            }
             expiresDom.text('服务有效期：' + template.prototype.$getDateFromStr(data.data));
         }, function(error) {
-            expiresDom.text('服务有效期：--')
+            expiresDom.text('服务有效期：--');
         })
     } else {
         expiresDom.text('服务有效期：您还未登录')

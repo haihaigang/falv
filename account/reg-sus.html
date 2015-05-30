@@ -25,7 +25,7 @@
             <p>感谢您的注册，法率网将竭诚为您服务</p>
         </div>
         <div class="options">
-            <a href="#" class="btn">查看服务内容</a>
+            <a href="../housekeeper/index.html" class="btn">查看服务内容</a>
         </div>
     </section>
     <div id="ti-panel" class="panel">
@@ -58,10 +58,10 @@
     <script src="../content/js/worldunion.js"></script>
     <script>
     (function(){
-        var id = Storage.get(Storage.AUTH);
+        var account = Storage.get(Storage.ACCOUNT);
 
-        if(id){
-            $('.phone').text(id);
+        if(account){
+            $('.phone').text(account.id);
         }
     })();
     </script>
