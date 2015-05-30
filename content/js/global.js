@@ -924,6 +924,14 @@
                 toastPanel.hide();
             }, tick);
         },
+        isIos: function() {
+            //5.0 (iPad; CPU OS 8_1_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B435
+            return (/iphone|iPad/gi).test(navigator.appVersion);
+        },
+        isAndroid: function() {
+            //5.0 (iPad; CPU OS 8_1_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B435
+            return (/android/gi).test(navigator.appVersion);
+        },
         isIPad: function() {
             //5.0 (iPad; CPU OS 8_1_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B435
             return (/iPad/gi).test(navigator.appVersion);

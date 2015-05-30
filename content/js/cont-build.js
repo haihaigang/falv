@@ -113,6 +113,8 @@
                     }
                 }
 
+                log(value);
+
                 if(value == '其他') $('#otherOther').show()
                 
                 break;
@@ -154,7 +156,7 @@
             $("#catItems").show();
         }
         // alert(that.val());
-        if($('#doctype_dummy').val() == '其他'){
+        if(that.val() == 'NW1999'){
             $('#catalog_dummy').val(result[0].name);
             $('input[name="name"]').val(result[0].name);
             $('input[name="type"]').val(result[0].categoryId);
@@ -219,8 +221,8 @@
     $('#cont-form').submit(function(e) {
         e.preventDefault();
 
-        var comment = $('input[name="comment"]').val() || " ";
-        var role = $('input[name="role"]').val() || " ";
+        var comment = $('textarea[name="comment"]').val() || "";
+        var role = $('input[name="role"]').val() || "";
         var type1 = $('input[name="type1"]').val(); //文书
         var type = $('input[name="type"]').val(); //目录
         var name = $('input[name="name"]').val();
@@ -247,6 +249,10 @@
             Tools.showAlert("请选择合同角色");
             return;
         }
+        if(type1 == 'NW1999' && (comment.isEmpty() || comment.legnth < 5)){
+            Tools.showAlert("请输入您的需求，长度5-500字符");
+            return;
+        }
 
         var d = {
                 name: name + '.docx', //模板文件名
@@ -256,6 +262,7 @@
                 type: type,
                 type1: type1, //文书种类
                 type2: type,
+                comment: comment,
                 uid: Storage.get(Storage.AUTH)
             },
             hasNoTemp = 'NW2999' == type;
@@ -282,6 +289,12 @@
             }, function(data) {
                 if (data.error) {
                     Tools.showAlert(data.error.message);
+                    return;
+                }
+
+                //若是选择了其他类别，提交后直接完成，到列表页
+                if(type1 == 'NW1999'){
+                    history.go(-1);
                     return;
                 }
 
@@ -340,6 +353,13 @@
                 }
             }, 100)
             // $('#doctype').mobiscroll('setVal',tempData.type1);
+
+        //若是其他类别，则不可再提交
+        if(tempData.type1 == 'NW1999'){
+            $('textarea[name="comment"]').val(tempData.comment);
+            $('input[type="submit"]').attr('disabled',true).hide();
+            return;
+        }
     }
 
     //获取回答的问题列表，每次新添加合同时以及修改的时候获取，点击开始起草触发
@@ -441,8 +461,9 @@
         var d = [],
             temp = tempQuestions.questions,
             start = (curPage - 1) * 3,
-            end = start + 3,
-            pageNum = ~~(temp.length / 3) + (temp.length % 3 == 0 ? 0 : 1);
+            end = start + 3;
+
+        pageNum = ~~(temp.length / 3) + (temp.length % 3 == 0 ? 0 : 1);
 
         $('.cont-step span').text('第' + curPage + '页/共' + pageNum + '页');
         $('.btn-prev').val(curPage == 1 ? "选择合同" : "下一页");

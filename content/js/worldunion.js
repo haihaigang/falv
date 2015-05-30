@@ -34,7 +34,7 @@
         if (content && content.indexOf('http://') == 0) {
             return content;
         }
-        return config.aliyunHost + content;
+        return config.api_file_img + content;
         //return config.image + content;
     });
 
@@ -241,10 +241,9 @@
         }, function(err, result) {
             $('#ti-mic').hide();
             if (err == null || err == undefined || err == 0) {
-                if (result == '' || result == null){
+                if (result == '' || result == null) {
                     Tools.showToast("错误");
-                }
-                else{
+                } else {
                     log(result);
                     that.parent().find('input').val(result);
                 }
@@ -271,25 +270,41 @@
     }
 
     //获取文件
-    config.getFile = function(id){
+    config.getFile = function(id) {
         Ajax.custom({
             url: config.api_file_download,
             data: {
                 fileId: id
             }
-        },function(data){
+        }, function(data) {
 
         })
     }
 
-    config.getImg = function(id){
+    config.getImg = function(id) {
         Ajax.custom({
             url: config.api_file_img + id
-        },function(data){
+        }, function(data) {
 
         })
     }
 
+    //介绍页面的购买，提示下载app去
+    $('.icon-buy').click(function(e) {
+        e.preventDefault();
+
+        var url_android = 'https://www.ilaw66.com/file/download.json?fileId=5566c49b98258e253f75107d',
+            url_ios = 'https://itunes.apple.com/us/app/fa-lu/id945218505?l=zh&ls=1&mt=8';
+
+        Tools.showConfirm('了解更多详情，请下载APP', function() {
+            if (Tools.isIos()) {
+                window.open(url_ios, '');
+            }
+            if (Tools.isAndroid) {
+                window.open(url_android, '');
+            }
+        });
+    })
 
     //初始化滚动
     config.initScroll = function(opt, mode) {
@@ -461,7 +476,7 @@
         var that = this;
         that.targetPage = $(pageName);
 
-        $(pageName + ' .icon_return').click(function(e){
+        $(pageName + ' .icon_return').click(function(e) {
             e.preventDefault();
             that.closeSidebar();
         })
@@ -499,7 +514,7 @@
 //文件上传，监听所有form中的file，
 //要求file有＃flv-imgs的父元素
 //且页面中有＃flv-imgs-tmpl的模版
-(function(){
+(function() {
 
     var tempFiles = []; //存储临时文件数组
 
@@ -533,7 +548,7 @@
             };
             tempFiles.push(d);
 
-            that.parents('.col').addClass('active').find('input[type="text"]').attr("data-id",data._id).val(data.name);
+            that.parents('.col').addClass('active').find('input[type="text"]').attr("data-id", data._id).val(data.name);
             //上传图片成功后，添加下个文件控件
             if (that.parents('.col').next().length == 0) {
                 $('#flv-imgs').append($('#flv-imgs-tmpl').html());
@@ -544,8 +559,8 @@
     // 预览
     $('form').on('click', '.file', function() {
         var par = $(this).parent(),
-            id=par.find('input[type="text"]').attr("data-id");
-        if(par.hasClass('active')){
+            id = par.find('input[type="text"]').attr("data-id");
+        if (par.hasClass('active')) {
             window.open(config.api_file_img + id);
         }
     });

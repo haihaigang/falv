@@ -61,7 +61,11 @@
                 <!--[}else{]-->
                     <a href="letter-progress.html?id=<!--[= list[i]._id]-->"><!--[= $getLetterStatus(list[i].status)]--></a>
                 <!--[}]-->
+                <!--[if(list[i].status == "LS0001" || list[i].status == "LS0002"){]-->
+                <a href="letter-send.html?id=<!--[= list[i]._id]-->">编辑</a>
+                <!--[}else{]-->
                 <a href="letter-detail.html?id=<!--[= list[i]._id]-->">查看</a>
+                <!--[}]-->
             </div>
         </div>
         <!--[}]-->

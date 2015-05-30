@@ -162,6 +162,7 @@ header .icon {
     background-repeat: no-repeat;
     background-size: auto .25rem;
     text-align: center;
+    color: #0072bc;
 }
 header .icon_home {
     left: 0;

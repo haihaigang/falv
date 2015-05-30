@@ -29,6 +29,11 @@
             return;
         }
 
+        //剩余服务为0，左上角显示关于
+        if(data.data.remainAmounttotal == 0){
+            $('.icon-send').text('关于').attr('href','letter-info.html');
+        }
+
         Ajax.render('#flv-stat', 'flv-stat-tmpl', data.data);
 
         // 进入编辑页面

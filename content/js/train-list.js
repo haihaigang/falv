@@ -11,7 +11,7 @@
 		if(data.error){
 			return;
 		}
-
+	
 		Ajax.render('#flv-stat', 'flv-stat-tmpl', data.data);
 	})
 

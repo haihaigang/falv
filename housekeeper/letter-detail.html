@@ -20,12 +20,27 @@
         <a href="#" class="icon icon_return"></a>
         <h1>律师函正文</h1>
     </header>
-    <section class="container letter-detail" id="flv-detail"></section>
+    <section class="container letter-detail" id="flv-detail" style="padding: 0;"></section>
 
     <!--模版位置-->
-    <script type="text/html" id="flv-detail-tmpl">
+    <script type="text/html" id="flv-detail0-tmpl">
         <h3><!--[= problem]--></h3>
         <p><!--[= expectation]--></p>
+    </script>
+    <script type="text/html" id="flv-detail-tmpl">
+        <!--[for(i = 0; i < document.length; i++){]-->
+        <img src=<!--[= $absImg(document[i].fileId)]--> />
+        <!--[}]-->
+        <!--[if( status == 'LS0003'){]-->
+        <div class="options" style="position:fixed; bottom: 30px; left:10px; right: 10px; display: block;">
+            <div class="items" style="padding-bottom: 10px;">
+            <a class="btn btn-sure" href="">确认发送</a>
+            </div>
+            <div class="items">
+            <a class="btn" href="tel:400-860-7766">提出异议</a>
+            </div>
+        </div>
+        <!--[}]-->
     </script>
 
     <div id="ti-panel" class="panel">

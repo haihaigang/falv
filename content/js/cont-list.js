@@ -40,6 +40,11 @@
 			return;
 		}
 
+        //剩余服务为0，左上角显示关于
+        if(data.data.remainAmounttotal == 0){
+            $('.icon-build').text('关于').attr('href','cont-info.html');
+        }
+
 		Ajax.render('#flv-stat', 'flv-stat-tmpl', data.data);
 	});
 
