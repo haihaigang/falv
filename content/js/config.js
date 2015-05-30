@@ -60,6 +60,7 @@ config.api_letter_list = config.server + '/letter/list';//获取律师函服务�
 config.api_letter_detail = config.server + '/letter/getDetail';//获取律师函服务详细
 config.api_letter_add = config.server + '/letter/add';//提交律师函信息
 config.api_letter_update = config.server + '/letter/update';//提交律师函信息
+config.api_letter_confirm = config.server + '/letter/confirm';//确认律师函信息
 
 //file api
 config.api_file_upload = config.server + '/file/upload.json';//上传文件到服务器

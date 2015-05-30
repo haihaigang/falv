@@ -17,15 +17,18 @@
     //确认发送
     function doOk() {
         Ajax.custom({
-            url: config.xxx,
-            data: {}
+            url: config.api_letter_confirm,
+            data: {
+                id: id
+            },
+            type: 'PUT'
         }, function(data) {
         	if(data.error){
         		Tools.showAlert(data.error.message);
         		return;
         	}
 
-        	Tools.showAlert('确认成功',function(){
+        	Tools.showAlert('确认成功',0,function(){
         		history.go(-1);
         	})
         })
