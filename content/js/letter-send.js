@@ -42,7 +42,7 @@
             Tools.showAlert('收函人电话必填');
             return;
         }
-        if ($('select[name="town"]').val().isEmpty()) {
+        if ($('select[name="town"]').val() && $('select[name="town"]').val().isEmpty()) {
             Tools.showAlert('收函人地区必填');
             return;
         }
@@ -114,15 +114,17 @@
         }
        log(formData.address)
         var d = {
-            data: formData
+            data: formData,
+            uid: Storage.get(Storage.AUTH)
         }
 
-        d = JSON.stringify(d);
-
         if(id){
+            d.filter = {
+                id: id
+            };
             Ajax.submit({
                 url: config.api_letter_update,
-                data: d,
+                data: JSON.stringify(d),
                 type: 'PUT',
                 processData: false,
                 contentType: 'application/json',
@@ -137,7 +139,7 @@
         }else{
             Ajax.submit({
                 url: config.api_letter_add,
-                data: d,
+                data: JSON.stringify(d),
                 contentType: 'application/json',
                 showLoading: true
             }, function(data) {
