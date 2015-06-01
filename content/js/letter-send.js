@@ -42,7 +42,7 @@
             Tools.showAlert('收函人电话必填');
             return;
         }
-        if ($('select[name="town"]').val() && $('select[name="town"]').val().isEmpty()) {
+        if ($('select[name="town"]').val() && $('select[name="town"]').val() == null && $('select[name="town"]').val().isEmpty()) {
             Tools.showAlert('收函人地区必填');
             return;
         }
@@ -156,10 +156,12 @@
 
     getRegionData($('#province')[0]);
     $('#province').change(function(){
-        changeSel($('#province'), $('#city'), false)
+        changeSel($('#province'), $('#city'), false);
+        $('#area').val('');
+        $('#area_dummy').val('所在区/县');
     });
     $('#city').change(function(){
-        changeSel($('#city'), $('#area'), false)
+        changeSel($('#city'), $('#area'), false);
     });
 
     $('#province').mobiscroll().select({
@@ -182,18 +184,25 @@
         lang: "zh" 
     });
     // 级联change事件
-    function changeSel(el,nextEl,update,cityVal,nextNextEl,areaVal){
+    function changeSel(el,nextEl,update,nextNextEl,cityVal,areaVal){
         if(update){
-            getRegionData(nextEl[0], el.val(), getRegionData(nextNextEl[0], cityVal, function(){
-                nextEl.val(cityVal);
-                nextNextEl.val(areaVal) ; 
-            }));                  
+            getRegionData(nextEl[0], el.val(), cityVal, getRegionData(nextNextEl[0], cityVal, areaVal));                  
         }else{
-            getRegionData(nextEl[0], el.val())
+            getRegionData(nextEl[0], el.val(), null, function(){
+                // alert(el.selector);
+                if(el.selector == '#province'){
+                    // log($('#city > option').eq(0).text())
+                    $('#city_dummy').val($('#city > option').eq(0).text());
+                    changeSel($('#city'), $('#area'), false);
+                }
+                if(el.selector == '#city'){
+                    $('#area_dummy').val($('#area > option').eq(0).text());
+                }        
+            })
         }
     }
     //根据父级获取下级区域数据
-    function getRegionData(sel, parent, callback, def, fn) {
+    function getRegionData(sel, parent, def, callback, fn) {
         Ajax.custom({
             url: config.api_place,
             data: {
@@ -201,7 +210,6 @@
             }
         }, function(data) {
             var d = data.data.items;
-
             sel.length = 0;
             for (var i in d) {
                 sel.options.add(new Option(d[i].name, d[i]._id));
@@ -211,7 +219,11 @@
                 }
             }
             fn && fn(data);
-            typeof callback == 'function' && callback();
+
+            // console.log(sel)
+            // alert(parent)
+
+            typeof callback == 'function' &&  setTimeout(callback(),300)
         })
     }
 
@@ -260,13 +272,8 @@
             }
             // 地址下拉框
             var address = d.address;
-
-            $('#province').val(address.province.id)
-                .change(changeSel($('#province'), $('#city'), true, address.city.id, $('#area'), address.town.id));
-          
-            // $('#province').val(address.province.id).change();
-            // $('#city').change()
-
+            $('#province').val(address.province.id);
+            changeSel($('#province'), $('#city'), true, $('#area'), address.city.id, address.town.id)
             $('#province_dummy').val(address.province.name);
             $('#city_dummy').val(address.city.name);
             $('#area_dummy').val(address.town.name);
