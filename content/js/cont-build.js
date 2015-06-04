@@ -273,37 +273,41 @@
 
         if (id && tempData) {
             //若是编辑且已获取了数据
-            qp.openSidebar(function() {
-                getQuestions(d);
+            getQuestions(d,function(){
+                qp.openSidebar();
+                initNav();
             });
             return;
         }
 
-        Tools.showConfirm('您确定消费1份智能合同服务？', function() {
-            Ajax.submit({
-                url: config.api_cont_add,
-                data: d,
-                processData: false,
-                contentType: 'application/json',
-                showLoading: true
-            }, function(data) {
-                if (data.error) {
-                    Tools.showAlert(data.error.message);
-                    return;
-                }
+        //提交之前先验证文件模版是否存在，存在则继续
+        getQuestions(d,function(){
+            Tools.showConfirm('您确定消费1份智能合同服务？', function() {
+                Ajax.submit({
+                    url: config.api_cont_add,
+                    data: d,
+                    processData: false,
+                    contentType: 'application/json',
+                    showLoading: true
+                }, function(data) {
+                    if (data.error) {
+                        Tools.showAlert(data.error.message);
+                        return;
+                    }
 
-                //若是选择了其他类别，提交后直接完成，到列表页
-                if(type1 == 'NW1999'){
-                    history.go(-1);
-                    return;
-                }
+                    //若是选择了其他类别，提交后直接完成，到列表页
+                    if(type1 == 'NW1999'){
+                        history.go(-1);
+                        return;
+                    }
 
-                tempData = data.data;
-                qp.openSidebar(function() {
-                    getQuestions(d);
+                    tempData = data.data;
+                    qp.openSidebar();
+
+                    initNav();
                 });
-            });
-        })
+            })
+        });
     });
 
     //若存在id则获取数据
@@ -363,7 +367,7 @@
     }
 
     //获取回答的问题列表，每次新添加合同时以及修改的时候获取，点击开始起草触发
-    function getQuestions(param) {
+    function getQuestions(param,callbak,callbakError) {
         Ajax.submit({
             url: config.api_cont_find_legal,
             data: param,
@@ -371,17 +375,18 @@
             contentType: 'application/json'
         }, function(data) {
             if (data.error) {
-                Tools.showAlert(data.error.message);
+                Tools.showAlert('没有相关文件模板' || data.error.message);
                 return;
             }
 
             if (!data.data || !data.data.questions) {
-                Tools.showAlert('获取合同详情失败，请重试');
+                Tools.showAlert('没有相关文件模板');
                 return;
             }
 
             tempQuestions = data.data;
-            initNav();
+
+            callbak && callbak();
         });
     }
 

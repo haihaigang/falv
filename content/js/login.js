@@ -8,6 +8,7 @@
 	var phone = Storage.get(Storage.REMEMBER);
 	if(phone){
 		$('input[name="name"]').val(phone);
+		$('input[name="password"]').val(Storage.get('FLV-PASSWORD'));
 		$('input[name="remember"]').attr('checked',true);
 	}else{
 		$('input[name="remember"]').attr('checked',false);
@@ -49,6 +50,7 @@
 			//记住我，若记住则记录用户手机号以便下次登录
 			if($('input[name="remember"]:checked')){
 				Storage.set(Storage.REMEMBER, phone);
+				Storage.set('FLV-PASSWORD', password);
 			}else{
 				Storage.remove(Storage.REMEMBER);
 			}

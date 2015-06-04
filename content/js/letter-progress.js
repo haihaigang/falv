@@ -12,7 +12,7 @@
         'LS0001': '提交时间',
         'LS0002': '预计完成',
         'LS0003': '客户确认',
-        'LS0004': '投递完成',
+        'LS0004': '预计完成',
         'LS0005': '存档完成'
     }
 
@@ -99,13 +99,15 @@
                     }
                 }
                 if (!flag.active) {
-                    if(!isFirst && i != 'LS0003'){
-                        flag.statusUpdateAt = '两个工作日内';
+                    if(!isFirst){
+                        if(i != 'LS0003'){
+                            flag.statusUpdateAt = '两个工作日内';
+                        }
                         flag.active = true;
                     }
-                    if(i == 'LS0003'){
-                        flag.active = true;
-                    }
+                    // if(i == 'LS0003'){
+                    //     flag.active = true;
+                    // }
                     isFirst = true;
                 }
                 st.push(flag);

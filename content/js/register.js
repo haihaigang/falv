@@ -76,14 +76,14 @@
 			type: 'POST'
 		}, function(data){
 			if(data.error){
-				Tools.showAlert(data.error.message || '服务器异常，请稍后再试～',5000);
+				Tools.showAlert(data.error.message,5000);
 				return;
 			}
 
 			Cookie.set(Storage.AUTH,data.data._id);
 			Storage.set(Storage.AUTH, data.data._id, true);
 			Storage.set(Storage.ACCOUNT,data.data);
-			var from = location.search.getQueryValue('from');
+			var from = Tools.getQueryValue('from');
 			if(from){
 				location.href = decodeURIComponent(from);
 			}else{
@@ -115,7 +115,7 @@
 			type: 'POST'
 		}, function(data){
 			if(data.error){
-				Tools.showAlert(data.error.message || '服务器异常，请稍后再试～',5000);
+				Tools.showAlert(data.error.message,5000);
 				btnSend.addClass('ready').text('获取验证码');
 				return
 			}
