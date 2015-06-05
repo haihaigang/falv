@@ -77,26 +77,12 @@ label.select-tab {
 }
 
 .rlist {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: .1rem .13rem;
-    line-height: .38rem;
+    display: block;
+    padding: .18rem .13rem;
     border-bottom: 1px solid #e6e6e6;
 }
-
-.rlist a {
-    display: block;
-}
-
-.rlist .txt {
-    display: inline-block;
-}
-
 .rlist .icon {
-    display: inline-block;
-    width: .38rem;
-    height: .38rem;
-    float: right;
+    padding-right: .38rem;
     background: url(../images/enterprise/right.png) center right no-repeat;
     background-size: .16rem;
 }
@@ -111,24 +97,29 @@ label.select-tab {
 }
 
 .c-name {
+    display: block;
     font-size: .16rem;
     color: #e6e6e6;
     text-align: center;
 }
 
 .company-detail .lab {
+    display: block;
     color: #818181;
 }
 
 .company-detail .txt {
-    float: right;
+    display: block;
+    text-align: right;
+    -webkit-box-flex: 1;
 }
 
 .company-detail .msg {
     line-height: 1.6;
 }
 
-.company-detail .empty {
+.company-detail .rlist.empty {
+    display: block;
     color: #818181;
     text-align: center;
 }
@@ -149,6 +140,21 @@ label.select-tab {
     color: #e6e6e6;
     background-color: #0072bc;
     border-radius: 5px;
+}
+.company-view{
+    background-color: #e6e6e6;
+}
+.company-view .rlist{
+    display: -webkit-box;
+    background-color: #fff;
+}
+
+.company-view .rlist.single{
+    display: block;
+}
+
+.company-view .sep{
+    margin-bottom: .1rem;
 }
 /*province list start */
 

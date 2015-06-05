@@ -38,43 +38,43 @@
             </div>
         </div>
         <div class="company-view" id="cv-info">
-            <div class="rlist register-assets">
+            <div class="rlist">
                 <span class="lab">注册资本</span>
                 <span class="txt"><!--[= registcapi || '--']--></span>
             </div>
-            <div class="rlist legal-person">
+            <div class="rlist">
                 <span class="lab">法定代表人</span>
                 <span class="txt"><!--[= opername]--></span>
             </div>
-            <div class="rlist c-type">
+            <div class="rlist">
                 <span class="lab">企业类型</span>
                 <span class="txt"><!--[= econkind]--></span>
             </div>
-            <div class="rlist c-regtime">
+            <div class="rlist">
                 <span class="lab">成立日期</span>
                 <span class="txt"><!--[= $getDateFromStr(startdate)]--></span>
             </div>
-            <div class="rlist c-adress">
+            <div class="rlist single">
                 <span class="lab">地址</span>
-                <span class="txt"><!--[= address]--></span>
+                <span class="msg"><!--[= address]--></span>
             </div>
-            <div class="rlist c-adress">
+            <div class="rlist single sep">
                 <span class="lab">简介</span>
                 <p class="msg"><!--[= scope]--></p>
             </div>
-            <div class="rlist c-regtime">
+            <div class="rlist">
                 <span class="lab">经营期限</span>
                 <span class="txt"><!--[= $getDateFromStr(termstart)+'至'+$getDateFromStr(teamend)]--></span>
             </div>
-            <div class="rlist c-regtime">
+            <div class="rlist">
                 <span class="lab">发照日期</span>
                 <span class="txt"><!--[= $getDateFromStr(startdate)]--></span>
             </div>
-            <div class="rlist c-regtime">
+            <div class="rlist">
                 <span class="lab">登记机关</span>
                 <span class="txt"><!--[= belongorg]--></span>
             </div>
-            <div class="rlist c-regtime">
+            <div class="rlist">
                 <span class="lab">经营状态</span>
                 <span class="txt"><!--[= status]--></span>
             </div>
@@ -82,8 +82,28 @@
         <div class="company-view" id="cv-touzi" style="display: none;">
         <!--[if(partners && partners.length > 0){for(var i = 0; i < partners.length; i++){]-->
             <div class="rlist">
-                <span class="lab">公司</span>
+                <span class="lab">投资人</span>
                 <span class="txt"><!--[= partners[i].stockname]--></span>
+            </div>
+            <div class="rlist">
+                <span class="lab">出资方式</span>
+                <span class="txt"><!--[= partners[i].investname]--></span>
+            </div>
+            <div class="rlist">
+                <span class="lab">出资时间</span>
+                <span class="txt"><!--[= partners[i].shouddate || '--']--></span>
+            </div>
+            <div class="rlist">
+                <span class="lab">实缴时间</span>
+                <span class="txt"><!--[= partners[i].capidate || '--']--></span>
+            </div>
+            <div class="rlist">
+                <span class="lab">认缴出资额</span>
+                <span class="txt"><!--[= partners[i].shouldcapi]--></span>
+            </div>
+            <div class="rlist sep">
+                <span class="lab">实缴出资额</span>
+                <span class="txt"><!--[= partners[i].realcapi]--></span>
             </div>
         <!--[}}else{]-->
             <div class="rlist empty">没有投资人信息</div>
@@ -108,12 +128,18 @@
 
         <!--[}}else{]-->
             <div class="rlist empty">没有分支机构信息</div>
-        <!--[}]-->        </div>
+        <!--[}]-->
+        </div>
         <div class="company-view" id="cv-biangeng" style="display: none;">
         <!--[if(changerecords && changerecords.length > 0){for(var i = 0; i < changerecords.length; i++){]-->
             <div class="rlist">
-                <span class="lab">记录</span>
-                <span class="txt"><!--[= changerecords[i].projectname]--></span>
+                <span class="lab"><!--[= changerecords[i].no +'.'+ changerecords[i].projectname]--></span>
+            </div>
+            <div class="rlist">
+                <span class="lab">更新后 （<!--[= $getDateFromStr(changerecords[i].changedate)]-->）<!--[= changerecords[i].aftercontent]--></span>
+            </div>
+            <div class="rlist sep">
+                <span class="lab">更新前&nbsp;&nbsp; <!--[= changerecords[i].beforecontent]--></span>
             </div>
         <!--[}}else{]-->
             <div class="rlist empty">没有变更记录</div>

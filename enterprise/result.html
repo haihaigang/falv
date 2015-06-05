@@ -49,16 +49,13 @@
     <!--[模版位置]-->
     <script type="text/html" id="flv-list-tmpl">
         <div class="wlist_tips">共找到<!--[= list.length]-->条相似企业</div>
-        <ul>
+        <div>
             <!--[for(i = 0; i < list.length; i++){]-->
-            <li class="rlist">
-                <a href="detail.html?id=<!--[= list[i].unique]-->&no=<!--[= list[i].no]-->&province=<!--[= $getProvince()]-->">
-                    <div class="txt"><!--[= list[i].name]--></div>
-                    <i class="icon"></i>
-                </a>
-            </li>
+            <a class="rlist" href="detail.html?id=<!--[= list[i].unique]-->&no=<!--[= list[i].no]-->&province=<!--[= $getProvince()]-->">
+                <div class="icon"><!--[= list[i].name]--></div>
+            </a>
             <!--[}]-->
-        </ul>
+        </div>
     </script>
     <script type="text/html" id="flv-province-tmpl">
         <!--[for(i = 0; i < list.length; i++){]-->
