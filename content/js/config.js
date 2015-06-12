@@ -87,9 +87,10 @@ config.api_enterprise_province =  'http://i.yjapi.com/eci/provinces';//获取支
 config.api_enterprise_search =  'http://i.yjapi.com/eci/search';//查询匹配公司列表
 config.api_enterprise_detail =  'http://i.yjapi.com/eci/getdetails';//获取公司信用详细信息
 
-config.api_enterprise_province =  config.server + '/eci/provinces';//获取支持城市列表
-config.api_enterprise_search =  config.server + '/eci/search';//查询匹配公司列表
-config.api_enterprise_detail =  config.server + '/eci/getdetails';//获取公司信用详细信息
+config.api_enterprise_province =  config.server + '/eciv2/provinces';//获取支持城市列表
+config.api_enterprise_search =  config.server + '/eciv2/search';//查询匹配公司列表
+config.api_enterprise_detail =  config.server + '/eciv2/getdetails';//获取公司信用详细信息
+config.api_enterprise_continue_search =  config.server + '/eciv2/continuesearch';//继续查询匹配公司列表
 
 //gramophone
 config.api_gp_getTokenByPhone = config.server + '/cunnar/getTokenByPhone';//通过手机号获取token

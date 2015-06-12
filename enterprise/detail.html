@@ -40,90 +40,90 @@
         <div class="company-view" id="cv-info">
             <div class="rlist">
                 <span class="lab">注册资本</span>
-                <span class="txt"><!--[= registcapi || '--']--></span>
+                <span class="txt"><!--[= RegistCapi || '--']--></span>
             </div>
             <div class="rlist">
                 <span class="lab">法定代表人</span>
-                <span class="txt"><!--[= opername]--></span>
+                <span class="txt"><!--[= OperName]--></span>
             </div>
             <div class="rlist">
                 <span class="lab">企业类型</span>
-                <span class="txt"><!--[= econkind]--></span>
+                <span class="txt"><!--[= EconKind]--></span>
             </div>
             <div class="rlist">
                 <span class="lab">成立日期</span>
-                <span class="txt"><!--[= $getDateFromStr(startdate)]--></span>
+                <span class="txt"><!--[= $getDateFromStr(StartDate)]--></span>
             </div>
             <div class="rlist single">
                 <span class="lab">地址</span>
-                <span class="msg"><!--[= address]--></span>
+                <span class="msg"><!--[= Address]--></span>
             </div>
             <div class="rlist single sep">
                 <span class="lab">简介</span>
-                <p class="msg"><!--[= scope]--></p>
+                <p class="msg"><!--[= Scope]--></p>
             </div>
             <div class="rlist">
                 <span class="lab">经营期限</span>
-                <span class="txt"><!--[= $getDateFromStr(termstart)+'至'+$getDateFromStr(teamend)]--></span>
+                <span class="txt"><!--[= $getDateFromStr(TermStart)+'至'+$getDateFromStr(TeamEnd)]--></span>
             </div>
             <div class="rlist">
                 <span class="lab">发照日期</span>
-                <span class="txt"><!--[= $getDateFromStr(startdate)]--></span>
+                <span class="txt"><!--[= $getDateFromStr(StartDate)]--></span>
             </div>
             <div class="rlist">
                 <span class="lab">登记机关</span>
-                <span class="txt"><!--[= belongorg]--></span>
+                <span class="txt"><!--[= BelongOrg]--></span>
             </div>
             <div class="rlist">
                 <span class="lab">经营状态</span>
-                <span class="txt"><!--[= status]--></span>
+                <span class="txt"><!--[= Status]--></span>
             </div>
         </div>
         <div class="company-view" id="cv-touzi" style="display: none;">
-        <!--[if(partners && partners.length > 0){for(var i = 0; i < partners.length; i++){]-->
+        <!--[if(Partners && Partners.length > 0){for(var i = 0; i < Partners.length; i++){]-->
             <div class="rlist">
                 <span class="lab">投资人</span>
-                <span class="txt"><!--[= partners[i].stockname]--></span>
+                <span class="txt"><!--[= Partners[i].StockName]--></span>
             </div>
             <div class="rlist">
                 <span class="lab">出资方式</span>
-                <span class="txt"><!--[= partners[i].investname]--></span>
+                <span class="txt"><!--[= Partners[i].InvestName]--></span>
             </div>
             <div class="rlist">
                 <span class="lab">出资时间</span>
-                <span class="txt"><!--[= partners[i].shouddate || '--']--></span>
+                <span class="txt"><!--[= Partners[i].ShoudDate || '--']--></span>
             </div>
             <div class="rlist">
                 <span class="lab">实缴时间</span>
-                <span class="txt"><!--[= partners[i].capidate || '--']--></span>
+                <span class="txt"><!--[= Partners[i].CapiDate || '--']--></span>
             </div>
             <div class="rlist">
                 <span class="lab">认缴出资额</span>
-                <span class="txt"><!--[= partners[i].shouldcapi]--></span>
+                <span class="txt"><!--[= Partners[i].ShouldCapi]--></span>
             </div>
             <div class="rlist sep">
                 <span class="lab">实缴出资额</span>
-                <span class="txt"><!--[= partners[i].realcapi]--></span>
+                <span class="txt"><!--[= Partners[i].RealCapi]--></span>
             </div>
         <!--[}}else{]-->
             <div class="rlist empty">没有投资人信息</div>
         <!--[}]-->
         </div>
         <div class="company-view" id="cv-renyuan" style="display: none;">
-        <!--[if(employees && employees.length > 0){for(var i = 0; i < employees.length; i++){]-->
+        <!--[if(Employees && Employees.length > 0){for(var i = 0; i < Employees.length; i++){]-->
             <div class="rlist">
-                <span class="lab"><!--[= employees[i].job]--></span>
-                <span class="txt"><!--[= employees[i].name]--></span>
+                <span class="lab"><!--[= Employees[i].Job]--></span>
+                <span class="txt"><!--[= Employees[i].Name]--></span>
             </div>
         <!--[}}else{]-->
             <div class="rlist empty">没有主要人员信息</div>
         <!--[}]-->
         </div>
         <div class="company-view" id="cv-jigou" style="display: none;">
-        <!--[if(branches && branches.length > 0){for(var i = 0; i < branches.length; i++){]-->
+        <!--[if(Branches && Branches.length > 0){for(var i = 0; i < Branches.length; i++){]-->
             <div class="rlist">
                 <span class="lab">名称</span>
-                <span class="txt"><!--[= branches[i].name]--></span>
+                <span class="txt"><!--[= Branches[i].Name]--></span>
             </div>
 
         <!--[}}else{]-->
@@ -131,15 +131,15 @@
         <!--[}]-->
         </div>
         <div class="company-view" id="cv-biangeng" style="display: none;">
-        <!--[if(changerecords && changerecords.length > 0){for(var i = 0; i < changerecords.length; i++){]-->
+        <!--[if(ChangeRecords && ChangeRecords.length > 0){for(var i = 0; i < ChangeRecords.length; i++){]-->
             <div class="rlist">
-                <span class="lab"><!--[= changerecords[i].no +'.'+ changerecords[i].projectname]--></span>
+                <span class="lab"><!--[= ChangeRecords[i].No +'.'+ ChangeRecords[i].ProjectName]--></span>
             </div>
             <div class="rlist">
-                <span class="lab">更新后 （<!--[= $getDateFromStr(changerecords[i].changedate)]-->）<!--[= changerecords[i].aftercontent]--></span>
+                <span class="lab">更新后 （<!--[= $getDateFromStr(ChangeRecords[i].ChangeDate)]-->）<!--[= ChangeRecords[i].AfterContent]--></span>
             </div>
             <div class="rlist sep">
-                <span class="lab">更新前&nbsp;&nbsp; <!--[= changerecords[i].beforecontent]--></span>
+                <span class="lab">更新前&nbsp;&nbsp; <!--[= ChangeRecords[i].BeforeContent]--></span>
             </div>
         <!--[}}else{]-->
             <div class="rlist empty">没有变更记录</div>

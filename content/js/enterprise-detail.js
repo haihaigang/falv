@@ -8,13 +8,9 @@
     Ajax.detail({
         url: config.api_enterprise_detail,
         data: {
-            key: config.appkey,
-            dtype: 'json',
-            unique: id,
-            regno: no,
-            province: province
+            keyNo: id
         },
-        key: {'data':[],'company':[]}
+        key: {'data':[],'Result':[]}
     });
 
     $('#flv-detail').on('click','.company-tag span',function(){

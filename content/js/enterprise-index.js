@@ -55,33 +55,33 @@
             }
         }, function(data) {
             data = data.data;
-            if (data.resultcode != '200') {
+            if (data.Status != '200') {
                 return;
             }
 
-            var result = data.result,
+            var result = data.Result,
                 lastLetter,
                 res = [], //[{letter:'':items:[]}]
                 idx = 0;
 
             for (var i = 0; i < result.length; i++) {
-                var fl = result[i].FirstLetter.substring(0, 1);
+                var fl = result[i].Code.substring(0, 1);
                 if (!lastLetter) {
                     lastLetter = fl;
                     res.push({
                         'letter': fl,
-                        items: []
+                        items: [result[i]]
                     });
                 } else if (lastLetter == fl) {
                     res[idx].items.push(result[i]);
                 } else {
+                    idx++;
                     lastLetter = fl;
                     res.push({
                         'letter': fl,
                         items: []
                     });
                     res[idx].items.push(result[i]);
-                    idx++;
                 }
             }
 

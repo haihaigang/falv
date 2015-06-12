@@ -317,6 +317,11 @@
                 location.href = '../account/login.html';
             }
             if (jqXHR.status == 401) {
+                //当接口登录超时，清空本地
+                Cookie.remove(Storage.AUTH);
+                Storage.remove(Storage.AUTH);
+                Storage.remove(Storage.ACCOUNT);
+
                 location.href = '../account/login.html';
             }
 

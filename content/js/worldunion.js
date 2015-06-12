@@ -543,7 +543,8 @@
 
             data = data.data[0];
             var d = {
-                fileId: data.fileId,
+                // fileId: data.fileId,
+                fileId: data._id,
                 fileName: data.name
             };
             tempFiles.push(d);

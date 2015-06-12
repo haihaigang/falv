@@ -115,8 +115,8 @@
 
                 log(value);
 
-                if(value == '其他') $('#otherOther').show()
-                
+                if (value == '其他') $('#otherOther').show()
+
                 break;
             case "3":
                 $("#target").val(categoryId);
@@ -156,7 +156,7 @@
             $("#catItems").show();
         }
         // alert(that.val());
-        if(that.val() == 'NW1999'){
+        if (that.val() == 'NW1999') {
             $('#catalog_dummy').val(result[0].name);
             $('input[name="name"]').val(result[0].name);
             $('input[name="type"]').val(result[0].categoryId);
@@ -249,7 +249,7 @@
             Tools.showAlert("请选择合同角色");
             return;
         }
-        if(type1 == 'NW1999' && (comment.isEmpty() || comment.legnth < 5)){
+        if (type1 == 'NW1999' && (comment.isEmpty() || comment.legnth < 5)) {
             Tools.showAlert("请输入您的需求，长度5-500字符");
             return;
         }
@@ -273,15 +273,15 @@
 
         if (id && tempData) {
             //若是编辑且已获取了数据
-            getQuestions(d,function(){
+            getQuestions(d, function() {
                 qp.openSidebar();
                 initNav();
             });
             return;
         }
 
-        //提交之前先验证文件模版是否存在，存在则继续
-        getQuestions(d,function(){
+        if (type1 == 'NW1999') {
+            //若是选择了其他类别，提交后直接完成，到列表页
             Tools.showConfirm('您确定消费1份智能合同服务？', function() {
                 Ajax.submit({
                     url: config.api_cont_add,
@@ -295,19 +295,33 @@
                         return;
                     }
 
-                    //若是选择了其他类别，提交后直接完成，到列表页
-                    if(type1 == 'NW1999'){
-                        history.go(-1);
-                        return;
-                    }
-
-                    tempData = data.data;
-                    qp.openSidebar();
-
-                    initNav();
+                    history.go(-1);
                 });
             })
-        });
+        } else {
+            //提交之前先验证文件模版是否存在，存在则继续
+            getQuestions(d, function() {
+                Tools.showConfirm('您确定消费1份智能合同服务？', function() {
+                    Ajax.submit({
+                        url: config.api_cont_add,
+                        data: d,
+                        processData: false,
+                        contentType: 'application/json',
+                        showLoading: true
+                    }, function(data) {
+                        if (data.error) {
+                            Tools.showAlert(data.error.message);
+                            return;
+                        }
+
+                        tempData = data.data;
+                        qp.openSidebar();
+
+                        initNav();
+                    });
+                })
+            });
+        }
     });
 
     //若存在id则获取数据
@@ -359,15 +373,15 @@
             // $('#doctype').mobiscroll('setVal',tempData.type1);
 
         //若是其他类别，则不可再提交
-        if(tempData.type1 == 'NW1999'){
+        if (tempData.type1 == 'NW1999') {
             $('textarea[name="comment"]').val(tempData.comment);
-            $('input[type="submit"]').attr('disabled',true).hide();
+            $('input[type="submit"]').attr('disabled', true).hide();
             return;
         }
     }
 
     //获取回答的问题列表，每次新添加合同时以及修改的时候获取，点击开始起草触发
-    function getQuestions(param,callbak,callbakError) {
+    function getQuestions(param, callbak, callbakError) {
         Ajax.submit({
             url: config.api_cont_find_legal,
             data: param,
@@ -448,7 +462,7 @@
             // log("408:"+ $('#catItems'))
             $('#catItems').hide().find('input[type="hidden"]').val('');
             $('#catalog_dummy').val('请选择');
-            
+
             $('#tarItems').hide().find('input[type="hidden"]').val('');
             $('#target_dummy').val('请选择');
 
@@ -713,7 +727,7 @@
     });
 
     //打开搜索结果页
-    $("form.cont-search-form").submit(function(e){
+    $("form.cont-search-form").submit(function(e) {
         e.preventDefault();
         $('#open-search').click();
     })
