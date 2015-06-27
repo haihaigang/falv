@@ -10,7 +10,7 @@
     function Api(options) {
         this.options = options || {};
         //extends(options,this.options);
-        this.timeout = 15000; //请求超时时间
+        this.timeout = 60000; //请求超时时间
         this.cache = true; //是否缓存
         this.defaultListTmpl = 'flv-list-tmpl';
         this.defaultListEle = '#flv-list';
@@ -322,7 +322,7 @@
                 Storage.remove(Storage.AUTH);
                 Storage.remove(Storage.ACCOUNT);
 
-                location.href = '../account/login.html';
+                location.href = '../account/login.html?from='+location.href;
             }
 
             logged(options.logtype, jqXHR.statusText, options.url);

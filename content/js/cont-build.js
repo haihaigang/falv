@@ -485,7 +485,7 @@
         pageNum = ~~(temp.length / 3) + (temp.length % 3 == 0 ? 0 : 1);
 
         $('.cont-step span').text('第' + curPage + '页/共' + pageNum + '页');
-        $('.btn-prev').val(curPage == 1 ? "选择合同" : "下一页");
+        $('.btn-prev').val(curPage == 1 ? "选择合同" : "上一页");
         $('.btn-next').val(curPage == pageNum ? "预览" : "下一页");
 
         end = end > temp.length ? temp.length : end;
@@ -612,12 +612,18 @@
                 return;
             }
 
-            var files = data.data.files;
+            var files = data.data.files, previewId;
             for (var i = 0; i < files.length; i++) {
                 if ('application/msword' == files[i].contentType) {
                     tempData.fileId = files[i]._id || '';
-                    break;
+                }else if ('application/pdf' == files[i].contentType) {
+                    previewId = files[i]._id;
                 }
+            }
+
+            if(Tools.isIos()){
+                $('#cont-iframe').attr('src', config.api_file_download + '?fileId=' + previewId).show();
+                $('#preview-page .tips').hide();
             }
 
             pp.openSidebar();

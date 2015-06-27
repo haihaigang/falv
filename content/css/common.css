@@ -269,6 +269,7 @@ footer {
     color: #666;
     border-top: 1px solid #d2d2d2;
     background-color: #fff;
+    display: none;
 }
 footer .options{
     width: 100%;
@@ -1050,6 +1051,9 @@ form .single .val {
 /* pagination end */
 
 /* sidebar start */
+body.move{
+    overflow-y: hidden;
+}
 #sidebar-bg {
     display: none;
     position: fixed;
@@ -1170,3 +1174,22 @@ form .single .val {
 }
 
 /* mic end */
+
+/* preview start */
+.mp-preview{
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    overflow-y: auto;
+}
+.mp-preview .container{
+    padding: 0;
+}
+.mp-preview .container img{
+    max-width: 100%;
+}
+/* preview end */

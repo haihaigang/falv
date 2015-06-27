@@ -4,7 +4,7 @@
     if(id){
     }else{
         //未登录，跳转
-        location.href = '../account/login.html';
+        location.href = '../account/login.html?from=../enterprise/index.html';
     }
     
     //点击搜索

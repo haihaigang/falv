@@ -480,6 +480,10 @@
             e.preventDefault();
             that.closeSidebar();
         })
+
+        if(!$('body').hasClass('move')){
+            $('body').addClass('move');
+        }
     }
 
     SecondPage.prototype = {
@@ -562,7 +566,18 @@
         var par = $(this).parent(),
             id = par.find('input[type="text"]').attr("data-id");
         if (par.hasClass('active')) {
-            window.open(config.api_file_img + id);
+            // window.open(config.api_file_img + id);
+            var container = $(window);
+            var w = container.width(),
+                h = container.height();
+            $('body').append(tmplPreview.replace('{w}',w)
+                .replace('{h}',h)
+                .replace('{img}',config.api_file_img + id));
+
+            $('#preview-close').click(function(e){
+                e.preventDefault();
+                $('#mp-preview').remove();
+            })
         }
     });
 
@@ -576,6 +591,8 @@
         }
         $(this).parents('.col').remove();
     });
+
+    var tmplPreview = '<div class="mp-preview" id="mp-preview" style="width:{w};height:{h};"><header class="header"><a href="#" class="icon icon_return" data-flag="true" id="preview-close"></a><h1>预览图片</h1></header><section class="container"><img src="{img}" alt=""></section></div>';
 
     //为了兼容页面已有逻辑，这里抛出全局变量
     window.tempFiles = tempFiles;

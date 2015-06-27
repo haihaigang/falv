@@ -411,7 +411,10 @@ form.cont-form .options .mr{
 	text-align: center;
 }
 .cont-sus .options{
+	position: fixed;
+	bottom: 73px;
 	display: block;
+	width: 100%;
 	margin-top: .2rem;
 }
 .cont-sus .opt-item{

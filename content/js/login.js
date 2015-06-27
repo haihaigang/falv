@@ -48,7 +48,7 @@
 			}
 			
 			//记住我，若记住则记录用户手机号以便下次登录
-			if($('input[name="remember"]:checked')){
+			if($('input[name="remember"]:checked').length > 0){
 				Storage.set(Storage.REMEMBER, phone);
 				Storage.set('FLV-PASSWORD', password);
 			}else{

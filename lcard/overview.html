@@ -62,7 +62,11 @@
             <div class="lcard-amount">
                 <div class="lcard-amount-c">
                     <p>优惠额度：</p>
-                    <p class="price"><!--[= couponInfo]--></p>
+                    <!--[if(couponType == 'CP0001'){]-->
+                    <p class="price"><!--[= couponInfo + '%']--></p>
+                    <!--[}else{]-->
+                    <p class="price"><!--[= '¥' + couponInfo]--></p>
+                    <!--[}]-->
                 </div>
             </div>
             <div class="lcard-info">
