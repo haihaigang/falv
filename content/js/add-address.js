@@ -166,7 +166,8 @@
                 return;
             }
 
-            location.href = 'my-address.html';
+            history.go(-1);
+            // location.href = 'my-address.html';
         });
 
     });

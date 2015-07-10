@@ -2,10 +2,18 @@
 
     var account = Storage.get(Storage.ACCOUNT);
 
-    if(account){
+    if (account) {
         $('input[name="name"]').val(account.name);
         $('select[name="sex"]').val(account.extend.sex);
     }
+
+    $('#nickName').mobiscroll().select({
+        theme: "android-holo-light",
+        mode: "scroller",
+        display: "bottom",
+        lang: "zh"
+    });
+
 
     $('#userMsg-form').submit(function(e) {
         e.preventDefault();
@@ -55,14 +63,15 @@
             data: data,
             type: 'PUT'
         }, function(data) {
-            if(data.error){
+            if (data.error) {
                 Tools.showAlert(data.error.message);
                 return;
             }
 
-            Storage.set(Storage.ACCOUNT,data.data);
-            Tools.showAlert('信息修改成功');
-            //location.href = 'index.html';
+            Storage.set(Storage.ACCOUNT, data.data);
+            Tools.showAlert('信息修改成功', 0, function(){
+                location.href = 'index.html';
+            });
         });
 
     });

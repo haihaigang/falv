@@ -322,7 +322,7 @@
                 Storage.remove(Storage.AUTH);
                 Storage.remove(Storage.ACCOUNT);
 
-                location.href = '../account/login.html?from='+location.href;
+                location.href = '../account/login.html?from='+encodeURIComponent(location.href);
             }
 
             logged(options.logtype, jqXHR.statusText, options.url);
@@ -996,7 +996,11 @@ var log = function(m) {
     };
 
     String.prototype.isValidPwd = function() {
-        return (new RegExp(/^([_]|[a-zA-Z0-9@]){6,16}$/).test(this));
+        if(new RegExp(/^[a-zA-Z]{6,20}$/).test(this)
+            || new RegExp(/^([0-9]){6,20}$/).test(this)){
+            return false;
+        }
+        return (new RegExp(/^([a-zA-Z0-9@]){6,20}$/).test(this));
     };
 
     String.prototype.isPostCode = function() {

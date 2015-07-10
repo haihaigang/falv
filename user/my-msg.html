@@ -8,8 +8,6 @@
 	<meta name="apple-touch-fullscreen" content="yes" />
 	<title>法率网</title>
 	<link rel="stylesheet" href="../content/css/common.css">
-    <link rel="stylesheet" href="../content/css/mobiscroll-2.3.1.full.min.css" />
-    <link rel="stylesheet" href="../content/css/mobiscroll.custom-2.5.0.min.css" />
     <link rel="stylesheet" href="../content/css/user.css">
 </head>
 <body>
@@ -78,22 +76,27 @@
     <script src="../content/js/lib/jquery-2.1.1.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
     <script src="../content/js/lib/jscroll.js"></script>
-    <script src="../content/js/mobiscroll-2.3.1.full.min.js"></script>
+    <!-- // <script src="../content/js/mobiscroll-2.3.1.full.min.js"></script> -->
     <script src="../content/js/config.js"></script>
     <script src="../content/js/global.js"></script>
     <script src="../content/js/worldunion.js"></script>
-    <script src="../content/js/my-msg.js"></script>
 
-    <script>
-    (function(){
-        $('#nickName').mobiscroll().select({
-            theme: "mobiscroll",     // Specify theme like: theme: 'ios' or omit setting to use default 
-            mode: "scroller",       // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
-            display: "bottom", // Specify display mode like: display: 'bottom' or omit setting to use default 
-            lang: "zh-cn"        // Specify language like: lang: 'pl' or omit setting to use default 
-        });
-    })();
-    </script>
+    <!-- Mobiscroll JS and CSS Includes -->
+    <script src="../content/mobiscroll/js/mobiscroll.zepto.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.core.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.frame.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.scroller.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.android-holo-light.js"></script>
+    <script src="../content/mobiscroll/js/mobiscroll.select.js"></script>
+
+    <script src="../content/mobiscroll/js/i18n/mobiscroll.i18n.zh.js"></script>
+
+    <link href="../content/mobiscroll/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.frame.css" rel="stylesheet" type="text/css" />
+    <link href="../content/mobiscroll/css/mobiscroll.android-holo-light.css" rel="stylesheet" type="text/css">
+    <!--Mobiscroll includes end-->
+    <script src="../content/js/my-msg.js"></script>
 </body>
 
 </html>

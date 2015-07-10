@@ -39,7 +39,8 @@
 		var phone = $('input[name="id"]').val(),
 			code = $('input[name="code"]').val(),
 			password = $('input[name="password"]').val(),
-			password1 = $('input[name="password1"]').val();
+			password1 = $('input[name="password1"]').val(),
+			protocol = $('input[name="protocol"]:checked');
 		
 		if(phone.isEmpty()){
 			Tools.showAlert("手机号不能为空",5000);
@@ -69,6 +70,10 @@
 			Tools.showAlert("确认密码不一致",5000);
 			return;
 		}
+		if(protocol.length <= 0){
+			Tools.showAlert("您还未同意法率用户注册协议",5000);
+			return;
+		}
 
 		Ajax.submit({
 			url: config.api_reg_app,
@@ -81,7 +86,7 @@
 			}
 
 			Cookie.set(Storage.AUTH,data.data._id);
-			Storage.set(Storage.AUTH, data.data._id, true);
+			Storage.set(Storage.AUTH, data.data._id);
 			Storage.set(Storage.ACCOUNT,data.data);
 			var from = Tools.getQueryValue('from');
 			if(from){

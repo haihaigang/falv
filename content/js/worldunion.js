@@ -472,6 +472,7 @@
 
 //自定义弹出页
 (function(window) {
+    var tempPage = 0;
     var SecondPage = function(pageName) {
         var that = this;
         that.targetPage = $(pageName);
@@ -480,34 +481,52 @@
             e.preventDefault();
             that.closeSidebar();
         })
-
-        if(!$('body').hasClass('move')){
-            $('body').addClass('move');
-        }
     }
 
     SecondPage.prototype = {
         targetPage: undefined,
         openSidebar: function(fn) {
-            var container = $(window);
-            var w = container.width(),
-                h = container.height();
-            this.targetPage.css({
-                'width': w,
-                'height': h
-            });
-
-            this.targetPage.addClass('open');
+            var container = $(window),
+                w = container.width(),
+                h = container.height(),
+                that = this;
+            this.targetPage.show()
+                .css({
+                    'width': w,
+                    'height': h
+                });
+            setTimeout(function() {
+                that.targetPage.addClass('open');
+            }, 100)
+            tempPage++;
+            if (!$('body').hasClass('move')) {
+                $('body').addClass('move')
+                    .css({
+                        'width': document.documentElement.clientWidth,
+                        'height': document.documentElement.clientHeight,
+                        'overflow': 'hidden'
+                    });
+            }
             fn && fn();
         },
 
         closeSidebar: function(fn) {
+            var that = this;
             this.targetPage.removeClass('open');
+            tempPage--;
             setTimeout(function() {
                 $('#xg-panel-bg').hide();
+                that.targetPage.hide();
                 hasOpend = false;
+                if (tempPage <= 0) {
+                    $('body').removeClass('move')
+                        .css({
+                            'width': 'auto',
+                            'height': 'auto',
+                            'overflow': 'inherit'
+                        });
+                }
                 fn && fn();
-                //provincePage.hide()
             }, 220);
         }
     }
@@ -570,11 +589,11 @@
             var container = $(window);
             var w = container.width(),
                 h = container.height();
-            $('body').append(tmplPreview.replace('{w}',w)
-                .replace('{h}',h)
-                .replace('{img}',config.api_file_img + id));
+            $('body').append(tmplPreview.replace('{w}', w)
+                .replace('{h}', h)
+                .replace('{img}', config.api_file_img + id));
 
-            $('#preview-close').click(function(e){
+            $('#preview-close').click(function(e) {
                 e.preventDefault();
                 $('#mp-preview').remove();
             })
@@ -589,10 +608,14 @@
         if (!$(this).parents('.col').hasClass('active')) {
             return;
         }
+
+        //确定当前顺序，因为第一个元素不是.col，这里需减一
+        var idx = $(this).parents('.col').index() - 1;
         $(this).parents('.col').remove();
+        tempFiles.splice(idx,1);
     });
 
-    var tmplPreview = '<div class="mp-preview" id="mp-preview" style="width:{w};height:{h};"><header class="header"><a href="#" class="icon icon_return" data-flag="true" id="preview-close"></a><h1>预览图片</h1></header><section class="container"><img src="{img}" alt=""></section></div>';
+    var tmplPreview = '<div class="mp-preview" id="mp-preview" style="width:{w}px;height:{h}px;"><header class="header"><a href="#" class="icon icon_return" data-flag="true" id="preview-close"></a><h1>预览图片</h1></header><section class="container"><img src="{img}" alt=""></section></div>';
 
     //为了兼容页面已有逻辑，这里抛出全局变量
     window.tempFiles = tempFiles;

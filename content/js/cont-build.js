@@ -641,6 +641,10 @@
         });
     })
 
+    if('addEventListener' in window){
+        document.getElementById('preview-page').addEventListener('touchmove',function(e){e.preventDefault();})
+    }
+
     //定制完成，确认结束本次服务
     function gotoFinish() {
         var d = {

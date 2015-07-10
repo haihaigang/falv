@@ -59,6 +59,7 @@ body {
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: 0 -65px;
+    -webkit-user-select: none;
 }
 a {
     color: inherit;
@@ -1052,7 +1053,8 @@ form .single .val {
 
 /* sidebar start */
 body.move{
-    overflow-y: hidden;
+    width: 100%;
+    overflow-x: hidden;
 }
 #sidebar-bg {
     display: none;
@@ -1065,6 +1067,7 @@ body.move{
     height: auto
 }
 .sidebar {
+    display: none;
     position: absolute;
     z-index: 101;
     top: 0;
