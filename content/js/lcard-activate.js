@@ -8,7 +8,8 @@
         $('.phone').text(account.id);
     }else{
         //未登录，跳转
-        location.href = '../account/login.html?from=../lcard/activate.html';
+        if(config.checked)
+            location.href = '../account/login.html?from=../lcard/activate.html';
     }
 
     //如果扫码过来的，自动激活

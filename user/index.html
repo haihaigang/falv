@@ -100,7 +100,8 @@
         if (id) {
             $('.user_type').text(account.id);
         } else {
-            location.href = '../account/login.html?from=../user/index.html'
+            if(config.checked)
+                location.href = '../account/login.html?from=../user/index.html'
         }
 
         //退出

@@ -1,10 +1,10 @@
 (function() {
     var id = Storage.get(Storage.AUTH);
 
-    if(id){
-    }else{
+    if(!id){
         //未登录，跳转
-        location.href = '../account/login.html?from=../enterprise/index.html';
+        if(config.checked)
+            location.href = '../account/login.html?from=../enterprise/index.html';
     }
     
     //点击搜索
@@ -63,6 +63,20 @@
                 lastLetter,
                 res = [], //[{letter:'':items:[]}]
                 idx = 0;
+
+            if(result && typeof result.length == 'number'){
+                result = result.sort(function(a, b){
+                    var ak = a.Code.substring(0, 1).charCodeAt(),
+                        bk = b.Code.substring(0, 1).charCodeAt();
+                    if(ak < bk){
+                        return -1;
+                    }else if(ak == bk){
+                        return 0;
+                    }else{
+                        return 1;
+                    }
+                })
+            }
 
             for (var i = 0; i < result.length; i++) {
                 var fl = result[i].Code.substring(0, 1);

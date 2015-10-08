@@ -4,6 +4,7 @@
     skip: 0,
     page: 1, //当前第几页，从1开始
     pageSize: 10, //默认分页大小
+    checked: false,//是否验证登录状态
     server: location.protocol + '//' + location.host,
     //server: 'http://42.192.0.11:4001', //测试接口用
     // server: "https://www.ilaw66.com", //测试接口用
